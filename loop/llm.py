@@ -11,6 +11,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import random
 import re
 import time
 from pathlib import Path
@@ -85,20 +86,21 @@ def call_structured(purpose: str, *, system: str, user: str, schema_name: str, s
         return rec["output"]
 
     output = usage = mode = reasoning = None
-    for attempt in range(4):   # the free endpoint rate-limits bursts; parallel board turns hit it
+    attempts = 8   # the free endpoint rate-limits sustained bursts; back off up to ~2 minutes per try
+    for attempt in range(attempts):
         try:
             output, usage, mode, reasoning = _call(model, system, user, schema_name, schema, max_tokens, temperature, thinking)
             jsonschema.validate(output, schema)  # invalid output is an error, never a cached result
             break
         except (jsonschema.ValidationError, RuntimeError, ValueError) as e:
-            if attempt == 3:
+            if attempt >= 3:
                 raise
             time.sleep(5)
             _log(purpose=purpose, model=model, key=key, retry=attempt + 1, reason=f"{type(e).__name__}: {str(e)[:120]}")
         except Exception as e:  # noqa: BLE001 — 429 / 5xx from the API
-            if attempt == 3 or not any(code in str(e) for code in ("429", "500", "502", "503", "504", "timeout", "Timeout")):
+            if attempt == attempts - 1 or not any(code in str(e) for code in ("429", "500", "502", "503", "504", "timeout", "Timeout")):
                 raise
-            time.sleep(10 * (attempt + 1))
+            time.sleep(min(120, 15 * (2 ** attempt) / 2 + random.uniform(0, 5)))
             _log(purpose=purpose, model=model, key=key, retry=attempt + 1, reason=f"{type(e).__name__}: {str(e)[:120]}")
     rec = {"purpose": purpose, "model": model, "schema_name": schema_name, "mode": mode, "thinking": thinking,
            "usage": usage, "created_at": time.strftime("%Y-%m-%dT%H:%M:%S"), "output": output,

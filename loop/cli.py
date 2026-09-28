@@ -16,7 +16,7 @@ def cmd_sense(args):
     notes = json.loads(store.FIELD_NOTES.read_text())
     st = sense.run(state, contract, notes, force=args.force)
     print(f"[사실] 면담 기록 {st['docs']}건 처리 · 인용 검증 통과 {st['kept']} · 원문에 없어 버림 {st['dropped']} · "
-          f"유해사례 후보 {st['adverse_events']} (별도 safety 경로)")
+          f"유해사례 후보 {st['adverse_events']} (별도 safety 경로)" + (f" · 추출 실패 {len(st['failed'])}건 (다시 sense 를 실행하면 그 건만 재시도)" if st.get("failed") else ""))
     print("[패턴] 환자군 × 신호 유형 (검증된 발언만, 코드 집계)")
     for r in sense.tally(state):
         print(f"   {r['segment']:<14} {r['signal_type']:<20} 언급 {r['mentions']:>2} · 의료진 {r['hcps']:>2}")
