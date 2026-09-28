@@ -232,19 +232,30 @@ def deliberate(state: dict, hyp_id: str, force: bool = False, on_turn=None) -> d
     return memo
 
 
-def approve(state: dict, hyp_id: str, by: str, note: str = "") -> list[dict]:
+VERDICT_TO_RECO = {"GO": "PROCEED_TO_EXPERT_REVIEW", "CONDITIONAL_GO": "PROCEED_TO_EXPERT_REVIEW", "HOLD": "HOLD", "NO_GO": "DROP",
+                   "APPROVED": "PROCEED_TO_EXPERT_REVIEW", "REJECTED": "DROP"}
+
+
+def approve(state: dict, hyp_id: str, by: str, note: str = "", verdict: str | None = None,
+            directives: list[str] | None = None) -> list[dict]:
+    """Gate 2. `verdict` lets the person overrule the code tally (the record keeps both);
+    `directives` replaces the minutes' follow-up questions with the ones the person adopted."""
     if hyp_id not in state["board"]:
         raise SystemExit(f"{hyp_id}: 심의 결과가 없습니다 — `board {hyp_id}` 가 먼저입니다.")
     memo = state["board"][hyp_id]
-    memo["decision"] = {"by": by, "at": store.now(), "note": note, "accepted": memo["recommendation"]}
+    accepted = VERDICT_TO_RECO.get(verdict or "", memo["recommendation"])
+    memo["decision"] = {"by": by, "at": store.now(), "note": note, "accepted": accepted,
+                        "verdict": verdict, "recommended": memo["recommendation"]}
     created = []
-    for q in memo["follow_up_questions"]:
+    questions = ([{"question_ko": d, "why_ko": "사람이 채택한 후속 질문"} for d in directives]
+                 if directives is not None else memo["follow_up_questions"])
+    for q in questions:
         act = {"id": f"ACT-{len(state['actions']) + 1:03d}", "hypothesis_id": hyp_id,
                "question_ko": q["question_ko"], "why_ko": q["why_ko"], "status": "OPEN",
                "approved_by": by, "approved_at": memo["decision"]["at"]}
         state["actions"].append(act)
         created.append(act)
-    store.hypothesis(state, hyp_id)["status"] = f"DECIDED:{memo['recommendation']}"
+    store.hypothesis(state, hyp_id)["status"] = f"DECIDED:{accepted}"
     store.save(state)
     # What the field app reads next: the checklist for the next interview.
     store.FIELD_CHECKLIST.write_text(json.dumps(

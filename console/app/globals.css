@@ -1,0 +1,531 @@
+@import "tailwindcss";
+
+/* 테마 — 「도면(Drawing)」 (docs/05 §0·§2) · 08/28 토큰 정리.
+   브랜드 두 색만 강제다: 네이비 #162661 · 오렌지 #EF8B1C.
+   그 외 색은 팀장 위임(08/28)으로 여기서 정한다 — 원칙 셋:
+     ① hue 4개를 넘지 않는다 (네이비·오렌지 + 시맨틱 2색) — docs/05 금지 목록
+     ② 회색은 중성으로. 네이비 반투명을 회색 대신 쓰면 화면 전체가 파랗게 물든다
+     ③ 면색은 새로 만들지 않고 네이비에서 파생한다 (--fill-*) — 제3의 회색을 두지 않는다
+   등급은 색이 아니라 점의 채도로 가른다. 다크 금지(팀장 확정).
+   대비는 전부 #FCFCFA 기준 WCAG AA 이상 — 주석의 비율이 실측값이다. */
+:root {
+  /* 바탕·면 — 앰비언트 배경(Backdrop)은 유지하고, 글자가 있는 면만 불투명으로 막는다 */
+  /* 08/30 리스킨(팀장 확정): 그라운드와 카드를 **분리**한다 — 웜 크림 바탕 위 흰 카드.
+     같은 색이던 것이 벤토 개편에서 깊이가 없어 보이는 원인이었다. 카드 위 글자 대비는
+     흰 바탕이라 기존 실측(#FCFCFA 기준)보다 오히려 좋아진다. */
+  --paper: #F2F0EA;            /* 그라운드 — 웜 크림. was #FCFCFA */
+  --ambient: 1;                /* 앰비언트 블롭 표시 여부 (flat 에서 0) */
+  --card: #FFFFFF;             /* 카드 — 순백 + 그림자(--shadow-card) */
+  --card-solid: #FFFFFF;
+  --fill-1: rgba(22, 38, 97, 0.035);  /* 표 머리·구역 — 네이비 파생 */
+  --fill-2: rgba(22, 38, 97, 0.06);   /* 강조 구역 */
+  /* 사이드바 — **그라운드와 같은 바탕**에 앉는다 (08/30 팀장 확정).
+     08/28 에는 반투명 흰 패널이었는데, 그 뒤 그라운드가 웜 크림으로 갈리면서
+     사이드바가 «크림 위 흰 판» = 본문 카드와 같은 재질이 됐다. 그러면 메뉴가
+     내용과 같은 위계로 읽혀 카드와 경쟁한다. 세 안을 실제로 렌더해 비교한 결과:
+       A 현행(흰 사이드바) — 바탕이 둘로 갈려 카드가 사이드바와 경쟁
+       B 통일(이 값)      — 바탕 하나, 흰 카드만 떠오른다  ← 채택
+       C 전부 흰색        — 카드가 바탕에 녹아 벤토 구조가 사라진다
+     경계는 헤어라인 하나로 충분하다. */
+  --side: transparent;
+
+  /* 잉크 — 제목은 브랜드 네이비, 본문 이하는 중성 */
+  --ink: #162661;              /* 13.9:1 — 제목·강조·주요 버튼 (브랜드) */
+  --navy: #162661;
+  --body: #3F444E;             /*  9.5:1 — 본문 */
+  --muted: #5F646E;            /*  6.3:1 — 보조. was rgba(22,38,97,.62) */
+  /* 08/29: #7C828C → #6E747E. 옛 값의 주석은 4.6:1이라 적혀 있었지만 실측 3.8:1로
+     AA 미달이었다 — 주석이 아니라 값을 주석에 맞춘다. KPI 라벨이 이 토큰을 쓴다. */
+  --faint: #666B75;            /*  4.9:1 (그라운드 #F2F0EA 실측) — 메타·눈썹. was #6E747E (크림 위 4.3:1) */
+
+  /* 선 — 중성 2단 */
+  --line: #E9E5DC;             /* 1px 헤어라인 — 웜 중성 (08/30). was #E3E3E0 */
+  --glass-line: #ECE8DF;       /* 이름은 유지(61곳이 참조). was #E3E3E0 */
+  --line-2: #D9D4C7;           /* 강조 경계. was #C9C9C5 */
+
+  /* 브랜드 오렌지 — 불변 */
+  --orange: #EF8B1C;
+  --orange-deep: #C86F0C;      /* 실측 3.6:1 — 오렌지 텍스트는 큰 숫자·비텍스트 표식용.
+                                  11~13px 본문급에는 «오렌지 면 + 네이비 글자» 짝을 쓴다
+                                  (nav 배지 08/28 결정과 동일). 옛 주석 4.7:1은 오기. */
+  /* 08/28: .14 → .22 로 되돌렸다. docs/05 §2 의 공식 --acc-tint `#FBE3C4` 를
+     역산하면 오렌지 **22%** 다 — 내가 .14 로 쓰고 있었던 것이 팀장 지적("톤다운돼
+     보인다")의 원인 중 하나였다. 강화가 아니라 **공식값 복원**이다. */
+  --orange-soft: rgba(239, 139, 28, 0.22);
+  --orange-bright: #F5A542;    /* 알림 배지 채움 — 네이비 글자와 6.97:1 (08/28 팀장) */
+
+  /* 시맨틱 2색 — 채도를 낮춘다. 플랫디자인 전형색(Alizarin #C0392B)을 벗는다 */
+  --rust: #B2453C;             /* 5.1:1 — **글자**용. was #C0392B (Alizarin) */
+  --rust-soft: rgba(178, 69, 60, 0.10);
+  --rust-fill: #E4536B;        /* 면 (docs/05 원래 --no 값) */
+  --rust-fill-ink: #3A0D15;    /* 4.60:1 */
+  --green: #2A7F5F;            /* 4.9:1 — **글자**용 */
+  --green-soft: rgba(42, 127, 95, 0.10);
+  /* 면과 글자를 짝으로 둔다 (08/28). 채도 높은 색을 밝은 바탕 위 **글자**로 쓰면
+     대비가 안 나오고(docs/05 --ok #1FA97C = 2.91:1, AA 미달), **면**으로 쓰고 짙은
+     글자를 얹으면 4.92:1 로 통과한다. 채도와 가독성을 동시에 얻는 유일한 방법이다.
+     그래서 docs/05 의 원래 값을 -fill 로 되살렸다 — 새 색이 아니다. */
+  --green-fill: #1FA97C;       /* 면. 그 위 글자는 --green-fill-ink */
+  --green-fill-ink: #08281D;   /* 4.92:1 */
+  /* --sky 는 폐기 대상이다 (docs/05 금지 목록의 "세 번째 색"). 참조 22곳이 남아 있어
+     이름은 두고 값을 네이비로 중립화한다 — 파일 정리 후 토큰을 지운다. */
+  --sky: #162661;
+  --sky-soft: rgba(22, 38, 97, 0.07);
+
+  /* 네이비 면 위의 글자 — 임의 rgba 14곳을 3단으로 접는다 (08/28) */
+  --on-navy: #FCFCFA;
+  --on-navy-2: rgba(252, 252, 250, 0.86);
+  --on-navy-3: rgba(252, 252, 250, 0.55);
+  --on-navy-line: rgba(252, 252, 250, 0.30);
+
+  /* 카드 그림자 (08/30 리스킨) — 흰 카드가 크림 바탕에서 뜨는 깊이. 색 그림자 금지, 웜 뉴트럴만 */
+  --shadow-card: 0 1px 2px rgba(28, 24, 14, 0.03), 0 10px 28px rgba(28, 24, 14, 0.05);
+
+  /* 타이포 스케일 — 현행은 임의값 36종 320회다. 새 코드는 이 7단만 쓴다 */
+  --fs-display: 2.6rem;  --fs-h1: 1.5rem;  --fs-h2: 1.0625rem;
+  --fs-body: 0.9375rem;   --fs-sm: 0.875rem; --fs-xs: 0.8125rem; --fs-2xs: 0.75rem;
+}
+
+/* ── shadcn/ui 토큰 매핑 (08/27) — 표준 이름을 브랜드 값에 잇는다 ──
+   컴포넌트는 shadcn 원본 그대로 두고, 색만 여기서 우리 것으로 바꾼다.
+   다크 변수는 두지 않는다 (다크 금지 — 팀장 확정). */
+:root {
+  /* radius 8px — 카드 radius의 가장 보편적인 값(레퍼런스 실측). docs/05 §2 금지 목록의
+     "0이 기본"과 어긋나므로 문서 수정안을 함께 올린다. 이 한 줄이 rounded-xl/lg/md/sm/2xl
+     160곳을 동시에 통일한다 (@theme inline 이 전부 이 변수 파생이므로 파일 수정 0). */
+  --radius: 8px;
+  --background: var(--paper);
+  --foreground: var(--navy);
+  --card-bg: var(--card-solid);
+  --card-foreground: var(--navy);
+  --popover: var(--card-solid);
+  --popover-foreground: var(--navy);
+  --primary: var(--orange);              /* 사람이 결정할 차례 = 오렌지 (제품 규칙) */
+  --primary-foreground: var(--navy);
+  --secondary: rgba(22, 38, 97, 0.07);
+  --secondary-foreground: var(--navy);
+  --muted-bg: rgba(22, 38, 97, 0.05);
+  --muted-foreground: var(--muted);
+  --accent: rgba(22, 38, 97, 0.07);
+  --accent-foreground: var(--navy);
+  --destructive: var(--rust);
+  --destructive-foreground: #FCFCFA;
+  --border: var(--line);
+  --input: var(--line);
+  --ring: rgba(239, 139, 28, 0.55);
+  /* 입장 신호등 — 방향은 색으로 가른다 (DECISIONS 08/27 #196의 보드판) */
+  --stance-support: var(--green);
+  --stance-support-soft: rgba(42, 127, 95, 0.13);
+  --stance-hold: #B3762A;   /* was #B8860B = CSS 기본색 darkgoldenrod 그 자체 (08/28) */
+  --stance-hold-soft: rgba(179, 118, 42, 0.14);
+  --stance-oppose: var(--rust);
+  --stance-oppose-soft: rgba(178, 69, 60, 0.12);
+}
+
+/* ── 바탕 «flat» 안 (08/30) ─────────────────────────────────────────
+   `<html data-ground="flat">` 로 갈아탄다 — 스위치는 app/layout.tsx 의 GROUND 한 곳.
+
+   크림 그라운드를 지우면 흰 카드가 흰 바탕에 녹아 벤토 격자가 그냥 표가 된다.
+   그래서 이 안은 «배경색만 지운 것»이 아니다 — 카드가 떠 보이는 몫을 그림자에서
+   **경계선으로 옮긴다**. 그림자는 남기되 아주 얕게 두어 층은 유지한다. */
+:root[data-ground="flat"] {
+  /* 순백이 아니라 **따뜻한 오프화이트**다 (08/30 팀장: "flat 이 더 나은 것 같은데 눈이
+     좀 아프긴 한데"). #FFFFFF 는 카드(#FFFFFF)와 완전히 같아져 경계선 하나에만 기대게
+     되고, 넓은 면이라 눈부심도 세다. #FCFCFA 는 docs/05 가 원래 그라운드로 쓰던 값이라
+     새 색을 들이는 것도 아니다 — 카드와 살짝 갈리면서 눈이 편해진다. */
+  --paper: #FCFCFA;
+  --ambient: 0;
+  --fill-1: rgba(22, 38, 97, 0.028);
+  --fill-2: rgba(22, 38, 97, 0.052);
+  --line: #E7E4DE;
+  --glass-line: #E2DED6;       /* 카드 테두리 — flat 에서는 이 선이 카드를 세운다 */
+  --line-2: #D3CEC3;
+  --faint: #61666F;            /* 흰 바탕에서 4.9:1 유지 (크림 기준값보다 한 단계 진하게) */
+  --shadow-card: 0 1px 2px rgba(28, 24, 14, 0.03);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-card-solid: var(--card-solid);
+  --color-glass-line: var(--glass-line);
+  --color-faint: var(--faint);
+  --color-body: var(--body);
+  --color-line-2: var(--line-2);
+  --color-fill-1: var(--fill-1);
+  --color-fill-2: var(--fill-2);
+  --color-side: var(--side);
+  --color-on-navy: var(--on-navy);
+  --color-on-navy-2: var(--on-navy-2);
+  --color-on-navy-3: var(--on-navy-3);
+  --color-on-navy-line: var(--on-navy-line);
+  --color-orange: var(--orange);
+  --color-orange-deep: var(--orange-deep);
+  --color-orange-soft: var(--orange-soft);
+  --color-orange-bright: var(--orange-bright);
+  --color-rust: var(--rust);
+  --color-rust-soft: var(--rust-soft);
+  --color-rust-fill: var(--rust-fill);
+  --color-rust-fill-ink: var(--rust-fill-ink);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-green-fill: var(--green-fill);
+  --color-green-fill-ink: var(--green-fill-ink);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
+  /* shadcn 표준 이름 — 컴포넌트가 bg-background·text-foreground 등으로 읽는다 */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card-bg: var(--card-bg);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted-bg: var(--muted-bg);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-stance-support: var(--stance-support);
+  --color-stance-support-soft: var(--stance-support-soft);
+  --color-stance-hold: var(--stance-hold);
+  --color-stance-hold-soft: var(--stance-hold-soft);
+  --color-stance-oppose: var(--stance-oppose);
+  --color-stance-oppose-soft: var(--stance-oppose-soft);
+  --shadow-card: var(--shadow-card);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 4px);
+}
+
+body {
+  background: var(--paper);
+  color: var(--body);   /* 본문은 중성. 제목·강조는 text-ink(네이비) (08/28) */
+  /* 08/30 리스킨: 본문 IBM Plex Sans KR (Noto 폴백). 숫자 디스플레이는 아래 .tabular-nums */
+  font-family: "IBM Plex Sans KR", "Noto Sans KR", "Noto Sans", -apple-system,
+    BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  /* 한국어 줄바꿈 (08/30) — 기본값은 어절 한가운데를 끊는다: 「데이터 스키 / 마」,
+     「허가 범위 밖 언급 블 / 록」. keep-all 이면 띄어쓰기에서만 접혀 낱말이 살아남고,
+     그래도 안 들어가는 긴 토큰(URL·ID)은 overflow-wrap 이 받아 준다. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 큰 수치는 Manrope — tabular-nums 유틸을 쓰는 모든 수치 표시가 한 번에 입는다 (08/30).
+   Manrope 에는 한글이 없어 단위(건·인)는 본문 폰트로 자연 폴백된다 — 목업의 짝 그대로다. */
+.tabular-nums {
+  font-family: "Manrope", "IBM Plex Sans KR", "Noto Sans KR", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* 수치·ID·로그는 모노 — 목업의 규칙 그대로 */
+.mono,
+code,
+kbd,
+samp {
+  font-family: "Noto Sans Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* 눈썹 라벨. 08/28: 모노 → sans. "SENSE · 처리 라인"처럼 한글이 섞이는 라벨이라
+   모노에서 자간이 벌어져 발표 슬라이드 캡션처럼 보였다. 모노는 숫자·ID·코드에만 쓴다. */
+.eyebrow {
+  font-weight: 600;
+  font-size: var(--fs-2xs);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+/* 신호 등급 = 색이 아니라 점의 채도 (목업 규칙) */
+.grade {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+  display: inline-block;
+  background: var(--orange);
+}
+.grade-m { background: rgba(239, 139, 28, 0.5); }
+.grade-l { background: rgba(239, 139, 28, 0.22); }
+
+mark.evidence {
+  background: rgba(239, 139, 28, 0.28);
+  box-shadow: inset 0 -2px 0 var(--orange);
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+
+/* 누를 수 있는 것은 손 모양으로 (08/26) — 지금까지 커서 규칙이 없어서 버튼인지
+   글자인지 구분이 안 됐다. Tailwind 기본값(cursor: default)을 전역에서 되돌린다.
+   비활성 버튼은 금지 표시로 눌러도 소용없음을 알린다. */
+button:not(:disabled),
+select:not(:disabled),
+summary,
+[role="button"],
+label:has(input[type="checkbox"]:not(:disabled)),
+label:has(input[type="radio"]:not(:disabled)),
+input[type="checkbox"]:not(:disabled),
+input[type="radio"]:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled,
+select:disabled,
+input:disabled {
+  cursor: not-allowed;
+}
+
+/* 클릭으로 이동하는 표의 행 — title 속성으로 안내하던 것을 커서로도 (08/26) */
+tr[title]:hover,
+article[title]:hover {
+  cursor: pointer;
+}
+
+/* apps/console/app/globals.css 맨 아래에 붙인다.
+   Backdrop 의 흐릿한 원이 쓰는 keyframe. 이것 하나만 추가하면 된다. */
+
+@keyframes bub {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(40px, -30px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-25px, 25px, 0) scale(0.95);
+  }
+}
+
+/* JsonFold 의 <details> 마커 제거 — Safari 는 ::-webkit-details-marker 를 따로 본다 */
+summary::-webkit-details-marker {
+  display: none;
+}
+summary {
+  list-style: none;
+}
+/* ⚠ 전역 규칙이다 — 이 페이지의 **모든** <details>에 적용된다 (08/27 실사고).
+   summary 의 **첫 span 을 화살표로 쓴다**는 약속이 여기 박혀 있다. 제목을 감싸는
+   래퍼 span 을 첫 자식으로 두면 그 래퍼가 통째로 90도 돌고, inline-block 이라
+   레이아웃 폭이 0이 되어 카드가 찌그러진다. 새 <details>를 만들 때는
+   **화살표를 summary 의 직계 첫 자식으로** 두어라 (components/ui.tsx 의 Fold 참고).
+   그리고 Tailwind `group-open:rotate-90` 을 덧붙이지 마라 — 180도가 된다. */
+details[open] > summary > span:first-child {
+  transform: rotate(90deg);
+}
+summary > span:first-child {
+  display: inline-block;
+  transition: transform 0.15s;
+}
+
+/* AI Board 회의장의 재생 연출 (08/27) — 색 토큰은 늘리지 않는다. 움직임만 둘.
+   typing-dot: 발언이 오기 전 "지금 쓰는 중"을 알리는 점 세 개.
+   fade-up:    말풍선이 아래에서 올라오며 나타나는 등장.
+   motion-safe: 유틸로 감싸 쓰므로 여기서는 keyframe 정의만 둔다. */
+@keyframes typing-dot {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.32;
+  }
+  40% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 의장 판정 버튼 — 논의가 가리키는 쪽을 권하는 신호. 시선을 끌되 재촉하지는 않게
+   느리고 얕게 숨 쉰다(1.6s). 누르는 것은 사람이므로 강한 점멸은 쓰지 않는다. */
+@keyframes verdict-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 139, 28, 0.45); }
+  50% { box-shadow: 0 0 0 7px rgba(239, 139, 28, 0); }
+}
+
+/* 진행 중인 단계 — 스크롤로 본문을 읽는 동안에도 흐름이 눈에 걸리도록 얕게 숨 쉰다 */
+@keyframes step-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* 발언 전문 토글 (08/28) — 라벨이 열림 상태에 따라 갈린다("발언 전문 보기" ↔ "접기").
+   <details>의 [open]을 CSS로만 읽어 state를 늘리지 않는다. `.fold-pill` 을 붙인
+   곳에서만 도므로 다른 화면의 <details>에는 영향이 없다.
+   ⚠ 위의 전역 회전 규칙과 함께 쓰려면 ▸를 summary 의 직계 첫 자식으로 둘 것. */
+.fold-pill > summary .fold-open { display: none; }
+.fold-pill[open] > summary .fold-closed { display: none; }
+.fold-pill[open] > summary .fold-open { display: inline; }
+
+/* ── 홈 계기판·신호 지도 (08/29 리디자인) ─────────────────────────────
+   홈의 히어로는 제목이 아니라 숫자다 — 라벨(0.6875rem)과 4.7배 벌린다. */
+:root {
+  --fs-hero: 3.25rem;
+}
+
+/* 페이지 진입 등장 — fade-up(위에 정의)을 40ms 간격으로 시차 재생.
+   motion-safe 한정: OS가 모션 축소를 켰으면 그냥 제자리에 있다. */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: fade-up 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .rise-2 { animation-delay: 40ms; }
+  .rise-3 { animation-delay: 80ms; }
+  .rise-4 { animation-delay: 120ms; }
+}
+
+/* 신호 지도 hover — 가리킨 칸만 남기고 나머지가 물러난다.
+   :has 로 «칸 위에 있을 때만» 딤을 켠다 — svg 여백 hover 로는 아무 일도 없다. */
+.sigmap g[data-cell] {
+  transition: opacity 140ms ease;
+  outline: none;
+  cursor: pointer;
+}
+.sigmap:has(g[data-cell]:hover) g[data-cell]:not(:hover) {
+  opacity: 0.5;
+}
+/* 가리킨 칸의 윤곽 — 채도가 제각각이라 fill 로는 안 보이고 선으로 말한다.
+   임계 미달 점선(rect 자체 stroke)과 겹치지 않게 덧그림 전용 rect 를 쓴다. */
+.sigmap g[data-cell] > rect.cell-hl {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 1.5;
+  transition: stroke 140ms ease;
+}
+.sigmap g[data-cell]:hover > rect.cell-hl {
+  stroke: rgba(22, 38, 97, 0.55);
+}
+.sigmap g[data-cell]:focus > rect.cell-hl,
+.sigmap g[data-cell]:focus-visible > rect.cell-hl {
+  /* 밝은 오렌지(#EF8B1C)는 종이 위 2.4:1로 비텍스트 3:1에 미달 — 짙은 오렌지로 */
+  stroke: var(--orange-deep);
+  stroke-width: 2;
+}
+
+@layer components {
+
+  /* 호버 팝업 재질 — **한 곳에서만 정한다** (08/30 팀장 지적: "홈에서 뜨는 팝업 상자
+     색이랑 신호의 여정에서 뜨는 설명 팝업 상자 색이 미묘하게 다른데").
+     홈은 불투명 네이비, 여정은 반투명 유리라 나란히 보면 어긋났다. 여정 쪽(유리)으로
+     맞춘다 — 보드의 도트 그리드가 비쳐 «떠 있는 판»으로 읽히는 것이 이 화면 언어다.
+     대비는 지킨다: 82~86% 네이비 위 흰 글자는 흰 카드 배경 기준 9:1 이상이다. */
+  .tip-glass {
+    /* 08/30 2차 (팀장: "약간 투명하니까 가독성이 떨어지는 것 같은데 — 아주 미세하게
+       투명 + 뒷부분은 흐림"): 0.86/0.82 → 0.96/0.94. 유리라는 인상은 **투과가 아니라
+       흐림과 테두리 하이라이트**가 만든다. 82% 는 네이비 카드 위에 뜰 때 팝업과 카드가
+       같은 어두운 색으로 뭉개졌다 — 96% 면 어느 바탕 위에서도 판이 또렷하게 선다.
+       blur 는 그대로 둔다: 남은 4% 로 뒤가 비칠 때 글자 뒤가 어지럽지 않게 하는 몫이다. */
+    background: linear-gradient(140deg, rgba(28, 46, 112, 0.96), rgba(18, 30, 78, 0.94));
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    box-shadow: 0 18px 40px rgba(22, 38, 97, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  }
+
+  /* 참석자 아이콘 원 — AI Board 회의장 (08/31 팀장: "아이콘 배경이 톤다운된 걸 일부러
+     쓴 것 같은데, 조금 더 글래스모픽으로 — 홈 대시보드 그래프 색상처럼 그라데이션 느낌").
+
+     08/27 판은 `backgroundColor: tint` 단색 원이었다. 채도를 낮춘 8색을 **평면 색면**으로
+     쓰면 «톤다운» 이 아니라 그냥 탁해 보인다 — 색이 죽는 것이 재질까지 죽인다.
+
+     그래서 색은 그대로 두고 **재질만** 올린다. `.tip-glass` 와 같은 판단이다: 유리라는
+     인상은 투과가 아니라 **그라데이션·흐림·테두리 하이라이트**가 만든다.
+       · 145° 대각 2스톱 — 홈 막대(`--orange-bright → --orange-deep`)와 같은 어법. 밝은
+         쪽이 왼-위, 짙은 쪽이 오른-아래라 원이 «빛을 받는 구체»로 읽힌다.
+       · 짙은 쪽은 새 색을 만들지 않고 tint 를 네이비로 22% 섞어 파생한다 (색 원칙 ③).
+         hue 는 늘지 않는다 — 여전히 그 페르소나의 색 하나다.
+       · inset 하이라이트 한 줄이 위쪽 테두리를 세운다. 이것이 «유리»의 8할이다.
+     tint 는 화면이 `--tint` 로 주입한다 (인라인 그라데이션 문자열을 화면에 두지 않는다 —
+     docs/05 §0.5: 글래스 재질은 이름 붙인 클래스가 정한다).
+
+     color-mix 는 Safari 16.2+·Chrome 111+ 다. 못 읽는 브라우저는 첫 줄의 단색 tint 로
+     떨어진다 — 08/27 판 그대로여서 깨지지 않는다. */
+  .persona-glass {
+    background: var(--tint);
+    background-image: linear-gradient(
+      145deg,
+      color-mix(in oklab, var(--tint) 88%, white) 0%,
+      var(--tint) 46%,
+      color-mix(in oklab, var(--tint) 78%, #101B3F) 100%
+    );
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.34),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+      0 2px 6px rgba(22, 38, 97, 0.16);
+  }
+  /* 발언 중인 참석자 — 자기 색으로 번지는 후광. ring 유틸(3px 단색)보다 조용하고 넓다. */
+  .persona-glass-ring {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.34),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+      0 0 0 3px color-mix(in oklab, var(--tint) 28%, transparent),
+      0 4px 14px color-mix(in oklab, var(--tint) 34%, transparent);
+  }
+
+  /* 사람이 결정할 차례 — 오렌지 그라데이션은 홈 막대와 **같은 문자열**이다
+     (`--orange-bright → --orange-deep`). 이 화면에서 오렌지가 뜻을 갖는 자리는
+     하나뿐이므로 재질도 하나여야 한다. */
+  .orange-grad {
+    background-image: linear-gradient(90deg, var(--orange-bright), var(--orange-deep));
+  }
+
+}
+
+/* 스크롤 막대 감추기 — 스크롤은 살려 둔다 (08/31).
+   사이드바 실측: 뷰포트 780px 에서 콘텐츠가 977px 이라 막대가 떠 220px 기둥에서
+   16px 를 가져갔고, 그만큼 메뉴 라벨이 밀렸다. 기둥은 좁을수록 티가 난다. */
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;              /* Firefox */
+    -ms-overflow-style: none;           /* 구 Edge */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;                      /* WebKit·Blink */
+  }
+}
+
+/* ── Screen 실행 중 글로우 (08/31 팀장 피드백) — «지금 돌고 있다»를 배경 빛으로.
+      네온처럼 뒷배경이 은은히 깜빡인다. reduced-motion이면 정지된 오렌지 링만 남긴다. */
+@keyframes screen-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 139, 28, 0), var(--shadow-card); }
+  50% { box-shadow: 0 0 0 3px rgba(239, 139, 28, 0.16), 0 0 20px 3px rgba(239, 139, 28, 0.28); }
+}
+.glow-running { animation: screen-glow 1.6s ease-in-out infinite; }
+@keyframes screen-pulse-soft { 50% { opacity: 0.4; } }
+.pulse-soft { animation: screen-pulse-soft 1.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .glow-running { animation: none; box-shadow: 0 0 0 2px var(--orange-soft); }
+  .pulse-soft { animation: none; }
+}
+
+/* 실행 중 스텝의 진행 바 (08/31) — 활성 카드 상단을 흐르는 오렌지 띠. 결정론 진행률이
+   없으므로(단계 시간은 외부 API에 달림) 불확정(indeterminate)으로만 말한다. */
+@keyframes screen-shimmer { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+.progress-shimmer { position: absolute; top: 0; left: 0; height: 3px; width: 40%;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  animation: screen-shimmer 1.3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .progress-shimmer { animation: none; width: 100%; opacity: 0.5; }
+}

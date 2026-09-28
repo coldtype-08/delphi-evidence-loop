@@ -13,14 +13,24 @@ import traceback
 from pathlib import Path
 
 from fastapi import FastAPI, Form
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import board, intro, live, pages, screen, sense, store
+from . import board, compat, intro, live, pages, runner, screen, sense, store
 
 app = FastAPI(title="DELPHi — Evidence Loop")
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 app.mount("/static", StaticFiles(directory=str(Path(__file__).resolve().parent / "static")), name="static")
-LAST = {"msg": ""}
+app.include_router(compat.router)   # the original console's API, same paths and shapes
+LAST = runner.LAST
+
+
+@app.exception_handler(Exception)
+async def _unhandled(request, exc):
+    """JSON errors for the console (a bare 500 carries no CORS headers and the client only sees 'Failed to fetch')."""
+    traceback.print_exc()
+    return JSONResponse({"error": {"code": type(exc).__name__, "message_ko": f"서버 오류 — {str(exc)[:200]}"}}, status_code=500)
 
 
 def _take_banner() -> str:
@@ -143,23 +153,7 @@ def run_review(hyp: str = Form(...), by: str = Form(...), note: str = Form("")):
     return _do("③ 서명", go, f"/hypotheses/{hyp}")
 
 
-def _start_board(hyp: str) -> None:
-    """Run the meeting in a thread; every turn is written to the live file the page polls."""
-    def job():
-        def on_turn(turn, meeting):
-            live.write(hyp, "RUNNING", meeting.turns)
-        try:
-            live.write(hyp, "RUNNING", [])
-            m = board.deliberate(store.load(), hyp, on_turn=on_turn)
-            live.write(hyp, "DONE", m["transcript"])
-            LAST["msg"] = (f"④ 심의 종료 — {hyp} 참석 {len(m['attendees'])}인 · 발언 {len(m['transcript'])}턴 · 권고 {m['recommendation']} · "
-                           f"경로 {m['route']} · 후속 질문 {len(m['follow_up_questions'])}개")
-        except SystemExit as e:
-            live.write(hyp, "ERROR", [], error=str(e))
-        except Exception as e:  # noqa: BLE001
-            traceback.print_exc()
-            live.write(hyp, "ERROR", [], error=f"{type(e).__name__}: {str(e)[:300]}")
-    threading.Thread(target=job, daemon=True, name=f"board-{hyp}").start()
+_start_board = runner.start_board
 
 
 @app.post("/run/board")

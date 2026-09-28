@@ -52,6 +52,20 @@
 - **스킬**: `skills/evidence-loop/SKILL.md` — Agent Skills 규격. Claude Code·OpenClaw 등 호환 에이전트에 설치하면 이 루프를 도구로 쓴다.
 - **샌드박스**: `sandbox/EGRESS.md` — OpenShell/NemoClaw의 deny-by-default 정책에 넣을 허용 호스트 5개. 이 루프의 외부 통신은 그게 전부다.
 
+## 콘솔 (Next.js) — `console/`
+
+원본 DELPHi 콘솔을 그대로 옮겼다. 홈 · 신호의 여정 · 신호와 가설 · 다중 에이전트 검증 · AI Board 회의실 · 안전 · 실행 기록.
+백엔드가 아직 제공하지 않는 화면(계약 · 배치 판독 · 시뮬레이터 · 시장 · 수집 지도)은 메뉴에서만 숨겼다 (`console/app/nav.tsx`의 `HIDDEN`).
+콘솔이 부르는 API는 `loop/compat.py`(회의실 · 결정 · 액션), `loop/compat_hyp.py`(가설 카드 · Screen · 안전 · 실행 기록), `loop/compat_home.py`(홈 · 여정 집계)가
+원본 API 계약(`docs/04_API_SPEC.md`의 경로와 응답 형태) 그대로 응답한다.
+
+```bash
+cd console && npm install
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8030/api npm run dev -- --port 3010   # 백엔드(8030)가 떠 있어야 한다
+```
+
+배포: Railway 서비스 `delphi-console`(Nixpacks, `npm run build` / `npm run start`), 변수 `NEXT_PUBLIC_API_BASE_URL=https://<api>/api`.
+
 ## 실행
 
 ```bash

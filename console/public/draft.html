@@ -1,0 +1,1718 @@
+<title>DELPHi Console 초안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* Console 토큰 (apps/console/app/globals.css) — 페이퍼 라이트 고정 */
+  :root{
+    --paper:#FAF7F1; --card:#FFFFFF; --ink:#232A47; --navy:#162661; --muted:#5C6485;
+    --line:rgba(22,38,97,.13);
+    --orange:#EF8B1C; --orange-deep:#C56E0D; --orange-soft:#FCF1E0;
+    --rust:#B4552D; --rust-soft:#F8ECE4;
+    --green:#2F7D52; --green-soft:#E9F3EC;
+    --sky:#5B7CFA; --sky-soft:#EEF2F9;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;font-size:13.5px;line-height:1.55;letter-spacing:-.005em}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px 64px}
+
+  /* ── 상단 바 + 탭 ── */
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(250,247,241,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar-in{max-width:1240px;margin:0 auto;padding:14px 24px 0}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand .nm{font-size:16px;font-weight:900;color:var(--navy);letter-spacing:-.01em}
+  .brand .sub{font-size:11px;font-weight:600;color:var(--muted)}
+  .chip-draft{margin-left:auto;font-size:10.5px;font-weight:800;color:var(--orange-deep);background:var(--orange-soft);border-radius:999px;padding:3px 10px}
+  .chip-role{font-size:10.5px;font-weight:700;color:var(--sky);background:var(--sky-soft);border-radius:999px;padding:3px 10px}
+  .tabs{display:flex;gap:2px;margin-top:12px;overflow-x:auto}
+  .tab{appearance:none;border:none;background:none;cursor:pointer;display:flex;align-items:center;gap:7px;
+    font:inherit;font-size:13px;font-weight:700;color:var(--muted);padding:9px 14px;border-bottom:2.5px solid transparent;white-space:nowrap}
+  .tab svg{width:15px;height:15px}
+  .tab:hover{color:var(--navy)}
+  .tab[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--orange)}
+  .panel{display:none;padding-top:20px}
+  .panel.on{display:block}
+
+  h1{font-size:21px;font-weight:900;color:var(--navy);letter-spacing:-.015em}
+  .desc{font-size:12.5px;color:var(--muted);margin-top:2px}
+
+  /* 가이드 아코디언 (기본 접힘) */
+  details.guide{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+  details.guide summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:12px;font-weight:700;color:var(--muted)}
+  details.guide summary::-webkit-details-marker{display:none}
+  details.guide summary::before{content:"›";font-size:14px;color:var(--muted);transition:transform .15s}
+  details.guide[open] summary::before{transform:rotate(90deg)}
+  details.guide .g-body{padding:0 14px 12px;font-size:12px;color:var(--muted);line-height:1.7}
+  details.guide .g-body b{color:var(--navy)}
+
+  /* KPI */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 16px 12px}
+  .kpi .k{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+  .kpi .v{font-size:28px;font-weight:900;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1.2;margin-top:2px}
+  .kpi .v small{font-size:12px;font-weight:700;color:var(--muted)}
+  .kpi .v .warn{color:var(--rust)}
+  .kpi .s{font-size:11px;color:var(--muted)}
+
+  /* 필터 행 */
+  .filters{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px}
+  .filters .lbl{font-size:11.5px;font-weight:700;color:var(--muted)}
+  .fchip{appearance:none;border:1.5px solid var(--line);background:var(--card);border-radius:999px;
+    font:inherit;font-size:12px;font-weight:700;color:var(--muted);padding:5px 13px;cursor:pointer}
+  .fchip.on{border-color:var(--sky);color:var(--sky);background:var(--sky-soft)}
+  .search{margin-left:auto;min-width:220px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);
+    font:inherit;font-size:12.5px;color:var(--ink);padding:7px 12px}
+  .search::placeholder{color:#9aa0b8}
+  .search:focus{outline:none;border-color:var(--sky)}
+
+  /* 카드·섹션 */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-top:14px}
+  .card-h{display:flex;align-items:baseline;gap:8px;padding:14px 16px 0}
+  .card-h h2{font-size:14.5px;font-weight:800;color:var(--navy)}
+  .card-h .d{font-size:11px;color:var(--muted)}
+  .badge-prov{font-size:10.5px;font-weight:800;color:var(--orange-deep);background:var(--orange-soft);border-radius:999px;padding:2.5px 9px}
+  .badge-safety{font-size:10.5px;font-weight:800;color:var(--rust);background:var(--rust-soft);border-radius:999px;padding:2.5px 9px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+
+  /* 테이블 */
+  table{width:100%;border-collapse:separate;border-spacing:0}
+  th{font-size:10.5px;font-weight:800;letter-spacing:.04em;color:var(--muted);text-align:left;padding:10px 10px 7px;border-bottom:1px solid var(--line);text-transform:uppercase}
+  td{padding:10px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle}
+  tr:last-child td{border-bottom:none}
+  th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+  tbody tr:hover{background:var(--sky-soft)}
+  .nm-cell{font-weight:800;color:var(--navy)}
+  .nm-cell small{display:block;font-family:var(--mono);font-size:9.5px;color:var(--muted);font-weight:600}
+  .bar{position:relative;height:7px;border-radius:999px;background:var(--sky-soft);min-width:110px;overflow:hidden}
+  .bar em{position:absolute;inset:0;background:repeating-linear-gradient(45deg,var(--orange-soft),var(--orange-soft) 4px,#f3dcb4 4px,#f3dcb4 8px)}
+  .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--green);border-radius:999px}
+  .dest{white-space:nowrap;font-size:10.5px;font-weight:800;border-radius:999px;padding:2.5px 8px}
+  .dest-hyp{background:var(--green-soft);color:var(--green)}
+  .dest-scp{background:var(--orange-soft);color:var(--orange-deep)}
+  .dest-field{background:var(--sky-soft);color:var(--sky)}
+  .dest-none{background:#F1F0EC;color:var(--muted)}
+
+  .pill{font-size:10px;font-weight:800;border-radius:999px;padding:2px 8px;white-space:nowrap}
+  .pill-dev{background:var(--rust-soft);color:var(--rust)}
+  .pill-inl{background:var(--green-soft);color:var(--green)}
+  .pill-st{background:var(--sky-soft);color:var(--sky)}
+  .pill-auto{background:var(--orange-soft);color:var(--orange-deep)}
+  .pill-gray{background:#F1F0EC;color:var(--muted)}
+
+  /* 행 카드(환자군) + View details */
+  .rowcard{border:1px solid var(--line);border-radius:12px;margin:0 16px 10px;overflow:hidden}
+  .rowcard-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:11px 14px}
+  .rowcard-h .nm{font-size:13.5px;font-weight:800;color:var(--navy)}
+  .rowcard-h .stats{margin-left:auto;display:flex;gap:14px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .rowcard-h .stats b{color:var(--navy);font-weight:800}
+  details.vd{border-top:1px solid var(--line);background:#FDFCF9}
+  details.vd summary{cursor:pointer;list-style:none;padding:8px 14px;font-size:11.5px;font-weight:700;color:var(--sky)}
+  details.vd summary::-webkit-details-marker{display:none}
+  details.vd summary::before{content:"▾ "}
+  details.vd[open] summary::before{content:"▴ "}
+  .vd-body{padding:2px 14px 13px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .vd-body h4{font-size:10.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+  .terms td{font-size:12px;padding:6px 8px}
+  .terms .ko-tag{font-size:9.5px;font-weight:800;color:var(--orange-deep);background:var(--orange-soft);border-radius:5px;padding:1px 5px;margin-left:5px}
+  .quote{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 11px;margin-bottom:7px}
+  .quote .src{font-family:var(--mono);font-size:9.5px;font-weight:700;color:var(--sky);margin-bottom:2px}
+  .quote .tx{font-size:12px;line-height:1.55}
+
+  /* 가설 카드 */
+  .hyp{border:1px solid var(--line);border-radius:12px;margin:0 16px 12px;padding:13px 15px}
+  .hyp .top{display:flex;flex-wrap:wrap;gap:6px}
+  .hyp h3{font-size:14px;font-weight:800;color:var(--navy);margin-top:7px;line-height:1.45}
+  .hyp .meta{font-size:11.5px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums}
+  .hyp .block{margin-top:8px;font-size:11.5px;color:var(--rust);background:var(--rust-soft);border-radius:8px;padding:6px 10px;font-weight:700}
+  .agents{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+  .ag{font-size:10.5px;font-weight:700;border-radius:8px;padding:3px 9px;border:1px solid var(--line);color:var(--muted)}
+  .ag.done{border-color:var(--green);color:var(--green);background:var(--green-soft)}
+  .ag.run{border-color:var(--sky);color:var(--sky);background:var(--sky-soft)}
+
+  /* 대기열 */
+  .queue{padding:6px 16px 14px;display:flex;flex-direction:column;gap:7px}
+  .qrow{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-size:12.5px}
+  .qrow .id{font-family:var(--mono);font-size:10px;color:var(--sky);background:var(--sky-soft);border-radius:6px;padding:1px 7px;font-weight:700}
+  .qrow .why{color:var(--muted);font-size:11px;margin-left:auto;text-align:right}
+  .grade{font-size:9.5px;font-weight:800;border-radius:5px;padding:1px 6px}
+  .g-h{background:var(--green-soft);color:var(--green)}
+  .g-m{background:var(--orange-soft);color:var(--orange-deep)}
+  .g-l{background:var(--rust-soft);color:var(--rust)}
+
+  /* 실행 루프 4단계 */
+  .lstep{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card);opacity:.45;transition:opacity .3s,border-color .3s,box-shadow .3s}
+  .lstep.on{opacity:1;border-color:rgba(239,139,28,.55);box-shadow:0 2px 10px rgba(22,38,97,.06)}
+  .lstep .ln{width:18px;height:18px;border-radius:999px;background:var(--paper);color:var(--muted);font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center}
+  .lstep.on .ln{background:var(--orange);color:#fff}
+  .lstep .lt{font-size:12.5px;font-weight:800;color:var(--navy);margin-top:6px}
+  .lstep .ld{font-size:11px;color:var(--muted);line-height:1.5;margin-top:3px}
+  .lstep .lq{font-size:10px;font-weight:800;color:var(--orange-deep);background:var(--orange-soft);border-radius:6px;padding:2px 6px;display:inline-block;margin-top:6px}
+  @media (max-width:900px){#loopSteps{grid-template-columns:1fr 1fr}}
+  .chartbox{padding:8px 16px 12px}
+  .foot{font-size:10.5px;color:#9aa0b8;margin-top:20px;line-height:1.7}
+  .foot code{font-family:var(--mono);font-size:9.5px}
+  .hide{display:none!important}
+
+  @media (max-width:920px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .grid2,.vd-body{grid-template-columns:1fr}
+    .search{min-width:100%}
+  }
+</style>
+
+<style>
+  /* ── Paper & Glass 강화 (docs/05) — 기존 클래스 위에 겹쳐 올리는 오버라이드 ── */
+  body{background:#F4F6FC}
+  :root{--sky:#5B7CFA;--sky-soft:#EAF0FF;--green:#1FA97C;--green-soft:#E2F5EE;
+    --rust:#E4536B;--rust-soft:#FBE9EC;--orange-deep:#D9760B;--muted:#5A67A0;
+    --line:rgba(22,38,97,.12)}
+  .blobs{position:fixed;inset:0;z-index:-1;pointer-events:none;filter:blur(90px)}
+  .blobs i{position:absolute;border-radius:50%}
+  .blobs i:nth-child(1){width:560px;height:560px;left:-160px;top:-180px;background:rgba(239,139,28,.15)}
+  .blobs i:nth-child(2){width:680px;height:680px;right:-220px;top:60px;background:rgba(91,124,250,.14)}
+  .blobs i:nth-child(3){width:520px;height:520px;left:30%;bottom:-280px;background:rgba(22,38,97,.10)}
+  .topbar{background:rgba(244,246,252,.82);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4)}
+  .card,.kpi{background:linear-gradient(165deg,rgba(255,255,255,.88),rgba(255,255,255,.6));
+    backdrop-filter:blur(18px) saturate(1.35);-webkit-backdrop-filter:blur(18px) saturate(1.35);
+    border:1px solid rgba(255,255,255,.9);border-radius:18px;
+    box-shadow:0 18px 44px -22px rgba(22,38,97,.2)}
+  .kpi .v{font-size:32px}
+  .rowcard,.hyp,.qrow,.quote{background:rgba(255,255,255,.66)}
+  details.vd{background:rgba(250,248,244,.7)}
+  .search,.fchip{background:rgba(255,255,255,.75)}
+  @media (prefers-reduced-motion:no-preference){
+    .panel.on>*{animation:rise .38s cubic-bezier(.16,1,.3,1) both}
+    .panel.on>*:nth-child(2){animation-delay:.05s}.panel.on>*:nth-child(3){animation-delay:.1s}
+    .panel.on>*:nth-child(4){animation-delay:.15s}.panel.on>*:nth-child(5){animation-delay:.2s}
+    @keyframes rise{from{opacity:0;transform:translateY(10px)}}
+  }
+  /* 도넛 + 범례 */
+  .donut-wrap{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:center;padding:10px 16px 16px}
+  .dleg{display:flex;flex-direction:column;gap:7px}
+  .dleg .row{display:flex;align-items:center;gap:8px;font-size:12.5px}
+  .dleg .sw{width:11px;height:11px;border-radius:4px;flex:none}
+  .dleg b{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--navy)}
+  .dleg .pct{width:44px;text-align:right;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+  /* US 타일 지도 */
+  .usmap{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;padding:12px 16px 6px}
+  .st{aspect-ratio:1;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-size:9px;font-weight:800;color:#fff;letter-spacing:.02em}
+  .st.l{color:var(--navy)}
+  .maplegend{display:flex;flex-wrap:wrap;gap:10px;padding:8px 16px 14px;font-size:11px;color:var(--muted)}
+  .maplegend .li{display:inline-flex;align-items:center;gap:5px}
+  /* Safety 스택 바 */
+  .sbar-row{display:grid;grid-template-columns:150px 1fr 130px;gap:10px;align-items:center;padding:7px 0}
+  .sbar-lbl{font-size:12.5px;font-weight:700;color:var(--navy);text-align:right}
+  .sbar{display:flex;height:18px;border-radius:6px;overflow:hidden;background:rgba(22,38,97,.05)}
+  .sbar i{height:100%}
+  .sbar-meta{font-size:10.5px;color:var(--muted);white-space:nowrap}
+  /* ── Field 폰 프레임 ── */
+  .phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,310px));gap:22px;justify-content:center;padding:18px 8px 4px}
+  .phonecol{display:flex;flex-direction:column;gap:8px;align-items:center}
+  .phonecap{font-size:11px;color:var(--muted);text-align:center;max-width:290px;line-height:1.5}
+  .phonecap b{color:var(--navy)}
+  .phone{background:#10173A;border-radius:38px;padding:10px;box-shadow:0 26px 54px -26px rgba(14,27,77,.5);width:100%}
+  .screen{background:#F4F6FC;border-radius:28px;overflow:hidden;height:568px;display:flex;flex-direction:column}
+  .p-status{display:flex;justify-content:space-between;align-items:center;padding:9px 16px 3px;font-size:10px;font-weight:700;color:var(--muted)}
+  .p-head{padding:4px 14px 10px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.62)}
+  .p-head .t{font-size:15px;font-weight:900;color:var(--navy)}
+  .p-head .s{font-size:10.5px;color:var(--muted)}
+  .p-body{flex:1;overflow-y:auto;padding:12px 12px 8px;display:flex;flex-direction:column;gap:8px}
+  .p-cta{padding:10px 12px 13px;border-top:1px solid var(--line);background:rgba(255,255,255,.72);display:flex;gap:8px}
+  .btn{border:none;border-radius:12px;padding:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;flex:1;text-align:center}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-sky{background:var(--sky-soft);color:var(--sky)}
+  .btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--muted);flex:0 0 auto;padding:11px 14px}
+  .fcard{background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:14px;padding:11px 13px}
+  .fcard .k{font-size:9.5px;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .chk{display:flex;gap:8px;align-items:flex-start;font-size:12px;padding:7px 0;border-top:1px solid var(--line);line-height:1.5}
+  .chk:first-of-type{border-top:none;padding-top:2px}
+  .chk .box{width:15px;height:15px;border:2px solid var(--sky);border-radius:5px;flex:none;margin-top:2px}
+  .cline{display:flex;gap:7px;align-items:flex-start;opacity:0;transform:translateY(8px);transition:.35s cubic-bezier(.16,1,.3,1)}
+  .cline.show{opacity:1;transform:none}
+  .cline .sp{flex:none;font-size:9px;font-weight:800;border-radius:6px;padding:2px 6px;margin-top:3px}
+  .sp-msl{background:var(--sky-soft);color:var(--sky)}
+  .sp-doc{background:rgba(22,38,97,.09);color:var(--navy)}
+  .cline .tx{font-size:11.5px;line-height:1.55;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:11px;padding:7px 10px}
+  mark.ev{background:transparent;border-radius:3px;padding:1px 2px;transition:background .45s ease,box-shadow .45s ease}
+  mark.ev.on.ev-seg{background:rgba(239,139,28,.22);box-shadow:inset 0 -2px 0 var(--orange)}
+  mark.ev.on.ev-sig{background:rgba(91,124,250,.18);box-shadow:inset 0 -2px 0 var(--sky)}
+  mark.ev.on.ev-ae{background:rgba(228,83,107,.18);box-shadow:inset 0 -2px 0 var(--rust)}
+  mark.ev.on.ev-info{background:rgba(31,169,124,.16);box-shadow:inset 0 -2px 0 var(--green)}
+  .dchip.info{background:var(--green-soft);color:var(--green)}
+  .dchip.meta{background:#F0F1F7;color:var(--muted)}
+  .hl-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px 14px;border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.55);font-size:9px;font-weight:700;color:var(--muted)}
+  .detect{border-top:1px solid var(--line);background:rgba(255,255,255,.82);padding:8px 12px;min-height:92px}
+  .detect .lbl{font-size:9.5px;font-weight:800;color:var(--muted);letter-spacing:.06em}
+  .dchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+  .dchip{font-size:10px;font-weight:800;border-radius:999px;padding:3px 9px;background:var(--sky-soft);color:var(--sky);animation:pop .32s cubic-bezier(.16,1,.3,1)}
+  .dchip.warn{background:var(--orange-soft);color:var(--orange-deep)}
+  .dchip.ae{background:var(--rust-soft);color:var(--rust)}
+  @keyframes pop{from{transform:scale(.6);opacity:0}}
+  .rec{width:8px;height:8px;border-radius:50%;background:var(--rust);display:inline-block;animation:blink 1.2s infinite}
+  @keyframes blink{50%{opacity:.25}}
+  @media (prefers-reduced-motion:reduce){.cline{transition:none}.dchip{animation:none}.rec{animation:none}}
+  /* 시연 로그인 */
+  .login-ov{position:fixed;inset:0;z-index:60;background:rgba(14,27,77,.38);backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:20px}
+  .login-card{background:#F4F6FC;border:1px solid rgba(255,255,255,.9);border-radius:24px;max-width:720px;width:100%;padding:30px 30px 24px;box-shadow:0 44px 90px -30px rgba(14,27,77,.55)}
+  .login-card h2{font-size:20px;font-weight:900;color:var(--navy);letter-spacing:-.01em}
+  .login-card .sub{font-size:12px;color:var(--muted);margin-top:3px}
+  .personas{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:18px}
+  .persona{text-align:left;cursor:pointer;font:inherit;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;transition:border-color .15s,transform .15s}
+  .persona:hover{border-color:var(--sky);transform:translateY(-1px)}
+  .persona.main{border-color:var(--orange);background:linear-gradient(165deg,#fff,#FFF7EC)}
+  .persona .nm{font-size:13.5px;font-weight:800;color:var(--navy)}
+  .persona .rd{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5}
+  .login-note{font-size:10.5px;color:var(--muted);margin-top:14px;line-height:1.6}
+  /* 데이터 원장 그리드 (Snowflake풍) */
+  .sfgrid th{white-space:nowrap}
+  .sfgrid th small{display:block;font-size:8.5px;font-weight:600;color:#9aa3c4;text-transform:none;letter-spacing:0}
+  .sfgrid td{white-space:nowrap;font-family:var(--mono);font-size:10.5px;max-width:260px;overflow:hidden;text-overflow:ellipsis}
+  .sfgrid td.rownum,.sfgrid th.rownum{color:#B3BAD4;font-size:9.5px;text-align:right;padding-right:6px}
+  .nullv{color:#B3BAD4;font-style:italic}
+  .grid-foot{display:flex;gap:10px;font-size:10.5px;color:var(--muted);padding:8px 2px 0;font-variant-numeric:tabular-nums}
+</style>
+<div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<div class="login-ov" id="loginOv">
+  <div class="login-card">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px rgba(239,139,28,.18)"></span>
+      <h2>DELPHi Console — 시연 로그인</h2>
+    </div>
+    <div class="sub">계정을 고르면 그 권한이 보는 화면으로 바뀝니다. 상단에서 언제든 다시 전환할 수 있습니다.</div>
+    <div class="personas">
+      <button class="persona main" data-role="ADMIN"><div class="nm">관리자 <span style="font-size:10px;color:var(--orange-deep)">시연 기본</span></div><div class="rd">전 영역 열람 전용 — 쓰기·승인은 불가. 다른 계정과 비교해 보는 출발점</div></button>
+      <button class="persona" data-role="CLINICAL_STRATEGY"><div class="nm">임상·Medical 전략</div><div class="rd">MEDICAL·공개근거 조회, 가설 승인 권한. 안전성 테이블은 403</div></button>
+      <button class="persona" data-role="MEDICAL_AFFAIRS"><div class="nm">현장 MSL</div><div class="rd">자기 수집분 원문 + 승인 데이터. AE는 "분기됨" 사실만</div></button>
+      <button class="persona" data-role="SAFETY"><div class="nm">PV (안전성)</div><div class="rd">safety_candidates의 유일한 열람자 — 나머지 원장은 403</div></button>
+      <button class="persona" data-role="COMMERCIAL"><div class="nm">상업 전략</div><div class="rd">원문·개인 식별 불가, 집계만(distinct_hcp ≥ 3) · Development 가설 비노출</div></button>
+    </div>
+    <div class="login-note">MVP 구현은 <b>X-Delphi-Role 헤더 주입</b>(docs/04 §0) — 이 화면은 그 선택 장치이자 파일럿 SSO의 자리. 권한 강제는 프론트가 아니라 서버의 조회 게이트(access.py)가 한다.</div>
+  </div>
+</div>
+<div class="topbar"><div class="topbar-in">
+  <div class="brand">
+    <span class="nm">DELPHi</span><span class="sub">Growth Intelligence · Console</span>
+    <span class="chip-draft">디자인 초안 · 합성 데이터</span>
+    <select id="roleSel" class="chip-role" style="border:none;cursor:pointer;font:inherit;font-size:10.5px;font-weight:700">
+      <option value="ADMIN">권한: 관리자 (전체 열람)</option>
+      <option value="CLINICAL_STRATEGY">권한: CLINICAL_STRATEGY</option>
+      <option value="MEDICAL_AFFAIRS">권한: MEDICAL_AFFAIRS</option>
+      <option value="SAFETY">권한: SAFETY (PV)</option>
+      <option value="COMMERCIAL">권한: COMMERCIAL</option>
+    </select>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-panel="p-home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>개요</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-pop">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>환자군 신호</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-hyp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>가설 보드</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-kol">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>전문가 관여</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-trend">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>추이</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-market">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12" y="8" width="3" height="10" rx="1"/><rect x="17" y="5" width="3" height="13" rx="1"/></svg>시장·경쟁</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-safe">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>안전성</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-data">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>데이터</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>Field 앱</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+  <!-- ═══ 개요 ═══ -->
+  <div class="panel on" id="p-home" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>개요</h1>
+      <div class="desc">확정된 데이터 현황과, 시스템이 찾아낸 지금 주목할 신호.</div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">확정된 신호</div><div class="v">168<small>건</small></div><div class="s">검토 대기 76 · 반려 12</div></div>
+      <div class="kpi"><div class="k">독립 HCP</div><div class="v">128<small>인</small></div><div class="s">4개 권역 · 익명 집계</div></div>
+      <div class="kpi"><div class="k">열린 가설</div><div class="v">4<small>건</small></div><div class="s">전부 자동 생성</div></div>
+      <div class="kpi"><div class="k">검토 대기</div><div class="v">76<small>건</small></div><div class="s">우선 44건 — 가설 근거</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>후보 레이더</h2><span class="badge-prov">검토 전 집계 — 공식 수치 아님</span><span class="d">기준을 넘으면 가설이 자동 생성 · 행을 누르면 해당 화면으로</span></div>
+      <div style="padding:0 16px 6px;overflow-x:auto">
+        <table>
+          <thead><tr><th>신호</th><th class="num">수집</th><th class="num">승인</th><th>검토 진행</th><th class="num">HCP</th><th>다음 단계</th></tr></thead>
+          <tbody>
+            <tr data-go="p-hyp" style="cursor:pointer"><td><span class="nm-cell">청소년(12–17) 치료 공백<small>PEDIATRIC_TRANSITION × UNMET_NEED</small></span></td>
+              <td class="num" style="font-weight:800">52</td><td class="num" style="color:var(--green);font-weight:800">38</td>
+              <td><div class="bar" title="승인 38 / 잠정 52"><em></em><i style="width:73%"></i></div></td><td class="num">34</td>
+              <td><span class="dest dest-hyp">HYP-001</span></td></tr>
+            <tr data-go="p-hyp" style="cursor:pointer"><td><span class="nm-cell">노인(65+) 병용·DDI 부담<small>ELDERLY_65_PLUS × TREATMENT_BARRIER</small></span></td>
+              <td class="num" style="font-weight:800">41</td><td class="num" style="color:var(--green);font-weight:800">29</td>
+              <td><div class="bar" title="승인 29 / 잠정 41"><em></em><i style="width:71%"></i></div></td><td class="num">27</td>
+              <td><span class="dest dest-hyp">HYP-002</span></td></tr>
+            <tr data-go="p-hyp" style="cursor:pointer"><td><span class="nm-cell">전신 강직-간대발작 공백<small>GENERALIZED_PGTC × UNMET_NEED</small></span></td>
+              <td class="num" style="font-weight:800">34</td><td class="num" style="color:var(--green);font-weight:800">24</td>
+              <td><div class="bar" title="승인 24 / 잠정 34"><em></em><i style="width:71%"></i></div></td><td class="num">23</td>
+              <td><span class="dest dest-hyp">HYP-003</span></td></tr>
+            <tr data-go="p-hyp" style="cursor:pointer"><td><span class="nm-cell">레녹스-가스토(LGS) 공백<small>LGS × UNMET_NEED</small></span></td>
+              <td class="num" style="font-weight:800">21</td><td class="num" style="color:var(--green);font-weight:800">14</td>
+              <td><div class="bar" title="승인 14 / 잠정 21"><em></em><i style="width:67%"></i></div></td><td class="num">15</td>
+              <td><span class="dest dest-hyp">HYP-004</span></td></tr>
+            <tr><td><span class="nm-cell">미매핑: “post-stroke epilepsy”<small>unmapped_terms · 환자군 미지정</small></span></td>
+              <td class="num" style="font-weight:800">19</td><td class="num" style="color:var(--muted)">—</td>
+              <td><div class="bar" title="스키마 밖"><em></em></div></td><td class="num">14</td>
+              <td><span class="dest dest-scp">SCP 후보</span></td></tr>
+            <tr><td><span class="nm-cell">자료 요청 (청소년·PGTC·노인)<small>INFO_REQUEST</small></span></td>
+              <td class="num" style="font-weight:800">47</td><td class="num" style="color:var(--green);font-weight:800">31</td>
+              <td><div class="bar" title="승인 31 / 잠정 47"><em></em><i style="width:66%"></i></div></td><td class="num">30</td>
+              <td><span class="dest dest-field">Field 체크리스트</span></td></tr>
+            <tr><td><span class="nm-cell">DRE 성인 발작 감소 경험<small>DRE_2PLUS × POSITIVE_OUTCOME</small></span></td>
+              <td class="num" style="font-weight:800">38</td><td class="num" style="color:var(--green);font-weight:800">20</td>
+              <td><div class="bar" title="승인 20 / 잠정 38"><em></em><i style="width:53%"></i></div></td><td class="num">24</td>
+              <td><span class="dest dest-none">참고용</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card" style="margin-top:14px">
+        <div class="card-h"><h2>검토 대기열</h2><span class="d">시스템이 골라준 순서 — 이유를 함께 표시</span></div>
+        <div class="queue">
+          <div class="qrow"><span class="id">CLM-0047</span><span class="grade g-m">M</span>청소년 공백 — 용어 매핑 실패<span class="why">HYP-001 근거</span></div>
+          <div class="qrow"><span class="id">CLM-0052</span><span class="grade g-h">H</span>청소년 공백 — 학회 보고서<span class="why">HYP-001 근거</span></div>
+          <div class="qrow"><span class="id">CLM-0038</span><span class="grade g-m">M</span>노인 DDI — 병용약 3종<span class="why">HYP-002 근거</span></div>
+          <div class="qrow"><span class="id">CLM-0061</span><span class="grade g-l">L</span>post-stroke — 미매핑<span class="why">SCP 원문 사례</span></div>
+          <div class="qrow"><span class="id">CLM-0184</span><span class="grade g-m">M</span>전신발작 공백 — 학회 현장 대화<span class="why">HYP-003 근거</span></div>
+          <div class="qrow" style="border-style:dashed;color:var(--muted)">… 71건 — 반복 수 → 저등급 순</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <div class="card-h"><h2>신호 추이</h2><span class="d">분기별 신규 승인 · 누적 168 · 2021–2026</span></div>
+        <div class="chartbox">
+          <svg viewBox="0 0 440 140" width="100%" role="img" aria-label="2021년부터 2026년까지 분기별 신규 승인 신호, 후반으로 갈수록 증가">
+            <g stroke="rgba(22,38,97,.08)"><line x1="34" y1="112" x2="430" y2="112"/><line x1="34" y1="72" x2="430" y2="72"/><line x1="34" y1="32" x2="430" y2="32"/></g>
+            <g font-size="9" fill="#5C6485" text-anchor="end"><text x="28" y="115">0</text><text x="28" y="75">8</text><text x="28" y="35">16</text></g>
+            <path d="M38,104 L55,101 L72,104 L89,99 L106,96 L123,99 L140,94 L157,91 L174,94 L191,86 L208,89 L225,84 L242,79 L259,81 L276,74 L293,71 L310,66 L327,61 L344,64 L361,54 L378,49 L395,44 L412,41 L424,39 L424,112 L38,112 Z" fill="rgba(91,124,250,.14)"/>
+            <path d="M38,104 L55,101 L72,104 L89,99 L106,96 L123,99 L140,94 L157,91 L174,94 L191,86 L208,89 L225,84 L242,79 L259,81 L276,74 L293,71 L310,66 L327,61 L344,64 L361,54 L378,49 L395,44 L412,41 L424,39" fill="none" stroke="#5B7CFA" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="424" cy="39" r="3.5" fill="#5B7CFA"/>
+            <text x="418" y="29" font-size="10" font-weight="700" fill="#162661" text-anchor="end">14건/분기</text>
+            <g font-size="9" fill="#5C6485" text-anchor="middle"><text x="38" y="128">21-Q1</text><text x="157" y="128">22-Q4</text><text x="276" y="128">24-Q3</text><text x="424" y="128">26-Q3</text></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      공식 수치(KPI·추이)는 <b>승인 데이터만</b>, 전부 SQL 계산이다. 후보 레이더만 예외적으로 승인 전 잠정치를 세며, 용도는 검토 큐 정렬과 가설 자동 생성(임계: 반복 ≥5 ∧ 독립 HCP ≥3) 두 가지로 제한된다. 합성 점수·우선순위 점수는 쓰지 않는다 — 정렬은 SQL 원값으로만.
+    </div></details>
+  </div>
+
+  <!-- ═══ 환자군 신호 ═══ -->
+  <div class="panel" id="p-pop" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>환자군 신호</h1>
+      <div class="desc">어떤 환자 이야기가 반복되고 있나 — 허가 범위 표시와 함께.</div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">환자군 (v0.1)</div><div class="v">8<small>종</small></div><div class="s">+ 미매핑 1</div></div>
+      <div class="kpi"><div class="k">Development 신호</div><div class="v">3<small>군</small></div><div class="s">청소년 · 전신발작 · LGS</div></div>
+      <div class="kpi"><div class="k">SCP 후보</div><div class="v">1<small>건</small></div><div class="s">post-stroke · 19회/14인</div></div>
+      <div class="kpi"><div class="k">다국어 합산</div><div class="v">EN+KO</div><div class="s">같은 canonical로 수렴</div></div>
+    </div>
+
+    <div class="filters">
+      <span class="lbl">라벨</span>
+      <button class="fchip on" data-f="all">전체</button>
+      <button class="fchip" data-f="in">In-label</button>
+      <button class="fchip" data-f="dev">Development</button>
+      <button class="fchip" data-f="scp">미매핑</button>
+      <input class="search" id="popSearch" placeholder="환자군·표현 검색 — 예: 청소년, elderly">
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>환자군 분포</h2><span class="d">승인된 신호 168건 기준 · 허가 범위 밖은 주황 계열</span></div>
+      <div class="donut-wrap">
+        <svg viewBox="0 0 160 160" width="190" role="img" aria-label="환자군 구성: 청소년 38, 전신발작 24, LGS 14, 노인 29, 약물난치성 20, 기타 43 (승인 168건)">
+          <g transform="rotate(-90 80 80)">
+            <circle cx="80" cy="80" r="60" fill="none" stroke="#EF8B1C" stroke-width="26" stroke-dasharray="85.3 377" stroke-dashoffset="0"/>
+            <circle cx="80" cy="80" r="60" fill="none" stroke="#C56E0D" stroke-width="26" stroke-dasharray="53.9 377" stroke-dashoffset="-85.3"/>
+            <circle cx="80" cy="80" r="60" fill="none" stroke="#F0B375" stroke-width="26" stroke-dasharray="31.4 377" stroke-dashoffset="-139.2"/>
+            <circle cx="80" cy="80" r="60" fill="none" stroke="#5B7CFA" stroke-width="26" stroke-dasharray="65.1 377" stroke-dashoffset="-170.6"/>
+            <circle cx="80" cy="80" r="60" fill="none" stroke="#3A4A85" stroke-width="26" stroke-dasharray="44.9 377" stroke-dashoffset="-235.7"/>
+            <circle cx="80" cy="80" r="60" fill="none" stroke="#8A94B8" stroke-width="26" stroke-dasharray="96.5 377" stroke-dashoffset="-280.6"/>
+          </g>
+          <text x="80" y="76" text-anchor="middle" font-size="24" font-weight="900" fill="#162661">168</text>
+          <text x="80" y="94" text-anchor="middle" font-size="10" font-weight="700" fill="#5C6485">승인 신호</text>
+        </svg>
+        <div class="dleg">
+          <div class="row"><span class="sw" style="background:#EF8B1C"></span>청소년(12–17) — OUT_OF_LABEL<span class="pct">23%</span><b>38</b></div>
+          <div class="row"><span class="sw" style="background:#C56E0D"></span>전신 강직-간대발작 — OUT_OF_LABEL<span class="pct">14%</span><b>24</b></div>
+          <div class="row"><span class="sw" style="background:#F0B375"></span>레녹스-가스토(LGS) — OUT_OF_LABEL<span class="pct">8%</span><b>14</b></div>
+          <div class="row"><span class="sw" style="background:#5B7CFA"></span>노인(65+)<span class="pct">17%</span><b>29</b></div>
+          <div class="row"><span class="sw" style="background:#3A4A85"></span>약물난치성(DRE 2제+)<span class="pct">12%</span><b>20</b></div>
+          <div class="row"><span class="sw" style="background:#8A94B8"></span>기타·미지정<span class="pct">26%</span><b>43</b></div>
+          <div class="row" style="font-size:11px;color:var(--muted);margin-top:2px">허가 범위 밖 세그먼트는 색이 아니라 라벨(OUT_OF_LABEL)이 정본 — 상세는 아래 카드에서.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding-bottom:14px">
+      <div class="card-h" style="padding-bottom:10px"><h2>신호 자세히 보기</h2><span class="d">펼치면 실제 표현과 원문 인용이 보입니다</span></div>
+
+      <div class="rowcard" data-label="dev" data-search="청소년 pediatric adolescent 17세 unmet">
+        <div class="rowcard-h">
+          <span class="nm">청소년(12–17) 치료 공백</span>
+          <span class="pill pill-dev">OUT_OF_LABEL</span><span class="pill pill-auto">→ HYP-001</span>
+          <span class="stats"><span>잠정 <b>52</b></span><span>승인 <b>38</b></span><span>HCP <b>34</b></span><span>권역 <b>4</b></span></span>
+        </div>
+        <details class="vd"><summary>View details</summary><div class="vd-body">
+          <div>
+            <h4>포함된 표현 (vocab 정규화)</h4>
+            <table class="terms">
+              <tr><td>adolescent / transition-age</td><td class="num">24</td></tr>
+              <tr><td>16-year-old / seventeen-year-old</td><td class="num">15</td></tr>
+              <tr><td>12-to-17 / under 18</td><td class="num">11</td></tr>
+              <tr><td>청소년 환자<span class="ko-tag">KO</span></td><td class="num">2</td></tr>
+            </table>
+          </div>
+          <div>
+            <h4>근거 인용 (원문 연결)</h4>
+            <div class="quote"><div class="src">HCP-005 · EPILEPTOLOGY · SOUTH · DOC-…-005</div><div class="tx">“my hardest clinic days are telling parents of a seventeen-year-old…”</div></div>
+            <div class="quote"><div class="src">HCP-021 · NEUROLOGY · KO · 음성 전사</div><div class="tx">“2제 실패한 17세 환자인데 성인 허가라 손을 쓸 수 없다”</div></div>
+          </div>
+        </div></details>
+      </div>
+
+      <div class="rowcard" data-label="dev" data-search="전신발작 pgtc generalized tonic-clonic 대발작">
+        <div class="rowcard-h">
+          <span class="nm">전신 강직-간대발작(PGTC) 공백</span>
+          <span class="pill pill-dev">OUT_OF_LABEL</span><span class="pill pill-auto">→ HYP-003</span>
+          <span class="stats"><span>잠정 <b>34</b></span><span>승인 <b>24</b></span><span>HCP <b>23</b></span><span>권역 <b>4</b></span></span>
+        </div>
+        <details class="vd"><summary>View details</summary><div class="vd-body">
+          <div>
+            <h4>포함된 표현 (vocab 정규화)</h4>
+            <table class="terms">
+              <tr><td>generalized tonic-clonic</td><td class="num">16</td></tr>
+              <tr><td>GTC / convulsive generalized</td><td class="num">11</td></tr>
+              <tr><td>primary generalized</td><td class="num">5</td></tr>
+              <tr><td>전신발작 · 대발작<span class="ko-tag">KO</span></td><td class="num">2</td></tr>
+            </table>
+          </div>
+          <div>
+            <h4>근거 인용 (원문 연결)</h4>
+            <div class="quote"><div class="src">학회 현장 대화 · AES 2025 보고서</div><div class="tx">“how well it works in focal epilepsy and how little that helps the generalized patients in this panel”</div></div>
+            <div class="quote"><div class="src">HCP · 하이라이트 묶음 블록</div><div class="tx">“the generalized patients who would be candidates on every criterion except the indication”</div></div>
+          </div>
+        </div></details>
+      </div>
+
+      <div class="rowcard" data-label="dev" data-search="레녹스 가스토 lgs 드롭발작 lennox">
+        <div class="rowcard-h">
+          <span class="nm">레녹스-가스토 증후군(LGS) 공백</span>
+          <span class="pill pill-dev">OUT_OF_LABEL</span><span class="pill pill-auto">→ HYP-004</span>
+          <span class="stats"><span>잠정 <b>21</b></span><span>승인 <b>14</b></span><span>HCP <b>15</b></span><span>권역 <b>4</b></span></span>
+        </div>
+        <details class="vd"><summary>View details</summary><div class="vd-body">
+          <div>
+            <h4>포함된 표현 (vocab 정규화)</h4>
+            <table class="terms">
+              <tr><td>Lennox-Gastaut syndrome</td><td class="num">12</td></tr>
+              <tr><td>drop attacks</td><td class="num">6</td></tr>
+              <tr><td>multi-seizure-type</td><td class="num">3</td></tr>
+            </table>
+          </div>
+          <div>
+            <h4>행선지</h4>
+            <div class="quote"><div class="src">HYP-004 · 외부 근거 확인 중</div><div class="tx">임계는 넘었지만 외부 공개 근거가 얇으면 <b>순위 없이</b> <span style="font-family:var(--mono);font-size:11px">NOT_BOARD_READY</span> 사유 코드로 남는다. 근거가 없으면 순위를 매기지 않는 것이 원칙이다.</div></div>
+          </div>
+        </div></details>
+      </div>
+
+      <div class="rowcard" data-label="in" data-search="노인 elderly ddi 병용 geriatric">
+        <div class="rowcard-h">
+          <span class="nm">노인(65+) 병용·DDI 부담</span>
+          <span class="pill pill-inl">IN_LABEL</span><span class="pill pill-auto">→ HYP-002</span>
+          <span class="stats"><span>잠정 <b>41</b></span><span>승인 <b>29</b></span><span>HCP <b>27</b></span><span>권역 <b>4</b></span></span>
+        </div>
+        <details class="vd"><summary>View details</summary><div class="vd-body">
+          <div>
+            <h4>포함된 표현 (vocab 정규화)</h4>
+            <table class="terms">
+              <tr><td>elderly / older adults</td><td class="num">22</td></tr>
+              <tr><td>over 65 / geriatric patients</td><td class="num">14</td></tr>
+              <tr><td>어르신 · 고령<span class="ko-tag">KO</span></td><td class="num">5</td></tr>
+            </table>
+          </div>
+          <div>
+            <h4>근거 인용 (원문 연결)</h4>
+            <div class="quote"><div class="src">HCP-009 · NEUROLOGY · MIDWEST</div><div class="tx">“with older patients already on five or six meds, interactions are the first thing we worry about.” (예시)</div></div>
+          </div>
+        </div></details>
+      </div>
+
+      <div class="rowcard" data-label="scp" data-search="post-stroke 뇌졸중 미매핑 scp">
+        <div class="rowcard-h">
+          <span class="nm">뇌졸중 후 뇌전증 — v0.1에 없음</span>
+          <span class="pill pill-gray">미매핑</span><span class="pill pill-auto">SCP 자동 제안 조건 충족</span>
+          <span class="stats"><span>잠정 <b>19</b></span><span>승인 <b>—</b></span><span>HCP <b>14</b></span></span>
+        </div>
+        <details class="vd"><summary>View details</summary><div class="vd-body">
+          <div>
+            <h4>포함된 표현</h4>
+            <table class="terms">
+              <tr><td>post-stroke epilepsy</td><td class="num">13</td></tr>
+              <tr><td>seizures after stroke</td><td class="num">6</td></tr>
+            </table>
+          </div>
+          <div>
+            <h4>행선지</h4>
+            <div class="quote"><div class="src">unmapped_terms → schema_change_proposals</div><div class="tx">반복 ≥3회 · 독립 HCP ≥2인 충족 → 원문 사례 3건이 첨부된 SCP가 자동 생성된다. Steward 승인 시 v0.2에 <span style="font-family:var(--mono);font-size:11px">POST_STROKE</span> 추가. 환자군이 <b>미지정(UNSPECIFIED)</b>이라 가설은 만들지 않는다 — 스키마를 고치는 것이 답인 경우다.</div></div>
+          </div>
+        </div></details>
+      </div>
+
+      <div class="rowcard" data-label="in" data-search="자료 요청 info dosing 용량 안전성">
+        <div class="rowcard-h">
+          <span class="nm">자료 요청 (청소년·전신발작·노인)</span>
+          <span class="pill pill-inl">INFO_REQUEST</span><span class="pill pill-gray">→ Field 체크리스트</span>
+          <span class="stats"><span>잠정 <b>47</b></span><span>승인 <b>31</b></span><span>HCP <b>30</b></span></span>
+        </div>
+        <details class="vd"><summary>View details</summary><div class="vd-body">
+          <div><h4>포함된 표현</h4>
+            <table class="terms">
+              <tr><td>adolescent dosing / PK 자료</td><td class="num">18</td></tr>
+              <tr><td>elderly interaction 자료</td><td class="num">17</td></tr>
+              <tr><td>generalized seizure 문헌</td><td class="num">9</td></tr>
+              <tr><td>자료 요청<span class="ko-tag">KO</span></td><td class="num">3</td></tr>
+            </table>
+          </div>
+          <div><h4>행선지</h4>
+            <div class="quote"><div class="src">미해결 질문 → Field 브리핑</div><div class="tx">Board 승인 후속 질문과 함께 방문 전 체크리스트로 내려간다 — 루프가 닫히는 지점.</div></div>
+          </div>
+        </div></details>
+      </div>
+
+      <div class="rowcard" data-label="in" data-search="dre 발작 감소 positive responder">
+        <div class="rowcard-h">
+          <span class="nm">DRE 성인 발작 감소 경험</span>
+          <span class="pill pill-inl">POSITIVE_OUTCOME</span><span class="pill pill-gray">표시만</span>
+          <span class="stats"><span>잠정 <b>38</b></span><span>승인 <b>20</b></span><span>HCP <b>24</b></span></span>
+        </div>
+        <details class="vd"><summary>View details</summary><div class="vd-body">
+          <div><h4>포함된 표현</h4>
+            <table class="terms">
+              <tr><td>seizure reduction / fewer seizures</td><td class="num">21</td></tr>
+              <tr><td>responder 경험담</td><td class="num">15</td></tr>
+              <tr><td>발작 감소<span class="ko-tag">KO</span></td><td class="num">2</td></tr>
+            </table>
+          </div>
+          <div><h4>메모</h4>
+            <div class="quote"><div class="src">가설 대상 아님</div><div class="tx">긍정 신호는 대시보드 균형추로만 표시한다. HCP 개인 단위 롤업은 하지 않는다.</div></div>
+          </div>
+        </div></details>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      개인 랭킹·Tier·실명은 없다 — 세는 것은 항상 <b>몇 명의 독립 HCP</b>다(익명 hcp_ref). Development 신호(청소년)는 상업 액션과 자동 연결되지 않으며 COMMERCIAL 권한에는 원문·인용이 노출되지 않는다. EN·KO 표현이 같은 canonical로 합산되는 것이 다국어 설계의 증명이다. 코퍼스는 2021–2026 누적 1,118단위이며 명부 300인 중 289인이 실제로 등장한다.
+    </div></details>
+  </div>
+
+  <!-- ═══ 가설 보드 ═══ -->
+  <div class="panel" id="p-hyp" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>가설 보드</h1>
+      <div class="desc">가설은 시스템이 만들고, 판단은 사람이 합니다.</div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">열린 가설</div><div class="v">4<small>건</small></div><div class="s">자동 생성 4 · 수기 0</div></div>
+      <div class="kpi"><div class="k">Screen 진행</div><div class="v">1<small>건</small></div><div class="s">HYP-003 · 에이전트 4종</div></div>
+      <div class="kpi"><div class="k">Board 대기</div><div class="v">1<small>건</small></div><div class="s">HYP-001 · 근거 확인 완료</div></div>
+      <div class="kpi"><div class="k">Not Board-ready</div><div class="v">1<small>건</small></div><div class="s">HYP-004 · 사유 코드 표시</div></div>
+    </div>
+
+    <div class="card" style="padding-top:12px;padding-bottom:6px">
+      <div id="hypSuppressed" class="hide" style="margin:0 16px 12px;border:1.5px dashed var(--line);border-radius:12px;padding:11px 14px;font-size:12px;color:var(--muted)">
+        COMMERCIAL 권한 — Development 가설 3건이 목록에서 억제되었습니다 (suppressedRowCount: 3). 숨겼다는 사실은 숨기지 않습니다.
+      </div>
+      <div class="hyp hyp-dev">
+        <div class="top">
+          <span class="pill pill-auto">자동 생성 · 52건/34인</span>
+          <span class="pill pill-dev">DEVELOPMENT</span>
+          <span class="pill pill-st">BOARD_READY</span>
+          <span class="pill pill-gray">검증 축</span>
+        </div>
+        <h3>HYP-001 · 청소년(12–17세) 약물난치성 초점발작 — 연령 확대 근거 생성 우선 검토</h3>
+        <div class="meta">근거 승인 38/52 · 독립 HCP 34 · 4개 권역 · EN 36 + KO 2 · 2021–2026 누적</div>
+        <div class="agents">
+          <span class="ag done">Field Signal ✓</span><span class="ag done">Evidence ✓</span><span class="ag done">Safety ✓</span><span class="ag done">Critic ✓</span>
+        </div>
+        <div style="margin-top:10px">
+          <div style="font-size:10.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-bottom:6px">외부 근거 — 이 가설이 "정답을 아는 문제"인 이유</div>
+          <div class="quote"><div class="src"><span class="dest dest-hyp" style="margin-right:6px">SUPPORT</span>ClinicalTrials.gov · 스냅샷 대기 (8/26)</div>
+            <div class="tx">청소년·소아 연령 확대 관련 <b>공개 등록 연구가 존재</b> — 현장 대화만으로 재구성한 이 가설이 회사가 이미 가고 있는 방향과 일치한다는 확인점</div>
+            <div class="tx" style="font-size:10.5px;color:var(--muted);margin-top:3px">등록 사실이며 효과 입증을 의미하지 않습니다. 실제 NCT 번호·시점은 8/26 스냅샷으로 확정합니다.</div></div>
+          <div class="quote" style="margin-bottom:0"><div class="src"><span class="dest dest-field" style="margin-right:6px">근거</span>Drugs@FDA · XCOPRI 허가 이력</div>
+            <div class="tx">성인(18세+) 부분발작 허가 — "허가 범위 밖" 판정의 공식 근거</div>
+            <div class="tx" style="font-size:10.5px;color:var(--muted);margin-top:3px">표기 시점의 허가사항이며, 최신 개정 여부는 원문 라벨에서 확인해야 합니다.</div></div>
+        </div>
+        <div class="block">상업 액션 자동 차단 — 전문조직 검토 전용</div>
+      </div>
+      <div class="hyp">
+        <div class="top">
+          <span class="pill pill-auto">자동 생성 · 41건/27인</span>
+          <span class="pill pill-inl">IN-LABEL</span>
+          <span class="pill pill-st">DRAFT · 검토 대기 12건</span>
+          <span class="pill pill-gray">대비 축</span>
+        </div>
+        <h3>HYP-002 · 노인(65+) 병용약물 상호작용·적정 부담 — 자료·교육으로 해소</h3>
+        <div class="meta">근거 승인 29/41 · 독립 HCP 27 · 4개 권역 · Development와 나란히 — 분리의 증명</div>
+        <div class="agents"><span class="ag">Screen 대기 — 근거 승인 후 실행</span></div>
+      </div>
+      <div class="hyp hyp-dev" id="hypDev">
+        <div class="top">
+          <span class="pill pill-auto">자동 생성 · 34건/23인</span>
+          <span class="pill pill-dev">DEVELOPMENT</span>
+          <span class="pill pill-st">SCREENING</span>
+          <span class="pill pill-auto">완주 대표</span>
+        </div>
+        <h3>HYP-003 · 전신 강직-간대발작(PGTC) 치료 선택지 공백 — 근거 생성 검토</h3>
+        <div class="meta">근거 승인 24/34 · 독립 HCP 23 · 4개 권역 · 최근 8개 분기에 밀도 상승</div>
+        <div class="agents">
+          <span class="ag done">Field Signal ✓</span><span class="ag run">Evidence — PubMed·CT.gov 조회 중</span><span class="ag">Safety</span><span class="ag">Critic</span>
+        </div>
+        <div style="margin-top:10px">
+          <div style="font-size:10.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-bottom:6px">진행 중 — 이 화면에서 Board까지 관통합니다</div>
+          <div class="quote" style="margin-bottom:0"><div class="src"><span class="dest dest-hyp" style="margin-right:6px">SUPPORT</span>PubMed · 조회 중</div>
+            <div class="tx">전신 강직-간대발작 인구의 치료 선택지 제한 관련 문헌을 교차검증 중</div>
+            <div class="tx" style="font-size:10.5px;color:var(--muted);margin-top:3px">Screen 완료 후 Board 심의 → 사람 승인 → Action Item이 Field 체크리스트로 내려갑니다.</div></div>
+        </div>
+        <div class="block">상업 액션 자동 차단 — 전문조직 검토 전용</div>
+      </div>
+      <div class="hyp hyp-dev">
+        <div class="top">
+          <span class="pill pill-auto">자동 생성 · 21건/15인</span>
+          <span class="pill pill-dev">DEVELOPMENT</span>
+          <span class="pill pill-gray">NOT_BOARD_READY</span>
+        </div>
+        <h3>HYP-004 · 레녹스-가스토 증후군(LGS) — 다발작형 치료 한계</h3>
+        <div class="meta">근거 승인 14/21 · 독립 HCP 15 · 4개 권역 · <b>순위 없음</b></div>
+        <div class="agents"><span class="ag done">Field Signal ✓</span><span class="ag done">Evidence ✓</span><span class="ag">Safety</span><span class="ag">Critic</span></div>
+        <div style="margin-top:10px">
+          <div class="quote" style="margin-bottom:0;border-color:rgba(138,148,184,.5)"><div class="src"><span class="dest dest-none" style="margin-right:6px">사유 코드</span>NO_EXTERNAL_EVIDENCE</div>
+            <div class="tx">사내 반복은 임계를 넘었지만 외부 공개 근거가 얇아 Board로 넘기지 않는다. <b>순위를 매기지 않고 사유만 표시한다</b> — 근거 없이 우선순위를 만들지 않는 것이 이 시스템의 규칙이다.</div></div>
+        </div>
+        <div class="block">상업 액션 자동 차단 — 전문조직 검토 전용</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>실행 루프 — 승인이 다음 수집을 겨냥한다</h2><span class="pill pill-auto">데모 ⑤가 닫히는 지점</span><span class="d">아래 버튼으로 승인 이후 4단계를 재생합니다</span></div>
+      <div style="padding:4px 16px 14px">
+        <div id="loopSteps" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+          <div class="lstep" data-i="1">
+            <div class="ln">1</div>
+            <div class="lt">사람 승인</div>
+            <div class="ld">HYP-003 · 결정 <b>APPROVED</b><br>근거 24/34 · 결정자 기록</div>
+            <div class="lq">decisions +1</div>
+          </div>
+          <div class="lstep" data-i="2">
+            <div class="ln">2</div>
+            <div class="lt">Action Item 채택</div>
+            <div class="ld">Board 제안 3건 중 <b>2건 채택</b><br>사람이 고른 것만 ACTIVE</div>
+            <div class="lq">ACT-001 · ACT-002</div>
+          </div>
+          <div class="lstep" data-i="3">
+            <div class="ln">3</div>
+            <div class="lt">Field 전달</div>
+            <div class="ld"><span style="font-family:var(--mono);font-size:10.5px">GET /field/briefing</span> 응답에 포함<br>delivered_at 기록</div>
+            <div class="lq">폰 체크리스트에 NEW</div>
+          </div>
+          <div class="lstep" data-i="4">
+            <div class="ln">4</div>
+            <div class="lt">수집 귀속</div>
+            <div class="ld">다음 면담이 <span style="font-family:var(--mono);font-size:10.5px">checklist_refs</span>로 제출<br>claim 승인 → 집계 재유입</div>
+            <div class="lq">ACT-001 참조 수집 +1 → COLLECTED</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;overflow-x:auto">
+          <table>
+            <thead><tr><th>Action Item</th><th>지시</th><th>대상</th><th>담당</th><th>상태</th><th class="num">참조 수집</th></tr></thead>
+            <tbody id="actRows">
+              <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">ACT-001</td>
+                <td>전신발작 케이스 시 이전 실패 약물 수·발작 유형 확인</td>
+                <td><span class="pill pill-st">FIELD_CHECKLIST</span></td><td>MEDICAL_AFFAIRS</td>
+                <td class="ast"><span class="pill pill-gray">PROPOSED</span></td><td class="num acn">—</td></tr>
+              <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">ACT-002</td>
+                <td>PGTC 근거 패키지 전문조직 검토 전달</td>
+                <td><span class="pill pill-st">SPECIALIST_REVIEW</span></td><td>CLINICAL_STRATEGY</td>
+                <td class="ast"><span class="pill pill-gray">PROPOSED</span></td><td class="num acn">—</td></tr>
+              <tr style="opacity:.55"><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">—</td>
+                <td>상업 캠페인 연계 <span style="color:var(--rust);font-weight:700">(제안 불가)</span></td>
+                <td><span class="pill pill-dev">enum에 없음</span></td><td>—</td>
+                <td><span class="pill pill-gray">생성 자체가 불가</span></td><td class="num">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex;gap:8px;align-items:center;margin-top:12px">
+          <button id="loopPlay" class="btn btn-navy" style="max-width:190px">▶ 승인 후 재생</button>
+          <button id="loopReset" class="fchip">초기화</button>
+          <span id="loopNote" style="font-size:11.5px;color:var(--muted)">Board·CEO는 제안까지만 — ACTIVE로 만드는 것은 사람의 결정뿐입니다.</span>
+        </div>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      순위 점수는 없다 — 정렬은 반복·HCP·권역의 SQL 원값. 근거가 임계 미달이면 <b>순위 없이 사유 코드</b>(NOT_BOARD_READY)로 표시된다. Development 가설은 COMMERCIAL 권한으로는 조회 자체가 차단된다. 상세 화면에서 사실/패턴/AI 해석/제안/승인이 5단계 색으로 구분된다.
+    </div></details>
+  </div>
+
+  <!-- ═══ 전문가 관여 (KOL) ═══ -->
+  <div class="panel" id="p-kol" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>전문가 관여</h1>
+      <div class="desc">어떤 전문가가 어떤 신호를 이야기하고 있나 — 이름 대신 가명 코드로.</div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">관여 HCP (승인 기준)</div><div class="v">128<small>인</small></div><div class="s">명부 300인 중 · 4개 권역 · 3개 세팅</div></div>
+      <div class="kpi"><div class="k">자발 언급 보유</div><div class="v">84<small>인</small></div><div class="s">UNSOLICITED ≥1</div></div>
+      <div class="kpi"><div class="k">다주제 기여</div><div class="v">37<small>인</small></div><div class="s">신호 주제 ≥2</div></div>
+      <div class="kpi"><div class="k">미해결 질문</div><div class="v">31<small>건</small></div><div class="s">Field 체크리스트 대기</div></div>
+    </div>
+
+    <div class="filters" style="margin-top:14px">
+      <span class="lbl" style="background:var(--sky-soft);color:var(--sky);border-radius:8px;padding:4px 10px;font-weight:700">가명 hcp_ref · 처방 데이터 없음 · COMMERCIAL 권한 비노출</span>
+      <input class="search" id="kolSearch" placeholder="전문과·권역 검색 — 예: EPILEPTOLOGY, WEST">
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>전문가별 활동</h2><span class="d">먼저 꺼낸 이야기가 많은 순 — 점수·등급은 매기지 않습니다</span></div>
+      <div style="padding:0 16px 8px;overflow-x:auto">
+        <table id="kolTable">
+          <thead><tr><th>HCP</th><th>전문과 · 권역 · 세팅</th><th class="num">자발 언급</th><th class="num">확정 신호</th><th class="num">다룬 주제</th><th class="num">미해결 질문</th><th>최근 만남</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">HCP-005</td><td>EPILEPTOLOGY · SOUTH · ACADEMIC</td><td class="num" style="font-weight:800">3</td><td class="num">4</td><td class="num">3</td><td class="num">1</td><td>2026-07</td><td><span class="pill pill-inl">자발 ≥2 · 주제 ≥2</span></td></tr>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">HCP-012</td><td>NEUROLOGY · NORTHEAST · COMMUNITY</td><td class="num" style="font-weight:800">3</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td>2026-06</td><td><span class="pill pill-inl">자발 ≥2 · 주제 ≥2</span></td></tr>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">HCP-021</td><td>NEUROLOGY · WEST · PRIVATE_PRACTICE</td><td class="num" style="font-weight:800">2</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td>2026-07 · KO</td><td><span class="pill pill-inl">자발 ≥2 · 주제 ≥2</span></td></tr>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">HCP-003</td><td>NEUROLOGY · MIDWEST · ACADEMIC</td><td class="num" style="font-weight:800">2</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td>2026-05</td><td></td></tr>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">HCP-017</td><td>EPILEPTOLOGY · NORTHEAST · ACADEMIC</td><td class="num" style="font-weight:800">1</td><td class="num">1</td><td class="num">2</td><td class="num">1</td><td>2026-06</td><td></td></tr>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">HCP-009</td><td>GENERAL · MIDWEST · COMMUNITY</td><td class="num" style="font-weight:800">1</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td>2026-04</td><td></td></tr>
+            <tr><td colspan="8" style="border-style:dashed;color:var(--muted);font-size:12px;text-align:center">… 나머지 122인 (승인 기여 141건 · 1~3건씩)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card" style="margin-top:14px">
+        <div class="card-h"><h2>지역 분포</h2><span class="d">권역 단위 · 주(州) 표시는 위치 참고용</span></div>
+        <div class="usmap" id="usmap" role="img" aria-label="미국 권역별 독립 HCP: 북동부 37, 중서부 30, 서부 31, 남부 30"></div>
+        <div class="maplegend">
+          <span class="li"><span class="sw" style="background:#162661;width:12px;height:9px;border-radius:3px;display:inline-block"></span>37인 — NORTHEAST</span>
+          <span class="li"><span class="sw" style="background:#4A5C9E;width:12px;height:9px;border-radius:3px;display:inline-block"></span>31인 — WEST</span>
+          <span class="li"><span class="sw" style="background:#96A2CC;width:12px;height:9px;border-radius:3px;display:inline-block"></span>30인 — MIDWEST · SOUTH</span>
+          <span class="li" style="margin-left:auto">주 단위 수치 없음 — 우리 집계 단위는 권역</span>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <div class="card-h"><h2>활동 한눈에 보기</h2><span class="d">가로: 확정 신호 수 · 세로: 다룬 주제 수 — 점수화 없음</span></div>
+        <div class="chartbox">
+          <svg viewBox="0 0 440 200" width="100%" role="img" aria-label="HCP 128인의 승인 기여와 주제 폭 산점도">
+            <g stroke="rgba(22,38,97,.08)"><line x1="50" y1="160" x2="425" y2="160"/><line x1="50" y1="110" x2="425" y2="110"/><line x1="50" y1="60" x2="425" y2="60"/></g>
+            <g font-size="9" fill="#5C6485" text-anchor="end"><text x="43" y="163">1</text><text x="43" y="113">2</text><text x="43" y="63">3</text></g>
+            <g font-size="9" fill="#5C6485" text-anchor="middle"><text x="95" y="180">1</text><text x="200" y="180">2</text><text x="305" y="180">3</text><text x="410" y="180">4</text><text x="237" y="196">승인 기여 (건)</text></g>
+            <g fill="#5B7CFA" opacity=".85">
+              <circle cx="88" cy="163" r="6"/><circle cx="99" cy="157" r="6"/><circle cx="93" cy="166" r="6"/><circle cx="104" cy="162" r="6"/>
+              <circle cx="90" cy="153" r="6"/><circle cx="108" cy="155" r="6"/><circle cx="97" cy="148" r="6"/><circle cx="86" cy="145" r="6"/>
+              <circle cx="112" cy="164" r="6"/><circle cx="102" cy="170" r="6"/><circle cx="94" cy="174" r="6"/><circle cx="107" cy="147" r="6"/>
+              <circle cx="91" cy="110" r="6"/><circle cx="100" cy="104" r="6"/><circle cx="96" cy="116" r="6"/>
+              <circle cx="196" cy="160" r="6"><title>HCP-003 · 승인 2 · 주제 1</title></circle>
+              <circle cx="205" cy="156" r="6"><title>HCP-009…</title></circle>
+              <circle cx="198" cy="108" r="6"><title>HCP-012 · 승인 2 · 주제 2</title></circle>
+              <circle cx="207" cy="113" r="6"><title>HCP-021 · 승인 2 · 주제 2</title></circle>
+              <circle cx="95" cy="107" r="6"><title>HCP-017 · 승인 1 · 주제 2</title></circle>
+            </g>
+            <circle cx="410" cy="60" r="7" fill="#EF8B1C"/>
+            <text x="410" y="45" font-size="10" font-weight="800" fill="#EF8B1C" text-anchor="middle">HCP-005</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>다음 방문에서 확인할 것</h2><span class="d">전문가 활동이 다음 수집으로 이어지는 지점</span></div>
+      <div class="queue">
+        <div class="qrow"><span class="id">HCP-005</span>Board 후속 질문 대기 — “청소년 사례 시 이전 실패 약물 수 확인”<span class="why">담당 MSL Field 체크리스트로</span></div>
+        <div class="qrow"><span class="id">HCP-137</span>전신발작 케이스 확인 요청 — HYP-003 Board 후속<span class="why">Action Item 생성 대기</span></div>
+        <div class="qrow"><span class="id">HCP-021</span>자료 요청 미해결 — 청소년 용량·안전성<span class="why">Medical Information 회신 후 브리핑</span></div>
+        <div class="qrow" style="border-style:dashed;color:var(--muted)">… 28건 — 미해결 질문 전체</div>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      전신 프로토타입의 KOL Finder와 다른 점: <b>실명·기관·Tier·합성 점수가 없다.</b> 여기의 지표는 면담 기록에서 나온 과학적 신호 기여의 원값(자발 언급·승인 기여·주제 폭)이고, 정렬도 원값으로만 한다.
+      <b>처방 데이터·처방성향 추정은 어떤 형태로도 없다</b>(절대 규칙 #7) — 발언 논조(sentiment)도 개인 단위로는 집계하지 않는다. 자문(advisory) 후보 검토는 이 원값을 보고 전문조직이 판단하는 것이지 시스템이 추천 점수를 매기지 않는다.
+      조회는 MEDICAL_AFFAIRS·CLINICAL_STRATEGY 전용이며, 가명 hcp_ref↔실명 매핑은 시스템 밖(담당 MSL의 업무 지식)에만 존재한다.
+    </div></details>
+  </div>
+
+  <!-- ═══ 추이 ═══ -->
+  <div class="panel" id="p-trend" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>추이</h1>
+      <div class="desc">무엇이 늘고 있나 — 사내 신호와 논문 동향을 나눠서 봅니다.</div>
+    </div>
+
+    <div class="filters" style="margin-top:12px">
+      <span class="lbl">기간 단위</span>
+      <button class="fchip on">월</button>
+      <button class="fchip" title="초안에서는 월 단위만 동작">분기</button>
+      <span class="lbl" style="margin-left:6px;background:var(--sky-soft);color:var(--sky);border-radius:8px;padding:4px 10px;font-weight:700">비교: 2026-07 vs 2026-06</span>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">신규 승인 신호</div><div class="v">14<small>건</small>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1FA97C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:6px"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+        <small style="color:#1FA97C;font-weight:800;margin-left:2px">+25%</small></div><div class="s">직전 월 4건</div></div>
+      <div class="kpi"><div class="k">잠정 신규 (레이더)</div><div class="v">21<small>건</small>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1FA97C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:6px"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+        <small style="color:#1FA97C;font-weight:800;margin-left:2px">+40%</small></div><div class="s">직전 월 5건 · 잠정 라벨</div></div>
+      <div class="kpi"><div class="k">월중 독립 HCP</div><div class="v">19<small>인</small>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1FA97C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:6px"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+        <small style="color:#1FA97C;font-weight:800;margin-left:2px">+1</small></div><div class="s">직전 월 5인</div></div>
+      <div class="kpi"><div class="k">신규 등장 표현</div><div class="v">1<small>건</small>
+        <span class="pill pill-auto" style="margin-left:6px;vertical-align:4px">신규</span></div><div class="s">첫 관측 — 아래 목록</div></div>
+    </div>
+
+    <div class="grid2">
+      <div class="card" style="margin-top:14px">
+        <div class="card-h"><h2>환자군별 신호 추이</h2><span class="d">분기별 신규 승인 · 최근 6개 분기 · 전신발작이 최근 구간에서 올라온다</span></div>
+        <div class="chartbox">
+          <svg viewBox="0 0 440 158" width="100%" role="img" aria-label="세그먼트별 분기별 신규 승인: 청소년 상승, 전신발작 최근 급상승, 노인 완만한 상승">
+            <g stroke="rgba(22,38,97,.08)"><line x1="34" y1="120" x2="430" y2="120"/><line x1="34" y1="90" x2="430" y2="90"/><line x1="34" y1="60" x2="430" y2="60"/><line x1="34" y1="30" x2="430" y2="30"/></g>
+            <g font-size="9" fill="#5C6485" text-anchor="end"><text x="28" y="123">0</text><text x="28" y="93">1</text><text x="28" y="63">2</text><text x="28" y="33">3</text></g>
+            <path d="M40,120 L114,90 L188,90 L262,60 L336,60 L410,30" fill="none" stroke="#EF8B1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#EF8B1C"><circle cx="40" cy="120" r="3.2"/><circle cx="114" cy="90" r="3.2"/><circle cx="188" cy="90" r="3.2"/><circle cx="262" cy="60" r="3.2"/><circle cx="336" cy="60" r="3.2"/><circle cx="410" cy="30" r="3.2"/></g>
+            <path d="M40,90 L114,120 L188,90 L262,90 L336,90 L410,60" fill="none" stroke="#5B7CFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#5B7CFA"><rect x="36.8" y="86.8" width="6.4" height="6.4"/><rect x="110.8" y="116.8" width="6.4" height="6.4"/><rect x="184.8" y="86.8" width="6.4" height="6.4"/><rect x="258.8" y="86.8" width="6.4" height="6.4"/><rect x="332.8" y="86.8" width="6.4" height="6.4"/><rect x="406.8" y="56.8" width="6.4" height="6.4"/></g>
+            <text x="416" y="26" font-size="10" font-weight="800" fill="#EF8B1C" text-anchor="end">청소년 3</text>
+            <text x="416" y="56" font-size="10" font-weight="800" fill="#5B7CFA" text-anchor="end">노인 2</text>
+            <g font-size="9" fill="#5C6485" text-anchor="middle"><text x="40" y="136">25-Q2</text><text x="188" y="136">25-Q4</text><text x="336" y="136">26-Q2</text><text x="410" y="136">26-07</text></g>
+          </svg>
+          <div style="display:flex;gap:14px;font-size:11px;color:var(--muted);padding:2px 0 4px">
+            <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:#EF8B1C;display:inline-block"></span>청소년 (● · Development)</span>
+            <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:9px;height:9px;background:#5B7CFA;display:inline-block"></span>노인 (■ · In-label)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="card-h"><h2>새로 나타난 · 빨라지는 신호</h2><span class="d">첫 관측 시점은 SQL first-seen — 결정론</span></div>
+        <div class="queue">
+          <div class="qrow"><span class="pill pill-auto">신규</span>“catamenial epilepsy” 언급 — 26-07 첫 관측<span class="why">1회/1인 · 관찰 유지</span></div>
+          <div class="qrow"><span class="pill pill-gray">가속</span>“post-stroke epilepsy” — 26-05 첫 관측 → 6회/4인<span class="why">SCP 후보 승격</span></div>
+          <div class="qrow"><span class="pill pill-gray">가속</span>청소년 공백 — 최근 3개월에 잠정 8/14 집중<span class="why">HYP-001</span></div>
+          <div class="qrow" style="border-style:dashed;color:var(--muted)">감속 신호 없음 — 이번 기간</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>관련 논문 동향 — PubMed</h2><span class="badge-prov">예시 수치 — 8/26 캐시 스냅샷 확보 전</span><span class="d">cenobamate · XCOPRI</span></div>
+      <div class="grid2" style="padding:0 16px 14px;margin-top:6px">
+        <div>
+          <div style="font-size:10.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;padding:6px 0 4px">연도별 발행 논문 수</div>
+          <svg viewBox="0 0 440 152" width="100%" role="img" aria-label="cenobamate 관련 연도별 논문 수, 2019년 이후 증가 추세">
+            <line x1="30" y1="125" x2="430" y2="125" stroke="rgba(22,38,97,.15)"/>
+            <g fill="#5B7CFA">
+              <rect x="40"  y="109" width="40" height="16" rx="3"/>
+              <rect x="88"  y="101" width="40" height="24" rx="3"/>
+              <rect x="136" y="89"  width="40" height="36" rx="3"/>
+              <rect x="184" y="78"  width="40" height="47" rx="3"/>
+              <rect x="232" y="60"  width="40" height="65" rx="3"/>
+              <rect x="280" y="43"  width="40" height="82" rx="3"/>
+              <rect x="328" y="25"  width="40" height="100" rx="3"/>
+              <rect x="376" y="70"  width="40" height="55" rx="3" opacity=".5"/>
+            </g>
+            <g font-size="9.5" font-weight="700" fill="#162661" text-anchor="middle">
+              <text x="60" y="104">12</text><text x="108" y="96">18</text><text x="156" y="84">27</text><text x="204" y="73">35</text>
+              <text x="252" y="55">48</text><text x="300" y="38">61</text><text x="348" y="20">74</text><text x="396" y="65" fill="#5C6485">41</text>
+            </g>
+            <g font-size="9" fill="#5C6485" text-anchor="middle">
+              <text x="60" y="138">2019</text><text x="108" y="138">20</text><text x="156" y="138">21</text><text x="204" y="138">22</text>
+              <text x="252" y="138">23</text><text x="300" y="138">24</text><text x="348" y="138">25</text><text x="396" y="138">26 YTD</text>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size:10.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;padding:6px 0 4px">주제별 · 최근 12개월 새 논문</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div class="qrow"><span class="id">Q1</span>cenobamate adolescent<span class="why"><b style="color:var(--navy)">9편</b> · HYP-001 근거 소스</span></div>
+            <div class="qrow"><span class="id">Q2</span>DRE adolescent treatment options<span class="why"><b style="color:var(--navy)">6편</b></span></div>
+            <div class="qrow"><span class="id">Q3</span>ASM pediatric pharmacokinetics<span class="why"><b style="color:var(--navy)">5편</b></span></div>
+            <div class="qrow"><span class="id">Q4</span>cenobamate elderly<span class="why"><b style="color:var(--navy)">7편</b> · HYP-002</span></div>
+            <div class="qrow"><span class="id">Q5</span>cenobamate drug interaction<span class="why"><b style="color:var(--navy)">15편</b></span></div>
+            <div class="qrow"><span class="id">Q6</span>cenobamate generalized tonic-clonic<span class="why"><b style="color:var(--navy)">11편</b> · HYP-003 근거 소스</span></div>
+            <div class="qrow"><span class="id">Q7</span>Lennox-Gastaut treatment gap<span class="why"><b style="color:var(--navy)">4편</b> · HYP-004 — 근거 얇음</span></div>
+            <div class="qrow"><span class="id">Q8</span>cenobamate post-stroke epilepsy<span class="why"><b style="color:var(--navy)">3편</b> · SCP 후보 참고</span></div>
+          </div>
+          <div style="font-size:10.5px;color:var(--muted);margin-top:8px;line-height:1.6">초록 기준 요약입니다. 연구 설계·표본 규모는 원문에서 확인해야 합니다. — 스냅샷 일자는 카드에 항상 표기</div>
+        </div>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      사내 추이·증감은 전부 <b>승인 데이터 기준 SQL 비교</b>다(잠정 신규만 레이더 라벨 병기). v0.2에서 새 항목이 생기면 "v0.2부터 수집" 주석을 달고 <b>버전 경계를 넘는 추이 비교는 하지 않는다</b>.
+      외부 문헌 추이는 <b>PUBLIC_EVIDENCE 도메인 — Screen의 캐시 스냅샷을 코드로 집계</b>한 것이며 사내 신호와 같은 차트에 합치지 않는다(소스가 다르면 축도 다르다). 신규/가속 판정은 관찰 표시일 뿐, 순위·점수를 만들지 않는다.
+    </div></details>
+  </div>
+
+  <!-- ═══ 시장·경쟁 ═══ -->
+  <div class="panel" id="p-market" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>시장·경쟁</h1>
+      <div class="desc">경쟁 약물은 어디까지 갔나 — 전부 공개 자료이고, 개인은 한 명도 등장하지 않습니다.</div>
+    </div>
+
+    <div class="filters" style="margin-top:14px">
+      <span class="lbl" style="background:var(--green-soft);color:var(--green);border-radius:8px;padding:4px 10px;font-weight:700">공개 출처만 · 개인 식별 0건 · 예측·추세선 없음</span>
+      <span class="lbl" style="background:var(--orange-soft);color:var(--orange-deep);border-radius:8px;padding:4px 10px;font-weight:700">경쟁 약물 값은 8/26 외부 스냅샷 이후 채워짐 — 지금은 질의 명세만</span>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">우리 라벨 연령 하한</div><div class="v">18<small>세+</small></div><div class="s">초점발작 · 단독/병용</div></div>
+      <div class="kpi"><div class="k">공백 구간</div><div class="v">12–17<small>세</small></div><div class="s">허가 범위 밖 = Development</div></div>
+      <div class="kpi"><div class="k">이 공백을 말한 전문가</div><div class="v">34<small>인</small></div><div class="s">언급 52건 · 4개 권역 (잠정 기준)</div></div>
+      <div class="kpi"><div class="k">추적 대상 경쟁 약물</div><div class="v">5<small>종</small></div><div class="s">항경련제 클래스 · 공개 라벨 기준</div></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="card-h"><h2>허가 연령 지도</h2><span class="pill pill-gray">관찰된 사실</span><span class="d">우리 라벨은 확정값, 경쟁 약물 행은 openFDA 스냅샷 대기</span></div>
+      <div class="chartbox">
+        <svg viewBox="0 0 880 236" width="100%" role="img" aria-label="허가 연령 지도: XCOPRI는 18세 이상, 12에서 17세 구간이 공백. 경쟁 약물 5종은 외부 스냅샷 대기">
+          <defs>
+            <pattern id="wait" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="7" stroke="rgba(22,38,97,.10)" stroke-width="3"/>
+            </pattern>
+          </defs>
+
+          <!-- 12–17 공백 밴드 -->
+          <rect x="252.0" y="38" width="61.0" height="184" fill="var(--orange-soft)"/>
+          <line x1="252.0" y1="38" x2="252.0" y2="222" stroke="var(--orange)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="313.0" y1="38" x2="313.0" y2="222" stroke="var(--orange)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="282.5" y="30" font-size="10.5" font-weight="800" fill="var(--orange-deep)" text-anchor="middle">공백 12–17</text>
+
+          <!-- 연령 축 -->
+          <g font-size="9" fill="#5C6485" text-anchor="middle">
+            <text x="130.0" y="234">0</text><text x="170.7" y="234">4</text>
+            <text x="252.0" y="234">12</text><text x="313.0" y="234">18</text>
+            <text x="435.0" y="234">30</text><text x="638.3" y="234">50</text><text x="790.8" y="234">65+</text>
+            <text x="496" y="20" font-size="9.5" font-weight="700" fill="#5C6485">허가 연령 (세)</text>
+          </g>
+
+          <!-- XCOPRI (확정) -->
+          <text x="118" y="57" font-size="11" font-weight="800" fill="var(--navy)" text-anchor="end">XCOPRI</text>
+          <text x="118" y="68" font-size="8.5" fill="#5C6485" text-anchor="end">cenobamate · SK</text>
+          <rect x="313.0" y="46" width="549.0" height="16" rx="4" fill="var(--navy)"/>
+          <text x="322.0" y="58" font-size="9.5" font-weight="800" fill="#fff">18세+ · 초점발작 · 단독/병용</text>
+
+          <!-- 경쟁 약물 5행 (값 미확인 → 대기 트랙) -->
+          <g font-size="10.5" font-weight="700" fill="#5C6485" text-anchor="end">
+            <text x="118" y="86">brivaracetam</text><text x="118" y="118">lacosamide</text>
+            <text x="118" y="150">perampanel</text><text x="118" y="182">cannabidiol</text>
+            <text x="118" y="214">fenfluramine</text>
+          </g>
+          <g fill="url(#wait)" stroke="rgba(22,38,97,.16)" stroke-dasharray="5 4">
+            <rect x="130" y="76" width="732" height="14" rx="4"/><rect x="130" y="108" width="732" height="14" rx="4"/>
+            <rect x="130" y="140" width="732" height="14" rx="4"/><rect x="130" y="172" width="732" height="14" rx="4"/>
+            <rect x="130" y="204" width="732" height="14" rx="4"/>
+          </g>
+          <text x="496" y="87" font-size="9" font-weight="700" fill="#5C6485" text-anchor="middle">openFDA 라벨 스냅샷 대기 — 8/26</text>
+          <g font-size="8" font-weight="800" fill="#8A90AC" text-anchor="end">
+            <text x="854" y="119">대기</text><text x="854" y="151">대기</text>
+            <text x="854" y="183">대기</text><text x="854" y="215">대기</text>
+          </g>
+        </svg>
+        <p style="font-size:11px;color:var(--muted);margin-top:2px">경쟁 약물의 허가 연령은 <b>추정하지 않았습니다</b> — 라벨은 수시로 개정되고, 틀린 값이 한 번 화면에 오르면 시장 판단을 오염시킵니다. 8/26 스냅샷이 각 행을 채우면, 우리 공백이 남는 공백인지 뒤처진 공백인지가 이 한 장으로 판정됩니다.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>외부 공개 데이터에 던지는 질문 네 개</h2><span class="d">출처·질의·반영 위치가 정해져 있어야 숫자에 근거가 붙습니다</span></div>
+      <div style="padding:0 16px 8px;overflow-x:auto">
+        <table>
+          <thead><tr><th>질문</th><th>출처</th><th>질의 · 핵심 필드</th><th>화면 반영</th><th>상태</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="nm-cell">경쟁 약물의 허가 연령은 어디까지인가</td>
+              <td>openFDA<br><span style="font-size:10.5px;color:var(--muted)">drug/label</span></td>
+              <td style="font-family:var(--mono);font-size:10.5px">openfda.generic_name + pediatric_use<br>· indications_and_usage 원문 보존</td>
+              <td>위 연령 지도</td>
+              <td><span class="pill pill-auto">스냅샷 대기</span></td>
+            </tr>
+            <tr>
+              <td class="nm-cell">경쟁사는 청소년 시험을 언제 시작했나</td>
+              <td>ClinicalTrials.gov v2<br><span style="font-size:10.5px;color:var(--muted)">/api/v2/studies</span></td>
+              <td style="font-family:var(--mono);font-size:10.5px">query.intr=&lt;약물&gt; · minimumAge/maximumAge<br>· overallStatus · startDate · leadSponsor</td>
+              <td>가설 상세 HYP-001<br>“왜 지금인가”</td>
+              <td><span class="pill pill-auto">스냅샷 대기</span></td>
+            </tr>
+            <tr>
+              <td class="nm-cell">이 주제의 문헌은 어느 약물에서 먼저 쌓였나</td>
+              <td>PubMed E-utilities<br><span style="font-size:10.5px;color:var(--muted)">esearch + esummary</span></td>
+              <td style="font-family:var(--mono);font-size:10.5px">term=&lt;약물&gt; AND adolescent[MeSH]<br>· 연도별 count (계산은 SQL)</td>
+              <td>추이 탭 오버레이</td>
+              <td><span class="pill pill-auto">스냅샷 대기</span></td>
+            </tr>
+            <tr>
+              <td class="nm-cell">그 환자군의 모수는 얼마인가</td>
+              <td>HIRA 공개통계 · CMS Part D<br><span style="font-size:10.5px;color:var(--muted)">약물 단위 집계 파일</span></td>
+              <td style="font-family:var(--mono);font-size:10.5px">뇌전증(G40) 연령대별 환자수<br>· 약물별 연간 총 처방수 (개인 없음)</td>
+              <td>가설 상세 “규모” 근거</td>
+              <td><span class="pill pill-gray">검토 중 — 예측선 금지</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>경쟁사 활동 강도 — 집계 축을 개인에서 제조사로</h2><span class="pill pill-st">통계적 패턴</span><span class="d">같은 공개 데이터, 반대 방향</span></div>
+      <div style="padding:2px 16px 14px">
+        <div class="grid2" style="gap:12px">
+          <div style="border:1.5px solid rgba(180,85,45,.35);background:var(--rust-soft);border-radius:12px;padding:12px 14px">
+            <div style="font-size:10px;font-weight:900;letter-spacing:.05em;color:var(--rust)">하지 않는 축 — 개인</div>
+            <div style="font-size:12.5px;margin-top:5px;line-height:1.6">“이 의사가 얼마 받았고 얼마 처방하나”. 지불 기록과 처방 행태를 개인 단위로 잇는 것은 절대 규칙 #7이 이름으로 금지한 항목이고, 실무에서도 반부패 조사가 가장 먼저 보는 패턴입니다.</div>
+          </div>
+          <div style="border:1.5px solid rgba(47,125,82,.35);background:var(--green-soft);border-radius:12px;padding:12px 14px">
+            <div style="font-size:10px;font-weight:900;letter-spacing:.05em;color:var(--green)">쓰는 축 — 제조사</div>
+            <div style="font-size:12.5px;margin-top:5px;line-height:1.6">“경쟁사가 뇌전증 전문의 대상 연구비를 어느 영역에 늘리고 있나”. 개인은 0건이고, 임상시험 등록보다 지출이 먼저 움직이므로 <b>파이프라인 의도의 선행지표</b>가 됩니다.</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase">질의 — 개인 식별자를 select 목록에 두지 않는다</div>
+        <pre style="font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--navy);background:var(--sky-soft);border-radius:10px;padding:9px 12px;overflow-x:auto;margin:4px 0 0">SELECT manufacturer, payment_category, specialty, year, SUM(amount), COUNT(DISTINCT recipient_key)
+FROM open_payments_research
+WHERE specialty IN ('NEUROLOGY','EPILEPTOLOGY')
+GROUP BY manufacturer, payment_category, specialty, year
+HAVING COUNT(DISTINCT recipient_key) &gt;= 3;   -- 개인 역추정 차단 · recipient_key 는 출력하지 않음</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>이 화면이 만드는 질문</h2><span class="d">경쟁 정보가 다음 수집·가설로 이어지는 지점</span></div>
+      <div class="queue">
+        <div class="qrow"><span class="id">HYP-001</span>경쟁 약물이 이미 청소년 라벨을 갖고 있다면, 우리 공백은 “미개척”이 아니라 “뒤처짐”이다 — 근거 생성의 시급성이 달라진다<span class="why">연령 지도 채워지면 자동 재평가</span></div>
+        <div class="qrow"><span class="id">SCREEN</span>경쟁사 청소년 시험의 1차 평가변수를 확인해야 우리 근거 설계가 비교 가능해진다<span class="why">CT.gov outcomeMeasures</span></div>
+        <div class="qrow"><span class="id">FIELD</span>“경쟁 약물은 청소년에 쓸 수 있는데 왜 이건 안 되나”는 현장 질문이 될 수 있다 — 자료 요청 체크리스트 후보<span class="why">Medical Information 회신 경로</span></div>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      전부 <b>공개 출처</b>이고 응답은 캐시에 남으며 각 숫자에 <code>as_of</code> 기준일이 붙는다. 네 가지를 하지 않는다.
+      ① <b>개인이 등장하지 않는다</b> — Open Payments도 제조사·전문과·연도로만 집계하고 수령자 키는 출력하지 않는다(절대 규칙 #7).
+      ② <b>예측선을 긋지 않는다</b> — 과거 실측값만 그리고 외삽·추세 연장은 금지(“매출 예측” 금지 조항).
+      ③ <b>FAERS로 경쟁사 안전성을 비교하지 않는다</b> — 자발보고는 분모(노출 환자수)가 없어 발생률 비교에 쓸 수 없다. 라벨 대조 용도로만 쓴다.
+      ④ <b>경쟁 약물의 오프라벨 사용을 기회로 프레이밍하지 않는다</b>(절대 규칙 #5) — 관찰된 공개 사실로만 적고, 해석은 5단계 라벨로 분리한다.
+      경쟁 약물의 값을 추정해 채우지 않은 것도 같은 이유다 — 틀린 시장 사실은 틀린 가설보다 되돌리기 어렵다.
+      한 가지 더: <b>이 화면은 COMMERCIAL 권한에도 열려 있다.</b> 개인도 원문도 없는 공개 집계이기 때문이다. 권한 분리가 “상업은 무조건 차단”이 아니라 “목적에 맞는 범위만”이라는 것을 이 탭과 데이터 원장 탭을 나란히 보면 알 수 있다.
+    </div></details>
+  </div>
+
+  <!-- ═══ Safety ═══ -->
+  <div class="panel" id="p-safe" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>안전성</h1>
+      <div class="desc">부작용 의심 보고는 여기로만 모입니다 — 일반 분석과 완전히 분리.</div>
+    </div>
+
+    <div id="safeDenied" class="hide" style="margin-top:16px;border:1.5px dashed rgba(228,83,107,.5);background:var(--rust-soft);border-radius:14px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:12.5px;font-weight:800;color:var(--rust)">403 PURPOSE_SCOPE_VIOLATION</div>
+      <div style="font-size:12.5px;margin-top:5px;line-height:1.65">현재 권한으로는 안전성 영역을 조회할 수 없습니다. 상단 계정 전환 메뉴에서 <b>관리자</b> 또는 <b>SAFETY</b>로 바꿔 주세요 — 빈 화면으로 감추지 않고 명시적으로 거부합니다.</div>
+    </div>
+    <div id="safeBody">
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">들어온 보고</div><div class="v">27<small>건</small></div><div class="s">일반 집계·가설에 0건 혼입</div></div>
+      <div class="kpi"><div class="k">PV 전달 대기</div><div class="v">14<small>건</small></div><div class="s">OPEN</div></div>
+      <div class="kpi"><div class="k">제품명 미언급</div><div class="v"><span class="warn">2</span><small>건</small></div><div class="s">인계 전 사람 확인 필수</div></div>
+      <div class="kpi"><div class="k">Critic 차단</div><div class="v">4<small>건</small></div><div class="s">사유 코드 기록</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>어떤 부작용 언급이 많았나</h2><span class="badge-safety">SAFETY 권한 전용</span><span class="d">건수 집계 + 허가 라벨(openFDA) 대조 — 심각도 점수는 만들지 않음</span></div>
+      <div style="padding:10px 16px 4px">
+        <div class="sbar-row">
+          <div class="sbar-lbl">어지러움 (dizziness)</div>
+          <div class="sbar" title="3건 · 라벨 기재"><i style="width:100%;background:#5B7CFA"></i></div>
+          <div class="sbar-meta"><b style="color:var(--navy)">3건</b> · 제품명 미언급 1</div>
+        </div>
+        <div class="sbar-row">
+          <div class="sbar-lbl">졸림 (somnolence)</div>
+          <div class="sbar" title="2건 · 라벨 기재"><i style="width:66%;background:#5B7CFA"></i></div>
+          <div class="sbar-meta"><b style="color:var(--navy)">2건</b> · 제품명 미언급 1</div>
+        </div>
+        <div class="sbar-row">
+          <div class="sbar-lbl">발진 의심 (rash)</div>
+          <div class="sbar" title="1건 · 라벨 대조 대기"><i style="width:33%;background:repeating-linear-gradient(45deg,#FCF1E0,#FCF1E0 4px,#EFD9B4 4px,#EFD9B4 8px);border:1px solid rgba(197,110,13,.4)"></i></div>
+          <div class="sbar-meta"><b style="color:var(--navy)">1건</b> · 사람 확인 필요</div>
+        </div>
+      </div>
+      <div class="maplegend" style="padding-top:2px">
+        <span class="li"><span style="width:12px;height:9px;border-radius:3px;background:#5B7CFA;display:inline-block"></span>openFDA 라벨 기재 (기대 사례)</span>
+        <span class="li"><span style="width:12px;height:9px;border-radius:3px;background:repeating-linear-gradient(45deg,#FCF1E0,#FCF1E0 3px,#EFD9B4 3px,#EFD9B4 6px);display:inline-block;border:1px solid rgba(197,110,13,.4)"></span>라벨 대조 대기 — Safety Agent 결정론 대조</span>
+        <span class="li" style="margin-left:auto">심각성은 원문 표현 그대로 보존 — 등급·지수화하지 않음</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>부작용 의심 보고</h2><span class="badge-safety">SAFETY 권한 전용</span><span class="d">증상과 심각성 표현은 말한 그대로 보존</span></div>
+      <div style="padding:0 16px 8px;overflow-x:auto">
+        <table>
+          <thead><tr><th>ID</th><th>보고된 증상 (말한 그대로)</th><th>심각성 표현 (말한 그대로)</th><th>제품명 언급</th><th>상태</th></tr></thead>
+          <tbody>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11px">SF-001</td><td>dizziness · somnolence (어지러움·졸림)</td><td>“출퇴근에 지장이 있다고”</td><td><span class="pill pill-dev">미언급 — 확인 필요</span></td><td><span class="pill pill-st">OPEN</span></td></tr>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11px">SF-002</td><td>somnolence (졸림)</td><td>“낮에 계속 졸리다고”</td><td><span class="pill pill-inl">언급됨</span></td><td><span class="pill pill-gray">SENT_TO_PV</span></td></tr>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11px">SF-003</td><td>rash 의심</td><td>“발진 비슷한 게 올라왔다고”</td><td><span class="pill pill-dev">미언급 — 확인 필요</span></td><td><span class="pill pill-st">OPEN</span></td></tr>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11px">SF-004</td><td>dizziness (어지러움)</td><td>—</td><td><span class="pill pill-inl">언급됨</span></td><td><span class="pill pill-gray">ACKNOWLEDGED</span></td></tr>
+            <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11px">SF-005</td><td>dizziness (어지러움)</td><td>“며칠 지나니 괜찮아졌다고”</td><td><span class="pill pill-inl">언급됨</span></td><td><span class="pill pill-st">OPEN</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>Critic이 막은 것</h2><span class="d">막은 것을 보여주는 게 신뢰의 근거</span></div>
+      <div class="queue">
+        <div class="qrow"><span class="id">BLK-01</span>“safe for adolescents too” — 허가 범위 밖 단정<span class="why">reason: LABEL_SCOPE_ASSERTION</span></div>
+        <div class="qrow"><span class="id">BLK-02</span>“works for every patient” — 과일반화<span class="why">reason: OVERGENERALIZATION</span></div>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      심각도 지수·가중 점수를 만들지 않는다 — <b>등급·인과 판정은 PV 시스템의 관할</b>이고, 여기는 보고 용어와 원문의 심각성 표현만 보존해 라우팅 상태를 추적한다. AE 후보는 claims와 물리적으로 분리된 테이블에만 저장되며 일반 집계·가설·레이더 어디에도 섞이지 않는다.
+    </div></details>
+    </div>
+  </div>
+
+  <!-- ═══ 데이터 원장 ═══ -->
+  <div class="panel" id="p-data" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>데이터 원장</h1>
+      <div class="desc">화면의 숫자가 어느 테이블에서 왔는지 — 15개 테이블을 가공 없이, 권한이 허용하는 범위까지.</div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">파이프라인</div><div class="v" style="font-size:17px;line-height:1.5">문서 320 → 단위 1,118<br>→ 후보 256 → 승인 168</div></div>
+      <div class="kpi"><div class="k">반려 · 안전성 분리</div><div class="v">12 <small>·</small> 27<small>건</small></div><div class="s">반려도 보존 — 삭제 없음</div></div>
+      <div class="kpi"><div class="k">LLM 호출 기록</div><div class="v">1,146<small>회</small></div><div class="s">모델·프롬프트 버전 전부 기록</div></div>
+      <div class="kpi"><div class="k">활성 Contract</div><div class="v">v0.1</div><div class="s">시드 2026-08-21 · DEMO_OFFLINE=0</div></div>
+    </div>
+
+    <div class="filters" style="margin-top:14px">
+      <span class="lbl">테이블</span>
+      <button class="fchip on" data-t="documents">documents</button>
+      <button class="fchip" data-t="interactions">interactions</button>
+      <button class="fchip" data-t="claims">claims</button>
+      <button class="fchip" data-t="vocab_terms">vocab_terms</button>
+      <button class="fchip" data-t="unmapped_terms">unmapped_terms</button>
+      <button class="fchip" data-t="safety_candidates">safety_candidates</button>
+      <button class="fchip" data-t="contract_versions">contract_versions</button>
+      <button class="fchip" data-t="schema_change_proposals">schema_change_proposals</button>
+      <button class="fchip" data-t="hypotheses">hypotheses</button>
+      <button class="fchip" data-t="screen_findings">screen_findings</button>
+      <button class="fchip" data-t="board_minutes">board_minutes</button>
+      <button class="fchip" data-t="decisions">decisions</button>
+      <button class="fchip" data-t="action_items">action_items</button>
+      <button class="fchip" data-t="blocked_log">blocked_log</button>
+      <button class="fchip" data-t="llm_runs">llm_runs</button>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2 id="dtTitle" style="font-family:var(--mono);font-size:13.5px">documents</h2><span class="d" id="dtDesc">원본 문서 — 마스킹 후 불변, 모든 문자 오프셋의 기준</span></div>
+      <div style="padding:4px 16px 8px;overflow-x:auto" id="dtBody"></div>
+      <div style="padding:0 16px 14px">
+        <div style="font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-bottom:4px">이 화면의 쿼리 — 권한 게이트는 SQL 주석으로 표시</div>
+        <pre id="dtSql" style="font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--navy);background:var(--sky-soft);border-radius:10px;padding:9px 12px;overflow-x:auto;margin:0"></pre>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      모든 조회는 <b>단일 게이트(access.py)</b>를 지나며, 권한 밖 테이블은 빈 배열이 아니라 <b>403으로 명시 거부</b>한다(조용한 누락 금지).
+      COMMERCIAL 권한에는 raw_text·hcp_ref 필드 자체가 응답에서 사라진다. SQL은 <b>ANSI 범위만</b> 사용 — 같은 스키마·쿼리를 Snowflake로 그대로 이관하기 위함(docs/01 §2).
+      추출값은 CANDIDATE로 태어나 사람 승인 후에만 집계에 들어간다.
+    </div></details>
+  </div>
+
+  <!-- ═══ Field 앱 ═══ -->
+  <div class="panel" id="p-field" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>Field 앱</h1>
+      <div class="desc">현장 수집 — 모바일(390px), 같은 디자인 토큰. 가운데 화면에서 <b style="color:var(--navy)">▶ 면담 재생</b>을 눌러보세요.</div>
+    </div>
+
+    <div class="phones">
+      <div class="phonecol">
+        <div class="phone"><div class="screen">
+          <div class="p-status"><span>9:41</span><span>DELPHi Field</span></div>
+          <div class="p-head"><div class="t">오늘의 면담</div><div class="s">8월 20일 (목) · 방문 1건</div></div>
+          <div class="p-body">
+            <div class="fcard">
+              <div class="k">방문 예정</div>
+              <div style="font-size:13.5px;font-weight:800;color:var(--navy);margin-top:3px">HCP-021 <span style="font-weight:600;color:var(--muted);font-size:11px">· NEUROLOGY · WEST</span></div>
+              <div style="font-size:11px;color:var(--muted)">마지막 만남 2026-07 · 확정 신호 2건</div>
+            </div>
+            <div class="fcard">
+              <div class="k">방문 전 체크리스트</div>
+              <div class="chk" style="margin-top:6px"><span class="box"></span><span>전신발작 케이스 시 이전 실패 약물 수·발작 유형 확인 <span class="pill pill-auto" style="margin-left:4px">NEW · ACT-001</span></span></div>
+              <div class="chk"><span class="box"></span><span>청소년 사례 시 이전 실패 약물 수 확인 <span class="pill pill-gray" style="margin-left:4px">ACT-003</span></span></div>
+              <div class="chk"><span class="box"></span><span>청소년 용량·안전성 자료 회신 전달 (미해결 질문)</span></div>
+            </div>
+            <div class="fcard" style="border-style:dashed">
+              <div class="k">입력 항목 안내</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.55;margin-top:3px">이 폼은 활성 Contract(v0.1)에서 렌더됩니다. v0.2가 승인되면 새 항목이 자동으로 나타납니다.</div>
+            </div>
+          </div>
+          <div class="p-cta"><button class="btn btn-navy">면담 시작</button></div>
+        </div></div>
+        <div class="phonecap"><b>/</b> — 브리핑 · Board 승인 질문이 현장 체크리스트로</div>
+      </div>
+
+      <div class="phonecol">
+        <div class="phone"><div class="screen">
+          <div class="p-status"><span>9:47</span><span><span class="rec"></span> 녹음 중</span></div>
+          <div class="p-head"><div class="t">면담 기록</div><div class="s">동의 확인됨 · ko-KR 전사 · HCP-021</div></div>
+          <div class="hl-legend">하이라이트
+            <mark class="ev on ev-seg">환자군</mark><mark class="ev on ev-sig">신호</mark><mark class="ev on ev-ae">안전성 분리</mark><mark class="ev on ev-info">자료 요청</mark>
+          </div>
+          <div class="p-body" id="fChat"><div style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px" id="fHint">▶ 를 누르면 대화가 재생됩니다</div></div>
+          <div class="detect">
+            <span class="lbl">실시간 감지 — 스키마 캐치</span>
+            <div class="dchips" id="fChips"><span style="font-size:10.5px;color:var(--muted)">아직 감지된 신호 없음</span></div>
+          </div>
+          <div class="p-cta">
+            <button class="btn btn-navy" id="fPlay">▶ 면담 재생</button>
+            <button class="btn btn-ghost" id="fReset" title="처음부터">↺</button>
+          </div>
+        </div></div>
+        <div class="phonecap"><b>/capture</b> — 대화가 흐르며 스키마가 잡히고, 부작용 발언은 그 자리에서 분리됩니다 <br>(라이브 감지는 연출 — 정본 추출은 제출 시 1회)</div>
+      </div>
+
+      <div class="phonecol">
+        <div class="phone"><div class="screen">
+          <div class="p-status"><span>9:58</span><span>DELPHi Field</span></div>
+          <div class="p-head"><div class="t">구조화 승인</div><div class="s">카드 1 / 2 · 스와이프로 넘기기</div></div>
+          <div class="p-body">
+            <div class="fcard">
+              <div style="display:flex;gap:5px;flex-wrap:wrap">
+                <span class="pill pill-sky" style="background:var(--sky-soft);color:var(--sky)">미충족 수요</span>
+                <span class="pill pill-dev">청소년(12–17) · 허가 범위 밖</span>
+              </div>
+              <div style="font-size:13px;font-weight:800;color:var(--navy);margin-top:8px;line-height:1.5">청소년 약물난치성 환자에서 성인 허가로 인한 치료 공백</div>
+              <div class="k" style="margin-top:9px">원문 그대로</div>
+              <div style="font-size:12px;line-height:1.6;margin-top:3px">…<mark class="evidence" style="background:rgba(239,139,28,.28);box-shadow:inset 0 -2px 0 var(--orange);border-radius:3px;padding:1px 2px">2제 실패한 17세 환자가 있는데, 성인 허가라 손을 쓸 수가 없어요</mark>…</div>
+              <div style="font-size:10px;color:var(--muted);margin-top:6px">원문 위치 연결됨 · 발언 경위: MSL 질문에 답변</div>
+            </div>
+            <div class="fcard" style="border-style:dashed">
+              <div style="font-size:11px;color:var(--muted);line-height:1.55">부작용 발언은 카드로 나오지 않습니다 — 안전성 경로로 이미 분리되었습니다.</div>
+            </div>
+          </div>
+          <div class="p-cta">
+            <button class="btn btn-ghost">제외</button>
+            <button class="btn btn-sky">수정</button>
+            <button class="btn btn-green">승인</button>
+          </div>
+        </div></div>
+        <div class="phonecap"><b>/capture/review</b> — 승인 = CANDIDATE→APPROVED, 그 순간 Console 집계 +1</div>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      입력 폼은 하드코딩하지 않고 <b>활성 Contract(form-config)에서 렌더</b>한다 — v0.2 승인 장면에서 폼이 실제로 바뀐다(데모 ⑥). 음성 전사는 Web Speech(ko-KR) + 대본 재생 폴백.
+      부작용 의심 발언은 화면에 "분리됨" 표시만 남기고 <b>안전성 경로로만 저장</b>되며(절대 규칙 #6), 실시간 감지는 데모 연출이고 <b>정본 추출은 제출 시 1회</b>다(재현성). 저장 전 PII 마스킹, 동의 미확인 시 저장 거부.
+    </div></details>
+  </div>
+
+  <footer class="foot">
+    합성 데이터 예시 스냅샷 — 코퍼스 v3(문서 320 · 단위 1,118 · HCP 300인 · 2021–2026)와 docs/03 §2 심은 신호 기준. 검산: 승인 168 = 38+29+24+14+12+31+20 · 대기 76 · 반려 12 · 수용률 168/180.
+    계약: <code>GET /aggregates/kpis·signals·radar</code> · <code>GET /claims?queue=review</code> · <code>GET /safety/candidates</code> · 규칙: docs/01 §3 · 02 §5.6·§6 · 04 §3.
+  </footer>
+</div>
+
+<script>
+  // 탭
+  var tabs = document.querySelectorAll(".tab");
+  function show(id){
+    tabs.forEach(function(t){ t.setAttribute("aria-selected", String(t.dataset.panel === id)); });
+    document.querySelectorAll(".panel").forEach(function(p){ p.classList.toggle("on", p.id === id); });
+    window.scrollTo({ top: 0 });
+  }
+  tabs.forEach(function(t){ t.addEventListener("click", function(){ show(t.dataset.panel); }); });
+  document.querySelectorAll("tr[data-go]").forEach(function(tr){
+    tr.addEventListener("click", function(){ show(tr.dataset.go); });
+  });
+
+  // 환자군 필터 + 검색
+  var chips = document.querySelectorAll(".fchip");
+  var cards = document.querySelectorAll(".rowcard");
+  var q = document.getElementById("popSearch");
+  var mode = "all";
+  function apply(){
+    var text = (q.value || "").toLowerCase();
+    cards.forEach(function(c){
+      var okLabel = mode === "all" || c.dataset.label === mode;
+      var okText = !text || (c.dataset.search + " " + c.textContent).toLowerCase().indexOf(text) >= 0;
+      c.classList.toggle("hide", !(okLabel && okText));
+    });
+  }
+  chips.forEach(function(ch){
+    ch.addEventListener("click", function(){
+      chips.forEach(function(x){ x.classList.remove("on"); });
+      ch.classList.add("on"); mode = ch.dataset.f; apply();
+    });
+  });
+  q.addEventListener("input", apply);
+
+  // US 타일 지도 — 권역 단위 집계 (주는 소속 표시용)
+  (function () {
+    var NE = "ME NH VT MA RI CT NY NJ PA".split(" ");
+    var MW = "OH MI IN WI IL MN IA MO ND SD NE KS".split(" ");
+    var S  = "DE MD DC VA WV NC SC GA FL KY TN AL MS AR LA OK TX".split(" ");
+    var POS = {
+      AK:[1,1], ME:[12,1], VT:[11,2], NH:[12,2],
+      WA:[2,3], ID:[3,3], MT:[4,3], ND:[5,3], MN:[6,3], WI:[7,3], MI:[9,3], NY:[10,3], MA:[11,3], RI:[12,3],
+      OR:[2,4], NV:[3,4], WY:[4,4], SD:[5,4], IA:[6,4], IL:[7,4], IN:[8,4], OH:[9,4], PA:[10,4], NJ:[11,4], CT:[12,4],
+      CA:[2,5], UT:[3,5], CO:[4,5], NE:[5,5], MO:[6,5], KY:[7,5], WV:[8,5], VA:[9,5], MD:[10,5], DE:[11,5],
+      AZ:[3,6], NM:[4,6], KS:[5,6], AR:[6,6], TN:[7,6], NC:[8,6], SC:[9,6], DC:[10,6],
+      OK:[5,7], LA:[6,7], MS:[7,7], AL:[8,7], GA:[9,7],
+      HI:[1,8], TX:[5,8], FL:[10,8]
+    };
+    function regionOf(st) {
+      if (NE.indexOf(st) >= 0) return ["NORTHEAST", "#162661", 6, false];
+      if (MW.indexOf(st) >= 0) return ["MIDWEST", "#162661", 6, false];
+      if (S.indexOf(st) >= 0) return ["SOUTH", "#96A2CC", 4, true];
+      return ["WEST", "#4A5C9E", 5, false];
+    }
+    var map = document.getElementById("usmap");
+    Object.keys(POS).forEach(function (st) {
+      var r = regionOf(st), d = document.createElement("div");
+      d.className = "st" + (r[3] ? " l" : "");
+      d.style.background = r[1];
+      d.style.gridColumn = POS[st][0];
+      d.style.gridRow = POS[st][1];
+      d.title = st + " · " + r[0] + " — 권역 독립 HCP " + r[2] + "인";
+      d.textContent = st;
+      map.appendChild(d);
+    });
+  })();
+
+  // 데이터 원장 — 15개 테이블 전 컬럼 (Snowflake풍) · 권한 반응형 (합성 데이터 예시, 검산 일치)
+  (function () {
+    var N = null; // NULL 표기
+    var T = {
+      documents: { d: "원본 문서 — 마스킹 후 불변, 모든 문자 오프셋의 기준", count: "320 rows · 2021-01 ~ 2026-08",
+        cols: [["id","TEXT PK"],["filename","TEXT"],["source_format","TEXT"],["language","TEXT"],["raw_text","TEXT"],["sha256","TEXT"],["imported_at","TEXT"]],
+        rows: [
+          ["DOC-20251201-001","DOC-20251201-001.docx","DOCX","EN","[Northbrook] Medical Affairs Highlights…","a3f29c11…","2026-08-19 21:02:11"],
+          ["DOC-20260315-007","DOC-20260315-007.pdf","PDF","EN","Annual Epilepsy Care Symposium — field report…","77b0e1d4…","2026-08-19 21:02:11"],
+          ["DOC-20260702-041","DOC-20260702-041.txt","TXT","EN","Meeting note. Dr. ___ raised titration…","c19d4402…","2026-08-19 21:02:12"],
+          ["DOC-20260714-061","DOC-20260714-061.txt","TXT","KO","MSL: 안녕하세요 선생님… (전사 전문)","f08ab791…","2026-08-19 21:02:12"]] },
+      interactions: { d: "면담 단위 — 다중 HCP 문서는 블록으로 분리 (하이라이트·학회 82문서에서 880단위)", count: "1,118 rows",
+        cols: [["interaction_id","TEXT PK"],["document_id","FK"],["occurred_on","DATE"],["hcp_ref","TEXT"],["hcp_specialty","ENUM"],["region","ENUM"],["setting","ENUM"],["source_type","ENUM"],["market","ENUM"],["consent_confirmed","BOOL"],["language","ENUM"],["block_index","INT"],["doc_char_start","INT"],["doc_char_end","INT"],["raw_text","TEXT"],["masked_spans","JSON"]],
+        rows: [
+          ["INT-20260714-001","DOC-20260714-061","2026-07-14","HCP-021","NEUROLOGY","WEST","PRIVATE_PRACTICE","VOICE_TRANSCRIPT","US","true","KO",N,N,N,"MSL: 안녕하세요…","[{240,252,PHONE}]"],
+          ["INT-20260702-003","DOC-20260702-041","2026-07-02","HCP-005","EPILEPTOLOGY","SOUTH","ACADEMIC","HIGHLIGHT_DOC","US","true","EN","3","912","1304","➤ my hardest clinic days…",N],
+          ["INT-20260628-002","DOC-20260628-038","2026-06-28","HCP-009","GENERAL","MIDWEST","COMMUNITY","MEETING_NOTE","US","true","EN",N,N,N,"Panel skewing older…",N],
+          ["INT-20260615-004","DOC-20260615-033","2026-06-15","HCP-012","NEUROLOGY","NORTHEAST","COMMUNITY","CALL_NOTE","US","true","EN",N,N,N,"~6 min call. DDI question…",N]] },
+      claims: { d: "추출값 — verbatim은 원문 substring 검증 통과 시에만 저장 (23컬럼)", count: "256 rows · 승인 168 + 대기 76 + 반려 12",
+        cols: [["claim_id","TEXT PK"],["interaction_id","FK"],["product","ENUM"],["signal_type","ENUM"],["patient_segment","ENUM"],["label_scope","ENUM"],["journey_stage","ENUM"],["barrier_type","ENUM"],["purpose_domain","ENUM"],["solicitation","ENUM"],["indication_mention","TEXT"],["concomitant_drugs","TEXT"],["administration_note","TEXT"],["sentiment","ENUM"],["verbatim_quote","TEXT"],["summary_ko","TEXT"],["evidence_json","JSON"],["review_grade","ENUM"],["status","ENUM"],["contract_version","TEXT"],["reviewed_by","TEXT"],["reviewed_at","TEXT"],["created_at","TEXT"]],
+        rows: [
+          ["CLM-0042","INT-20260702-003","XCOPRI","UNMET_NEED","PEDIATRIC_TRANSITION","OUT_OF_LABEL",N,N,"MEDICAL","UNSOLICITED",N,N,N,N,"my hardest clinic days are telling parents of a seventeen-year-old…","청소년 약물난치성 — 성인 허가로 인한 치료 공백","{doc:DOC-…-041, 412, 448}","HIGH","APPROVED","0.1","건태","2026-08-19 22:10","2026-08-19 21:40"],
+          ["CLM-0047","INT-20260615-004","XCOPRI","UNMET_NEED","PEDIATRIC_TRANSITION","OUT_OF_LABEL",N,N,"MEDICAL","SOLICITED_BY_MSL",N,N,N,N,"can't use it until 18…","청소년 공백 — 용어 매핑 실패분","{doc:DOC-…-033, 120, 163}","MEDIUM","CANDIDATE","0.1",N,N,"2026-08-19 21:41"],
+          ["CLM-0038","INT-20260628-002","XCOPRI","TREATMENT_BARRIER","ELDERLY_65_PLUS","IN_LABEL","TITRATION","DDI_CONCERN","MEDICAL","UNSOLICITED",N,"lamotrigine, clobazam",N,"NEUTRAL","with older patients already on five or six meds…","노인 병용 — 상호작용 우려로 시작 주저","{doc:DOC-…-038, 88, 131}","MEDIUM","CANDIDATE","0.1",N,N,"2026-08-19 21:41"],
+          ["CLM-0051","INT-20260714-001","XCOPRI","INFO_REQUEST","PEDIATRIC_TRANSITION","OUT_OF_LABEL",N,N,"MEDICAL","UNSOLICITED",N,N,N,N,"청소년 용량이나 안전성 자료가 있으면…","청소년 용량·안전성 자료 요청","{doc:DOC-…-061, 301, 340}","HIGH","APPROVED","0.1","건태","2026-08-19 22:12","2026-08-19 21:42"],
+          ["CLM-0184","INT-20251219-812","XCOPRI","UNMET_NEED","GENERALIZED_PGTC","OUT_OF_LABEL",N,N,"MEDICAL","UNSOLICITED","generalized tonic-clonic",N,N,N,"how well it works in focal epilepsy and how little that helps the generalized patients…","전신발작 환자에 쓸 수 없는 공백","{doc:DOC-…-250, 1044, 1148}","HIGH","APPROVED","0.1","건태","2026-08-21 09:31","2026-08-21 08:12"],
+          ["CLM-0207","INT-20251219-809","XCOPRI","UNMET_NEED","LGS","OUT_OF_LABEL",N,N,"MEDICAL","UNSOLICITED","Lennox-Gastaut",N,N,N,"several Lennox-Gastaut patients on four or more medications with unchanged seizure counts","LGS 다발작형 — 기존 조합 소진","{doc:DOC-…-250, 622, 718}","HIGH","APPROVED","0.1","건태","2026-08-21 09:33","2026-08-21 08:12"]] },
+      vocab_terms: { d: "동의어 정규화 — EN·KO가 같은 canonical로 수렴", count: "96 rows",
+        cols: [["id","INT PK"],["surface_form","TEXT"],["lang","ENUM"],["canonical_id","TEXT"],["canonical_label_ko","TEXT"],["source","ENUM"]],
+        rows: [
+          ["12","seventeen-year-old","EN","PEDIATRIC_TRANSITION","청소년(12–17) 전환기","CUSTOM"],
+          ["13","17세 환자","KO","PEDIATRIC_TRANSITION","청소년(12–17) 전환기","CUSTOM"],
+          ["21","older adults","EN","ELDERLY_65_PLUS","노인(65+)","MESH_REF"],
+          ["29","타이트레이션 부담","KO","TITRATION_COMPLEXITY","적정 복잡성","CUSTOM"]] },
+      unmapped_terms: { d: "매핑 실패 표현 — 반복되면 SCP 후보 신호", count: "3 rows",
+        cols: [["surface_form","TEXT"],["first_seen_claim_id","FK"],["occurrence_count","INT"]],
+        rows: [["post-stroke epilepsy","CLM-0061","13"],["seizures after stroke","CLM-0142","6"],["catamenial epilepsy","CLM-0060","1"]] },
+      safety_candidates: { d: "이상사례 후보 — claims와 물리적으로 분리, PV 인계 추적", count: "27 rows · 용어 8종",
+        cols: [["id","TEXT PK"],["interaction_id","FK"],["verbatim_quote","TEXT"],["evidence_json","JSON"],["event_terms","TEXT"],["severity_note","TEXT"],["product_named","BOOL"],["routed_at","TEXT"],["status","ENUM"]],
+        rows: [
+          ["SF-001","INT-20260714-001","복용 시작하고 어지러움하고 졸림이 꽤 있다고…","{doc:DOC-…-061, 512, 549}","dizziness; somnolence","출퇴근에 지장이 있다고","false","2026-08-19 21:42","OPEN"],
+          ["SF-002","INT-20260610-007","낮에 계속 졸리다고…","{doc:DOC-…-029, 210, 231}","somnolence","낮에 계속 졸리다고","true","2026-08-19 21:42","SENT_TO_PV"],
+          ["SF-003","INT-20260522-011","발진 비슷한 게 올라왔다고…","{doc:DOC-…-024, 77, 99}","rash (suspected)","발진 비슷한 게","false","2026-08-19 21:42","OPEN"]] },
+      contract_versions: { d: "스키마 버전 — AI 자동 변경 불가, 과거 버전 보존", count: "1 row",
+        cols: [["version","TEXT PK"],["body_yaml","TEXT"],["status","ENUM"],["approved_by","TEXT"],["approved_at","TEXT"]],
+        rows: [["0.1","(YAML 3.1 KB) fields: signal_type, patient_segment, …","ACTIVE","건태 (Steward 대행)","2026-08-19"]] },
+      schema_change_proposals: { d: "스키마 변경 제안 — 조건(≥3회·≥2인) 충족 시 자동 생성", count: "1 row",
+        cols: [["id","TEXT PK"],["kind","ENUM"],["target_field","TEXT"],["proposed_value","TEXT"],["rationale_ko","TEXT"],["example_claim_ids_json","JSON"],["occurrence_count","INT"],["distinct_hcp_count","INT"],["impact_note_ko","TEXT"],["status","ENUM"],["decided_by","TEXT"],["decided_at","TEXT"]],
+        rows: [["SCP-001","NEW_ENUM_VALUE","patient_segment","POST_STROKE","뇌졸중 후 뇌전증 표현 반복 — 기존 enum과 비동의어","[CLM-0061, CLM-0142, CLM-0049]","19","14","Field 폼 옵션 +1 · 화면 2곳 · 소급 없음","PROPOSED",N,N]] },
+      hypotheses: { d: "가설 — 임계값 자동 생성, 순위 점수 없음", count: "4 rows",
+        cols: [["id","TEXT PK"],["title_ko","TEXT"],["kind","ENUM"],["status","ENUM"],["segment","ENUM"],["driver_summary_ko","TEXT"],["created_from_aggregate_json","JSON"],["not_board_ready_reason","TEXT"]],
+        rows: [
+          ["HYP-001","청소년(12–17) 약물난치성 초점발작 — 연령 확대 근거 생성 우선 검토","DEVELOPMENT","BOARD_READY","PEDIATRIC_TRANSITION","치료 선택지 공백 반복","{cand:52, hcp:34, regions:4}",N],
+          ["HYP-002","노인(65+) 병용약물 상호작용·적정 부담 — 자료·교육으로 해소","IN_LABEL","DRAFT","ELDERLY_65_PLUS","DDI 우려 반복","{cand:41, hcp:27, regions:4}",N],
+          ["HYP-003","전신 강직-간대발작(PGTC) 치료 선택지 공백 — 근거 생성 검토","DEVELOPMENT","SCREENING","GENERALIZED_PGTC","전신발작 선택지 부재 반복","{cand:34, hcp:23, regions:4}",N],
+          ["HYP-004","레녹스-가스토 증후군(LGS) — 다발작형 치료 한계","DEVELOPMENT","NOT_BOARD_READY","LGS","드롭발작·다발작형 한계 반복","{cand:21, hcp:15, regions:4}","NO_EXTERNAL_EVIDENCE"]] },
+      screen_findings: { d: "외부 교차검증 결과 — 출처·스냅샷·해석 한계 문구 필수", count: "1 row · Evidence 조회 중",
+        cols: [["id","INT PK"],["hypothesis_id","FK"],["agent","ENUM"],["finding_type","ENUM"],["statement_ko","TEXT"],["source_url","TEXT"],["source_locator","TEXT"],["source_as_of","TEXT"],["caveat_ko","TEXT"],["created_at","TEXT"]],
+        rows: [["1","HYP-001","EVIDENCE","SUPPORT","청소년 약물난치성 초점발작의 치료 선택지 제한 보고","pubmed.ncbi.nlm.nih.gov/38…","PMID:38…","2026-08-26","초록 기준 요약입니다…","2026-08-19 23:01"]] },
+      board_minutes: { d: "Board 심의 회의록 — BOARD_READY 진입 후 생성", count: "0 rows",
+        cols: [["id","INT PK"],["hypothesis_id","FK"],["role","ENUM"],["position_ko","TEXT"],["action_item_json","JSON"],["seq","INT"]],
+        rows: [] },
+      decisions: { d: "사람의 결정 — 승인/보류/기각 (후속 액션은 action_items로 정규화)", count: "0 rows · Board 심의 전",
+        cols: [["id","INT PK"],["hypothesis_id","FK"],["decision","ENUM"],["decided_by","TEXT"],["rationale_ko","TEXT"],["decided_at","TEXT"]],
+        rows: [] },
+      action_items: { d: "실행 루프의 단위 — 결정에 채택된 것만 ACTIVE, Field 체크리스트로 전달·수집 귀속 추적. target에 상업 실행 값 없음(규칙 #5)", count: "0 rows · 결정 후 생성",
+        cols: [["id","TEXT PK"],["hypothesis_id","FK"],["decision_id","FK"],["directive_ko","TEXT"],["target","ENUM"],["owner_role","ENUM"],["status","ENUM"],["source","ENUM"],["created_at","TEXT"],["delivered_at","TEXT"]],
+        rows: [] },
+      blocked_log: { d: "Critic 차단 이력 — 막은 것을 보여주는 게 신뢰의 근거", count: "4 rows",
+        cols: [["id","TEXT PK"],["source","ENUM"],["reason_code","TEXT"],["detail_ko","TEXT"],["payload_json","JSON"],["created_at","TEXT"]],
+        rows: [
+          ["BLK-01","CRITIC","LABEL_SCOPE_ASSERTION","“safe for adolescents too” — 허가 범위 밖 단정","{claim_ref:…}","2026-08-19 23:05"],
+          ["BLK-02","CRITIC","OVERGENERALIZATION","“works for every patient” — 과일반화","{claim_ref:…}","2026-08-19 23:06"]] },
+      llm_runs: { d: "생성 조건 5종(모델·프롬프트·스키마·파서·외부시점) — 재현성의 근거", count: "1,146 rows",
+        cols: [["id","INT PK"],["purpose","TEXT"],["model","TEXT"],["prompt_file","TEXT"],["prompt_version","TEXT"],["schema_name","TEXT"],["parser_version","TEXT"],["external_data_as_of","TEXT"],["input_hash","TEXT"],["output_hash","TEXT"],["latency_ms","INT"],["created_at","TEXT"]],
+        rows: [
+          ["67","field.extract","claude-sonnet-5","extract_ko.md","v1","claim_candidates_v0_1","sense.extract@3",N,"9f31…","b7a2…","2140","2026-08-19 23:14"],
+          ["66","sense.extract","claude-sonnet-5","extract.md","v1","claim_candidates_v0_1","sense.extract@3",N,"11de…","0c9f…","1980","2026-08-19 23:12"],
+          ["65","sense.extract","claude-sonnet-5","extract.md","v1","claim_candidates_v0_1","sense.extract@3",N,"e042…","77aa…","2310","2026-08-19 23:12"],
+          ["64","screen.evidence","claude-sonnet-5","evidence.md","v1","screen_finding_v1","screen.parse@1","2026-08-26","5b77…","d310…","3420","2026-08-19 23:01"]] }
+    };
+
+    // 권한별 접근 규칙 (docs/02 §9의 요약판)
+    function rule(role, name) {
+      if (role === "ADMIN") return { mode: "full", note: "-- 권한: ADMIN — 열람 전용, 접근 로그 기록" };
+      if (role === "SAFETY")
+        return (name === "safety_candidates" || name === "blocked_log")
+          ? { mode: "full", note: "-- 권한: SAFETY — SAFETY 도메인" }
+          : { mode: "deny", msg: "SAFETY 권한은 안전성 도메인만 조회합니다. 성장 신호·가설 테이블은 접근 대상이 아닙니다." };
+      if (role === "COMMERCIAL") {
+        if (name === "hypotheses") return { mode: "redact", note: "-- 권한: COMMERCIAL — kind='DEVELOPMENT' 행 억제" };
+        if (name === "contract_versions") return { mode: "full", note: "-- 권한: COMMERCIAL — 스키마 메타는 열람 가능" };
+        return { mode: "deny", msg: "COMMERCIAL 권한은 원문·개인 식별 테이블을 직접 조회할 수 없습니다. 집계 API만 제공되며(distinct_hcp ≥ 3), raw_text·hcp_ref는 응답에 필드 자체가 없습니다." };
+      }
+      // CLINICAL_STRATEGY · MEDICAL_AFFAIRS
+      if (name === "safety_candidates")
+        return { mode: "deny", msg: "이 권한은 안전성 도메인을 조회할 수 없습니다 — 부작용 의심 건은 '분기됨' 사실만 보입니다. 관리자 또는 SAFETY로 전환하세요." };
+      return { mode: "full", note: "-- 권한 게이트: purpose_domain IN ('MEDICAL','PUBLIC_EVIDENCE')" };
+    }
+
+    var title = document.getElementById("dtTitle"), desc = document.getElementById("dtDesc"),
+        body = document.getElementById("dtBody"), sqlEl = document.getElementById("dtSql");
+    var current = "documents";
+
+    function cellHtml(v) {
+      if (v === null) return '<span class="nullv">NULL</span>';
+      return String(v);
+    }
+    function render(key) {
+      current = key;
+      var t = T[key], role = window.DELPHI_ROLE || "ADMIN";
+      var r = rule(role, key);
+      title.textContent = key;
+      desc.textContent = t.d;
+      var sql = "SELECT " + t.cols.map(function (c) { return c[0]; }).join(", ") + "\nFROM " + key + " LIMIT " + Math.max(t.rows.length, 1) + ";";
+      if (r.mode === "deny") {
+        sqlEl.textContent = "SELECT * FROM " + key + ";\n-- 403 PURPOSE_SCOPE_VIOLATION (권한: " + role + ")";
+        body.innerHTML = '<div style="border:1.5px dashed rgba(228,83,107,.5);background:var(--rust-soft);border-radius:12px;padding:14px 16px;margin:8px 0">'
+          + '<div style="font-family:var(--mono);font-size:12px;font-weight:800;color:var(--rust)">403 PURPOSE_SCOPE_VIOLATION</div>'
+          + '<div style="font-size:12px;margin-top:4px;line-height:1.6">' + r.msg + " 빈 배열로 감추지 않고 명시적으로 거부합니다.</div></div>";
+        return;
+      }
+      sqlEl.textContent = sql + "\n" + (r.note || "");
+      var rows = t.rows;
+      var suppressed = 0;
+      if (r.mode === "redact" && key === "hypotheses") {
+        rows = rows.filter(function (row) { return row[2] !== "DEVELOPMENT"; });
+        suppressed = t.rows.length - rows.length;
+      }
+      var html = '<table class="sfgrid"><thead><tr><th class="rownum">#</th>'
+        + t.cols.map(function (c) { return "<th>" + c[0] + "<small>" + c[1] + "</small></th>"; }).join("") + "</tr></thead><tbody>";
+      if (rows.length === 0) {
+        html += '<tr><td class="rownum"></td><td colspan="' + t.cols.length + '" style="color:var(--muted);font-family:inherit">0 rows — ' + (t.count || "") + "</td></tr>";
+      }
+      rows.forEach(function (row, i) {
+        html += '<tr><td class="rownum">' + (i + 1) + "</td>" + row.map(function (c) { return "<td>" + cellHtml(c) + "</td>"; }).join("") + "</tr>";
+      });
+      body.innerHTML = html + "</tbody></table>"
+        + '<div class="grid-foot"><span>' + t.cols.length + " columns</span><span>·</span><span>" + t.count + "</span>"
+        + (suppressed ? '<span>·</span><span style="color:var(--orange-deep);font-weight:700">suppressedRowCount: ' + suppressed + "</span>" : "")
+        + '<span style="margin-left:auto">ANSI SQL only — Snowflake 이관 대비 (docs/01 §2)</span></div>';
+    }
+    window.__renderData = function () { render(current); };
+    document.querySelectorAll('#p-data .fchip').forEach(function (ch) {
+      ch.addEventListener("click", function () {
+        document.querySelectorAll('#p-data .fchip').forEach(function (x) { x.classList.remove("on"); });
+        ch.classList.add("on");
+        render(ch.dataset.t);
+      });
+    });
+    render("documents");
+  })();
+
+  // 실행 루프 재생 — 승인 → Action Item → Field 전달 → 수집 귀속 (연출, docs/01 §3 상태 머신)
+  (function () {
+    var steps = document.querySelectorAll("#loopSteps .lstep");
+    var play = document.getElementById("loopPlay"), rst = document.getElementById("loopReset");
+    var note = document.getElementById("loopNote");
+    var rows = document.querySelectorAll("#actRows tr");
+    var timers = [];
+    // FIELD_CHECKLIST 만 수집 귀속(COLLECTED) 대상이다 — 전문조직 검토는 Field 수집으로 닫히지 않는다
+    var TRACK = [
+      [ // ACT-001 · FIELD_CHECKLIST
+        { st: '<span class="pill pill-gray">PROPOSED</span>', n: "—" },
+        { st: '<span class="pill pill-auto">ACTIVE</span>', n: "0" },
+        { st: '<span class="pill pill-st">전달됨</span>', n: "0" },
+        { st: '<span class="pill pill-inl">COLLECTED</span>', n: "1" },
+      ],
+      [ // ACT-002 · SPECIALIST_REVIEW — 수집 귀속 개념이 없다
+        { st: '<span class="pill pill-gray">PROPOSED</span>', n: "—" },
+        { st: '<span class="pill pill-auto">ACTIVE</span>', n: "해당 없음" },
+        { st: '<span class="pill pill-st">전달됨</span>', n: "해당 없음" },
+        { st: '<span class="pill pill-st">검토 중</span>', n: "해당 없음" },
+      ],
+    ];
+    var NOTES = [
+      "Board·CEO는 제안까지만 — ACTIVE로 만드는 것은 사람의 결정뿐입니다.",
+      "결정이 저장되었습니다. 채택된 2건만 ACTIVE가 됩니다 — 상업 실행 대상은 enum에 없어 만들 수조차 없습니다.",
+      "브리핑 응답에 포함되어 delivered_at이 찍혔습니다. Field 앱 탭의 폰 화면에서 같은 ACT-001이 보입니다.",
+      "다음 면담이 ACT-001을 참조해 제출되고 claim이 승인되었습니다 — 참조 수집 1, 루프가 닫혔습니다. ACT-002는 Field 수집 대상이 아니라 전문조직 검토로 남습니다.",
+    ];
+    function paint(k) {
+      steps.forEach(function (el, i) { el.classList.toggle("on", i < k); });
+      var j = k === 0 ? 0 : Math.max(0, Math.min(3, k - 1));
+      for (var i = 0; i < 2; i++) {
+        var s2 = TRACK[i][j];
+        rows[i].querySelector(".ast").innerHTML = s2.st;
+        rows[i].querySelector(".acn").textContent = s2.n;
+      }
+      note.textContent = NOTES[Math.max(0, Math.min(3, k - 1))] || NOTES[0];
+    }
+    function reset() { timers.forEach(clearTimeout); timers = []; paint(0); play.disabled = false; play.textContent = "▶ 승인 후 재생"; }
+    play.addEventListener("click", function () {
+      reset(); play.disabled = true; play.textContent = "재생 중…";
+      for (var k = 1; k <= 4; k++) {
+        (function (kk) { timers.push(setTimeout(function () { paint(kk); }, kk * 900)); })(k);
+      }
+      timers.push(setTimeout(function () { play.disabled = false; play.textContent = "↺ 다시 재생"; }, 4 * 900 + 300));
+    });
+    rst.addEventListener("click", reset);
+    paint(0);
+  })();
+
+  // 권한 상태 — 로그인·전환 메뉴가 화면 전체에 반영
+  (function () {
+    window.DELPHI_ROLE = "ADMIN";
+    var sel = document.getElementById("roleSel");
+    var ov = document.getElementById("loginOv");
+    function apply(role) {
+      window.DELPHI_ROLE = role;
+      if (sel.value !== role) sel.value = role;
+      var safeOK = role === "ADMIN" || role === "SAFETY";
+      document.getElementById("safeBody").classList.toggle("hide", !safeOK);
+      document.getElementById("safeDenied").classList.toggle("hide", safeOK);
+      var comm = role === "COMMERCIAL";
+      document.querySelectorAll(".hyp-dev").forEach(function (el) { el.classList.toggle("hide", comm); });
+      document.getElementById("hypSuppressed").classList.toggle("hide", !comm);
+      if (window.__renderData) window.__renderData();
+    }
+    sel.addEventListener("change", function () { apply(sel.value); });
+    document.querySelectorAll(".persona").forEach(function (p) {
+      p.addEventListener("click", function () { apply(p.dataset.role); ov.classList.add("hide"); });
+    });
+    apply("ADMIN");
+  })();
+
+  // Field 캡처 라이브 데모 — 대화 재생 + 실시간 스키마 캐치 (연출)
+  (function () {
+    var FLOW = [
+      { sp: "MSL", t: "안녕하세요 선생님, 지난 학회는 잘 다녀오셨어요?" },
+      { sp: "의사", t: "네, 다녀오고 나니 외래가 밀려서 정신이 없네요." },
+      { sp: "MSL", t: "요즘 약물난치성 환자분들은 좀 어떠세요?" },
+      { sp: "의사", t: "2제 실패한 17세 환자가 있는데, 성인 허가라 손을 쓸 수가 없어요. 18세까지 기다리는 수밖에요.",
+        s: [["2제 실패한 17세 환자", "seg"], ["성인 허가라 손을 쓸 수가 없어요", "sig"]],
+        c: [["환자군 · 청소년(12–17) — 허가 범위 밖", "warn"], ["신호 · 미충족 수요", ""], ["경위 · MSL 질문에 답변", "meta"]] },
+      { sp: "의사", t: "아, 그리고 성인 환자 한 분은 복용 시작하고 어지러움하고 졸림이 꽤 있다고 하셨어요.",
+        s: [["어지러움하고 졸림", "ae"]],
+        c: [["부작용 의심 → 안전성 경로로 분리 · 일반 카드 제외", "ae"]] },
+      { sp: "의사", t: "혹시 청소년 용량이나 안전성 자료가 있으면 보내주실 수 있어요?",
+        s: [["청소년 용량이나 안전성 자료", "info"]],
+        c: [["자료 요청 → 체크리스트 후보", "info"]] },
+      { sp: "MSL", t: "확인해서 다음 방문 때 정리해 드리겠습니다.", end: true }
+    ];
+    var chat = document.getElementById("fChat"), chips = document.getElementById("fChips");
+    var play = document.getElementById("fPlay"), reset = document.getElementById("fReset");
+    var idx = 0, timer = null, running = false;
+
+    function clearDemo() {
+      clearTimeout(timer); idx = 0; running = false;
+      chat.innerHTML = '<div style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px">▶ 를 누르면 대화가 재생됩니다</div>';
+      chips.innerHTML = '<span style="font-size:10.5px;color:var(--muted)">아직 감지된 신호 없음</span>';
+      play.textContent = "▶ 면담 재생"; play.disabled = false;
+    }
+    function addChip(txt, cls) {
+      if (idx <= 1 && chips.firstChild && chips.firstChild.tagName !== "SPAN") {} // noop
+      if (chips.querySelector("span") && chips.textContent.indexOf("아직") >= 0) chips.innerHTML = "";
+      var c = document.createElement("span");
+      c.className = "dchip" + (cls ? " " + cls : "");
+      c.textContent = txt; chips.appendChild(c);
+    }
+    function step() {
+      if (idx >= FLOW.length) { running = false; play.textContent = "↺ 다시 재생"; play.disabled = false; return; }
+      var m = FLOW[idx];
+      if (idx === 0) chat.innerHTML = "";
+      var line = document.createElement("div");
+      line.className = "cline";
+      var tx = m.t;
+      (m.s || []).forEach(function (sp2) { tx = tx.replace(sp2[0], '<mark class="ev ev-' + sp2[1] + '">' + sp2[0] + "</mark>"); });
+      line.innerHTML = '<span class="sp ' + (m.sp === "MSL" ? "sp-msl" : "sp-doc") + '">' + m.sp + '</span><span class="tx">' + tx + "</span>";
+      chat.appendChild(line);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { line.classList.add("show"); }); });
+      setTimeout(function () { line.querySelectorAll("mark.ev").forEach(function (mm) { mm.classList.add("on"); }); }, 550);
+      (m.c || []).forEach(function (cc, i) { setTimeout(function () { addChip(cc[0], cc[1]); }, 450 + i * 220); });
+      if (m.end) setTimeout(function () { addChip("제출 → 카드 2건 · 안전성 1건 분리", "warn"); }, 900);
+      chat.scrollTop = chat.scrollHeight;
+      idx++;
+      timer = setTimeout(step, 1500);
+    }
+    play.addEventListener("click", function () {
+      if (running) return;
+      if (idx >= FLOW.length) clearDemo();
+      running = true; play.textContent = "재생 중…"; play.disabled = true;
+      setTimeout(function () { play.disabled = false; play.textContent = "재생 중…"; }, 300);
+      step();
+    });
+    reset.addEventListener("click", clearDemo);
+  })();
+
+  // 전문가 관여 검색
+  var kq = document.getElementById("kolSearch");
+  kq.addEventListener("input", function () {
+    var text = kq.value.toLowerCase();
+    document.querySelectorAll("#kolTable tbody tr").forEach(function (tr) {
+      tr.classList.toggle("hide", !!text && tr.textContent.toLowerCase().indexOf(text) < 0);
+    });
+  });
+</script>
