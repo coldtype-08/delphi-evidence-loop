@@ -8,8 +8,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "node server.js",
+    "lint": "eslint",
+    "start:next": "next start"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.20",
