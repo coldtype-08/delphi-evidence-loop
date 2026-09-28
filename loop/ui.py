@@ -82,7 +82,26 @@ td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}tr:las
 .strip div{padding:12px 14px;border-right:1px solid var(--line)}.strip div:last-child{border-right:0}
 .strip .k{font-size:var(--fs-2xs);color:var(--faint);font-weight:600}.strip b{display:block;font-family:Manrope,sans-serif;font-size:1.4rem;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2;margin:2px 0}
 .strip .s{font-size:var(--fs-2xs);color:var(--muted)}.strip .turn .k::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-right:6px}
+.strip.mini{margin:0 0 18px}.strip.mini div{padding:7px 12px}.strip.mini b{font-size:1rem;display:inline;margin-right:6px}.strip.mini .s{display:inline}.strip.mini .k{display:inline;margin-right:6px}
 .strip.j{grid-template-columns:repeat(7,1fr);margin:6px 0 4px}.strip.j b{font-size:1.05rem}
+/* AI Board room */
+.room{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:6px 18px 14px}
+.turn{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);animation:rise .35s ease both}
+.turn:last-child{border-bottom:0}@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Manrope,sans-serif;font-weight:800;font-size:11px;color:#fff;letter-spacing:.02em}
+.av.orchestrator{background:var(--faint)}.av.cmo{background:var(--navy)}.av.ra_head{background:var(--green)}.av.pv_head{background:var(--rust)}.av.rnd_head{background:#1F5A8F}.av.cfo{background:var(--hold)}.av.cco{background:var(--orange);color:var(--ink)}.av.ceo{background:#0E1A45}
+.turn .who{font-weight:700;color:var(--ink);font-size:var(--fs-sm)}.turn .ph{font-size:var(--fs-2xs);color:var(--faint);margin-left:6px}
+.turn .ut{margin-top:4px;line-height:1.75}.turn .ut .lead{font-weight:700;color:var(--ink)}
+.turn .cites{margin-top:4px}.cite{display:inline-block;font-family:"Noto Sans Mono",monospace;font-size:11px;color:var(--ink);background:var(--fill-2);border-radius:4px;padding:1px 6px;margin:2px 4px 0 0;cursor:default}
+.divider{display:flex;align-items:center;gap:10px;font-size:var(--fs-2xs);color:var(--faint);font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:12px 0 2px}.divider::after{content:"";flex:1;border-top:1px solid var(--line)}
+.live{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:var(--fs-sm);padding:12px 0}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--orange);animation:pulse 1.2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+.caret::after{content:"▍";color:var(--orange);animation:blink 1s steps(2) infinite}@keyframes blink{50%{opacity:0}}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}.bar .sp{margin-left:auto;font-size:var(--fs-2xs);color:var(--faint)}
+.btn.sm{padding:5px 10px;font-size:var(--fs-2xs)}.btn.on{outline:2px solid var(--orange)}
+.tip-glass{position:fixed;z-index:50;max-width:340px;padding:10px 14px;border-radius:14px;font-size:12px;line-height:1.65;color:var(--on-navy);pointer-events:none;opacity:0;transition:opacity .1s;
+background:linear-gradient(140deg,rgba(28,46,112,.96),rgba(18,30,78,.94));backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,.2);box-shadow:0 18px 40px rgba(22,38,97,.3),inset 0 1px 0 rgba(255,255,255,.16)}
+.tip-glass.on{opacity:1}.tip-glass .th{color:var(--orange-bright);font-weight:700;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:4px;margin-bottom:6px}
 .strip.j .done .k::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px}
 .strip.j .next .k::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--navy);margin-right:6px}
 .strip.j .human{background:var(--orange-soft)}.strip.j .human .k::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-right:6px}
@@ -147,7 +166,7 @@ def button(label: str, action: str, hidden: dict | None = None, inputs: list[tup
     return f'<form method="post" action="{esc(action)}">{h}{i}<button class="{cls}">{esc(label)}</button></form>'
 
 
-def shell(title: str, body: str, active: str = "/", banner: str = "", static: bool = False) -> str:
+def shell(title: str, body: str, active: str = "/", banner: str = "", static: bool = False, band: str = "", script: str = "") -> str:
     nav = "" if static else '<nav class="nav">' + "".join(
         f'<a href="{href}" class="{"on" if href == active else ""}">{name}</a>' for href, name in NAV) + "</nav>"
     side = (f'<aside class="side"><a href="/" class="brand"><img src="/static/logo-navy.png" alt="DELPHi" style="height:20px;display:block">'
@@ -159,4 +178,14 @@ def shell(title: str, body: str, active: str = "/", banner: str = "", static: bo
               + '<span style="margin-left:auto">NVIDIA Nemotron 3 Ultra · NIM · PubMed · ClinicalTrials.gov · openFDA · CMS Part D</span></div>')
     return ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<title>{esc(title)} — DELPHi</title>{FONTS}<style>{CSS}</style></head><body><div class="app">{side}'
-            f'<main>{ban}{body}{legend}</main></div></body></html>')
+            f'<main>{band}{ban}{body}{legend}</main></div><div class="tip-glass" id="tip"></div>{TIP_JS}{script}</body></html>')
+
+
+TIP_JS = """<script>
+(function(){const tip=document.getElementById('tip');if(!tip)return;
+function show(el){const h=el.getAttribute('data-tip');if(!h)return;tip.innerHTML=h;tip.classList.add('on');
+const r=el.getBoundingClientRect();tip.style.left=Math.min(window.innerWidth-tip.offsetWidth-12,r.left)+'px';
+const below=r.bottom+8+tip.offsetHeight<window.innerHeight;tip.style.top=(below?r.bottom+8:r.top-tip.offsetHeight-8)+'px';}
+document.addEventListener('mouseover',e=>{const el=e.target.closest('[data-tip]');if(el)show(el);});
+document.addEventListener('mouseout',e=>{if(e.target.closest('[data-tip]'))tip.classList.remove('on');});})();
+</script>"""

@@ -6,3 +6,4 @@ data/llm_runs.jsonl
 .DS_Store
 data/*.selftest.json
 ~$*
+data/board_live/

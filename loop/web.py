@@ -2,20 +2,21 @@
 
 Every button runs the same code the CLI runs. The two human gates take a name; the name is what the
 record keeps. Model steps replay from cache when the input is unchanged, so a demo click is instant
-unless it is genuinely new work.
+unless it is genuinely new work. The board runs in a background thread and streams its turns to the
+meeting page; while it runs, other mutating actions are refused.
 """
 from __future__ import annotations
 
 import json
+import threading
 import traceback
-
 from pathlib import Path
 
 from fastapi import FastAPI, Form
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import board, intro, pages, screen, sense, store
+from . import board, intro, live, pages, screen, sense, store
 
 app = FastAPI(title="DELPHi — Evidence Loop")
 app.mount("/static", StaticFiles(directory=str(Path(__file__).resolve().parent / "static")), name="static")
@@ -28,6 +29,10 @@ def _take_banner() -> str:
 
 
 def _do(label: str, fn, back: str = "/console"):
+    busy = live.running()
+    if busy:
+        LAST["msg"] = f"{label} 보류 — {', '.join(busy)} 심의가 진행 중입니다. 끝날 때까지 다른 실행은 잠깁니다."
+        return RedirectResponse(f"/hypotheses/{busy[0]}/board", status_code=303)
     try:
         LAST["msg"] = f"{label}: {fn()}"
     except SystemExit as e:        # the gates refuse with SystemExit — show the reason, don't crash
@@ -74,9 +79,22 @@ def hypothesis(hid: str):
 @app.get("/hypotheses/{hid}/board", response_class=HTMLResponse)
 def hypothesis_board(hid: str):
     try:
-        return HTMLResponse(pages.board_page(store.load(), store.contract(), hid, _take_banner()))
+        return HTMLResponse(pages.board_page(store.load(), store.contract(), hid, _take_banner(), live_rec=live.read(hid)))
     except SystemExit:
         return RedirectResponse("/hypotheses", status_code=303)
+
+
+@app.get("/hypotheses/{hid}/board.json")
+def hypothesis_board_json(hid: str, after: int = 0):
+    """Snapshot for the streaming meeting page: turns after `after`, and the status."""
+    rec = live.read(hid)
+    if rec is None:
+        memo = store.load()["board"].get(hid)
+        if memo and "transcript" in memo:
+            return JSONResponse({"status": "DONE", "turns": [t for t in memo["transcript"] if t["no"] > after], "total": len(memo["transcript"])})
+        return JSONResponse({"status": "NONE", "turns": [], "total": 0})
+    return JSONResponse({"status": rec["status"], "turns": [t for t in rec["turns"] if t["no"] > after],
+                         "total": len(rec["turns"]), "error": rec.get("error"), "updated_at": rec["updated_at"]})
 
 
 @app.get("/checklist", response_class=HTMLResponse)
@@ -88,7 +106,7 @@ def checklist():
 def health():
     st = store.load()
     return JSONResponse({"ok": True, "claims": len(st["claims"]), "hypotheses": len(st["hypotheses"]),
-                         "screened": len(st["screens"]), "actions": len(st["actions"])})
+                         "screened": len(st["screens"]), "actions": len(st["actions"]), "board_running": live.running()})
 
 
 @app.get("/state.json")
@@ -125,13 +143,37 @@ def run_review(hyp: str = Form(...), by: str = Form(...), note: str = Form("")):
     return _do("③ 서명", go, f"/hypotheses/{hyp}")
 
 
+def _start_board(hyp: str) -> None:
+    """Run the meeting in a thread; every turn is written to the live file the page polls."""
+    def job():
+        def on_turn(turn, meeting):
+            live.write(hyp, "RUNNING", meeting.turns)
+        try:
+            live.write(hyp, "RUNNING", [])
+            m = board.deliberate(store.load(), hyp, on_turn=on_turn)
+            live.write(hyp, "DONE", m["transcript"])
+            LAST["msg"] = (f"④ 심의 종료 — {hyp} 참석 {len(m['attendees'])}인 · 발언 {len(m['transcript'])}턴 · 권고 {m['recommendation']} · "
+                           f"경로 {m['route']} · 후속 질문 {len(m['follow_up_questions'])}개")
+        except SystemExit as e:
+            live.write(hyp, "ERROR", [], error=str(e))
+        except Exception as e:  # noqa: BLE001
+            traceback.print_exc()
+            live.write(hyp, "ERROR", [], error=f"{type(e).__name__}: {str(e)[:300]}")
+    threading.Thread(target=job, daemon=True, name=f"board-{hyp}").start()
+
+
 @app.post("/run/board")
 def run_board(hyp: str = Form(...)):
-    def go():
-        m = board.deliberate(store.load(), hyp)
-        return (f"{hyp} 심의 종료 — 참석 {len(m['attendees'])}인 · 발언 {len(m['transcript'])}턴 · 권고 {m['recommendation']} · "
-                f"경로 {m['route']} · 후속 질문 {len(m['follow_up_questions'])}개")
-    return _do("④ 심의", go, f"/hypotheses/{hyp}")
+    busy = live.running()
+    if busy:
+        return RedirectResponse(f"/hypotheses/{busy[0]}/board", status_code=303)
+    state = store.load()
+    if hyp not in state["reviews"]:
+        LAST["msg"] = f"④ 심의 거부 — {hyp}: 사람의 근거 검토 서명이 없습니다."
+        return RedirectResponse(f"/hypotheses/{hyp}", status_code=303)
+    live.clear(hyp)
+    _start_board(hyp)
+    return RedirectResponse(f"/hypotheses/{hyp}/board", status_code=303)
 
 
 @app.post("/run/approve")
@@ -146,6 +188,8 @@ def run_approve(hyp: str = Form(...), by: str = Form(...)):
 def run_reset():
     def go():
         for p in (store.STATE, store.FIELD_CHECKLIST):
+            p.unlink(missing_ok=True)
+        for p in live.LIVE_DIR.glob("*.json") if live.LIVE_DIR.exists() else []:
             p.unlink(missing_ok=True)
         return "결과를 지웠다 (캐시는 유지)"
     return _do("초기화", go)

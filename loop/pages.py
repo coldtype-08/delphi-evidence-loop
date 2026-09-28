@@ -100,7 +100,12 @@ def tally_chips(s: dict | None) -> str:
             f'<span class="chip hold">중립 {t["NEUTRAL"]}</span><span class="faint">버림 {len(s["dropped"])}</span>')
 
 
-def pipeline_strip(state: dict, notes_n: int) -> str:
+def band(state: dict) -> str:
+    """The processing line, compact — on top of every console page."""
+    return pipeline_strip(state, len(load_notes()), mini=True)
+
+
+def pipeline_strip(state: dict, notes_n: int, mini: bool = False) -> str:
     claims = state["claims"]
     verified = sum(c["verified"] for c in claims)
     hyps = state["hypotheses"]
@@ -113,6 +118,10 @@ def pipeline_strip(state: dict, notes_n: int) -> str:
         ("서명 · 심의", f"{len(state['reviews'])} · {len(state['board'])}", f"사람 차례 {len(human_turn)}건" if human_turn else "관문 대기 없음", bool(human_turn)),
         ("체크리스트", len(state["actions"]), "다음 면담이 참조", False),
     ]
+    if mini:
+        return '<div class="strip mini">' + "".join(
+            f'<div class="{"turn" if turn else ""}"><span class="k">{esc(k)}</span><b>{esc(v)}</b></div>'
+            for k, v, s, turn in cells) + "</div>"
     return '<div class="strip">' + "".join(
         f'<div class="{"turn" if turn else ""}"><div class="k">{esc(k)}</div><b>{esc(v)}</b><div class="s">{esc(s)}</div></div>'
         for k, v, s, turn in cells) + "</div>"
@@ -224,7 +233,7 @@ def notes_page(state: dict, contract: dict, banner: str = "", web: bool = True) 
             f'<p class="sub">{tag("fact")}이 루프의 입력. 의학부 담당자가 의료진을 만나고 남기는 기록을 본떠 <b>합성</b>한 {len(notes)}건이다(가상 의료진 {len(notes)}인, 실제 인물·기관·발언 없음). '
             f'약은 {esc(contract["drug_ko"])}. 추출을 실행하면 모델이 고른 발언이 <mark>원문 위에 표시</mark>되고, 유해사례로 읽힌 발언은 <mark class="ae">따로 표시</mark>된다 — 표시된 자리가 곧 코드가 검증한 원문 위치다.</p>',
             note_cards(state, notes, web)]
-    return shell("면담 기록", "\n".join(body), "/notes", banner)
+    return shell("면담 기록", "\n".join(body), "/notes", banner, band=band(state))
 
 
 def claims_page(state: dict, contract: dict, banner: str = "", web: bool = True) -> str:
@@ -248,14 +257,14 @@ def claims_page(state: dict, contract: dict, banner: str = "", web: bool = True)
         for c in sq:
             body.append(f'<tr><td class="mono">{esc(c["id"])}</td><td class="q">“{esc(c["quote"])}”<br><span class="faint">{esc(c["note_ko"])}</span></td><td class="mono">{esc(c["hcp_ref"])}</td></tr>')
         body.append("</table>")
-    return shell("발언 카드", "\n".join(body), "/claims", banner)
+    return shell("발언 카드", "\n".join(body), "/claims", banner, band=band(state))
 
 
 def hypotheses_page(state: dict, contract: dict, banner: str = "", web: bool = True) -> str:
     body = ['<div class="eyebrow">Hypotheses</div><h1>가설</h1>',
             f'<p class="sub">{tag("pattern")}언급 {contract["threshold"]["min_mentions"]}회 · 의료진 {contract["threshold"]["min_hcps"]}인을 넘은 (환자군 × 신호 유형) 묶음만 가설이 된다. 문턱은 코드다. 문장과 검색식은 모델이 쓴다.</p>',
             hyp_table(state)]
-    return shell("가설", "\n".join(body), "/hypotheses", banner)
+    return shell("가설", "\n".join(body), "/hypotheses", banner, band=band(state))
 
 
 def hypothesis_section(state: dict, contract: dict, h: dict, web: bool = True) -> str:
@@ -346,21 +355,25 @@ def board_section(memo: dict, web: bool = True) -> str:
              f'<div class="card"><b>{tag("pattern")}집계 (코드 · 확신 가중, 주무 ×1.5)</b><table><tr><th>입장</th><th>인원</th><th>가중치</th></tr>'
              + "".join(f'<tr><td>{_stance_chip(s)}</td><td class="n">{t["counts"][s]}</td><td class="n">{t["weights"][s]:.1f}</td></tr>' for s in ("SUPPORT", "HOLD", "OPPOSE"))
              + f'</table><div style="margin-top:8px">{tag("proposal")}권고 <b>{esc(memo["recommendation"])}</b> <span class="faint">— 가중치가 가장 큰 입장을 코드가 권고로 옮긴다. 간사는 바꾸지 못한다.</span></div></div></div>')
-    # transcript
-    turns = []
+    # transcript — same layout the streaming page draws, rendered server-side
+    turns, last_phase = [], None
     for tr in memo["transcript"]:
-        who = esc(tr["speaker_ko"])
+        group = tr["phase"].split(" · ")[0]
+        if group != last_phase:
+            turns.append(f'<div class="divider">{esc(group)}</div>')
+            last_phase = group
+        m = PERSONA_SHORT.get(tr["speaker"], "간사")
         st = _stance_chip(tr["stance"]) if tr.get("stance") else ""
         chg = ' <span class="chip st">입장 변경</span>' if tr.get("stance_changed") else ""
         conf = f' <span class="faint">확신 {tr["confidence"]}</span>' if tr.get("confidence") else ""
-        cited = "".join(f' <span class="mono faint">{esc(c.split("#")[0])}</span>' for c in tr.get("cited", [])[:4])
-        dropped = f' <span class="faint">(근거 목록에 없는 인용 {len(tr["cited_dropped"])}건 버림)</span>' if tr.get("cited_dropped") else ""
+        cited = "".join(f'<span class="cite">{esc(c.split("#")[0])}</span>' for c in tr.get("cited", []))
+        dropped = f' <span class="faint">근거 목록에 없는 인용 {len(tr["cited_dropped"])}건 버림</span>' if tr.get("cited_dropped") else ""
         sentences = tr["utterance_ko"].strip()
         head, _, rest = sentences.partition(". ")
-        body = f'<b>{esc(head)}{"." if rest else ""}</b> {esc(rest)}' if rest else f"<b>{esc(sentences)}</b>"
-        turns.append(f'<div class="row" style="align-items:flex-start"><div style="flex:0 0 150px"><span class="chip st">{who}</span><div class="faint">{esc(tr["phase"])}</div></div>'
-                     f'<div class="grow">{st}{chg}{conf}<div style="margin-top:4px">{body}</div><div>{cited}{dropped}</div></div></div>')
-    p.append(f'<div class="card"><b>{tag("interp")}회의 기록</b> <span class="faint">— 첫 문장이 결론. 인용은 근거 표에 있는 ID만 인정.</span>{"".join(turns)}</div>')
+        body = f'<span class="lead">{esc(head)}.</span> {esc(rest)}' if rest else f'<span class="lead">{esc(sentences)}</span>'
+        turns.append(f'<div class="turn"><div class="av {esc(tr["speaker"].lower())}">{esc(m)}</div><div><span class="who">{esc(tr["speaker_ko"])}</span><span class="ph">{esc(tr["phase"])}</span> {st}{chg}{conf}'
+                     f'<div class="ut">{body}</div><div class="cites">{cited}{dropped}</div></div></div>')
+    p.append(f'<h3>{tag("interp")}회의 기록 <span class="faint">— 첫 문장이 결론. 인용은 근거 표에 있는 ID만 인정.</span></h3><div class="room">{"".join(turns)}</div>')
     if memo.get("blocked_actions"):
         b = "".join(f'<li><b>{esc(x["speaker_ko"])}</b>: “{esc(x["action_ko"])}” — {esc(x["reason_ko"])}</li>' for x in memo["blocked_actions"])
         p.append(f'<div class="card" style="border-left:4px solid var(--rust)">{tag("fact")}<b>코드가 차단한 제안 {len(memo["blocked_actions"])}건</b><ul>{b}</ul></div>')
@@ -383,18 +396,83 @@ def board_section(memo: dict, web: bool = True) -> str:
 
 def hypothesis_page(state: dict, contract: dict, hid: str, banner: str = "", web: bool = True) -> str:
     h = store.hypothesis(state, hid)
-    return shell(hid, hypothesis_section(state, contract, h, web), "/hypotheses", banner)
+    return shell(hid, hypothesis_section(state, contract, h, web), "/hypotheses", banner, band=band(state))
 
 
-def board_page(state: dict, contract: dict, hid: str, banner: str = "", web: bool = True) -> str:
-    """The meeting record on its own page."""
+PERSONA_SHORT = {"ORCHESTRATOR": "간사", "CMO": "CMO", "RA_HEAD": "RA", "PV_HEAD": "PV", "RND_HEAD": "R&D", "CFO": "CFO", "CCO": "CCO", "CEO": "CEO"}
+
+ROOM_JS = """<script>
+(function(){
+const META=%(meta)s, EVID=%(evid)s, MODE=%(mode)s, TURNS=%(turns)s, HID=%(hid)s;
+const room=document.getElementById('room'), liveEl=document.getElementById('live'), bar=document.getElementById('bar');
+let speed=1, seen=0, lastPhase=null, playing=false, cancel=false;
+const ST={SUPPORT:['지지','support'],HOLD:['보류','hold'],OPPOSE:['반대','oppose']};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function cite(id){const base=id.split('#')[0];const q=EVID[id];const tip=q?'<div class=th>'+esc(base)+'</div>'+esc(q.stance)+' · “'+esc(q.quote.slice(0,220))+'”':'';return '<span class=cite'+(tip?' data-tip="'+tip.replace(/"/g,'&quot;')+'"':'')+'>'+esc(base)+'</span>';}
+function el(t){const m=META[t.speaker]||{cls:'orchestrator',short:'간사'};const d=document.createElement('div');d.className='turn';
+const st=t.stance?'<span class="chip '+ST[t.stance][1]+'">'+ST[t.stance][0]+'</span>':'';const chg=t.stance_changed?'<span class="chip st">입장 변경</span>':'';const conf=t.confidence?'<span class=faint> 확신 '+t.confidence+'</span>':'';
+const cites=(t.cited||[]).map(cite).join('')+(t.cited_dropped&&t.cited_dropped.length?'<span class=faint> 근거 목록에 없는 인용 '+t.cited_dropped.length+'건 버림</span>':'');
+d.innerHTML='<div class="av '+m.cls+'">'+esc(m.short)+'</div><div><span class=who>'+esc(t.speaker_ko)+'</span><span class=ph>'+esc(t.phase)+'</span> '+st+chg+conf+'<div class=ut><span class=txt></span></div><div class=cites>'+cites+'</div></div>';
+return d;}
+function divider(phase){const d=document.createElement('div');d.className='divider';d.textContent=phase.replace(/ · .*/,'');return d;}
+function typeInto(span,text){return new Promise(res=>{const lead=text.indexOf('. ');let i=0;const step=Math.max(2,Math.round(3*speed));
+span.classList.add('caret');const tick=()=>{if(cancel){span.innerHTML=fmt(text,lead);span.classList.remove('caret');return res();}
+i=Math.min(text.length,i+step);span.innerHTML=fmt(text.slice(0,i),lead);if(i<text.length){setTimeout(tick,20/speed);}else{span.classList.remove('caret');res();}};tick();});}
+function fmt(s,lead){if(lead>0&&s.length>lead)return '<span class=lead>'+esc(s.slice(0,lead+1))+'</span>'+esc(s.slice(lead+1));return '<span class=lead>'+esc(s)+'</span>';}
+async function add(t,typed){const group=t.phase.replace(/ · .*/,'');if(group!==lastPhase){room.appendChild(divider(t.phase));lastPhase=group;}
+const d=el(t);room.appendChild(d);d.scrollIntoView({block:'nearest',behavior:'smooth'});
+if(typed){await typeInto(d.querySelector('.txt'),t.utterance_ko);await new Promise(r=>setTimeout(r,(700+Math.random()*400)/speed));}else{d.querySelector('.txt').innerHTML=fmt(t.utterance_ko,t.utterance_ko.indexOf('. '));}}
+function setLive(msg){if(liveEl){liveEl.innerHTML=msg?'<span class=dot></span>'+esc(msg):'';}}
+async function poll(){try{const r=await fetch('/hypotheses/'+HID+'/board.json?after='+seen);const j=await r.json();
+for(const t of j.turns){setLive(t.speaker_ko+' 발언 중');await add(t,true);seen=t.no;}
+if(j.status==='DONE'){setLive('회의록을 정리하는 중');setTimeout(()=>location.reload(),1200);return;}
+if(j.status==='ERROR'){setLive('심의 중단 — '+(j.error||''));return;}
+setLive(seen?'다음 발언을 기다리는 중':'간사가 개회를 준비하는 중');}catch(e){setLive('연결 재시도 중');}
+setTimeout(poll,1200);}
+async function replay(){if(playing)return;playing=true;cancel=false;room.innerHTML='';lastPhase=null;const rec=document.getElementById('record');if(rec)rec.style.display='none';
+for(const t of TURNS){if(cancel)break;setLive(t.speaker_ko+' 발언 중');await add(t,true);}setLive('');playing=false;if(rec)rec.style.display='';}
+if(bar){bar.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.speed){speed=+b.dataset.speed;bar.querySelectorAll('[data-speed]').forEach(x=>x.classList.toggle('on',x===b));}
+if(b.dataset.act==='replay'){cancel=true;setTimeout(replay,50);}if(b.dataset.act==='skip'){cancel=true;}});}
+if(MODE==='live'){poll();}
+})();
+</script>"""
+
+
+def _room_js(memo: dict | None, hid: str, mode: str, screen: dict | None) -> str:
+    meta = {k: {"cls": k.lower(), "short": v} for k, v in PERSONA_SHORT.items()}
+    evid = {it["source_id"]: {"stance": {"SUPPORTS": "지지", "CONTRADICTS": "반대", "NEUTRAL": "중립"}[it["stance"]], "quote": it["quote"]}
+            for it in (screen or {}).get("items", [])}
+    turns = memo["transcript"] if memo and "transcript" in memo else []
+    return ROOM_JS % {"meta": json.dumps(meta, ensure_ascii=False), "evid": json.dumps(evid, ensure_ascii=False),
+                      "mode": json.dumps(mode), "turns": json.dumps(turns, ensure_ascii=False), "hid": json.dumps(hid)}
+
+
+def board_page(state: dict, contract: dict, hid: str, banner: str = "", web: bool = True, live_rec: dict | None = None) -> str:
+    """The meeting on its own page — live while it runs, replayable when it is done."""
     h = store.hypothesis(state, hid)
     memo = state["board"].get(hid)
+    screen = state["screens"].get(hid)
     head = (f'<div class="eyebrow">{esc(hid)} · <a href="/hypotheses/{esc(hid)}">가설 상세로</a></div>'
-            f'<h1>AI Board 회의 기록 — {esc(h["segment"])} × {esc(h["signal_type"])}</h1>'
+            f'<h1>AI Board 회의 — {esc(h["segment"])} × {esc(h["signal_type"])}</h1>'
             f'<p class="sub">{tag("interp")}{esc(h["statement_ko"])}</p>')
-    body = head + journey(state, h, web) + (board_section(memo, web) if memo else '<p class="sub">아직 심의 전이다.</p>')
-    return shell(f"{hid} 회의 기록", body, "/hypotheses", banner)
+    running = bool(live_rec and live_rec["status"] == "RUNNING")
+    if running:
+        n = len(live_rec["turns"])
+        body = (head + journey(state, h, web) +
+                f'<div class="card"><b>심의 진행 중</b> <span class="sub">— 간사 1 + 임원 7인. 발언이 생기는 대로 올라온다. 지금까지 {n}턴.</span>'
+                '<div class="bar" id="bar"><span class="faint">속도</span><button class="btn sm on" data-speed="1">×1</button><button class="btn sm" data-speed="2">×2</button><button class="btn sm" data-speed="4">×4</button></div>'
+                '<div class="room" id="room"></div><div class="live" id="live"><span class="dot"></span>간사가 개회를 준비하는 중</div></div>')
+        return shell(f"{hid} 회의", body, "/hypotheses", banner, band=band(state), script=_room_js(None, hid, "live", screen))
+    if memo and "transcript" in memo:
+        ctrl = ('<div class="bar" id="bar"><button class="btn sm" data-act="replay">▶ 처음부터 재생</button><button class="btn sm ghost" data-act="skip">건너뛰기</button>'
+                '<span class="faint">속도</span><button class="btn sm on" data-speed="1">×1</button><button class="btn sm" data-speed="2">×2</button><button class="btn sm" data-speed="4">×4</button>'
+                f'<span class="sp">{len(memo["transcript"])}턴 · {esc(memo["deliberated_at"][:16].replace("T", " "))} · 실제 회의 기록을 재생한다 (모델 재호출 없음)</span></div>')
+        body = (head + journey(state, h, web) + ctrl + '<div class="room" id="room"></div><div class="live" id="live"></div>'
+                + f'<div id="record">{board_section(memo, web)}</div>')
+        return shell(f"{hid} 회의 기록", body, "/hypotheses", banner, band=band(state), script=_room_js(memo, hid, "record", screen))
+    err = f'<div class="banner">이전 심의가 중단됐다 — {esc(live_rec["error"])}</div>' if live_rec and live_rec.get("status") == "ERROR" else ""
+    body = head + journey(state, h, web) + err + '<p class="sub">아직 심의 전이다. 가설 상세에서 서명 후 심의를 실행한다.</p>'
+    return shell(f"{hid} 회의", body, "/hypotheses", banner, band=band(state))
 
 
 def checklist_page(state: dict, contract: dict, banner: str = "", web: bool = True) -> str:
@@ -409,7 +487,7 @@ def checklist_page(state: dict, contract: dict, banner: str = "", web: bool = Tr
         body.append("</table>")
     else:
         body.append('<p class="sub">아직 없음 — 심의를 거쳐 사람이 결정하면 여기에 생긴다.</p>')
-    return shell("체크리스트", "\n".join(body), "/checklist", banner)
+    return shell("체크리스트", "\n".join(body), "/checklist", banner, band=band(state))
 
 
 def static_report(state: dict, contract: dict) -> str:

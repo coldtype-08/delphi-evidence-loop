@@ -86,8 +86,8 @@ def sign_review(state: dict, hyp_id: str, by: str, note: str = "") -> dict:
 # ── the meeting ────────────────────────────────────────────────────────────────
 
 class _Meeting:
-    def __init__(self, state: dict, hyp_id: str, force: bool):
-        self.state, self.hyp_id, self.force = state, hyp_id, force
+    def __init__(self, state: dict, hyp_id: str, force: bool, on_turn=None):
+        self.state, self.hyp_id, self.force, self.on_turn = state, hyp_id, force, on_turn
         self.hyp, self.screen, self.rev = store.hypothesis(state, hyp_id), state["screens"][hyp_id], state["reviews"][hyp_id]
         self.evidence_ids = {it["source_id"] for it in self.screen["items"]}
         self.turns: list[dict] = []
@@ -113,7 +113,10 @@ class _Meeting:
             valid = [c for c in out["cited"] if c in self.evidence_ids]
             turn["cited"] = valid
             turn["cited_dropped"] = [c for c in out["cited"] if c not in self.evidence_ids]
+        turn["at"] = store.now()
         self.turns.append(turn)
+        if self.on_turn:
+            self.on_turn(turn, self)   # streaming: the web page reads turns as they land
         return turn
 
     def _orchestrator(self, mode: str, extra: str, schema_name: str, schema: dict, thinking: bool | None = None) -> dict:
@@ -219,10 +222,10 @@ class _Meeting:
         }
 
 
-def deliberate(state: dict, hyp_id: str, force: bool = False) -> dict:
+def deliberate(state: dict, hyp_id: str, force: bool = False, on_turn=None) -> dict:
     if hyp_id not in state["reviews"]:
         raise SystemExit(f"{hyp_id}: 사람의 근거 검토 서명이 없습니다 — `review {hyp_id} --by 이름` 이 먼저입니다.")
-    memo = _Meeting(state, hyp_id, force).run()
+    memo = _Meeting(state, hyp_id, force, on_turn).run()
     state["board"][hyp_id] = memo
     store.hypothesis(state, hyp_id)["status"] = "DELIBERATED"
     store.save(state)
