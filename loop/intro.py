@@ -55,19 +55,33 @@ def render(state: dict, contract: dict) -> str:
         f'<b class="v">{esc(v)}</b><div class="t">{esc(t)}</div><div class="d">{esc(d)}</div></div>'
         for no, t, who, v, d, human in stages)
 
-    hyp003 = next((h for h in hyps if h["id"] == "HYP-003"), None)
-    s3 = state["screens"].get("HYP-003")
-    memo3 = state["board"].get("HYP-003")
+    SIG_KO = {"OFF_LABEL_DEMAND": "쓰고 싶은데 막혔다", "OFF_LABEL_USE": "써봤다", "REPURPOSING": "다른 쓰임",
+              "UNMET_NEED": "충족되지 않은 필요", "DOSING": "용량·제형", "SAFETY_TOLERABILITY": "안전성·내약성"}
+    demo = (next((h for h in hyps if h["segment"] == "유방암 환자" and h["signal_type"] == "OFF_LABEL_DEMAND"), None)
+            or (hyps[0] if hyps else None))
+    demo_title = f'{demo["id"]} {demo["segment"]} × {SIG_KO.get(demo["signal_type"], demo["signal_type"])}' if demo else "가설 없음"
+    s3 = state["screens"].get(demo["id"]) if demo else None
+    memo3 = state["board"].get(demo["id"]) if demo else None
     scene = ""
-    if hyp003 and s3:
+    if demo and s3:
         t = s3["totals"]
-        scene = (f'<div class="card"><div class="eyebrow">HYP-003 · {esc(hyp003["segment"])} × {esc(hyp003["signal_type"])}</div>'
-                 f'<p>{tag("pattern")}현장 {hyp003["field"]["mentions"]}회 / {hyp003["field"]["hcps"]}인 — 언론 보도를 본 유방암 환자들이 보조요법으로 처방을 요청한다는 신호.</p>'
-                 f'<p>{tag("fact")}외부 근거: 지지 {t["SUPPORTS"]} · <b>반대 {t["CONTRADICTS"]}</b> · 중립 {t["NEUTRAL"]}. 반대 근거에 대규모 3상 MA.32(NCT01101438, n=3,649)의 무효 결과가 있다. '
-                 f'같은 시험이 등록부(CT.gov)에서는 «진지하게 시험됐다»는 지지로, 결과 논문에서는 반대로 잡힌다 — 등록과 결과는 다르다.</p>'
-                 + (f'<p>{tag("proposal")}AI Board 심의 {len(memo3.get("transcript", []))}턴, 최종 입장 지지 {memo3.get("tally", {}).get("counts", {}).get("SUPPORT", "-")} · 보류 {memo3.get("tally", {}).get("counts", {}).get("HOLD", "-")} · 반대 {memo3.get("tally", {}).get("counts", {}).get("OPPOSE", "-")}, 권고 <b>{esc(memo3["recommendation"])}</b>. 결정: {esc(memo3.get("decision", {}).get("by", "미결"))}.</p>' if memo3 else "")
-                 + '<p class="faint">현장 요청과 외부 근거가 어긋나는 사례입니다. 시스템은 근거와 심의 기록을 그대로 표시하고, 결정은 사람이 합니다.</p>'
-                 '<a class="cta ghost" href="/hypotheses/HYP-003">HYP-003 열기 →</a></div>')
+        stance_ko = {"SUPPORTS": "지지", "CONTRADICTS": "반대", "NEUTRAL": "중립"}
+        ma32 = [it for it in s3["items"] if "MA.32" in (it.get("quote") or "") or "NCT01101438" in str(it.get("source_id", ""))]
+        ma32_line = ""
+        if ma32:
+            st = "·".join(sorted({stance_ko.get(it["stance"], it["stance"]) for it in ma32}))
+            ma32_line = (f' 대규모 3상 MA.32(NCT01101438, n=3,649)의 무효 결과가 근거 목록에 {len(ma32)}건 있고, 판독 에이전트는 이를 «{st}»로 분류했다. '
+                         '가설 문장이 «요청은 늘지만 의료진은 이 결과를 근거로 거절한다»이면 무효 결과는 가설을 뒷받침하는 쪽으로 읽힌다. '
+                         '판정은 가설 문장에 따라 달라지므로 사람이 근거를 직접 읽고 서명한다.')
+        signal_line = ("언론 보도를 본 유방암 환자들이 보조요법으로 처방을 요청한다는 신호." if demo["segment"] == "유방암 환자"
+                       else esc(demo["statement_ko"][:140]))
+        dec = (memo3 or {}).get("decision") or {}
+        scene = (f'<div class="card"><div class="eyebrow">{esc(demo_title)}</div>'
+                 f'<p>{tag("pattern")}현장 {demo["field"]["mentions"]}회 / {demo["field"]["hcps"]}인 — {signal_line}</p>'
+                 f'<p>{tag("fact")}외부 근거: 지지 {t["SUPPORTS"]} · 반대 {t["CONTRADICTS"]} · 중립 {t["NEUTRAL"]} (코드 집계).{ma32_line}</p>'
+                 + (f'<p>{tag("proposal")}AI Board 심의 {len(memo3.get("transcript", []))}턴, 최종 입장 지지 {memo3.get("tally", {}).get("counts", {}).get("SUPPORT", "-")} · 보류 {memo3.get("tally", {}).get("counts", {}).get("HOLD", "-")} · 반대 {memo3.get("tally", {}).get("counts", {}).get("OPPOSE", "-")}, 권고 <b>{esc(memo3.get("recommendation", "-"))}</b>. 결정: {esc(dec.get("accepted", "미결"))}{(" (" + esc(dec["by"]) + ")") if dec else ""}.</p>' if memo3 and memo3.get("transcript") else f'<p>{tag("proposal")}AI Board 심의는 콘솔의 심의 화면에서 서명 뒤 실행한다.</p>')
+                 + '<p class="faint">시스템은 근거와 심의 기록을 그대로 표시하고, 결정은 사람이 합니다.</p>'
+                 f'<a class="cta ghost" href="/hypotheses/{demo["id"]}">{esc(demo["id"])} 열기 →</a></div>')
 
     body = f"""
 <div class="top"><a href="/"><img src="/static/logo-navy.png" alt="DELPHi"></a>
@@ -105,7 +119,7 @@ def render(state: dict, contract: dict) -> str:
 <div class="rule"><span class="n">4</span><div><b>허가 범위 밖 가설은 전문조직 검토로만 보낸다.</b> 심의에서 나온 상업 액션은 코드가 차단한다. 유해사례 후보는 분석 집계에서 제외한다.</div></div>
 <div class="rule"><span class="n">5</span><div><b>화면의 판단 문장에는 등급이 붙는다.</b> {tag("fact")}관찰된 사실 {tag("pattern")}통계적 패턴 {tag("interp")}AI의 해석 {tag("proposal")}전략적 제안 {tag("action")}승인된 실행</div></div></div>
 
-<div class="sec"><h2>데모 결과: HYP-003 유방암 환자 × 쓰고 싶은데 막혔다</h2><p class="lead">약은 메트포르민입니다. 특허가 만료됐고 특정 회사 소유가 아니며 공개 근거가 많아 골랐습니다. 면담 기록 {notes_n}건은 전부 합성입니다.</p>{scene}</div>
+<div class="sec"><h2>데모 결과: {esc(demo_title)}</h2><p class="lead">약은 메트포르민입니다. 특허가 만료됐고 특정 회사 소유가 아니며 공개 근거가 많아 골랐습니다. 면담 기록 {notes_n}건은 전부 합성입니다.</p>{scene}</div>
 
 <div class="sec"><h2>NVIDIA 스택</h2><div class="two">
 <div class="card"><b>Nemotron 3 Ultra · NIM</b><p class="sub"><code>nvidia/nemotron-3-ultra-550b-a55b</code>, OpenAI 호환 API, 한국어 공식 지원. 강제 함수 호출로 JSON 스키마 출력만 받고 jsonschema로 검증합니다. 회의록 작성 단계만 reasoning 모드를 켜고 추론 내용은 감사용으로 보관합니다. 모든 호출은 래퍼 한 곳을 지나며 캐시와 실행 로그(모델 · 토큰 · 캐시 적중)를 남깁니다.</p></div>

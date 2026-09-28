@@ -1,4 +1,14 @@
-# nim-evidence-loop
+# DELPHi — 근거 관문이 있는 약물 신호 검증 에이전트
+
+팀 **AI Pioneer** · Korea Agentic AI Hackathon 온라인 예선 제출 (2026-09-28) · NVIDIA Nemotron 3 Ultra (NIM)
+
+| | |
+|---|---|
+| 콘솔 (배포) | https://delphi-console-production-8ae8.up.railway.app |
+| API · 소개 페이지 (배포) | https://delphi-web-production-52d6.up.railway.app |
+| 제출 문서 | `docs/[NVIDIA 해커톤_AI Pioneer_DELPHi].docx` |
+| 실행 기록 | `docs/demo_run.txt` · `docs/board_run.txt` |
+
 
 의료진 면담 기록을 환자군 × 신호 유형으로 세고, 문턱을 넘은 조합을 공개 근거(PubMed · ClinicalTrials.gov · openFDA · CMS Part D)로 검증하고,
 사람이 서명한 뒤 임원 에이전트 7인이 심의하며, 사람이 결정한 후속 질문만 다음 면담 체크리스트에 넣는 시스템. NVIDIA Nemotron 3 Ultra(NIM)로 동작한다.
