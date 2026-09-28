@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1049,
+  "output": 1462
+ },
+ "created_at": "2026-09-28T20:52:13",
+ "output": {
+  "claims": [
+   {
+    "segment": "청소년 10-17세",
+    "signal_type": "SAFETY_TOLERABILITY",
+    "quote": "청소년 환자를 수십 명 본 경험으로는 성인과 다를 게 없어 특별한 모니터링을 추가하지 않는다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "청소년에서 메트포르민 사용 경험을 바탕으로 성인과 안전성 프로파일 차이가 없어 추가 모니터링 불필요하다고 언급함."
+   },
+   {
+    "segment": "소아 10세 미만",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "8~9세 소아 당뇨 환자에게는 부모가 메트포르민을 물어봐도 허가 연령이 아니라 쓰지 못한다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "부모가 8-9세 소아에게 메트포르민 사용을 요청했으나 허가 연령 미달로 처방이 차단된 상황임."
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in pediatric patients. I need to extract claims according to the two axes: patient segment and signal type.\n\nLet me analyze the text:\n1. \"청소년 환자를 수십 명 본 경험으로는 성인과 다를 게 없어 특별한 모니터링을 추가하지 않는다고 했다.\" - This discusses adolescents (청소년 10-17세) and mentions no special monitoring needed compared to adults. This could be OFF_LABEL_USE (actually using it in adolescents) or SAFETY_TOLERABILITY (monitoring discussion). The segment is \"청소년 10-17세\". The signal type - they're saying they've used it in adolescents (\"수십 명 본 경험\") and found no difference from adults, so no extra monitoring. This seems like OFF_LABEL_USE (actual use experience) or possibly DOSING/SAFETY_TOLERABILITY. But the key is \"허가 범위 밖에서 실제로 써봤다·반응을 보고\" - they have experience using it in adolescents. In Korea, metformin is approved for ages 10+, so adolescents 10-17 might be on-label? Actually, the text says \"청소년 환자\" (adolescent patients) and \"성인과 다를 게 없어\" - if approved for 10+, then 10-17 is on-label. But the segment list includes \"청소년 10-17세\" as a category. The signal type OFF_LABEL_USE is for \"허가 범위 밖에서 실제로 써봤다\". If metformin is approved for ≥10 years in Korea, then adolescents 10-17 would be on-label. But the text doesn't specify exact ages, just \"청소년\". Could be off-label if <10. However, the next sentence mentions \"8~9세 소아 당뇨 환자에게는 부모가 메트포르민을 물어봐도 허가 연령이 아니라 쓰지 못한다고 다시 말했다.\" This explicitly says 8-9 year olds are not approved age. So the first sentence about \"청소년 환자\" likely refers to adolescents (10-17) which may be on-label. But the segment \"청소년 10-17세\" is in the list. The signal could be SAFETY_TOLERABILITY (monitoring discussion) or DOSING. Actually, \"특별한 모니터링을 추가하지 않는다고 했다\" is about monitoring/safety. But they're describing their practice. Let's see: they have experience with adolescents, find no difference from adults, don't add special monitoring. This could be OFF_LABEL_USE if they consider it off-label, but if approved for 10+, it's on-label. The segment \"청소년 10-17세\" is a category. The signal type: they're describing actual use experience (\"수십 명 본 경험\") and monitoring approach. Could be SAFETY_TOLERABILITY (monitoring) or OFF_LABEL_USE. The definition of OFF_LABEL_USE: \"허가 범위 밖에서 실제로 써봤다·반응을 보고\". If metformin is approved for ≥10 in Korea, then adolescents 10-17 are on-label. But the text doesn't specify country. The interview is in Korean, likely Korea. In Korea, metformin is approved for type 2 diabetes in children ≥10 years. So adolescents 10-17 would be on-label. Then this statement is not off-label. It could be SAFETY_TOLERABILITY (monitoring) or DOSING. But the signal types are limited. Let's consider UNMET_NEED? No. REPURPOSING? No. The statement is about monitoring practice in adolescents. That's SAFETY_TOLERABILITY (safety monitoring). But the segment is \"청소년 10-17세\". However, the text says \"청소년 환자\" not specifying age. Could be 10-17. I'll assign segment \"청소년 10-17세\" and signal \"SAFETY_TOLERABILITY\" with quote \"청소년 환자를 수십 명 본 경험으로는 성인과 다를 게 없어 특별한 모니터링을 추가하지 않는다고 했다.\" Note: why this category - because it discusses monitoring/safety in adolescents.\n\n2. \"8~9세 소아 당뇨 환자에게는 부모가 메트포르민을 물어봐도 허가 연령이 아니라 쓰지 못한다고 다시 말했다.\" - This is about children 8-9 years (소아 10세 미만). Parents ask for metformin, but doctor says not approved age so cannot use. This is OFF_LABEL_DEMAND: \"허가 범위 밖 환자에게 쓰고 싶은데 막혔다\" - the parents want to use it (demand), but it's blocked due to age approval. The segment is \"소아 10세 미만\". Signal type: OFF_LABEL_DEMAND. Quote: \"8~9세 소아 당뇨 환자에게는 부모가 메트포르민을 물어봐도 허가 연령이 아니라 쓰지 못한다고 다시 말했다.\" Note: parents demand metformin for under-10 children but blocked by age approval.\n\n3. \"면담은 외래 마감 후 30분 정도 진행했다.\" - This is just metadata about interview duration, not relevant.\n\nNow, check for adverse events: none mentioned. No specific harmful event to a patient.\n\nThus two claims.\n\nI'll call the function with these two claims."
+}

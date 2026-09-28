@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1068,
+  "output": 637
+ },
+ "created_at": "2026-09-28T20:37:20",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "내당능장애 단계의 고위험 환자에게는 메트포르민이 진행을 늦춘다는 자료가 있어도 적응증 밖이라 쓰지 못해 아쉽다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "내당능장애(당뇨 전단계) 고위험군에서 메트포르민 사용 근거가 있으나 적응증 외 사용이 제한돼 아쉬움을 표함"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "당뇨 전단계라도 가족력이 강하고 체중이 계속 느는 환자에게는 메트포르민을 쓰고 싶은데 허가 범위 밖이라 먼저 권하지 못한다는 점을 강조했다.",
+    "is_adverse_event": false,
+    "note_ko": "가족력·체중 증가 동반 당뇨 전단계 환자에게 메트포르민 투여 의향이 있으나 허가 범위 밖이라 우선 권유 못 함을 강조"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"환자 재진 안내 관리는 약사가 맡고 있다고 했다.\" - This is about pharmacy management, not relevant to our categories.\n2. \"내당능장애 단계의 고위험 환자에게는 메트포르민이 진행을 늦춘다는 자료가 있어도 적응증 밖이라 쓰지 못해 아쉽다고 했다.\" - This mentions \"내당능장애 단계의 고위험 환자\" (impaired glucose tolerance high-risk patients) which corresponds to \"당뇨 전단계\" (pre-diabetes). The signal is about wanting to use but being blocked by indication - this is OFF_LABEL_DEMAND.\n3. \"당뇨 전단계라도 가족력이 강하고 체중이 계속 느는 환자에게는 메트포르민을 쓰고 싶은데 허가 범위 밖이라 먼저 권하지 못한다는 점을 강조했다.\" - Again \"당뇨 전단계\" (pre-diabetes) patients with strong family history and weight gain. Want to use but can't due to label - OFF_LABEL_DEMAND.\n\nBoth relevant statements are about pre-diabetes patients (당뇨 전단계) and express desire to use metformin but being blocked by indication restrictions. This is OFF_LABEL_DEMAND, not OFF_LABEL_USE (which would be actual use experience).\n\nNo adverse events mentioned. No dosing, safety, repurposing, or unmet need signals explicitly.\n\nI'll create two claims, one for each relevant statement."
+}

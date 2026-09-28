@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1425,
+  "output": 377
+ },
+ "created_at": "2026-09-28T21:06:43",
+ "output": {
+  "statement_ko": "당뇨·비만·인슐린 저항성을 동반한 유방암 환자에서 임상의들이 메트포르민을 항암 보조 목적으로도 유지·투여하고 있으며, 이는 후향적 관찰 연구에서 재발률 감소 등 항암 효과가 시사되었기 때문으로 보인다.",
+  "statement_en": "Clinicians continue metformin in breast cancer patients with diabetes, obesity, or insulin resistance for potential adjuvant anti-cancer effects, driven by retrospective observational data suggesting lower recurrence rates.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title/Abstract] AND breast cancer[Title/Abstract] AND (recurrence[Title/Abstract] OR survival[Title/Abstract] OR adjuvant[Title/Abstract]) AND (diabetes[Title/Abstract] OR obesity[Title/Abstract] OR insulin resistance[Title/Abstract])",
+  "ctgov_condition": "Breast Cancer Metformin"
+ },
+ "reasoning": "The user has provided a signal bundle for metformin in breast cancer patients with OFF_LABEL_USE signal type. I need to create a hypothesis statement based on the quotes provided, along with search queries for PubMed and ClinicalTrials.gov.\n\nLooking at the quotes, the key themes are:\n1. Metformin being continued in breast cancer patients with diabetes/insulin resistance/obesity\n2. Observational studies suggesting anti-cancer effects (lower recurrence rates)\n3. Internal data collection on tumor response\n4. Expectation of adjuvant anti-cancer effects beyond glycemic control\n\nThis is clearly OFF_LABEL_USE since metformin is not approved for breast cancer treatment. The hypothesis should reflect that clinicians are continuing metformin in breast cancer patients with metabolic comorbidities based on observational evidence suggesting potential anti-cancer benefits.\n\nLet me formulate the hypothesis and search queries."
+}

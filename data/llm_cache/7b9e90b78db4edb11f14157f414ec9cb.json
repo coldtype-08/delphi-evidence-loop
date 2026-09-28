@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1060,
+  "output": 563
+ },
+ "created_at": "2026-09-28T21:00:04",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "내당능장애 단계의 고위험 환자에게는 허가 밖 처방에 따른 책임 문제가 걸려 메트포르민을 쓰지 못하고 있다는 이야기를 했다",
+    "is_adverse_event": false,
+    "note_ko": "내당능장애(당뇨 전단계) 고위험군에서 허가 외 처방 책임 부담으로 메트포르민 사용을 원하나 차단됨을 진술"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민의 예방 효과를 알면서도 허가 밖이라 처방전을 쓰지 못한다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자에서 예방 효과 인지에도 불구하고 허가 외 사유로 처방 불가함을 진술"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in pre-diabetes patients. I need to extract claims according to the two axes: patient segment and signal type.\n\nLet me analyze the text:\n1. \"내당능장애 단계의 고위험 환자에게는 허가 밖 처방에 따른 책임 문제가 걸려 메트포르민을 쓰지 못하고 있다는 이야기를 했다\" - This mentions impaired glucose tolerance (IGT) high-risk patients, off-label prescription liability issues, unable to prescribe metformin. This sounds like OFF_LABEL_DEMAND (want to use but blocked) for pre-diabetes/IGT patients.\n\n2. \"검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민의 예방 효과를 알면서도 허가 밖이라 처방전을 쓰지 못한다고 했다\" - Pre-diabetes patients referred from screening center, knows preventive effect but can't prescribe because off-label. Again OFF_LABEL_DEMAND for pre-diabetes.\n\nPatient segments: \"당뇨 전단계\" (pre-diabetes) is in the list. \"내당능장애\" (impaired glucose tolerance) is essentially pre-diabetes.\n\nSignal types: Both are about wanting to prescribe but being blocked due to off-label status → OFF_LABEL_DEMAND.\n\nNo adverse events mentioned. No dosing, safety, repurposing, unmet need (though unmet need could be argued, but the primary signal is demand blocked by regulation).\n\nI'll extract two claims."
+}

@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 3176,
+  "output": 408
+ },
+ "created_at": "2026-09-28T21:03:45",
+ "output": {
+  "statement_ko": "국내 임신성 당뇨 산모와 의료진은 인슐린 주사 대신 경구약인 메트포르민을 1차 치료로 선호하나, 국내 허가 부재로 오프라벨 사용이 제한되어 임상 현장에서 치료 선택권 제약과 환자 불만이 발생하고 있다.",
+  "statement_en": "Korean clinicians and gestational diabetes patients prefer metformin as first-line oral therapy over insulin injections, but the lack of domestic approval restricts off-label use, creating treatment access barriers and patient dissatisfaction in clinical practice.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title/Abstract] AND gestational diabetes[Title/Abstract] AND (pregnancy[Title/Abstract] OR pregnant[Title/Abstract]) AND (off-label[Title/Abstract] OR unapproved[Title/Abstract] OR prescribing[Title/Abstract])",
+  "ctgov_condition": "Gestational Diabetes"
+ },
+ "reasoning": "The user wants me to generate a hypothesis based on the provided signal bundle about metformin use in pregnant women with gestational diabetes. The signal type is OFF_LABEL_DEMAND with 40 mentions from 26 HCPs. The quotes consistently show that clinicians want to use metformin as first-line instead of insulin for gestational diabetes, but cannot due to lack of domestic approval (off-label), leading to patient disappointment and sometimes patients seeking other hospitals. International guidelines (UK, Australia) support metformin use.\n\nI need to create:\n1. statement_ko: Korean hypothesis statement (one sentence)\n2. statement_en: English hypothesis statement (one sentence)\n3. label_status_guess: DEVELOPMENT (since it's off-label for gestational diabetes in Korea)\n4. pubmed_query: PubMed search query in English\n5. ctgov_condition: ClinicalTrials.gov condition search term\n\nLet me craft these."
+}

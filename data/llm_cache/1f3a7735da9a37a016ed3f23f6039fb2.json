@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1054,
+  "output": 668
+ },
+ "created_at": "2026-09-28T20:23:31",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "비만한 PCOS 환자에서는 메트포르민을 수년째 써 왔고 서너 달이면 월경 주기가 규칙적으로 돌아오는 환자가 분명히 있다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 장기 사용 후 월경 주기 개선 효과를 실제 진료 경험으로 보고함."
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신 중 혈당 조절이 필요한 산모에게 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린으로 갈 수밖에 없다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신 중 혈당 조절이 필요한 산모에게 메트포르민 사용을 원하나 허가 외 사용 제한으로 인슐린으로 대체해야 하는 상황 호소."
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient segment and signal type.\n\nLet me analyze the text:\n\n1. \"비만한 PCOS 환자에서는 메트포르민을 수년째 써 왔고 서너 달이면 월경 주기가 규칙적으로 돌아오는 환자가 분명히 있다는 이야기를 했다.\"\n   - Patient segment: PCOS 여성 (PCOS women)\n   - Signal type: This describes actual use and observed response - \"수년째 써 왔고\" (have been using for years) and \"월경 주기가 규칙적으로 돌아오는 환자가 분명히 있다는\" (there are definitely patients whose menstrual cycles become regular). This is OFF_LABEL_USE because it's about actual use outside approved indication (metformin is not approved for PCOS in Korea) and observing response.\n\n2. \"임신 중 혈당 조절이 필요한 산모에게 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린으로 갈 수밖에 없다고 여러 번 말했다.\"\n   - Patient segment: 임신부 · 임신성 당뇨 (pregnant women / gestational diabetes)\n   - Signal type: \"쓰고 싶어도 허가 밖이라\" (want to use but it's off-label) - this is OFF_LABEL_DEMAND, expressing desire to use but blocked by licensing.\n\nI need to extract exact quotes from the text. Let me identify the exact substrings.\n\nFor claim 1: \"비만한 PCOS 환자에서는 메트포르민을 수년째 써 왔고 서너 달이면 월경 주기가 규칙적으로 돌아오는 환자가 분명히 있다는 이야기를 했다.\"\n\nFor claim 2: \"임신 중 혈당 조절이 필요한 산모에게 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린으로 갈 수밖에 없다고 여러 번 말했다.\"\n\nNeither appears to be an adverse event report - they're discussing treatment patterns and desires.\n\nNow I'll call the function."
+}

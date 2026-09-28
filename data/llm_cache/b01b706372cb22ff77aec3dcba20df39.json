@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 2815,
+  "output": 494
+ },
+ "created_at": "2026-09-28T21:03:58",
+ "output": {
+  "statement_ko": "청소년(10-17세) 제2형 당뇨 환자에서 메트포르민은 성인과 유사한 내약성 프로파일을 보이며, 위장관 증상은 초기에 흔하나 수 주 내 호전되고 서방정 전환으로 개선되며, 저혈당·젖산산증 등 중증 이상사례는 드물어 임상 현장에서 장기 안전성에 대한 우려가 낮게 보고된다.",
+  "statement_en": "In adolescents (10-17 years) with type 2 diabetes, metformin shows a tolerability profile similar to adults; gastrointestinal symptoms are common initially but resolve within weeks and improve with extended-release formulation, while severe adverse events such as hypoglycemia and lactic acidosis are rare, leading to low long-term safety concerns in clinical practice.",
+  "label_status_guess": "IN_LABEL",
+  "pubmed_query": "metformin[Title/Abstract] AND (adolescent[Title/Abstract] OR pediatric[Title/Abstract] OR children[Title/Abstract]) AND (tolerability[Title/Abstract] OR safety[Title/Abstract] OR adverse effects[Title/Abstract]) AND type 2 diabetes[Title/Abstract]",
+  "ctgov_condition": "Type 2 Diabetes Mellitus, Pediatric"
+ },
+ "reasoning": "The user wants me to analyze the provided clinical signal data for metformin in adolescents (10-17 years) regarding safety/tolerability, and generate a hypothesis statement in Korean and English, along with a label status guess, PubMed query, and ClinicalTrials.gov condition search term.\n\nLet me analyze the quotes:\n- Multiple HCPs report good tolerability in adolescents, similar to adults\n- GI symptoms (abdominal pain, diarrhea) are common initially but resolve within weeks\n- Extended-release formulation helps with GI side effects\n- Hypoglycemia is rare\n- Lactic acidosis not observed\n- B12 deficiency not seen but monitored annually\n- Discontinuation due to side effects is rare\n- Long-term safety data limited but clinical experience shows no issues\n- Safety profile similar to adults, making parental counseling easier\n\nThis appears to be within label since metformin is approved for pediatric use (10+ years) in many jurisdictions for type 2 diabetes.\n\nI'll create a hypothesis statement summarizing the clinical experience, and appropriate search queries."
+}

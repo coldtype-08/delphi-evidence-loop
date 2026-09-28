@@ -1,0 +1,38 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1103,
+  "output": 918
+ },
+ "created_at": "2026-09-28T20:49:16",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨로 진단된 산모가 주사보다 먹는 약을 원해서 메트포르민 문의가 많지만 허가가 없어 처방하지 못한다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 산모가 경구약 선호하나 허가 외라 처방 불가함을 언급"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "난임으로 온 PCOS 환자에게는 클로미펜 단독 주기보다 메트포르민을 얹은 주기에서 배란 확인율이 높았다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 난임 환자에서 클로미펜 병용 시 배란율 향상 경험 보고"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS로 월경이 불규칙한 환자에게는 메트포르민을 쓰면 체중이 2~3kg 빠지면서 주기가 돌아오는 경우가 많다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 월경불순 환자에서 메트포르민 사용 시 체중 감소와 주기 회복 경험 보고"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient segment and signal type.\n\nLet me analyze the text:\n\n1. \"임신성 당뇨로 진단된 산모가 주사보다 먹는 약을 원해서 메트포르민 문의가 많지만 허가가 없어 처방하지 못한다고 했다.\"\n   - Patient segment: 임신부 · 임신성 당뇨 (pregnant women / gestational diabetes)\n   - Signal type: OFF_LABEL_DEMAND - patients want metformin but it's not approved so can't prescribe\n   - Quote: \"임신성 당뇨로 진단된 산모가 주사보다 먹는 약을 원해서 메트포르민 문의가 많지만 허가가 없어 처방하지 못한다고 했다.\"\n   - is_adverse_event: false\n   - note_ko: 임신성 당뇨 산모가 경구약 선호하나 허가 외라 처방 불가함을 언급\n\n2. \"난임으로 온 PCOS 환자에게는 클로미펜 단독 주기보다 메트포르민을 얹은 주기에서 배란 확인율이 높았다.\"\n   - Patient segment: PCOS 여성 (PCOS women)\n   - Signal type: OFF_LABEL_USE - actually used metformin with clomiphene and observed higher ovulation rate\n   - Quote: \"난임으로 온 PCOS 환자에게는 클로미펜 단독 주기보다 메트포르민을 얹은 주기에서 배란 확인율이 높았다.\"\n   - is_adverse_event: false\n   - note_ko: PCOS 난임 환자에서 클로미펜 병용 시 배란율 향상 경험 보고\n\n3. \"PCOS로 월경이 불규칙한 환자에게는 메트포르민을 쓰면 체중이 2~3kg 빠지면서 주기가 돌아오는 경우가 많다는 이야기를 했다.\"\n   - Patient segment: PCOS 여성 (PCOS women)\n   - Signal type: OFF_LABEL_USE - actually used metformin for irregular menstruation in PCOS and observed weight loss and cycle restoration\n   - Quote: \"PCOS로 월경이 불규칙한 환자에게는 메트포르민을 쓰면 체중이 2~3kg 빠지면서 주기가 돌아오는 경우가 많다는 이야기를 했다.\"\n   - is_adverse_event: false\n   - note_ko: PCOS 월경불순 환자에서 메트포르민 사용 시 체중 감소와 주기 회복 경험 보고\n\nAll three are valid claims. Let me call the function."
+}

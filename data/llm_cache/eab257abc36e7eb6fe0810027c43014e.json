@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 2184,
+  "output": 399
+ },
+ "created_at": "2026-09-28T21:04:44",
+ "output": {
+  "statement_ko": "유방암 환자 진료 현장에서 메트포르민의 항암 효과 관련 최신 근거(관찰·무작위 연구 상충 결과 포함)를 한 장짜리 요약·표·환자용 설명자료로 정리한 임상 참고자료가 부재해 의료진이 매번 개별 문헌을 찾아 설명하는 비효율이 발생하고 있다.",
+  "statement_en": "In breast cancer clinics, the absence of concise, one-page clinical reference materials—summaries, evidence tables, and patient-friendly explanations—that synthesize the latest conflicting observational and randomized trial data on metformin's anti-cancer effects forces clinicians to repeatedly search primary literature for each patient inquiry.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title/Abstract] AND breast cancer[Title/Abstract] AND (review[Publication Type] OR meta-analysis[Publication Type] OR guideline[Publication Type])",
+  "ctgov_condition": "Breast Cancer"
+ },
+ "reasoning": "The user has provided a signal bundle for breast cancer patients (유방암 환자) with UNMET_NEED signal type. There are 25 mentions from 20 HCPs. The quotes consistently indicate that clinicians need summarized reference materials for metformin use in breast cancer patients - specifically one-page summaries, tables of clinical results, patient-friendly explanations, and materials showing what's confirmed vs not confirmed. They mention conflicting observational vs randomized trial results, and the need for materials to explain the current state of evidence.\n\nThis is clearly an unmet need for clinical decision support materials, not a hypothesis about efficacy. The label status would be DEVELOPMENT since metformin is not approved for breast cancer treatment (it's approved for diabetes). The hypothesis should reflect the need for evidence synthesis materials.\n\nLet me craft the hypothesis statement and search queries."
+}

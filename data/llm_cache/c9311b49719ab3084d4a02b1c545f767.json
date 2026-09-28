@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1074,
+  "output": 580
+ },
+ "created_at": "2026-09-28T21:06:53",
+ "output": {
+  "statement_ko": "당뇨 전단계 고위험 환자에서 메트포르민의 허가 외 처방 후 급여 삭감 경험이 의사들의 처방 회피를 초래하고 있다.",
+  "statement_en": "Reimbursement penalties after off-label prescribing of metformin for high-risk prediabetes patients are leading to physician prescribing avoidance.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title/Abstract] AND prediabetes[Title/Abstract] AND (reimbursement OR prescribing)",
+  "ctgov_condition": "Prediabetes"
+ },
+ "reasoning": "The user provides a signal bundle: segment \"당뇨 전단계\" (prediabetes), signal_type \"OFF_LABEL_USE\", with 5 mentions from 5 HCPs, claim IDs and quotes. The quotes indicate that physicians are avoiding metformin for prediabetes patients due to reimbursement issues after off-label prescribing. They mention high-risk patients with impaired glucose tolerance, strong family history, weight gain, BMI>30 young patients, HbA1c around 6.2. The signal is about off-label use and reimbursement barriers.\n\nWe need to produce a hypothesis statement (one sentence) in Korean and English, label_status_guess (IN_LABEL or DEVELOPMENT), pubmed_query, ctgov_condition.\n\nGiven the signal is about off-label use in prediabetes, which is not an approved indication for metformin in many jurisdictions (though some guidelines suggest it). In Korea, metformin is approved for type 2 diabetes, not prediabetes. So this is off-label. Thus label_status_guess = DEVELOPMENT.\n\nHypothesis: Physicians are reluctant to prescribe metformin for prediabetes patients due to reimbursement penalties after off-label prescribing. Or: Reimbursement restrictions lead to underuse of metformin in high-risk prediabetes patients.\n\nWe need to craft a single sentence hypothesis.\n\nStatement_ko: \"당뇨 전단계 고위험 환자에서 메트포르민의 허가 외 처방 후 급여 삭감 경험이 의사들의 처방 회피를 초래하고 있다.\"\nStatement_en: \"Reimbursement penalties after off-label prescribing of metformin for high-risk prediabetes patients are leading to physician prescribing avoidance.\"\n\nLabel_status_guess: DEVELOPMENT.\n\nPubMed query: Should search for metformin and prediabetes and reimbursement or prescribing patterns. Example: \"metformin[Title/Abstract] AND prediabetes[Title/Abstract] AND (reimbursement OR prescribing)\".\n\nClinicalTrials.gov condition: \"Prediabetes\" or \"Impaired Glucose Tolerance\". Use \"Prediabetes\".\n\nNow call the function."
+}

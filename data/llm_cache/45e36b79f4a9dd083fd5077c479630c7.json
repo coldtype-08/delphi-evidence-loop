@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1064,
+  "output": 560
+ },
+ "created_at": "2026-09-28T20:06:00",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "배란 유도를 앞둔 PCOS 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 배란 유도 전 메트포르민 선행 투여 후 주기 취소 감소 경험을 보고함"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신부에게 메트포르민을 쓰는 문제는 먹는 약 선택지가 없다는 것이 가장 큰 불만이고 메트포르민 허가가 나면 바로 쓰겠다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신부에서 경구약 선택지 부재로 메트포르민 허가 시 즉시 사용 의향 표명"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"배란 유도를 앞둔 PCOS 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다는 이야기를 했다.\"\n   - Patient population: PCOS 여성 (PCOS women)\n   - Signal type: This describes actual use and observed response - \"주기 취소가 줄었다\" (cycle cancellation decreased). This sounds like OFF_LABEL_USE since metformin is not officially approved for PCOS in many jurisdictions, and they're describing actual clinical experience.\n\n2. \"임신부에게 메트포르민을 쓰는 문제는 먹는 약 선택지가 없다는 것이 가장 큰 불만이고 메트포르민 허가가 나면 바로 쓰겠다고 다시 말했다.\"\n   - Patient population: 임신부 · 임신성 당뇨 (pregnant women / gestational diabetes)\n   - Signal type: \"허가가 나면 바로 쓰겠다\" - this is a desire to use but blocked by lack of approval. This is OFF_LABEL_DEMAND.\n\n3. \"새로 나온 당뇨병 진료지침 개정판을 과 회의에서 검토했다고 했다.\"\n   - This is just a general statement about reviewing guidelines, not a specific claim about metformin use in a patient population. No signal type matches.\n\nLet me extract the two valid claims with exact quotes."
+}

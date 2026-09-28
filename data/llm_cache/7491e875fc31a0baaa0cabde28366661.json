@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1049,
+  "output": 549
+ },
+ "created_at": "2026-09-28T20:08:53",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "DOSING",
+    "quote": "PCOS 환자에게 메트포르민을 처방할 때 하루 두 번보다 서방정 한 번이 유지가 잘 된다는 이야기를 했다",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 서방정 1일 1회 투여가 1일 2회보다 복용 순응도가 더 좋다는 임상 경험 언급"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "무월경이 길었던 PCOS 환자에게는 메트포르민 6개월 만에 자연 주기를 되찾은 사례를 여러 번 봤다",
+    "is_adverse_event": false,
+    "note_ko": "장기 무월경 PCOS 환자에서 메트포르민 6개월 투여 후 자연 월경 주기 회복을 다수 사례에서 관찰함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\"진료실에는 보호자가 몇 명 있어 다음을 기약했다. PCOS 환자에게 메트포르민을 처방할 때 하루 두 번보다 서방정 한 번이 유지가 잘 된다는 이야기를 했다. 무월경이 길었던 PCOS 환자에게는 메트포르민 6개월 만에 자연 주기를 되찾은 사례를 여러 번 봤다.\"\n\nBreaking it down:\n1. \"PCOS 환자에게 메트포르민을 처방할 때 하루 두 번보다 서방정 한 번이 유지가 잘 된다는 이야기를 했다\" - This is about dosing (extended-release once daily vs twice daily) for PCOS patients. Signal type: DOSING. Patient segment: PCOS 여성.\n\n2. \"무월경이 길었던 PCOS 환자에게는 메트포르민 6개월 만에 자연 주기를 되찾은 사례를 여러 번 봤다\" - This describes actual use of metformin in PCOS patients with amenorrhea, observing restoration of natural cycles. This is OFF_LABEL_USE (since metformin is not officially indicated for PCOS in many jurisdictions, though commonly used off-label). Patient segment: PCOS 여성.\n\nNeither appears to be an adverse event. Both are observations from clinical practice.\n\nLet me create the claims."
+}

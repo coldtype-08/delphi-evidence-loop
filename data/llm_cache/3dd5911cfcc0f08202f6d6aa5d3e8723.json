@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1744,
+  "output": 961
+ },
+ "created_at": "2026-09-28T21:06:20",
+ "output": {
+  "statement_ko": "PCOS 환자에서 메트포르민 투여 시 배란 유도 2개월 전부터 500mg으로 시작해 2주 간격으로 증량하여 1500-2000mg/일 목표 용량에 도달하며, 서방정 1일 1회 식후 복용이 순응도와 위장관 부작용 완화에 도움이 된다는 현장 경험이 보고된다.",
+  "statement_en": "In PCOS patients, metformin is initiated at 500 mg and titrated every 2 weeks to a target dose of 1500–2000 mg/day starting at least 2 months before ovulation induction, with extended-release once-daily post-meal dosing reported to improve adherence and reduce gastrointestinal side effects.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title/Abstract] AND polycystic ovary syndrome[Title/Abstract] AND (dosing OR dose titration OR extended-release) AND (ovulation induction OR fertility)",
+  "ctgov_condition": "Polycystic Ovary Syndrome"
+ },
+ "reasoning": "The user provides a signal bundle for metformin in PCOS women, signal type DOSING, with 18 mentions, 16 HCPs, and quotes. I need to produce a hypothesis statement (one sentence in Korean and English), label status guess (IN_LABEL or DEVELOPMENT), PubMed query, and ClinicalTrials.gov condition.\n\nFirst, analyze the quotes: They discuss dosing strategies for metformin in PCOS: starting dose 500mg, titrating every 2 weeks to 1500mg, target dose 1500mg vs 2000mg, extended-release once daily vs twice daily, timing before ovulation induction (at least 2 months prior), weight-based dosing, GI side effects management (take with meals). The signal is about dosing practices and uncertainties.\n\nMetformin is not officially approved for PCOS in many jurisdictions (off-label use). In Korea, metformin is approved for type 2 diabetes, not PCOS. So label status guess: DEVELOPMENT (off-label use). However, the signal is about dosing in clinical practice, not a new development per se. But the label status guess refers to whether the use is within approved label. Since PCOS is not an approved indication for metformin, it's DEVELOPMENT.\n\nNow, formulate hypothesis: \"PCOS 환자에서 메트포르민 용량 조절 시 배란 유도 전 최소 2개월 전부터 목표 용량(1500-2000mg/일)까지 증량하며, 서방정 1일 1회 투여와 식후 복용이 순응도와 위장관 부작용 관리에 유리하다는 임상적 경험이 있다.\" But must be one sentence, not exceeding what quotes say. The quotes mention: start 500mg, titrate every 2 weeks to 1500mg; target dose 1500mg vs 2000mg unclear; extended-release once daily better adherence; need to start at least 2 months before ovulation induction; weight-based dosing considered; GI symptoms avoided by taking with meals.\n\nThus hypothesis: \"PCOS 환자에서 메트포르민 투여 시 배란 유도 2개월 전부터 500mg으로 시작해 2주 간격으로 증량하여 1500-2000mg/일 목표 용량에 도달하며, 서방정 1일 1회 식후 복용이 순응도와 위장관 부작용 완화에 도움이 된다는 현장 경험이 보고된다.\"\n\nEnglish: \"In PCOS patients, metformin is initiated at 500 mg and titrated every 2 weeks to a target dose of 1500–2000 mg/day starting at least 2 months before ovulation induction, with extended-release once-daily post-meal dosing reported to improve adherence and reduce gastrointestinal side effects.\"\n\nLabel status guess: DEVELOPMENT.\n\nPubMed query: Should capture metformin dosing in PCOS. Something like: \"metformin[Title/Abstract] AND polycystic ovary syndrome[Title/Abstract] AND (dosing OR dose titration OR extended-release) AND (ovulation induction OR fertility)\". But keep it concise.\n\nClinicalTrials.gov condition: \"Polycystic Ovary Syndrome\".\n\nNow produce the function call."
+}

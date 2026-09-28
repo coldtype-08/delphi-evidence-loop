@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1072,
+  "output": 717
+ },
+ "created_at": "2026-09-28T20:47:11",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "인슐린을 두려워하는 임신성 당뇨 산모가 메트포르민을 요구할 때 안 된다고 하면 다른 병원을 찾는 경우도 있다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 산모가 인슐린 대신 메트포르민을 요구하며 거절 시 타 병원 이전을 언급함"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "해외 지침을 보고 온 임신성 당뇨 산모가 메트포르민을 먼저 물어보는데 국내 적응증이 없어 인슐린 교육으로 넘어간다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "해외 지침 근거로 메트포르민 문의하나 국내 적응증 부재로 인슐린 교육으로 전환됨"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in gestational diabetes patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"인슐린을 두려워하는 임신성 당뇨 산모가 메트포르민을 요구할 때 안 된다고 하면 다른 병원을 찾는 경우도 있다고 다시 말했다.\"\n   - Patient population: 임신부 · 임신성 당뇨 (pregnant women with gestational diabetes)\n   - Signal type: OFF_LABEL_DEMAND - patients demanding metformin (off-label) and threatening to go elsewhere when denied\n   - Quote: \"인슐린을 두려워하는 임신성 당뇨 산모가 메트포르민을 요구할 때 안 된다고 하면 다른 병원을 찾는 경우도 있다고 다시 말했다.\"\n   - Not an adverse event\n   - Note: 임신성 당뇨 산모가 인슐린 대신 메트포르민을 요구하며 거절 시 타 병원 이전을 언급함\n\n2. \"해외 지침을 보고 온 임신성 당뇨 산모가 메트포르민을 먼저 물어보는데 국내 적응증이 없어 인슐린 교육으로 넘어간다고 했다.\"\n   - Patient population: 임신부 · 임신성 당뇨\n   - Signal type: OFF_LABEL_DEMAND - patients asking for metformin based on foreign guidelines, but domestic indication doesn't exist so insulin education is given instead\n   - Quote: \"해외 지침을 보고 온 임신성 당뇨 산모가 메트포르민을 먼저 물어보는데 국내 적응증이 없어 인슐린 교육으로 넘어간다고 했다.\"\n   - Not an adverse event\n   - Note: 해외 지침 근거로 메트포르민 문의하나 국내 적응증 부재로 인슐린 교육으로 전환됨\n\n3. \"재진 환자 진료 흐름을 간호사와 영양사가 나눠 맡는 방식으로 바꿨다고 했다.\"\n   - This is about clinic workflow reorganization, not directly about metformin signals. No patient population or signal type matches. Skip.\n\nSo I have two claims to extract."
+}

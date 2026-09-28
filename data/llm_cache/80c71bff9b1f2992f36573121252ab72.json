@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 2006,
+  "output": 394
+ },
+ "created_at": "2026-09-28T21:04:59",
+ "output": {
+  "statement_ko": "소아청소년과 의료진은 10세 미만 제2형 당뇨 환아에서 메트포르민을 1차 치료제로 사용하고자 하나, 현행 허가 연령(10세 이상) 제한으로 인해 인슐린 요법이나 식이조절로 대체하고 있다.",
+  "statement_en": "Pediatric clinicians report wanting to use metformin as first-line therapy for type 2 diabetes in children under 10 years, but are constrained by the current approved age indication (≥10 years), leading to insulin or dietary management instead.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title/Abstract] AND (type 2 diabetes[Title/Abstract] OR T2DM[Title/Abstract]) AND (children[Title/Abstract] OR pediatric[Title/Abstract] OR adolescents[Title/Abstract]) AND (age[Title/Abstract] OR under 10[Title/Abstract] OR <10[Title/Abstract])",
+  "ctgov_condition": "Type 2 Diabetes Mellitus Pediatric"
+ },
+ "reasoning": "The user has provided a signal bundle for metformin in pediatric patients under 10 years old, showing OFF_LABEL_DEMAND signals. The quotes consistently indicate that clinicians want to use metformin as first-line therapy for type 2 diabetes in children under 10, but cannot due to the approved age limit of 10 years and older. They resort to insulin or dietary management instead.\n\nI need to create a hypothesis statement in Korean and English, determine label status guess, and provide PubMed and ClinicalTrials.gov search queries.\n\nThe label status should be DEVELOPMENT since the use in children under 10 is off-label (not approved).\n\nLet me craft the hypothesis and search queries."
+}

@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1065,
+  "output": 667
+ },
+ "created_at": "2026-09-28T20:06:09",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "당뇨 전단계 환자 중 BMI 30이 넘는 젊은 환자에게는 메트포르민을 쓰지 못하는 것이 가장 답답한 부분이고 허가만 있으면 바로 쓰겠다는 점을 강조했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 고도비만 젊은 환자에게 메트포르민을 쓰고 싶으나 허가 범위 밖이라 처방 못 함을 호소함"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "온라인에서 메트포르민 정보를 보고 온 당뇨 전단계 환자에게는 허가 범위 때문에 처방하지 못한다고 같은 설명을 반복한다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자가 메트포르민 정보를 알고 내원해도 허가 범위 밖이라 처방 불가함을 반복 설명함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in pre-diabetes patients. I need to extract claims according to the two axes: patient segment and signal type.\n\nLet me analyze the text:\n\"당뇨 전단계 환자 중 BMI 30이 넘는 젊은 환자에게는 메트포르민을 쓰지 못하는 것이 가장 답답한 부분이고 허가만 있으면 바로 쓰겠다는 점을 강조했다. 온라인에서 메트포르민 정보를 보고 온 당뇨 전단계 환자에게는 허가 범위 때문에 처방하지 못한다고 같은 설명을 반복한다고 여러 번 말했다. 면담은 외래 마감 후 30분 정도 했다.\"\n\nKey points:\n1. Patient segment: \"당뇨 전단계\" (pre-diabetes) - this matches the list\n2. Signal types:\n   - \"메트포르민을 쓰지 못하는 것이 가장 답답한 부분이고 허가만 있으면 바로 쓰겠다는 점을 강조했다\" - This sounds like OFF_LABEL_DEMAND: wants to use but blocked by approval\n   - \"온라인에서 메트포르민 정보를 보고 온 당뇨 전단계 환자에게는 허가 범위 때문에 처방하지 못한다고 같은 설명을 반복한다고 여러 번 말했다\" - Also OFF_LABEL_DEMAND: cannot prescribe due to approval scope\n\nBoth statements are about wanting to prescribe metformin to pre-diabetes patients (BMI >30, young) but being blocked by regulatory approval. This is OFF_LABEL_DEMAND, not OFF_LABEL_USE (which would be actual use experience).\n\nNo adverse events mentioned. No dosing, safety, repurposing, or unmet need explicitly (though unmet need could be inferred, the explicit signal is demand blocked by approval).\n\nI'll create two claims, both for segment \"당뇨 전단계\" and signal_type \"OFF_LABEL_DEMAND\"."
+}

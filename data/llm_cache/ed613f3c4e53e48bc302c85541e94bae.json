@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 4795,
+  "output": 513
+ },
+ "created_at": "2026-09-28T21:02:38",
+ "output": {
+  "statement_ko": "유방암 환자(특히 호르몬 수용체 양성, 수술 후 보조요법 중) 사이에서 메트포르민을 재발 예방 목적으로 오프라벨 처방해 달라는 요구가 미디어·커뮤니티 정보를 통해 증가하고 있으나, 의료진은 MA.32 등 대규모 3상 시험에서 무병생존 개선이 입증되지 않았다는 근거로 처방을 거절하고 있다.",
+  "statement_en": "Breast cancer patients (particularly hormone receptor–positive, post-surgery adjuvant setting) increasingly demand off-label metformin for recurrence prevention driven by media and community information, but clinicians decline citing negative phase 3 trials such as MA.32 that showed no disease-free survival benefit.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title/Abstract] AND breast cancer[Title/Abstract] AND (recurrence[Title/Abstract] OR disease-free survival[Title/Abstract] OR adjuvant[Title/Abstract]) AND (phase 3[Title/Abstract] OR MA.32[Title/Abstract])",
+  "ctgov_condition": "Breast Cancer"
+ },
+ "reasoning": "The user wants me to generate a hypothesis based on the provided signal bundle for metformin in breast cancer patients with OFF_LABEL_DEMAND signal type. I need to create a hypothesis statement in Korean and English, guess the label status, and provide PubMed and ClinicalTrials.gov search queries.\n\nLooking at the quotes, the key themes are:\n1. Breast cancer patients (especially hormone receptor positive, post-surgery, adjuvant setting) requesting metformin for recurrence prevention\n2. Physicians refusing because large phase 3 trials (Canadian MA.32 trial with 3,600+ patients) showed no disease-free survival benefit\n3. Requests increasing due to media/articles/community discussions\n4. Some patients have metabolic syndrome but no diabetes diagnosis\n5. Off-label use not supported by evidence\n\nThe hypothesis should reflect that breast cancer patients are increasingly demanding metformin off-label for recurrence prevention based on media/community information, but physicians decline citing negative phase 3 trial results (MA.32).\n\nLabel status: DEVELOPMENT since this is off-label use for breast cancer recurrence prevention, not an approved indication.\n\nPubMed query should search for metformin and breast cancer recurrence prevention trials.\nClinicalTrials.gov condition: breast cancer."
+}

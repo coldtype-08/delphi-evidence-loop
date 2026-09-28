@@ -1,0 +1,38 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1103,
+  "output": 753
+ },
+ "created_at": "2026-09-28T20:19:51",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 관리에서 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨에서 인슐린 대신 메트포르민을 1차로 쓰고 싶으나 허가 제약으로 못 쓰는 수요 발언"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 환자에게 먹는 약을 쓰는 것에 대해 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린으로 갈 수밖에 없다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "허가 외 사용 제약으로 메트포르민 대신 인슐린을 쓸 수밖에 없는 현실을 토로"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "인슐린 대신 먹는 약을 원하는 임신부에게는 메트포르민을 쓰고 싶은 마음은 있지만 허가 문제와 태아 안전에 대한 책임 때문에 쓰지 않는다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "환자 선호와 본인 의향에도 불구하고 허가·태아 안전 책임 문제로 처방하지 않는 상황 기술"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in gestational diabetes. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"병원 전산에 검사 결과가 늦게 뜨는 문제로 처방이 지연되는 일이 잦다고 했다.\" - This is about hospital system delays, not directly about metformin signals.\n\n2. \"임신성 당뇨 관리에서 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다고 다시 말했다.\" - This is about gestational diabetes (임신부 · 임신성 당뇨) and wanting to use metformin instead of insulin if approved. This sounds like OFF_LABEL_DEMAND - wanting to use off-label but blocked by approval.\n\n3. \"임신성 당뇨 환자에게 먹는 약을 쓰는 것에 대해 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린으로 갈 수밖에 없다고 다시 말했다.\" - Again, gestational diabetes, wanting to use metformin but can't due to off-label status, forced to use insulin. This is OFF_LABEL_DEMAND.\n\n4. \"인슐린 대신 먹는 약을 원하는 임신부에게는 메트포르민을 쓰고 싶은 마음은 있지만 허가 문제와 태아 안전에 대한 책임 때문에 쓰지 않는다고 했다.\" - Gestational diabetes/pregnant women, wants to use metformin but doesn't due to approval issues and fetal safety responsibility. This is OFF_LABEL_DEMAND.\n\nAll three metformin-related statements are about gestational diabetes patients (임신부 · 임신성 당뇨) and express desire to use metformin off-label but being blocked by approval/safety concerns. These are OFF_LABEL_DEMAND signals.\n\nNo adverse events mentioned - these are about prescribing desires/barriers, not actual adverse events occurring.\n\nLet me extract the exact quotes and create the claims."
+}

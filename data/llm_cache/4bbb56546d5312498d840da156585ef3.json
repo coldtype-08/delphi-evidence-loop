@@ -1,0 +1,45 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1101,
+  "output": 869
+ },
+ "created_at": "2026-09-28T20:07:29",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "다낭성난소증후군으로 의뢰된 환자에게는 메트포르민을 1년 이상 유지한 환자들은 대체로 주기가 안정되어 지금도 계속 쓰고 있다는 것이 본인 경험이라고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 1년 이상 장기 처방 경험과 주기 안정 효과를 언급함."
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "DOSING",
+    "quote": "PCOS 환자의 메트포르민 처방에서는 용량을 얼마까지 올려야 배란 효과가 나는지 자료가 부족하다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS에서 배란 유도를 위한 메트포르민 적정 용량 상한에 대한 근거 부족을 지적함."
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "UNMET_NEED",
+    "quote": "PCOS 환자의 메트포르민 처방에서는 용량을 얼마까지 올려야 배란 효과가 나는지 자료가 부족하다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "배란 효과를 위한 용량 가이드라인이 없어 임상적 미충족 수요가 존재함."
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "DOSING",
+    "quote": "다낭성난소증후군 환자에게는 체중에 따라 용량을 달리할지 고민된다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 체중 기반 용량 조절 필요성을 고민 중임."
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the specified schema. Let me analyze the text:\n\n1. \"다낭성난소증후군으로 의뢰된 환자에게는 메트포르민을 1년 이상 유지한 환자들은 대체로 주기가 안정되어 지금도 계속 쓰고 있다는 것이 본인 경험이라고 했다.\" - This describes actual use of metformin in PCOS patients (off-label use) and mentions dosing duration (1+ years). This could be OFF_LABEL_USE and DOSING.\n\n2. \"PCOS 환자의 메트포르민 처방에서는 용량을 얼마까지 올려야 배란 효과가 나는지 자료가 부족하다고 했다.\" - This is about dosing uncertainty for ovulation effect in PCOS. This is DOSING and possibly UNMET_NEED (lack of data).\n\n3. \"다낭성난소증후군 환자에게는 체중에 따라 용량을 달리할지 고민된다.\" - This is about dosing considerations based on weight. This is DOSING.\n\nPatient segment: PCOS 여성 (PCOS women) - this matches the list.\n\nSignal types:\n- First statement: OFF_LABEL_USE (actual use experience in PCOS, which is off-label for metformin in Korea) and DOSING (1년 이상 유지)\n- Second statement: DOSING (용량을 얼마까지 올려야) and UNMET_NEED (자료가 부족)\n- Third statement: DOSING (체중에 따라 용량을 달리할지)\n\nI need to create separate claims for each distinct signal. Let me structure them.\n\nFor the first statement, it's primarily OFF_LABEL_USE (describing actual use in PCOS patients) with a dosing component. I'll make it OFF_LABEL_USE since the core is about actual use experience.\n\nSecond statement: DOSING (dose titration for ovulation) and UNMET_NEED (lack of data). I'll create two claims or one with primary signal? The schema allows one signal_type per claim. I'll split.\n\nThird statement: DOSING.\n\nAlso need to check for adverse events - none mentioned.\n\nLet me create the claims."
+}

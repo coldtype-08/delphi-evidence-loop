@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1077,
+  "output": 809
+ },
+ "created_at": "2026-09-28T20:12:33",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 쓴 뒤 여드름이 줄었다는 말을 환자에게서 자주 듣는다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 인슐린 저항성 동반 시 메트포르민 사용 후 여드름 호전 경험을 보고함"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨로 진단된 산모가 메트포르민 허가가 없다는 사실을 설명하면 대부분 실망한다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 산모가 메트포르민 미허가로 인해 사용을 원하나 차단됨을 호소함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient segment and signal type.\n\nLet me analyze the text:\n\n1. \"병원 질 향상 위원회가 매달 열려 자료 준비로 바쁘다고 했다.\" - This is about hospital committee meetings, not relevant to metformin claims.\n\n2. \"PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 쓴 뒤 여드름이 줄었다는 말을 환자에게서 자주 듣는다고 여러 번 말했다.\" - This mentions PCOS patients with insulin resistance using metformin and reporting reduced acne. This is OFF_LABEL_USE (PCOS is off-label for metformin in many jurisdictions) and the segment is \"PCOS 여성\". The quote should be the exact text.\n\n3. \"검사 결과 설명은 간호사 상담실에서 짧게 끝낸다고 했다.\" - This is about test result explanations, not a metformin claim.\n\n4. \"임신성 당뇨로 진단된 산모가 메트포르민 허가가 없다는 사실을 설명하면 대부분 실망한다고 다시 말했다.\" - This mentions gestational diabetes patients (임신성 당뇨) being disappointed that metformin is not approved. This is OFF_LABEL_DEMAND (they want to use it but it's not approved) and the segment is \"임신부 · 임신성 당뇨\". The quote should be the exact text.\n\nLet me extract these two claims.\n\nFor claim 1:\n- segment: \"PCOS 여성\"\n- signal_type: \"OFF_LABEL_USE\" (actually using it off-label and observing response)\n- quote: \"PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 쓴 뒤 여드름이 줄었다는 말을 환자에게서 자주 듣는다고 여러 번 말했다.\"\n- is_adverse_event: false (acne reduction is a positive effect, not an adverse event)\n- note_ko: \"PCOS 환자에서 인슐린 저항성 동반 시 메트포르민 사용 후 여드름 호전 경험을 보고함\"\n\nFor claim 2:\n- segment: \"임신부 · 임신성 당뇨\"\n- signal_type: \"OFF_LABEL_DEMAND\" (want to use but blocked by lack of approval)\n- quote: \"임신성 당뇨로 진단된 산모가 메트포르민 허가가 없다는 사실을 설명하면 대부분 실망한다고 다시 말했다.\"\n- is_adverse_event: false\n- note_ko: \"임신성 당뇨 산모가 메트포르민 미허가로 인해 사용을 원하나 차단됨을 호소함\"\n\nI'll call the function with these claims."
+}

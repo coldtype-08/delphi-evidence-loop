@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1090,
+  "output": 592
+ },
+ "created_at": "2026-09-28T20:05:37",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "배란 유도를 앞둔 PCOS 환자에게는 클로미펜 단독 주기보다 메트포르민을 얹은 주기에서 배란 확인율이 높았다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "배란 유도 시 클로미펜에 메트포르민을 병용해 배란 확인율이 높았다는 실제 임상 경험을 기술함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "클로미펜에 반응이 없던 PCOS 환자에서는 시험관 시술 전에 메트포르민을 미리 쓰면 난소과자극증후군이 덜 생기는 인상이 있어 계속 쓰고 있다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "클로미펜 비반응 PCOS 환자에서 IVF 전 메트포르민 선행 투여로 OHSS 발생이 줄어든다는 인상 하에 지속 사용 중임을 기술함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"배란 유도를 앞둔 PCOS 환자에게는 클로미펜 단독 주기보다 메트포르민을 얹은 주기에서 배란 확인율이 높았다고 여러 번 말했다.\" - This describes actual use of metformin added to clomiphene for PCOS patients undergoing ovulation induction. This is OFF_LABEL_USE (actually used and observed response) for PCOS women.\n2. \"클로미펜에 반응이 없던 PCOS 환자에서는 시험관 시술 전에 메트포르민을 미리 쓰면 난소과자극증후군이 덜 생기는 인상이 있어 계속 쓰고 있다고 여러 번 말했다.\" - This describes actual use of metformin before IVF in clomiphene-resistant PCOS patients to reduce OHSS. This is also OFF_LABEL_USE for PCOS women.\n\nBoth statements are about PCOS women (환자군: PCOS 여성) and describe actual clinical experience/use (OFF_LABEL_USE). They are not demands, repurposing mentions, unmet needs, dosing specifics, or safety/tolerability mentions per se (though OHSS reduction is a safety benefit, the signal type is about the use pattern).\n\nI need to extract each as a separate claim with exact quotes. The quotes must be verbatim from the text.\n\nLet me create the claims."
+}

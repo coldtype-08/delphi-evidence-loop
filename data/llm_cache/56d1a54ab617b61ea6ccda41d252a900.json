@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1078,
+  "output": 1042
+ },
+ "created_at": "2026-09-28T20:10:44",
+ "output": {
+  "claims": [
+   {
+    "segment": "유방암 환자",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "수술을 마친 유방암 환자가 메트포르민 처방을 부탁하는 일이 매주 있는데 무효였던 3상을 뒤집을 자료가 없어 거절한다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "수술 후 유방암 환자가 메트포르민을 원하지만 근거 부족으로 처방이 거절되는 상황"
+   },
+   {
+    "segment": "유방암 환자",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "항암치료 중인 유방암 환자가 메트포르민을 요구하면 당뇨 진단 기준에 미치지 못해 처방하지 못한다고 답한다는 이야기를 했다",
+    "is_adverse_event": false,
+    "note_ko": "항암치료 중인 유방암 환자가 메트포르민을 요구하나 당뇨 진단 기준 미달로 처방 불가"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record (Korean) about metformin use in breast cancer patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n\"진료 지침 개정 내용을 정리한 약제위원회 안내가 최근 나왔다고 했다. 수술을 마친 유방암 환자가 메트포르민 처방을 부탁하는 일이 매주 있는데 무효였던 3상을 뒤집을 자료가 없어 거절한다고 했다. 항암치료 중인 유방암 환자가 메트포르민을 요구하면 당뇨 진단 기준에 미치지 못해 처방하지 못한다고 답한다는 이야기를 했다. 이번 면담은 사전에 보낸 질문지를 바탕으로 진행했다.\"\n\nKey points:\n1. Post-surgery breast cancer patients asking for metformin prescription weekly - but rejected because no data to overturn negative phase 3 trial\n2. Breast cancer patients undergoing chemo asking for metformin - but not prescribed because they don't meet diabetes diagnostic criteria\n\nPatient population: \"유방암 환자\" (breast cancer patients) - this is in the allowed list.\n\nSignal types:\n1. First case: Patients asking for metformin (demand) but being rejected - this sounds like OFF_LABEL_DEMAND (patients want it off-label but blocked)\n2. Second case: Patients demanding metformin during chemo but not prescribed due to not meeting diabetes criteria - also OFF_LABEL_DEMAND\n\nWait, let me re-read the signal type definitions:\n- OFF_LABEL_DEMAND: 허가 범위 밖 환자에게 **쓰고 싶은데 막혔다**는 발언 (want to use but blocked)\n- OFF_LABEL_USE: 허가 범위 밖에서 **실제로 써봤다·반응을 보고**한 발언 (actually used off-label)\n\nThe text says patients are \"asking/requesting\" (처방을 부탁하는, 요구하면) but doctors are \"rejecting/not prescribing\" (거절한다고, 처방하지 못한다고). This is from the HCP perspective describing patient demand being blocked. So this is OFF_LABEL_DEMAND.\n\nThe HCP is describing that patients want it off-label (for breast cancer, not diabetes) but they can't prescribe because no evidence / not meeting diabetes criteria.\n\nLet me extract the quotes exactly as they appear in the text.\n\nClaim 1: \"수술을 마친 유방암 환자가 메트포르민 처방을 부탁하는 일이 매주 있는데 무효였던 3상을 뒤집을 자료가 없어 거절한다고 했다\"\n- segment: 유방암 환자\n- signal_type: OFF_LABEL_DEMAND\n- quote: \"수술을 마친 유방암 환자가 메트포르민 처방을 부탁하는 일이 매주 있는데 무효였던 3상을 뒤집을 자료가 없어 거절한다고 했다\"\n- is_adverse_event: false\n- note_ko: 수술 후 유방암 환자가 메트포르민을 원하지만 근거 부족으로 처방이 거절되는 상황\n\nClaim 2: \"항암치료 중인 유방암 환자가 메트포르민을 요구하면 당뇨 진단 기준에 미치지 못해 처방하지 못한다고 답한다는 이야기를 했다\"\n- segment: 유방암 환자\n- signal_type: OFF_LABEL_DEMAND\n- quote: \"항암치료 중인 유방암 환자가 메트포르민을 요구하면 당뇨 진단 기준에 미치지 못해 처방하지 못한다고 답한다는 이야기를 했다\"\n- is_adverse_event: false\n- note_ko: 항암치료 중인 유방암 환자가 메트포르민을 요구하나 당뇨 진단 기준 미달로 처방 불가\n\nBoth are OFF_LABEL_DEMAND because patients are demanding off-label use but being blocked."
+}

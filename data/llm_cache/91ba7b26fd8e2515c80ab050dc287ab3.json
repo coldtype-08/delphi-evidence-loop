@@ -1,0 +1,77 @@
+{
+ "purpose": "screen_pubmed",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_pubmed_items_v1",
+ "mode": "json_object (tool path: RateLimitError: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'})",
+ "thinking": null,
+ "usage": {
+  "input": 3869,
+  "output": 1832
+ },
+ "created_at": "2026-09-28T21:07:59",
+ "output": {
+  "items": [
+   {
+    "source_id": "PMID:36703143",
+    "stance": "SUPPORTS",
+    "quote": "Metformin is the gold standard insulin sensitizer, which is widely used to treat insulin resistance in polycystic ovary syndrome (PCOS).",
+    "note_ko": "메타분석에서 메트포르민을 PCOS 인슐린 저항성 치료의 표준 약물로 언급함."
+   },
+   {
+    "source_id": "PMID:22525900",
+    "stance": "SUPPORTS",
+    "quote": "Women had been randomized to up to six cycles of clomiphene citrate alone, metformin alone, or clomiphene citrate plus metformin.",
+    "note_ko": "RCT 2차 분석에서 메트포르민 단독 및 클로미펜 병용이 배란 유도 요법으로 사용됨을 확인."
+   },
+   {
+    "source_id": "PMID:18000088",
+    "stance": "SUPPORTS",
+    "quote": "Clomiphene and insulin sensitizers such as metformin are used to induce ovulation in polycystic ovary syndrome (PCOS)... the percentage of women who ovulated increased with the number of G alleles present: 48% (10 of 21) of C/C women, 67% (32 of 48) of C/G women, and 79% (15 of 19) of G/G women ovulated.",
+    "note_ko": "다기관 RCT 하위연구에서 메트포르민 투여군 배란율 48~79% 보고, 유전적 변이에 따른 반응 차이 제시."
+   },
+   {
+    "source_id": "PMID:32935841",
+    "stance": "NEUTRAL",
+    "quote": "We performed a meta-epidemiologic study to elucidate if RCTs without IPD sharing have lower quality and more methodological issues than those with IPD sharing in an IPD meta-analysis evaluating first-line ovulation induction for PCOS.",
+    "note_ko": "메타역학 연구로 메트포르민 효능 직접 평가 아님."
+   },
+   {
+    "source_id": "PMID:19732888",
+    "stance": "NEUTRAL",
+    "quote": "This article has been retracted: please see Elsevier Policy on Article Withdrawal... As we cannot vouch for the validity of the data, we have issued a retraction of this paper.",
+    "note_ko": "논문 철회됨, 근거로 사용 불가."
+   },
+   {
+    "source_id": "PMID:29183107",
+    "stance": "SUPPORTS",
+    "quote": "Insulin-sensitising agents such as metformin may be effective in treating PCOS-related anovulation... Primary outcomes were live birth rate and gastrointestinal adverse effects. Secondary outcomes included other pregnancy outcomes, menstrual frequency and metabolic effects.",
+    "note_ko": "코크란 메타분석에서 메트포르민 등 인슐린 감작제의 배란·대사·임신 성과 평가."
+   },
+   {
+    "source_id": "PMID:39803009",
+    "stance": "SUPPORTS",
+    "quote": "The Met-Myo combination demonstrated a significantly superior response with 63 (75%) patients showing improvement in HOMA-IR compared to 54 (60.67%) in the Met group (p = 0.049) at week 24. The improvement in the number of patients with heavy menstrual blood flow (>80 mL) was significantly greater in the Met-Myo group...",
+    "note_ko": "3상 이중맹검 RCT에서 메트포르민 단독군도 HOMA-IR 60.7% 개선, 월경 과다 개선 확인."
+   },
+   {
+    "source_id": "PMID:42787272",
+    "stance": "NEUTRAL",
+    "quote": "this study will aim aims to compare the effects of a CR diet versus metformin on live birth, endocrine, reproductive, and metabolic parameters as well as pregnancy outcomes in women with PCOS and overweight/obesity.",
+    "note_ko": "연구 프로토콜만 발표됨, 결과 없음."
+   },
+   {
+    "source_id": "PMID:42549142",
+    "stance": "NEUTRAL",
+    "quote": "Correction: Comparative analysis of glucagon-like peptide-1 receptor agonists, metformin, and inositol in improving anthropometric and metabolic outcomes in women with polycystic ovary syndrome: a network meta-analysis.",
+    "note_ko": "정정 공지문만 있음, 본문 데이터 없음."
+   },
+   {
+    "source_id": "PMID:16798282",
+    "stance": "SUPPORTS",
+    "quote": "Metformin alone or combined with CC is a valid second step approach, whereas the laparoscopic ovarian diathermy can be useful only in selected cases.",
+    "note_ko": "2006년 리뷰에서 메트포르민 단독 또는 클로미펜 병용을 2차 배란 유도법으로 권고."
+   }
+  ]
+ },
+ "reasoning": "The user wants me to analyze each PubMed record against the hypothesis about metformin off-label use in PCOS. I need to determine if each record SUPPORTS, CONTRADICTS, or is NEUTRAL to the hypothesis, provide a direct quote from the text, and a Korean note about study type.\n\nLet me go through each record:\n\n1. PMID:36703143 - Meta-analysis comparing inositol vs metformin. States \"Metformin is the gold standard insulin sensitizer, which is widely used to treat insulin resistance in polycystic ovary syndrome (PCOS).\" This supports off-label use for insulin resistance. Also mentions cycle normalization. SUPPORTS.\n\n2. PMID:22525900 - RCT secondary analysis on endometrial shedding before ovulation induction with clomiphene, metformin, or combo. Shows ovulation rates higher with spontaneous menses. Mentions metformin as treatment arm. Supports use in ovulation induction. SUPPORTS.\n\n3. PMID:18000088 - Multicenter study on genetic polymorphism affecting ovulatory response to metformin. Shows metformin induces ovulation in PCOS, though variable. Supports ovulation induction use. SUPPORTS.\n\n4. PMID:32935841 - Meta-epidemiologic study about data sharing in PCOS ovulation induction trials. Not directly about metformin efficacy. NEUTRAL.\n\n5. PMID:19732888 - RETRACTED article about letrozole vs metformin+clomiphene. Retracted, so not reliable. But the fact it was a trial on metformin+clomiphene for ovulation induction suggests off-label use. However, retracted. I'll mark NEUTRAL due to retraction.\n\n6. PMID:29183107 - Cochrane meta-analysis on insulin-sensitising drugs (including metformin) for PCOS. Evaluates effectiveness for reproductive and metabolic outcomes. Supports use. SUPPORTS.\n\n7. PMID:39803009 - Phase III RCT comparing metformin+myo-inositol vs metformin alone. Shows metformin improves HOMA-IR and menstrual disturbances. Supports insulin resistance improvement and menstrual cyclicity. SUPPORTS.\n\n8. PMID:42787272 - Protocol for trial comparing calorie-restricted diet vs metformin prior to ovulation induction. Not results yet. NEUTRAL.\n\n9. PMID:42549142 - Erratum for network meta-analysis comparing GLP-1 agonists, metformin, inositol. Not the actual study. NEUTRAL.\n\n10. PMID:16798282 - 2006 review stating metformin alone or combined with CC is valid second step for ovulation induction. Supports off-label use for ovulation induction. SUPPORTS.\n\nNow I need to extract quotes (≤300 chars) and write Korean notes.\n\nLet me construct the JSON."
+}

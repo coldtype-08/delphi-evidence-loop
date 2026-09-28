@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1069,
+  "output": 768
+ },
+ "created_at": "2026-09-28T20:59:42",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린으로 갈 수밖에 없다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 산모에서 인슐린 거부 시 메트포르민을 쓰고 싶으나 허가 외 사용이라 불가능하다는 수요 발언이다."
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "배란 유도를 앞둔 PCOS 환자에게는 메트포르민 단독으로는 배란이 잘 안 되지만 레트로졸과 같이 쓰면 확실히 낫다는 것이 본인 경험이라고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 배란 유도 시 메트포르민과 레트로졸 병용 경험을 바탕으로 한 실제 사용 발언이다."
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린으로 갈 수밖에 없다고 다시 말했다.\"\n   - Patient population: 임신부 · 임신성 당뇨 (pregnant women with gestational diabetes)\n   - Signal type: OFF_LABEL_DEMAND - \"쓰고 싶어도 허가 밖이라\" (want to use but it's off-label/outside approval)\n   - Quote: \"임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린으로 갈 수밖에 없다고 다시 말했다.\"\n\n2. \"배란 유도를 앞둔 PCOS 환자에게는 메트포르민 단독으로는 배란이 잘 안 되지만 레트로졸과 같이 쓰면 확실히 낫다는 것이 본인 경험이라고 했다.\"\n   - Patient population: PCOS 여성 (PCOS women)\n   - Signal type: OFF_LABEL_USE - \"본인 경험이라고 했다\" (based on their experience using it)\n   - Actually, this could also be REPURPOSING since metformin for ovulation induction in PCOS is not the original indication (diabetes). But the text says \"본인 경험\" (their experience) suggesting they've actually used it. Let me check: metformin is not approved for PCOS/ovulation induction in Korea typically, so this is off-label use. The signal type OFF_LABEL_USE fits: \"허가 범위 밖에서 실제로 써봤다·반응을 보고 한 발언\"\n   - Quote: \"배란 유도를 앞둔 PCOS 환자에게는 메트포르민 단독으로는 배란이 잘 안 되지만 레트로졸과 같이 쓰면 확실히 낫다는 것이 본인 경험이라고 했다.\"\n\nThe third sentence \"이번 면담 기록은 당일 저녁 기억을 정리해 작성했다.\" is just metadata about the record creation, not a claim.\n\nI need to output using the sense_claims_v1 function with the claims array. Each claim needs: segment (patient population), signal_type, quote (exact text), is_adverse_event (false for these), note_ko (one sentence Korean explanation).\n\nLet me structure this."
+}

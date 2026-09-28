@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1071,
+  "output": 660
+ },
+ "created_at": "2026-09-28T20:09:13",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 쓰면 공복혈당보다 인슐린 수치가 먼저 반응한다는 것을 경험으로 안다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 인슐린 저항성 개선 목적으로 메트포르민을 실제 사용해본 임상 경험을 기술함"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "UNMET_NEED",
+    "quote": "임신성 당뇨 산모에게 메트포르민을 쓸 경우 서방정과 속방정 중 무엇이 나은지 정리된 것이 없다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨에서 메트포르민 제형(서방정 vs 속방정) 선택에 대한 근거 부재를 지적함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS and gestational diabetes patients. I need to extract relevant claims according to the specified schema.\n\nLet me analyze the text:\n1. \"PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 쓰면 공복혈당보다 인슐린 수치가 먼저 반응한다는 것을 경험으로 안다고 했다.\" - This is about PCOS patients (patient segment: PCOS 여성) and describes actual use/experience with metformin. This seems like OFF_LABEL_USE since PCOS is often off-label for metformin in many jurisdictions, and they're describing actual clinical experience.\n\n2. \"임신성 당뇨 산모에게 메트포르민을 쓸 경우 서방정과 속방정 중 무엇이 나은지 정리된 것이 없다고 했다.\" - This is about gestational diabetes patients (임신부 · 임신성 당뇨) and mentions uncertainty about formulation (ER vs IR). This could be UNMET_NEED (lack of guidance) or DOSING (formulation question). Since it's about lack of established guidance on which formulation is better, I think UNMET_NEED fits.\n\n3. \"병원 약제부에서 처방 코드 정비를 진행 중이라 당분간 혼선이 있다고 했다.\" - This is about hospital pharmacy system issues, not directly about metformin clinical use. Probably not relevant to the signal types.\n\nLet me map patient segments:\n- PCOS 여성 → \"PCOS 여성\"\n- 임신성 당뇨 산모 → \"임신부 · 임신성 당뇨\"\n\nSignal types:\n1. First statement: OFF_LABEL_USE (actual experience using metformin in PCOS)\n2. Second statement: UNMET_NEED (no established guidance on ER vs IR for gestational diabetes)\n\nI need to extract exact quotes from the text."
+}

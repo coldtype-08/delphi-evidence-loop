@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6802,
+  "output": 547
+ },
+ "created_at": "2026-09-28T21:02:24",
+ "output": {
+  "statement_ko": "국내 의료진은 당뇨 전단계 고위험군(공복혈당장애·내당능장애, HbA1c 6.2% 전후, BMI ≥30, 가족력 등)에서 메트포르민의 진행 지연 근거가 충분하다고 보나, 국내 허가·급여 부재로 처방하지 못하고 생활습관 교정만 권하는 실정이다.",
+  "statement_en": "Korean physicians recognize sufficient evidence for metformin to delay progression in high-risk prediabetes (IFG/IGT, HbA1c ~6.2%, BMI ≥30, family history) but cannot prescribe it due to lack of domestic approval and reimbursement, leaving only lifestyle counseling.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title] AND (prediabetes[Title/Abstract] OR impaired fasting glucose[Title/Abstract] OR impaired glucose tolerance[Title/Abstract]) AND prevention[Title/Abstract]",
+  "ctgov_condition": "Prediabetes"
+ },
+ "reasoning": "The user has provided a detailed JSON object containing field signals for metformin in the \"prediabetes\" segment with \"OFF_LABEL_DEMAND\" signal type. There are 92 mentions from 61 HCPs with many claim IDs and quotes in Korean.\n\nI need to analyze this data and create a hypothesis statement (one sentence in Korean and English), determine label status guess (IN_LABEL or DEVELOPMENT), and provide PubMed and ClinicalTrials.gov search queries.\n\nFrom the quotes, the key themes are:\n1. Prediabetes patients requesting metformin\n2. Physicians want to prescribe but cannot due to lack of domestic approval/indication\n3. Reimbursement issues (not covered, risk of clawback)\n4. Evidence exists (US prevention studies, society guidelines mention consideration) but domestic label doesn't allow it\n5. High-risk subgroups: BMI ≥30, family history, HbA1c ~6.2%, IFG/IGT, 30-40s obese\n6. Physicians frustrated, resort to lifestyle counseling only\n\nThis is clearly OFF-LABEL demand - the drug is not approved for prediabetes in Korea. So label_status_guess should be DEVELOPMENT (outside approved indication).\n\nThe hypothesis should capture: Physicians see evidence for metformin in high-risk prediabetes but cannot prescribe due to lack of domestic approval and reimbursement.\n\nLet me craft the statements and search queries."
+}

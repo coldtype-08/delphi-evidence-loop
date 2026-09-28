@@ -1,0 +1,38 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1130,
+  "output": 802
+ },
+ "created_at": "2026-09-28T20:26:50",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "다낭성난소증후군 환자에게는 메트포르민을 쓰면 공복혈당보다 인슐린 수치가 먼저 반응한다는 것을 경험으로 안다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 사용 시 인슐린 수치 개선 효과를 임상 경험으로 확인했다는 발언"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "내분비내과에서 PCOS로 넘어온 환자에게는 메트포르민을 써 보면 체중 감소보다 주기 회복이 먼저 온다는 것이 본인 경험이라고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 투여 시 체중 감소보다 월경 주기 회복이 먼저 나타난다는 임상 경험 보고"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "클로미펜에 반응이 없던 PCOS 환자에서는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다.",
+    "is_adverse_event": false,
+    "note_ko": "클로미펜 저항성 PCOS 환자에서 레트로졸-메트포르민 병용으로 배란 유도 성공률이 높아진다는 임상 경험"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"다낭성난소증후군 환자에게는 메트포르민을 쓰면 공복혈당보다 인슐린 수치가 먼저 반응한다는 것을 경험으로 안다고 여러 번 말했다.\" - This is about PCOS patients (segment: PCOS 여성), describing clinical experience with metformin. This seems like OFF_LABEL_USE (actually using it and observing response) or possibly REPURPOSING (different use from original indication). Metformin's original indication is type 2 diabetes, so using it for PCOS is off-label/repurposing. The speaker says \"경험으로 안다\" (know from experience) and \"여러 번 말했다\" (said multiple times) - this suggests actual use and observation. I'll classify as OFF_LABEL_USE.\n\n2. \"내분비내과에서 PCOS로 넘어온 환자에게는 메트포르민을 써 보면 체중 감소보다 주기 회복이 먼저 온다는 것이 본인 경험이라고 했다.\" - Again PCOS 환자 (PCOS 여성), describing experience with metformin leading to menstrual cycle recovery before weight loss. This is OFF_LABEL_USE (actual use and observation).\n\n3. \"클로미펜에 반응이 없던 PCOS 환자에서는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다.\" - PCOS 환자 (PCOS 여성), using metformin combined with letrozole for ovulation induction in clomiphene-resistant patients. This is OFF_LABEL_USE (actual clinical practice).\n\nAll three are about PCOS 여성 (PCOS women) and describe actual clinical use/experience, so OFF_LABEL_USE seems appropriate. None appear to be adverse events - they're describing therapeutic effects.\n\nLet me extract the exact quotes and create the claims."
+}

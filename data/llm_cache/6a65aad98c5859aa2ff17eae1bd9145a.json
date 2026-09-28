@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1063,
+  "output": 596
+ },
+ "created_at": "2026-09-28T20:10:33",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "공복혈당장애로 몇 년째 추적 중인 환자에게는 메트포르민을 처방하면 급여 삭감이 나와서 실제로는 손을 못 댄다는 점을 강조했다",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자에게 메트포르민을 쓰고 싶으나 급여 삭감 우려로 처방 못 함을 호소"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "미국 예방 연구 자료를 들고 와서 메트포르민을 달라는 당뇨 전단계 환자에게는 적응증이 없어 매번 설명만 하고 끝난다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자가 해외 연구 근거로 메트포르민을 요구하나 적응증 없어 처방 못 함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in prediabetes patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"공복혈당장애로 몇 년째 추적 중인 환자에게는 메트포르민을 처방하면 급여 삭감이 나와서 실제로는 손을 못 댄다는 점을 강조했다.\" - This is about prediabetes patients (공복혈당장애 = impaired fasting glucose, a prediabetes condition) where the doctor wants to prescribe metformin but can't due to reimbursement issues. This sounds like OFF_LABEL_DEMAND - wanting to use but blocked.\n\n2. \"미국 예방 연구 자료를 들고 와서 메트포르민을 달라는 당뇨 전단계 환자에게는 적응증이 없어 매번 설명만 하고 끝난다고 했다.\" - This is about prediabetes patients (당뇨 전단계) demanding metformin based on US prevention study data, but the doctor says there's no indication so they just explain and end. This could be OFF_LABEL_DEMAND from patient side, or UNMET_NEED.\n\nPatient population: \"당뇨 전단계\" (prediabetes) is in the list.\n\nSignal types:\n- First statement: Doctor wants to prescribe but reimbursement blocks it → OFF_LABEL_DEMAND\n- Second statement: Patients demand metformin but no indication → could be OFF_LABEL_DEMAND (patient demand) or UNMET_NEED\n\nLet me extract these as claims."
+}

@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1073,
+  "output": 655
+ },
+ "created_at": "2026-09-28T20:14:36",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민이 진행을 늦춘다는 자료가 있어도 적응증 밖이라 쓰지 못해 아쉽다는 이야기를 했다",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자에게 메트포르민 사용 근거가 있으나 적응증 외 사용이 제한되어 처방 못 함을 토로"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "내당능장애 단계의 고위험 환자에게는 메트포르민을 미리 시작하고 싶어도 적응증이 없어 3개월 뒤 재검만 잡는다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "내당능장애 고위험군에서 조기 메트포르민 투여 희망하나 적응증 부재로 관찰만 시행"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in pre-diabetes patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민이 진행을 늦춘다는 자료가 있어도 적응증 밖이라 쓰지 못해 아쉽다는 이야기를 했다\" - This mentions pre-diabetes patients (당뇨 전단계) and the doctor wants to use metformin but can't because it's off-label. This sounds like OFF_LABEL_DEMAND - wanting to use but blocked.\n\n2. \"내당능장애 단계의 고위험 환자에게는 메트포르민을 미리 시작하고 싶어도 적응증이 없어 3개월 뒤 재검만 잡는다고 했다\" - Again, pre-diabetes/impaired glucose tolerance high-risk patients, wants to start metformin early but can't due to indication. Also OFF_LABEL_DEMAND.\n\nBoth segments refer to the same patient population: 당뇨 전단계 (pre-diabetes). The signal type is OFF_LABEL_DEMAND - they want to use it off-label but are blocked by indication restrictions.\n\nI need to create claims with exact quotes from the text. Let me extract the exact quotes.\n\nFirst segment quote: \"검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민이 진행을 늦춘다는 자료가 있어도 적응증 밖이라 쓰지 못해 아쉽다는 이야기를 했다\"\n\nSecond segment quote: \"내당능장애 단계의 고위험 환자에게는 메트포르민을 미리 시작하고 싶어도 적응증이 없어 3개월 뒤 재검만 잡는다고 했다\"\n\nBoth are OFF_LABEL_DEMAND for segment \"당뇨 전단계\". No adverse events mentioned."
+}

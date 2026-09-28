@@ -1,0 +1,38 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1068,
+  "output": 618
+ },
+ "created_at": "2026-09-28T20:14:51",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "비만한 PCOS 환자에서는 메트포르민을 쓰면 공복혈당보다 인슐린 수치가 먼저 반응한다는 것을 경험으로 안다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "비만 PCOS 환자에서 메트포르민 사용 경험을 기술하며 인슐린 수치 개선 효과를 관찰함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS로 임신을 준비하는 환자에게는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 난임 환자에서 레트로졸 병용 시 메트포르민 추가로 배란율 상승을 경험함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "REPURPOSING",
+    "quote": "PCOS로 임신을 준비하는 환자에게는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨병 치료제인 메트포르민을 PCOS 배란 유도 보조제로 전용함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the specified schema. Let me analyze the text:\n\n1. \"비만한 PCOS 환자에서는 메트포르민을 쓰면 공복혈당보다 인슐린 수치가 먼저 반응한다는 것을 경험으로 안다고 여러 번 말했다.\" - This describes actual use experience in PCOS patients (obese PCOS), noting insulin levels respond before fasting glucose. This is OFF_LABEL_USE (PCOS is off-label for metformin in many jurisdictions) and also could be REPURPOSING (different use from diabetes).\n\n2. \"PCOS로 임신을 준비하는 환자에게는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다는 이야기를 했다.\" - This describes actual use of metformin combined with letrozole for ovulation induction in PCOS patients trying to conceive. This is OFF_LABEL_USE (PCOS, fertility treatment) and REPURPOSING.\n\nThe patient segment is clearly \"PCOS 여성\" (PCOS women).\n\nNo adverse events mentioned - just clinical observations of efficacy.\n\nLet me create the claims."
+}

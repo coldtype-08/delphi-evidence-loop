@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1067,
+  "output": 503
+ },
+ "created_at": "2026-09-28T20:32:38",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "비만한 PCOS 환자에서는 메트포르민을 쓰고 나서 공복 인슐린 수치가 떨어지는 것을 검사로 확인하고 있다.",
+    "is_adverse_event": false,
+    "note_ko": "비만 PCOS 환자에게 메트포르민을 실제 처방 후 공복 인슐린 감소 효과를 검사로 확인한 경험"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "난임으로 온 PCOS 환자에게는 메트포르민을 보조로 쓴 뒤 임신까지 이어진 사례가 지난 1년에 몇 건 있었다는 것이 본인 경험이라고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "난임 PCOS 환자에게 메트포르민을 보조요법으로 사용 후 임신 성공 사례를 경험함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"새로 나온 당뇨병 진료지침 개정판을 아직 다 읽지 못했다고 했다.\" - This is just background, not a claim about metformin use.\n2. \"비만한 PCOS 환자에서는 메트포르민을 쓰고 나서 공복 인슐린 수치가 떨어지는 것을 검사로 확인하고 있다.\" - This describes actual use in obese PCOS patients with observed effect (fasting insulin dropping). Patient population: PCOS 여성. Signal type: OFF_LABEL_USE (actually used and observed response).\n3. \"난임으로 온 PCOS 환자에게는 메트포르민을 보조로 쓴 뒤 임신까지 이어진 사례가 지난 1년에 몇 건 있었다는 것이 본인 경험이라고 했다.\" - This describes actual use as adjunct in PCOS infertility patients leading to pregnancy. Patient population: PCOS 여성. Signal type: OFF_LABEL_USE (actually used and observed outcome).\n\nBoth are OFF_LABEL_USE because they describe actual use with observed outcomes, not demand/wanting to use but blocked.\n\nNo adverse events mentioned. No dosing, safety, repurposing, or unmet need claims.\n\nI'll create two claims."
+}

@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1080,
+  "output": 665
+ },
+ "created_at": "2026-09-28T20:46:07",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "다음 검사에서 당뇨로 넘어갈 것이 뻔한 전단계 환자에게는 메트포르민을 처방하면 급여 삭감이 나와서 실제로는 손을 못 댄다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자에게 메트포르민을 쓰고 싶으나 급여 삭감 우려로 처방 못 함을 호소함"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "공복혈당장애로 몇 년째 추적 중인 환자에게는 약을 쓰는 게 맞다고 보지만 국내 허가가 없어 생활습관 교정만 권하고 있다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "공복혈당장애(당뇨 전단계) 환자에게 약물 치료가 필요하다고 판단하나 국내 허가 부재로 생활습관 교정만 권고 중"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in pre-diabetes patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"당뇨 환자 진료 흐름을 약사와 간호사가 나눠 맡는 방식으로 바꿨다고 했다.\" - This is about workflow, not relevant to our categories.\n2. \"다음 검사에서 당뇨로 넘어갈 것이 뻔한 전단계 환자에게는 메트포르민을 처방하면 급여 삭감이 나와서 실제로는 손을 못 댄다고 여러 번 말했다.\" - This is about pre-diabetes patients (당뇨 전단계) where the doctor wants to prescribe metformin but can't due to reimbursement issues. This sounds like OFF_LABEL_DEMAND - wanting to use it off-label but blocked.\n3. \"공복혈당장애로 몇 년째 추적 중인 환자에게는 약을 쓰는 게 맞다고 보지만 국내 허가가 없어 생활습관 교정만 권하고 있다고 했다.\" - Again, pre-diabetes (공복혈당장애 = impaired fasting glucose, a pre-diabetes condition), doctor thinks medication is appropriate but domestic approval doesn't exist, so only lifestyle modification is recommended. This is also OFF_LABEL_DEMAND.\n\nPatient population: \"당뇨 전단계\" (pre-diabetes) - this matches the first category in the list.\n\nSignal types: Both statements indicate wanting to use metformin in pre-diabetes but being blocked by reimbursement/approval issues. This is OFF_LABEL_DEMAND (want to use off-label but blocked), not OFF_LABEL_USE (actually used it).\n\nNo adverse events mentioned. No dosing, safety, repurposing, or unmet need explicitly (though unmet need could be argued, but the specific signal is about demand being blocked).\n\nLet me create the claims."
+}

@@ -1,0 +1,38 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1121,
+  "output": 1112
+ },
+ "created_at": "2026-09-28T20:10:57",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨로 진단된 산모가 메트포르민을 먼저 물어보는데 국내 적응증이 없어 인슐린 교육으로 넘어간다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 산모가 메트포르민을 요청했으나 국내 허가 범위 밖이라 인슐린으로 전환한다는 발언"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "인슐린 저항성이 확인된 다낭성난소증후군 환자에서는 경구피임약과 메트포르민을 같이 쓰면 여드름과 다모증이 조금 나아지는 환자가 있다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "인슐린 저항성 동반 PCOS에서 경구피임약과 메트포르민 병용 시 여드름·다모증 개선 경험을 보고함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "인슐린 저항성 PCOS에서 메트포르민 2개월 이상 선행 투여 후 배란 유도 시 주기 취소 감소 경험을 보고함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record (in Korean) about metformin use in various patient populations. I need to extract claims according to the two axes: patient segment and signal type.\n\nLet me analyze the text:\n\n1. \"임신성 당뇨로 진단된 산모가 메트포르민을 먼저 물어보는데 국내 적응증이 없어 인슐린 교육으로 넘어간다고 다시 말했다.\"\n   - Patient segment: 임신부 · 임신성 당뇨 (pregnant women / gestational diabetes)\n   - Signal: The patient asks for metformin but it's not approved in Korea, so they switch to insulin education. This sounds like OFF_LABEL_DEMAND - the patient wants it but it's blocked/unapproved.\n\n2. \"인슐린 저항성이 확인된 다낭성난소증후군 환자에서는 경구피임약과 메트포르민을 같이 쓰면 여드름과 다모증이 조금 나아지는 환자가 있다고 여러 번 말했다.\"\n   - Patient segment: PCOS 여성 (PCOS women)\n   - Signal: They actually use metformin + OCP and see improvement in acne/hirsutism. This is OFF_LABEL_USE (actual use experience) and possibly REPURPOSING (different indication - PCOS is not the original T2D indication). But the text says \"같이 쓰면... 나아지는 환자가 있다고 여러 번 말했다\" - this is reporting actual use and response. I'll classify as OFF_LABEL_USE since they're describing actual clinical experience.\n\n3. \"PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다고 여러 번 말했다.\"\n   - Patient segment: PCOS 여성\n   - Signal: Using metformin for 2+ months before ovulation induction reduces cycle cancellation. This is OFF_LABEL_USE (actual use pattern) and also relates to REPURPOSING (using for fertility/ovulation induction). But the key is they're describing actual practice (\"썼 뒤... 줄었다고 여러 번 말했다\"). I'll classify as OFF_LABEL_USE.\n\n4. \"병원이 인증 평가 준비 중이라 진료 동선이 바뀌었다고 했다.\"\n   - This is administrative, not relevant to metformin signals.\n\nNow I need to create the claims with exact quotes. The quotes must be verbatim from the text.\n\nLet me extract the exact quotes:\n\n1. For gestational diabetes: \"임신성 당뇨로 진단된 산모가 메트포르민을 먼저 물어보는데 국내 적응증이 없어 인슐린 교육으로 넘어간다고 다시 말했다.\"\n\n2. For PCOS acne/hirsutism: \"인슐린 저항성이 확인된 다낭성난소증후군 환자에서는 경구피임약과 메트포르민을 같이 쓰면 여드름과 다모증이 조금 나아지는 환자가 있다고 여러 번 말했다.\"\n\n3. For PCOS ovulation induction: \"PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다고 여러 번 말했다.\"\n\nNone of these appear to be adverse events (is_adverse_event: false).\n\nNow I'll call the function."
+}

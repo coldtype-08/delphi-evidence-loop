@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1063,
+  "output": 546
+ },
+ "created_at": "2026-09-28T20:13:33",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "인슐린 저항성이 확인된 다낭성난소증후군 환자에서는 메트포르민을 써 보면 체중 감소보다 주기 회복이 먼저 온다",
+    "is_adverse_event": false,
+    "note_ko": "인슐린 저항성 동반 PCOS 환자에서 메트포르민 사용 시 체중 감소보다 월경 주기 회복이 먼저 관찰된다는 실제 임상 경험 기술"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "내분비내과에서 PCOS로 넘어온 환자에게는 메트포르민을 쓰고 월경이 돌아오면 그 뒤로는 약 없이도 유지되는 경우가 있다는 이야기를 했다",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에게 메트포르민 투여 후 월경 회복 시 약물 중단해도 유지가능하다는 임상 사례 공유"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"인슐린 저항성이 확인된 다낭성난소증후군 환자에서는 메트포르민을 써 보면 체중 감소보다 주기 회복이 먼저 온다\" - This is about PCOS women (환자군: PCOS 여성) and describes actual use/experience with metformin (OFF_LABEL_USE or REPURPOSING). Since metformin is not officially approved for PCOS in many jurisdictions, this could be OFF_LABEL_USE or REPURPOSING. The text says \"써 보면\" (when we try using it) and describes observed response - this sounds like OFF_LABEL_USE (actual use and observing response).\n\n2. \"내분비내과에서 PCOS로 넘어온 환자에게는 메트포르민을 쓰고 월경이 돌아오면 그 뒤로는 약 없이도 유지되는 경우가 있다는 이야기를 했다\" - Again PCOS women, describing actual use pattern and outcomes. This is also OFF_LABEL_USE.\n\nThe first sentence about hospital ward rearrangement is not relevant to metformin signals.\n\nPatient population: PCOS 여성 (appears in the list)\nSignal types: Both appear to be OFF_LABEL_USE - actual use in off-label population with observed responses.\n\nLet me extract the exact quotes."
+}

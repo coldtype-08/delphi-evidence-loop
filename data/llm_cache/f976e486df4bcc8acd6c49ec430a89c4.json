@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1061,
+  "output": 684
+ },
+ "created_at": "2026-09-28T20:59:03",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "해외 지침을 보고 온 임신성 당뇨 산모가 메트포르민 처방을 요청했지만 국내 허가가 없어 거절했다는 점을 강조했다",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 산모가 해외 지침 근거로 메트포르민 처방을 요청했으나 국내 미허가로 거절당한 사례"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다는 이야기를 했다",
+    "is_adverse_event": false,
+    "note_ko": "인슐린 거부 산모에게 메트포르민을 1차로 쓰고 싶으나 허가 부재로 사용 못 함을 호소"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in gestational diabetes. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"해외 지침을 보고 온 임신성 당뇨 산모가 메트포르민 처방을 요청했지만 국내 허가가 없어 거절했다는 점을 강조했다\" - This is a patient with gestational diabetes (임신부 · 임신성 당뇨) requesting metformin but being denied due to lack of domestic approval. This sounds like OFF_LABEL_DEMAND - the patient wanted it but was blocked.\n\n2. \"임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다는 이야기를 했다\" - The HCP says they would want to use metformin instead of insulin for gestational diabetes patients who refuse insulin, if only it were approved. This is also OFF_LABEL_DEMAND - they want to use it off-label but are blocked by lack of approval.\n\nBoth segments relate to gestational diabetes patients (임신부 · 임신성 당뇨).\n\nI need to extract exact quotes from the text. Let me identify the exact segments.\n\nFirst segment quote: \"해외 지침을 보고 온 임신성 당뇨 산모가 메트포르민 처방을 요청했지만 국내 허가가 없어 거절했다는 점을 강조했다\"\n\nSecond segment quote: \"임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다는 이야기를 했다\"\n\nBoth are OFF_LABEL_DEMAND, segment is 임신부 · 임신성 당뇨.\n\nNo adverse events mentioned. No dosing, safety, repurposing, unmet need (though there is unmet need implied, but the signal type is specifically OFF_LABEL_DEMAND because they want to use but are blocked).\n\nLet me create the claims."
+}

@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1075,
+  "output": 576
+ },
+ "created_at": "2026-09-28T20:10:15",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "다낭성난소증후군 환자에게는 경구피임약과 메트포르민을 같이 쓰면 여드름과 다모증이 조금 나아지는 환자가 있다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 병용 시 여드름·다모증 개선 효과를 임상 경험으로 보고함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS 진단을 받은 20~30대 여성에게는 메트포르민을 쓰면 체중이 2~3kg 빠지면서 주기가 돌아오는 경우가 많다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 사용 시 체중 감소와 월경 주기 회복을 임상 경험으로 보고함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"다낭성난소증후군 환자에게는 경구피임약과 메트포르민을 같이 쓰면 여드름과 다모증이 조금 나아지는 환자가 있다고 여러 번 말했다.\" - This describes actual use of metformin in PCOS patients (off-label use) with observed effects on acne and hirsutism. Patient population: PCOS 여성. Signal type: OFF_LABEL_USE (actually used and observed response).\n\n2. \"PCOS 진단을 받은 20~30대 여성에게는 메트포르민을 쓰면 체중이 2~3kg 빠지면서 주기가 돌아오는 경우가 많다고 여러 번 말했다.\" - Again, actual use in PCOS patients with observed effects on weight and menstrual cycle. Patient population: PCOS 여성. Signal type: OFF_LABEL_USE.\n\n3. \"검사 결과 설명은 재진 외래에서 출력물과 함께 한다고 했다.\" - This is about clinical workflow, not relevant to the signal types.\n\nBoth statements are about PCOS women (which maps to \"PCOS 여성\" in the patient population list). Both describe actual clinical experience using metformin in PCOS patients, so they are OFF_LABEL_USE, not OFF_LABEL_DEMAND (which would be wanting to use but blocked).\n\nNo adverse events mentioned - these are therapeutic effects observed.\n\nI'll create two claims."
+}

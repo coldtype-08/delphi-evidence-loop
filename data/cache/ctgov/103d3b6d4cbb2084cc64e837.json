@@ -1,0 +1,1 @@
+{"url": "https://clinicaltrials.gov/api/v2/studies", "params": {"query.intr": "metformin", "pageSize": 1, "countTotal": "true", "fields": "NCTId", "query.cond": "Type 2 Diabetes Mellitus AND Renal Impairment AND Aged", "filter.overallStatus": "RECRUITING"}, "fetched_at": 1790597552.333587, "as_of": "2026-09-28", "body": {"totalCount": 0, "studies": []}}

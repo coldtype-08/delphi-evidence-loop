@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1054,
+  "output": 644
+ },
+ "created_at": "2026-09-28T20:07:54",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "비만한 PCOS 환자에서는 메트포르민을 써 보면 체중 감소보다 주기 회복이 먼저 온다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "비만 PCOS 환자에서 메트포르민 사용 시 체중 감소보다 월경 주기 회복이 먼저 관찰됐다는 실제 임상 경험 진술"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "배란 장애가 있는 PCOS 여성에게는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다",
+    "is_adverse_event": false,
+    "note_ko": "배란장애 PCOS 여성에서 레트로졸+메트포르민 병용 시 배란율이 유의하게 상승한다는 실제 임상 사용 경험"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\"비만한 PCOS 환자에서는 메트포르민을 써 보면 체중 감소보다 주기 회복이 먼저 온다고 했다. 배란 장애가 있는 PCOS 여성에게는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다. 면담은 오후 진료 전 40분 정도 진행했다.\"\n\nPatient population: PCOS 여성 (PCOS women) - this matches \"PCOS 여성\" in the allowed list.\n\nSignal types to identify:\n1. \"비만한 PCOS 환자에서는 메트포르민을 써 보면 체중 감소보다 주기 회복이 먼저 온다고 했다\" - This describes actual use and observed response in PCOS patients. Since metformin is not approved for PCOS in Korea (off-label), this is OFF_LABEL_USE (actually used and observed response).\n\n2. \"배란 장애가 있는 PCOS 여성에게는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다\" - This also describes actual clinical practice of combining letrozole with metformin for ovulation induction in PCOS women with ovulatory dysfunction. This is also OFF_LABEL_USE.\n\nBoth statements are about PCOS women (allowed population) and describe actual off-label use with observed outcomes.\n\nNo adverse events mentioned. No dosing specifics, safety/tolerability mentions, unmet needs, repurposing (though technically it is repurposing, the signal type REPURPOSING is for \"mention of different use from original indication\" - but OFF_LABEL_USE takes precedence when it's about actual use and response).\n\nLet me create the claims."
+}

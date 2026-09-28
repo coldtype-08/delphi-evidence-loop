@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1061,
+  "output": 716
+ },
+ "created_at": "2026-09-28T20:05:58",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS 환자 가운데 체중이 계속 느는 경우에는 메트포르민을 쓰고 나서 공복 인슐린 수치가 떨어지는 것을 검사로 확인하고 있다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 사용 후 공복 인슐린 감소 확인 경험을 언급함"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신부에게 메트포르민을 쓰는 문제는 영국이나 호주에서는 메트포르민이 흔히 쓰이는데 국내에서는 허가 밖이라 쓰지 못한다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "해외에서는 임신부 메트포르민 사용이 흔하나 국내 허가 외 사용 제한으로 사용 못 함을 호소함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient segment and signal type.\n\nLet me analyze the text:\n\n1. \"환자 대기 시간이 한 시간을 넘어 안내 문자를 보낸다고 했다.\" - This is about wait times, not relevant to metformin signals.\n\n2. \"PCOS 환자 가운데 체중이 계속 느는 경우에는 메트포르민을 쓰고 나서 공복 인슐린 수치가 떨어지는 것을 검사로 확인하고 있다는 이야기를 했다.\" - This mentions PCOS patients (segment: PCOS 여성) using metformin and checking fasting insulin levels. This sounds like OFF_LABEL_USE (actually using it and observing response) or possibly DOSING/SAFETY_TOLERABILITY. But the key is they're using it in PCOS patients and monitoring response. PCOS is off-label for metformin in Korea. They're saying they use it and verify fasting insulin drops. This is OFF_LABEL_USE.\n\n3. \"임신부에게 메트포르민을 쓰는 문제는 영국이나 호주에서는 메트포르민이 흔히 쓰이는데 국내에서는 허가 밖이라 쓰지 못한다고 다시 말했다.\" - This mentions pregnant women (segment: 임신부 · 임신성 당뇨) and says in UK/Australia metformin is commonly used but in Korea it's off-label so they can't use it. This is OFF_LABEL_DEMAND (want to use but blocked).\n\nSo I have two claims:\n1. Segment: PCOS 여성, Signal: OFF_LABEL_USE, Quote: \"PCOS 환자 가운데 체중이 계속 느는 경우에는 메트포르민을 쓰고 나서 공복 인슐린 수치가 떨어지는 것을 검사로 확인하고 있다는 이야기를 했다.\"\n2. Segment: 임신부 · 임신성 당뇨, Signal: OFF_LABEL_DEMAND, Quote: \"임신부에게 메트포르민을 쓰는 문제는 영국이나 호주에서는 메트포르민이 흔히 쓰이는데 국내에서는 허가 밖이라 쓰지 못한다고 다시 말했다.\"\n\nNeither appears to be an adverse event (specific harmful event to a specific patient). They're general statements about practice.\n\nLet me format the output."
+}

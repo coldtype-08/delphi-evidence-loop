@@ -19,21 +19,22 @@ def demo_card(state: dict, contract: dict, notes_n: int, web: bool = True) -> st
     segs = " · ".join(esc(s) for s in contract["segments"])
     sigs = "".join(f'<li><b>{esc(code)}</b> — {esc(ko)}</li>' for code, ko in SIGNAL_KO.items())
     notes_link = '<a href="/notes">면담 기록 보기</a>' if web else '<a href="#notes">면담 기록 보기</a>'
+    hcps_n = len({n["hcp_ref"] for n in load_notes()})
     steps = ("<ol class=\"steps\">"
-             f"<li>{notes_link} — 무엇이 입력인지 먼저 읽는다 (합성 12건, 한국어)</li>"
-             "<li><b>① 추출 실행</b> — 발언 카드 30장이 생기고, 인용마다 원문 위치가 붙는다</li>"
-             "<li><b>가설 HYP-003</b>을 연다 — 유방암 환자가 보조요법으로 요청하는 신호</li>"
+             f"<li>{notes_link} — 무엇이 입력인지 먼저 읽는다 (합성 {notes_n}건, 한국어)</li>"
+             f"<li><b>① 추출 실행</b> — 발언 카드가 생기고(지금 {len(state['claims'])}장), 인용마다 원문 위치가 붙는다</li>"
+             "<li><b>가설 하나</b>를 연다 — 예: 유방암 환자가 보조요법으로 요청하는 신호(허가 밖 수요)</li>"
              "<li><b>② 근거 교차검증</b> — PubMed·CT.gov·라벨을 읽고 지지/반대/중립을 인용과 함께 표시</li>"
              "<li><b>③ 서명</b> — 근거를 읽었다고 이름으로 서명해야 심의로 간다 (사람 관문)</li>"
              "<li><b>④ 심의 → ⑤ 결정</b> — 임원 에이전트 7인이 토론하고 간사가 회의록을 쓴다. 결정하면 후속 질문이 체크리스트에 들어간다</li></ol>")
     return (f'<div class="card"><b>데모 안내</b> <span class="sub">— 의료진 면담 기록을 환자군 × 신호 유형으로 세고, 문턱을 넘은 조합을 공개 근거로 검증한 뒤, 사람이 서명·결정한 후속 질문을 다음 면담으로 보내는 과정을 실행해 볼 수 있다.</span>'
             f'<div class="grid" style="grid-template-columns:1fr 1fr;margin-top:10px">'
-            f'<div><div class="eyebrow">입력</div>{esc(contract["drug_ko"])}에 관한 <b>합성 면담 기록 {notes_n}건</b> (가상 의료진 {notes_n}인 · 한국어 · 실제 인물·기관 없음). {notes_link}.'
+            f'<div><div class="eyebrow">입력</div>{esc(contract["drug_ko"])}에 관한 <b>합성 면담 기록 {notes_n}건</b> (가상 의료진 {hcps_n}인 · 한국어 · 실제 인물·기관 없음). {notes_link}.'
             f'<div class="eyebrow" style="margin-top:10px">무엇을 뽑나 — 사람이 정한 고정 헤더</div><b>환자군 {len(contract["segments"])}</b>: {segs}<br><b>신호 유형 {len(SIGNAL_KO)}</b>:<ul style="margin:4px 0 0">{sigs}</ul>'
             f'<div class="faint" style="margin-top:6px">「써봤다」와 「막혔다」는 규제상 다른 신호이므로 구분한다. 유해사례로 읽히는 발언은 별도 경로로 보낸다.</div></div>'
             f'<div><div class="eyebrow">보는 순서 (5분)</div>{steps}'
             f'<div class="faint" style="margin-top:8px">같은 입력은 캐시에서 즉시 재생된다. 새 이름으로 서명해 심의하면 그때만 Nemotron이 실제로 돈다(임원 7인 병렬, 약 5분).</div>'
-            f'<div class="faint" style="margin-top:4px"><b>확인할 것</b>: HYP-003에서 대규모 3상(MA.32, n=3,649) 무효 결과가 <span class="chip oppose">반대</span>로 표시되고, 심의 기록에서 임원들이 이를 인용한다.</div></div></div></div>')
+            f'<div class="faint" style="margin-top:4px"><b>확인할 것</b>: 유방암 × 허가 밖 수요 가설에서 대규모 3상(MA.32, n=3,649) 무효 결과가 <span class="chip oppose">반대</span>로 표시되고, 심의 기록에서 임원들이 이를 인용한다.</div></div></div></div>')
 
 
 # ── shared pieces ──────────────────────────────────────────────────────────────

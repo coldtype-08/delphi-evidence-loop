@@ -1,0 +1,38 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1112,
+  "output": 860
+ },
+ "created_at": "2026-09-28T20:10:15",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "당뇨 전단계인 30~40대 비만 환자에게는 허가 밖 처방을 했다가 급여 조정을 받은 뒤로는 메트포르민을 아예 시도하지 않는다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 비만 환자에게 오프라벨 처방을 원하나 급여 조정 경험으로 인해 처방을 포기함."
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "REPURPOSING",
+    "quote": "지방간을 동반한 당뇨 전단계 환자를 두고 혈당보다 간 지방 개선을 기대하고 메트포르민을 보는 동료가 있다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계+지방간 환자에서 혈당 강하가 아닌 간 지방 개선 목적으로 메트포르민을 고려함."
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "REPURPOSING",
+    "quote": "당뇨 전단계이면서 지방간이 있는 환자에서는 메트포르민을 지방간 쪽으로 보는 시각이 소화기내과에 있다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "소화기내과에서 당뇨 전단계+지방간 환자에 메트포르민을 지방간 적응증으로 바라보는 견해가 있음을 재확인함."
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record (in Korean) about metformin use. I need to extract claims according to the two axes: patient segment and signal type.\n\nLet me analyze the text:\n\n1. \"당뇨 전단계인 30~40대 비만 환자에게는 허가 밖 처방을 했다가 급여 조정을 받은 뒤로는 메트포르민을 아예 시도하지 않는다고 여러 번 말했다.\"\n   - Segment: 당뇨 전단계 (prediabetes)\n   - Signal: OFF_LABEL_DEMAND - they want to prescribe off-label but are blocked by reimbursement issues\n   - Quote: \"당뇨 전단계인 30~40대 비만 환자에게는 허가 밖 처방을 했다가 급여 조정을 받은 뒤로는 메트포르민을 아예 시도하지 않는다고 여러 번 말했다.\"\n\n2. \"지방간을 동반한 당뇨 전단계 환자를 두고 혈당보다 간 지방 개선을 기대하고 메트포르민을 보는 동료가 있다는 이야기를 했다.\"\n   - Segment: 당뇨 전단계 (prediabetes) - with fatty liver\n   - Signal: REPURPOSING - using metformin for fatty liver improvement rather than glycemic control\n   - Quote: \"지방간을 동반한 당뇨 전단계 환자를 두고 혈당보다 간 지방 개선을 기대하고 메트포르민을 보는 동료가 있다는 이야기를 했다.\"\n\n3. \"당뇨 전단계이면서 지방간이 있는 환자에서는 메트포르민을 지방간 쪽으로 보는 시각이 소화기내과에 있다고 다시 말했다.\"\n   - Segment: 당뇨 전단계 (prediabetes) - with fatty liver\n   - Signal: REPURPOSING - again, viewing metformin for fatty liver indication\n   - Quote: \"당뇨 전단계이면서 지방간이 있는 환자에서는 메트포르민을 지방간 쪽으로 보는 시각이 소화기내과에 있다고 다시 말했다.\"\n\nNone of these appear to be adverse events (is_adverse_event: false).\n\nLet me structure the claims."
+}

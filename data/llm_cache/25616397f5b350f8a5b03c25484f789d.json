@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1063,
+  "output": 609
+ },
+ "created_at": "2026-09-28T20:26:48",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "비만한 PCOS 환자에서는 메트포르민을 쓰고 월경이 돌아오면 그 뒤로는 약 없이도 유지되는 경우가 있다는 것이 본인 경험이라고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 사용 후 월경 회복 및 약물 중단 후 유지 경험을 기술함."
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "DOSING",
+    "quote": "PCOS로 메트포르민을 시작하는 환자에게는 배란 유도 주기 시작 최소 두 달 전부터 용량을 맞춰 두어야 한다.",
+    "is_adverse_event": false,
+    "note_ko": "배란 유도 전 메트포르민 용량 조절 시점(최소 2개월 전)을 언급함."
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"비만한 PCOS 환자에서는 메트포르민을 쓰고 월경이 돌아오면 그 뒤로는 약 없이도 유지되는 경우가 있다는 것이 본인 경험이라고 했다.\"\n   - Patient population: PCOS 여성 (PCOS women)\n   - Signal type: This describes actual use and response - \"OFF_LABEL_USE\" (actually used and observed response). Metformin for PCOS is off-label in many jurisdictions.\n   - Quote: \"비만한 PCOS 환자에서는 메트포르민을 쓰고 월경이 돌아오면 그 뒤로는 약 없이도 유지되는 경우가 있다는 것이 본인 경험이라고 했다.\"\n   - Not an adverse event.\n   - Note: PCOS 환자에서 메트포르민 사용 후 월경 회복 및 유지 경험을 기술함.\n\n2. \"PCOS로 메트포르민을 시작하는 환자에게는 배란 유도 주기 시작 최소 두 달 전부터 용량을 맞춰 두어야 한다.\"\n   - Patient population: PCOS 여성\n   - Signal type: DOSING (dosing/timing guidance)\n   - Quote: \"PCOS로 메트포르민을 시작하는 환자에게는 배란 유도 주기 시작 최소 두 달 전부터 용량을 맞춰 두어야 한다.\"\n   - Not an adverse event.\n   - Note: 배란 유도 전 메트포르민 용량 조절 시점(최소 2개월 전)을 언급함.\n\n3. \"병원 약제부에서 약품 목록 개편을 진행 중이라 처방 코드가 바뀌었다고 했다.\"\n   - This is about hospital formulary changes, not directly about metformin clinical use signals. Not relevant to the signal types.\n\nSo I have 2 claims to extract."
+}

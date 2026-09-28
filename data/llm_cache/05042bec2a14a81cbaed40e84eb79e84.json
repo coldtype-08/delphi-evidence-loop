@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1068,
+  "output": 846
+ },
+ "created_at": "2026-09-28T20:03:34",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "DOSING",
+    "quote": "배란 유도 전에 PCOS 환자에게 메트포르민을 쓸 때 배란 유도 주기 시작 최소 두 달 전부터 용량을 맞춰 두어야 한다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "배란 유도 주기 전 메트포르민 용량 조절 시점(최소 2개월 전)에 대한 복용 방식 언급"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS로 월경이 불규칙한 환자에게는 경구피임약과 메트포르민을 같이 쓰면 여드름과 다모증이 조금 나아지는 환자가 있다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 경구피임약과 병용하여 여드름·다모증 개선을 목적으로 메트포르민을 실제 사용해본 경험 언급(허가 외 사용)"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"배란 유도 전에 PCOS 환자에게 메트포르민을 쓸 때 배란 유도 주기 시작 최소 두 달 전부터 용량을 맞춰 두어야 한다는 이야기를 했다.\"\n   - Patient population: PCOS 여성 (PCOS women)\n   - Signal type: DOSING (용량·제형·복용 방식에 대한 언급) - mentions timing of dose adjustment before ovulation induction cycle\n   - Quote: \"배란 유도 전에 PCOS 환자에게 메트포르민을 쓸 때 배란 유도 주기 시작 최소 두 달 전부터 용량을 맞춰 두어야 한다는 이야기를 했다.\"\n\n2. \"PCOS로 월경이 불규칙한 환자에게는 경구피임약과 메트포르민을 같이 쓰면 여드름과 다모증이 조금 나아지는 환자가 있다고 했다.\"\n   - Patient population: PCOS 여성 (PCOS women)\n   - Signal type: OFF_LABEL_USE (허가 범위 밖에서 실제로 써봤다·반응을 보고한 발언) - mentions using metformin with OCPs for acne/hirsutism in PCOS, which is off-label use\n   - Quote: \"PCOS로 월경이 불규칙한 환자에게는 경구피임약과 메트포르민을 같이 쓰면 여드름과 다모증이 조금 나아지는 환자가 있다고 했다.\"\n\n3. \"진료 예약이 석 달 뒤까지 차 있어 예약 대기 명단을 운영한다고 했다.\"\n   - This is about clinic operations, not relevant to metformin signals.\n\nLet me check the signal types:\n- OFF_LABEL_DEMAND: wanting to use but blocked - not present\n- OFF_LABEL_USE: actually used off-label and observed response - yes, #2\n- REPURPOSING: different use from original indication - could be argued for #2, but OFF_LABEL_USE is more specific\n- UNMET_NEED: current treatment doesn't meet need - not explicitly stated\n- DOSING: dose/formulation/administration - yes, #1\n- SAFETY_TOLERABILITY: safety/tolerability - not mentioned\n\nFor #2, the combination of metformin + OCP for acne/hirsutism in PCOS is off-label use (metformin is not approved for acne/hirsutism). The physician says \"there are patients who improve a little\" - this is reporting actual use and observed response.\n\nFor #1, the timing of dose adjustment (2 months before ovulation induction) is a dosing/administration comment.\n\nI'll create two claims."
+}

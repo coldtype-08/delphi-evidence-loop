@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1058,
+  "output": 735
+ },
+ "created_at": "2026-09-28T20:11:31",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "UNMET_NEED",
+    "quote": "임신성 당뇨에서 메트포르민을 쓴다면 용량을 어디까지 올릴지 참고할 국내 자료가 없다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨에서 메트포르민 용량 증량 상한에 대한 국내 참고 자료가 부재함을 지적함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "난임으로 온 PCOS 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 난임 환자에게 메트포르민 2개월 이상 선행 투여 후 배란 유도 시 주기 취소 감소 경험을 보고함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n\"이번 면담 기록은 귀사 후 노트를 보고 작성했다. 임신성 당뇨에서 메트포르민을 쓴다면 용량을 어디까지 올릴지 참고할 국내 자료가 없다고 했다. 난임으로 온 PCOS 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다. 면담은 회진 뒤 25분 정도 했다.\"\n\nKey statements:\n1. \"임신성 당뇨에서 메트포르민을 쓴다면 용량을 어디까지 올릴지 참고할 국내 자료가 없다고 했다\" - This is about gestational diabetes (임신부 · 임신성 당뇨) and dosing (용량). This seems like UNMET_NEED (lack of domestic reference data for dosing) or DOSING. The speaker says there's no domestic reference data on how high to titrate dose in gestational diabetes. This could be UNMET_NEED (need for dosing guidance) or DOSING (discussion about dosing). I think UNMET_NEED fits better because it's about an unmet need for reference data.\n\n2. \"난임으로 온 PCOS 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다\" - This is about PCOS women (PCOS 여성) and describes actual use experience (OFF_LABEL_USE or REPURPOSING). Metformin for PCOS infertility is off-label in many jurisdictions. The speaker says they used it for 2+ months before ovulation induction and cycle cancellation decreased. This is OFF_LABEL_USE (actual use experience) and also could be REPURPOSING (different use from original indication). Since it's describing actual clinical experience with outcomes, I'll classify as OFF_LABEL_USE.\n\nPatient populations:\n- First statement: 임신부 · 임신성 당뇨\n- Second statement: PCOS 여성\n\nSignal types:\n- First: UNMET_NEED (no domestic reference data for dosing in GDM)\n- Second: OFF_LABEL_USE (actual use in PCOS infertility with observed benefit)\n\nLet me create the claims."
+}

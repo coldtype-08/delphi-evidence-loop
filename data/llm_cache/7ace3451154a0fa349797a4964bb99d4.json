@@ -1,0 +1,113 @@
+{
+ "purpose": "screen_ctgov",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_ctgov_items_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 4409,
+  "output": 2956
+ },
+ "created_at": "2026-09-28T21:10:44",
+ "output": {
+  "items": [
+   {
+    "source_id": "NCT01394887",
+    "stance": "NEUTRAL",
+    "quote": "To determine the effect of metformin on the concentrations of resistin and other insulin resistance or inflammatory markers (C-reactive protein, cytokines, body weight, HbA1c, among others) in minors with glucose intolerance.",
+    "note_ko": "소아 당뇨전단계 대상 염증 지표 변화 관찰 시험으로, 고위험 성인 당뇨전단계 진행 지연과는 대상·목적이 다름 (완료, Phase 2/3)."
+   },
+   {
+    "source_id": "NCT02338193",
+    "stance": "SUPPORTS",
+    "quote": "Women with a history of gestational diabetes (GDM) are at substantially increased risk of type 2 diabetes mellitus (T2DM). Compared with the general population, these women are more likely to be overweight or obese.",
+    "note_ko": "임신성 당뇨병력·과체중/비만 고위험 여성에서 메트포르민 단독·병용 효과를 평가 (완료, Phase 3)."
+   },
+   {
+    "source_id": "NCT03968224",
+    "stance": "NEUTRAL",
+    "quote": "The management of alterations in the glucose metabolism in this unit is made by dietary treatment and with the use of metformin at doses of 1,700 mg/day and/or basal insulin.",
+    "note_ko": "다파글리플로진 체중감량 시험에서 메트포르민은 배경 요법으로만 사용됨 (완료, Phase 2/3)."
+   },
+   {
+    "source_id": "NCT04131582",
+    "stance": "SUPPORTS",
+    "quote": "The goal of this trial is to evaluate the effect of empagliflozin + linagliptin + metformin + lifestyle on physiopathological parameters, such as glucose metabolism, insulin resistance, pancreatic beta cell function and cardiovascular function in patients with impaired fasting glucose plus impaired glucose tolerance, during 12 months",
+    "note_ko": "공복혈당장애·내당능장애 동반 당뇨전단계에서 메트포르민 포함 병용요법 효과 검증 (상태 불명, Phase 3)."
+   },
+   {
+    "source_id": "NCT00038727",
+    "stance": "SUPPORTS",
+    "quote": "The DPP has ended early demonstrating that lifestyle reduced diabetes onset by 58% and metformin reduced diabetes onset by 31%.",
+    "note_ko": "대표적 당뇨예방연구(DPP)에서 메트포르민이 고위험 내당능장애군의 당뇨 발생을 31% 감소시킴 (완료, Phase 3)."
+   },
+   {
+    "source_id": "NCT00570739",
+    "stance": "NEUTRAL",
+    "quote": "Qualified pre-diabetic subjects will be randomized 1:1 to receive colesevelam HCl or matching placebo.",
+    "note_ko": "당뇨전단계에서 콜레세벨람 위주 평가, 메트포르민 단독 효과는 비중 낮음 (완료, Phase 3)."
+   },
+   {
+    "source_id": "NCT03774108",
+    "stance": "NEUTRAL",
+    "quote": "patients with prediabetes (who meet the fasting impaired glucose criteria) will be identified and treated with metformin or placebo for 8 weeks, receiving stable TARA",
+    "note_ko": "HIV 감염자 동반 당뇨전단계 대상 염증·면역 지표 관찰 (상태 불명, Phase 4)."
+   },
+   {
+    "source_id": "NCT02446834",
+    "stance": "SUPPORTS",
+    "quote": "Compare the efficacy between intensive lifestyle intervention and drugs (GLP-1 Receptor Agonists, metformin and acarbose) for PCOS patients with early onset diabetes in their metabolic and reproductive abnormalities treatment",
+    "note_ko": "다낭성난소증후군·내당능장애 고위험군에서 메트포르민 등 약물요법과 생활요법 비교 (완료, 단계 미지정)."
+   },
+   {
+    "source_id": "NCT04549415",
+    "stance": "NEUTRAL",
+    "quote": "The key pathogenetic link in development of carbohydrates metabolism disorders (CMD) is insulin resistance (IR), which is one of the crucial mechanisms for the development and progression of chronic heart failure (CHF).",
+    "note_ko": "만성심부전 동반 당뇨전단계에서 메트포르민의 심혈관 경과 관찰 (완료, Phase 4)."
+   },
+   {
+    "source_id": "NCT03558867",
+    "stance": "SUPPORTS",
+    "quote": "The overarching goal of the present project is to improve the efficacy of metformin mono-therapy in pre-diabetes and early type 2 diabetes.",
+    "note_ko": "당뇨전단계·초기 제2형당뇨에서 메트포르민 단독요법 효율성 개선 연구 (완료, 단계 미지정)."
+   },
+   {
+    "source_id": "NCT01351753",
+    "stance": "NEUTRAL",
+    "quote": "Only one drug, orlistat, is approved for long-term use in obesity; but its effects on weight are relatively small.",
+    "note_ko": "비만 대상 병용 체중감량제 평가, 당뇨전단계 진행 지연 목적 아님 (중단, Phase 2)."
+   },
+   {
+    "source_id": "NCT07209527",
+    "stance": "NEUTRAL",
+    "quote": "This study evaluates the effectiveness of Truway Health-sourced portable diagnostic devices, including ultrasound and blood glucose monitors, in early detection of chronic conditions",
+    "note_ko": "진단기기 정확도 평가 시험, 메트포르민 처방과 무관 (모집 중, 초기 Phase 1)."
+   },
+   {
+    "source_id": "NCT02915198",
+    "stance": "SUPPORTS",
+    "quote": "This research will help us to learn if the medicine called metformin reduces the risk of death, heart attacks, and/or strokes in Veterans who have pre-diabetes and heart or blood vessel problems.",
+    "note_ko": "당뇨전단계·심혈관질환 동반 고위험군에서 메트포르민의 심혈관 아웃컴 감소 검증 (모집 중, Phase 4)."
+   },
+   {
+    "source_id": "NCT05052918",
+    "stance": "SUPPORTS",
+    "quote": "to evaluate whether there is a difference between the group in which exercise programs were applied and those who received only lifestyle change and metformin.",
+    "note_ko": "당뇨전단계에서 운동·생활요법+메트포르민 그룹 간 경동맥 내중막 두께 변화 비교 (상태 불명, 단계 미지정)."
+   },
+   {
+    "source_id": "NCT02234440",
+    "stance": "NEUTRAL",
+    "quote": "These patients will be randomised to either metformin arm or conventional treatment arm.",
+    "note_ko": "NASH 관련 간경변 동반 당뇨/내당능장애에서 메트포르민 질병 진행 효과 평가 (완료, 단계 미지정)."
+   },
+   {
+    "source_id": "NCT07131384",
+    "stance": "NEUTRAL",
+    "quote": "We will be comparing the responses in individuals who are taking metformin to those who are naive to metformin.",
+    "note_ko": "무기질산염 보충제와 메트포르민 상호작용 탐색, 당뇨 진행 지연 일차 목적 아님 (모집 중, 단계 미지정)."
+   }
+  ]
+ },
+ "reasoning": "The user wants me to evaluate each clinical trial record against the hypothesis about metformin use in prediabetes in Korea. The hypothesis states that Korean physicians recognize sufficient evidence for metformin to delay progression in high-risk prediabetes but cannot prescribe it due to lack of domestic approval/reimbursement.\n\nI need to classify each record as SUPPORTS, CONTRADICTS, or NEUTRAL based on whether the trial actually tests metformin for delaying progression in high-risk prediabetes (IFG/IGT, HbA1c ~6.2%, BMI ≥30, family history).\n\nLet me analyze each record:\n\n1. NCT01394887: Metformin & Inflammation in Pre-diabetic Children - tests metformin in children with glucose intolerance, measures inflammatory markers. This is in children, not the high-risk adult population described. But it does test metformin in prediabetes. However, the hypothesis is about Korean physicians' view and domestic approval. This trial is in Mexico, children. Might be NEUTRAL or SUPPORTS? The hypothesis is about evidence for metformin delaying progression in high-risk prediabetes. This trial tests metformin in prediabetic children for inflammatory markers, not specifically progression to diabetes. I'd say NEUTRAL because it's not the same population (children vs adults with BMI≥30, family history) and not directly testing progression delay.\n\n2. NCT02338193: Dapagliflozin and Metformin in Overweight/Obese Prior GDM Women - tests dapagliflozin and metformin in women with prior gestational diabetes, overweight/obese. This is a high-risk prediabetes population (prior GDM, overweight). Tests metformin alone and in combination. This SUPPORTS the idea that metformin is being tested in high-risk prediabetes.\n\n3. NCT03968224: Effectiveness of Dapagliflozin for Weight Loss - mentions metformin used at 1700 mg/day in obesity clinic with pre-diabetes/T2D. But the trial is about dapagliflozin, not metformin. Metformin is background therapy. NEUTRAL.\n\n4. NCT04131582: Effect of Empagliflozin + Linagliptin + Metformin + Lifestyle in Patients With Prediabetes - tests combination including metformin in prediabetes (IFG+IGT). This SUPPORTS testing metformin in prediabetes.\n\n5. NCT00038727: Diabetes Prevention Program Outcomes Study - the landmark DPP trial showing metformin reduced diabetes onset by 31% in high-risk IGT population. This directly SUPPORTS the evidence base for metformin in high-risk prediabetes.\n\n6. NCT00570739: Effects of Metformin HCl in Combination With Colesevelam HCl in pre-diabetic patients - tests colesevelam vs placebo in pre-diabetic subjects, with metformin as background? Actually says \"pre-diabetic subjects will be randomized 1:1 to receive colesevelam HCl or matching placebo.\" Not clear if metformin is given to all. But it includes pre-diabetic patients. Might be NEUTRAL.\n\n7. NCT03774108: Metformin and Systemic Inflammation in HIV - tests metformin in prediabetic HIV patients. Specific population, not general high-risk prediabetes. NEUTRAL.\n\n8. NCT02446834: Research of Intensive Lifestyle Intervention for PCOS Patients With IGT - compares lifestyle vs drugs (including metformin) in PCOS with IGT. This SUPPORTS testing metformin in high-risk prediabetes (PCOS with IGT).\n\n9. NCT04549415: The Influence of Metformin on Chronic Heart Failure Clinical Course in Patients With Prediabetes - tests metformin in prediabetes with heart failure. Specific comorbidity. NEUTRAL.\n\n10. NCT03558867: Personalised Medicine in Pre-diabetes and Early Type 2 Diabetes - aims to improve efficacy of metformin monotherapy in pre-diabetes. SUPPORTS.\n\n11. NCT01351753: Drug Therapy Induced Weight Loss to Improve Blood Vessel Function in Subjects With Obesity - tests combination weight loss drugs, not specifically metformin for prediabetes progression. NEUTRAL.\n\n12. NCT07209527: Truway Diagnostic Tools in Primary Care - diagnostic devices, not metformin. NEUTRAL.\n\n13. NCT02915198: Investigation of Metformin in Pre-Diabetes on Atherosclerotic Cardiovascular Outcomes - tests metformin in pre-diabetes for cardiovascular outcomes. SUPPORTS.\n\n14. NCT05052918: The Effect of Exercise and Metformin on Carotid Intima-media Thickness in Patients With Prediabetes - tests exercise vs lifestyle+metformin in prediabetes. SUPPORTS.\n\n15. NCT02234440: Effect of Metformin on Disease Progression in Patients With Cryptogenic Cirrhosis With Diabetes or Impaired Glucose Tolerance - tests metformin in cirrhosis with IGT. Specific population. NEUTRAL.\n\n16. NCT07131384: Interaction Between Inorganic Nitrate Supplementation and Metformin in Individuals With Prediabetes - tests nitrate supplementation in metformin users vs naive. Not directly testing metformin for progression. NEUTRAL.\n\nNow I need to produce the output with source_id, stance, quote, note_ko.\n\nI'll write the function call."
+}

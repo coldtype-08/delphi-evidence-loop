@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1070,
+  "output": 769
+ },
+ "created_at": "2026-09-28T20:13:19",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "다낭성난소증후군으로 의뢰된 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에게 메트포르민을 배란 유도 전 2개월 이상 투여 후 주기 취소율이 감소한 실제 사용 경험을 기술함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS로 임신을 준비하는 환자에게는 메트포르민을 보조로 쓴 뒤 임신까지 이어진 사례가 지난 1년에 몇 건 있었다는 것이 본인 경험이라고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신 준비 중인 PCOS 환자에게 메트포르민을 보조요법으로 사용해 임신에 이른 사례가 있었다는 실제 사용 경험을 기술함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in PCOS patients. I need to extract claims according to the specified schema. Let me analyze the text:\n\nText: \"다낭성난소증후군으로 의뢰된 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다고 했다. PCOS로 임신을 준비하는 환자에게는 메트포르민을 보조로 쓴 뒤 임신까지 이어진 사례가 지난 1년에 몇 건 있었다는 것이 본인 경험이라고 했다. 면담 장소는 의국이었고 간호사가 잠시 배석했다.\"\n\nKey points:\n1. PCOS patients referred - metformin used for 2+ months before ovulation induction → cycle cancellation reduced\n2. PCOS patients preparing for pregnancy - metformin used as adjunct → pregnancy achieved in several cases over past year (personal experience)\n\nPatient population: PCOS women (PCOS 여성)\nSignal types:\n- First statement: OFF_LABEL_USE (actually used and observed response) or possibly REPURPOSING (different use from original indication)\n- Second statement: OFF_LABEL_USE (actually used as adjunct and saw pregnancy outcomes)\n\nMetformin's original indication is type 2 diabetes. Using it for PCOS/ovulation induction/fertility is off-label. The physician is describing actual use and outcomes, so OFF_LABEL_USE seems appropriate.\n\nLet me check the signal types:\n- OFF_LABEL_DEMAND: wants to use but blocked - not the case\n- OFF_LABEL_USE: actually used off-label and observed response - YES\n- REPURPOSING: different use from original indication - could also apply but OFF_LABEL_USE is more specific\n- UNMET_NEED: current treatment doesn't solve need - not explicitly stated\n- DOSING: dose/formulation/administration - mentions \"2+ months\" but not the focus\n- SAFETY_TOLERABILITY: safety/tolerability - not mentioned\n\nThe first sentence describes using metformin for 2+ months before ovulation induction in PCOS patients, resulting in reduced cycle cancellation. This is OFF_LABEL_USE.\n\nThe second sentence describes using metformin as adjunct for PCOS patients preparing for pregnancy, with pregnancy achieved in several cases over the past year. This is also OFF_LABEL_USE.\n\nPatient segment: PCOS 여성 (PCOS women)\n\nNo adverse events mentioned.\n\nI'll create two claims."
+}

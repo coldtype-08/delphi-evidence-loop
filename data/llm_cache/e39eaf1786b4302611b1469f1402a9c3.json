@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1059,
+  "output": 573
+ },
+ "created_at": "2026-09-28T20:13:37",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "당뇨 전단계 환자가 먼저 메트포르민을 물어보면 급여가 안 되고 허가도 없어 처방을 거절하는 일이 늘었다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자가 메트포르민을 요청하나 급여·허가 범위 밖이라 처방 거절이 증가하고 있음을 진술"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "검진에서 당뇨 전단계가 나와 약을 달라는 환자에게는 허가 범위 때문에 처방하지 못한다고 같은 설명을 반복한다는 이야기를 했다",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 판정 환자의 약제 요청에 허가 범위 제한으로 처방 불가함을 반복 설명 중"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in prediabetes patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\"당뇨 전단계 환자가 먼저 메트포르민을 물어보면 급여가 안 되고 허가도 없어 처방을 거절하는 일이 늘었다고 했다. 검진에서 당뇨 전단계가 나와 약을 달라는 환자에게는 허가 범위 때문에 처방하지 못한다고 같은 설명을 반복한다는 이야기를 했다. 면담은 오전 진료가 끝난 뒤 20분 정도 진행했다.\"\n\nKey points:\n1. Prediabetes patients (당뇨 전단계) asking for metformin\n2. Doctor says insurance doesn't cover it and it's not approved (허가도 없어)\n3. Doctor has to refuse prescriptions\n4. Doctor repeats explanation that can't prescribe due to approval scope\n\nThis clearly falls under:\n- Patient segment: 당뇨 전단계 (prediabetes)\n- Signal type: OFF_LABEL_DEMAND - patients want it but doctor can't prescribe because it's off-label/not approved for this population\n\nThe doctor is describing patient demand that they have to refuse due to lack of approval/coverage. This is OFF_LABEL_DEMAND, not OFF_LABEL_USE (which would be actual use).\n\nNo adverse events mentioned. No dosing, safety, repurposing, or unmet need signals explicitly.\n\nI'll extract the relevant quotes."
+}

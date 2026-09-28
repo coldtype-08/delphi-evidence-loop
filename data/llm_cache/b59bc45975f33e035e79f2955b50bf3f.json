@@ -1,0 +1,38 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1107,
+  "output": 882
+ },
+ "created_at": "2026-09-28T20:43:10",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "인슐린을 두려워하는 임신성 당뇨 산모가 주사보다 먹는 약을 원해서 메트포르민 문의가 많지만 허가가 없어 처방하지 못한다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 산모가 인슐린 주사 대신 경구약(메트포르민)을 원하나 국내 허가 부재로 처방 불가함을 호소함"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "인슐린 대신 먹는 약을 원하는 임신부에게는 영국이나 호주에서는 메트포르민이 흔히 쓰이는데 국내에서는 허가 밖이라 쓰지 못한다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "해외(영국·호주)에서는 임신성 당뇨에 메트포르민을 흔히 쓰나 국내에서는 오프라벨이라 사용 못 함을 설명함"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 산모들이 메트포르민 처방을 요청했지만 국내 허가가 없어 거절했다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "산모들이 메트포르민 처방을 직접 요청했으나 국내 허가 없음으로 거절했음을 재확인함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in gestational diabetes patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"인슐린을 두려워하는 임신성 당뇨 산모가 주사보다 먹는 약을 원해서 메트포르민 문의가 많지만 허가가 없어 처방하지 못한다고 했다.\"\n   - Patient population: 임신부 · 임신성 당뇨 (pregnant women with gestational diabetes)\n   - Signal type: OFF_LABEL_DEMAND - patients want metformin but it's not approved so can't prescribe\n   - Quote: \"인슐린을 두려워하는 임신성 당뇨 산모가 주사보다 먹는 약을 원해서 메트포르민 문의가 많지만 허가가 없어 처방하지 못한다고 했다.\"\n\n2. \"인슐린 대신 먹는 약을 원하는 임신부에게는 영국이나 호주에서는 메트포르민이 흔히 쓰이는데 국내에서는 허가 밖이라 쓰지 못한다고 했다.\"\n   - Patient population: 임신부 · 임신성 당뇨\n   - Signal type: OFF_LABEL_DEMAND - patients want oral medication instead of insulin, metformin used abroad but not approved domestically\n   - Quote: \"인슐린 대신 먹는 약을 원하는 임신부에게는 영국이나 호주에서는 메트포르민이 흔히 쓰이는데 국내에서는 허가 밖이라 쓰지 못한다고 했다.\"\n\n3. \"임신성 당뇨 산모들이 메트포르민 처방을 요청했지만 국내 허가가 없어 거절했다고 다시 말했다.\"\n   - Patient population: 임신부 · 임신성 당뇨\n   - Signal type: OFF_LABEL_DEMAND - patients requested metformin but were refused due to lack of domestic approval\n   - Quote: \"임신성 당뇨 산모들이 메트포르민 처방을 요청했지만 국내 허가가 없어 거절했다고 다시 말했다.\"\n\n4. \"최근 배포된 당뇨병 진료지침 개정판을 전공의들과 같이 읽고 있다고 했다.\"\n   - This is just background information about reading guidelines, not a claim about metformin use in specific populations.\n\nAll three claims are about OFF_LABEL_DEMAND for pregnant women with gestational diabetes. None appear to be adverse events. Let me create the claims."
+}

@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1058,
+  "output": 501
+ },
+ "created_at": "2026-09-28T20:04:15",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 쓰고 나서 공복 인슐린 수치가 떨어지는 것을 검사로 확인하고 있다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 인슐린 저항성 개선 목적으로 메트포르민을 실제 사용하고 효과를 검사로 확인한 경험을 기술함"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 관리에서 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린로 갈 수밖에 없다는 점을 강조했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨에서 메트포르민 사용을 원하나 허가 외 사용이라 인슐린으로 대체해야 하는 현실을 토로함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 메트포르민을 쓰고 나서 공복 인슐린 수치가 떨어지는 것을 검사로 확인하고 있다고 했다.\" - This describes actual use of metformin in PCOS patients with insulin resistance, observing fasting insulin levels dropping. This is OFF_LABEL_USE (PCOS is off-label for metformin in many jurisdictions) and the patient population is \"PCOS 여성\".\n\n2. \"임신성 당뇨 관리에서 메트포르민을 쓰고 싶어도 허가 밖이라 인슐린으로 갈 수밖에 없다는 점을 강조했다.\" - This expresses desire to use metformin in gestational diabetes but being blocked because it's off-label, so they have to use insulin. This is OFF_LABEL_DEMAND for \"임신부 · 임신성 당뇨\" population.\n\nThe third sentence is just context about the interview process.\n\nI need to create two claims with exact quotes from the text."
+}

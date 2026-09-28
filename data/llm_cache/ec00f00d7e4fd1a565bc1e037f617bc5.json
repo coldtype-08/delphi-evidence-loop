@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1089,
+  "output": 649
+ },
+ "created_at": "2026-09-28T20:34:27",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민을 쓰지 못하는 것이 가장 답답한 부분이고 허가만 있으면 바로 쓰겠다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자에게 메트포르민을 쓰고 싶으나 허가 범위 밖이라 사용 못 함을 토로함"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "다음 검사에서 당뇨로 넘어갈 것이 뻔한 전단계 환자에게는 메트포르민을 쓰고 싶은데 허가 범위 밖이라 먼저 권하지 못한다는 이야기를 했다",
+    "is_adverse_event": false,
+    "note_ko": "당뇨로 진행 예상되는 전단계 환자에게 메트포르민 사용 희망하나 오프라벨이라 선뜻 권유 못 함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in pre-diabetes patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n- \"당뇨 환자 신환 비중은 4분의 1 정도라고 했다\" - background info, not a claim\n- \"검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민을 쓰지 못하는 것이 가장 답답한 부분이고 허가만 있으면 바로 쓰겠다고 했다\" - This is OFF_LABEL_DEMAND: wants to use metformin in pre-diabetes (허가 범위 밖) but can't due to lack of approval\n- \"다음 검사에서 당뇨로 넘어갈 것이 뻔한 전단계 환자에게는 메트포르민을 쓰고 싶은데 허가 범위 밖이라 먼저 권하지 못한다는 이야기를 했다\" - Another OFF_LABEL_DEMAND statement about wanting to use in pre-diabetes but can't due to off-label status\n\nPatient population: \"당뇨 전단계\" (pre-diabetes) - this is in the allowed list\nSignal type: Both statements are about wanting to use but being blocked by approval status → OFF_LABEL_DEMAND\n\nI need to extract the exact quotes from the text. Let me identify the exact Korean text segments.\n\nFirst quote: \"검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민을 쓰지 못하는 것이 가장 답답한 부분이고 허가만 있으면 바로 쓰겠다고 했다\"\nSecond quote: \"다음 검사에서 당뇨로 넘어갈 것이 뻔한 전단계 환자에게는 메트포르민을 쓰고 싶은데 허가 범위 밖이라 먼저 권하지 못한다는 이야기를 했다\"\n\nBoth are OFF_LABEL_DEMAND for segment \"당뇨 전단계\". No adverse events mentioned."
+}

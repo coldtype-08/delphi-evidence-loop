@@ -1,0 +1,77 @@
+{
+ "purpose": "screen_pubmed",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_pubmed_items_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 4536,
+  "output": 1654
+ },
+ "created_at": "2026-09-28T21:11:23",
+ "output": {
+  "items": [
+   {
+    "source_id": "PMID:42063220",
+    "stance": "SUPPORTS",
+    "quote": "In the MA.32 randomized adjuvant breast cancer trial, metformin (vs placebo) did not impact invasive disease-free survival or overall survival in estrogen and/or progesterone receptor-positive or -negative breast cancer",
+    "note_ko": "MA.32 3상 시험에서 메트포르민이 무병생존율이나 전체생존율을 개선하지 못했음을 보고한 탐색적 분석 논문"
+   },
+   {
+    "source_id": "PMID:35608580",
+    "stance": "SUPPORTS",
+    "quote": "the largest phase 3 randomized trial of metformin as adjuvant therapy for breast cancer, which enrolled 3,649 women with a 5-year follow-up, found no benefit for disease-free survival or overall survival with metformin",
+    "note_ko": "MA.32 3상 시험 주 결과 논문으로, 무병생존율과 전체생존율에서 메트포르민의 이점이 없음을 확인"
+   },
+   {
+    "source_id": "PMID:37695982",
+    "stance": "SUPPORTS",
+    "quote": "In the MA.32 randomized adjuvant breast cancer trial, metformin (v placebo) did not affect invasive disease-free or overall survival",
+    "note_ko": "MA.32 3상 시험의 이차 분석으로, 무병생존율과 전체생존율에 영향이 없음을 재확인"
+   },
+   {
+    "source_id": "PMID:37185680",
+    "stance": "SUPPORTS",
+    "quote": "Most recently, the largest phase 3 randomized trial of metformin as adjuvant therapy for breast cancer, which enrolled 3,649 women with a 5-year follow-up, found no benefit for disease-free survival or overall survival with metformin",
+    "note_ko": "메타분석·리뷰 논문으로 MA.32 등 대규모 3상 시험에서 무병생존율·전체생존율 개선 효과가 없음을 종합"
+   },
+   {
+    "source_id": "PMID:33527137",
+    "stance": "NEUTRAL",
+    "quote": "Median estradiol decreased between baseline and 6 months on metformin vs placebo (-5.7 vs 0 pmol/L; P < .001)",
+    "note_ko": "MA.32 하위 분석으로 성호르몬 변화만 보고, 임상 결과와 무관"
+   },
+   {
+    "source_id": "PMID:25740979",
+    "stance": "NEUTRAL",
+    "quote": "Metformin may improve metabolic factors (insulin, glucose, leptin, highly sensitive C-reactive protein [hs-CRP]) associated with poor breast cancer outcomes",
+    "note_ko": "MA.32 초기 대사 지표 분석 논문, 임상 결과 데이터 없음"
+   },
+   {
+    "source_id": "PMID:34485814",
+    "stance": "NEUTRAL",
+    "quote": "At 6 months, CA 15-3 was statistically significantly reduced in metformin vs placebo arms (absolute geometric mean reduction in CA 15-3 = 7.7% vs 2.0%, P < .001)",
+    "note_ko": "종양 표지자 CA 15-3 감소만 보고, 무병생존율 등 임상 결과와 무관"
+   },
+   {
+    "source_id": "PMID:34103538",
+    "stance": "NEUTRAL",
+    "quote": "Median weight change was -1.4 kg (metformin) vs +0.5 kg (placebo)",
+    "note_ko": "MA.32 대사 인자 분석 논문, 체중·인슐린 등 대사 변화만 보고"
+   },
+   {
+    "source_id": "PMID:26111812",
+    "stance": "NEUTRAL",
+    "quote": "The potential significance of these data for metformin in the treatment of breast cancer is discussed here",
+    "note_ko": "MA.32 시험 시작 전 논평, 결과 데이터 없음"
+   },
+   {
+    "source_id": "PMID:20976543",
+    "stance": "NEUTRAL",
+    "quote": "outline the key steps that will optimize development of this agent in breast cancer, including discussion of a Phase III adjuvant trial (NCIC MA.32) that has recently been initiated",
+    "note_ko": "MA.32 시험 설계 단계 리뷰, 결과 데이터 없음"
+   }
+  ]
+ },
+ "reasoning": "The user wants me to screen PubMed records for evidence related to the hypothesis about metformin off-label demand in breast cancer patients and clinicians declining based on negative phase 3 trials like MA.32.\n\nI need to evaluate each record and classify as SUPPORTS, CONTRADICTS, or NEUTRAL based on whether it provides evidence for the hypothesis. The hypothesis has two parts: 1) patients increasingly demand off-label metformin for recurrence prevention driven by media/community info, 2) clinicians decline citing negative phase 3 trials like MA.32 showing no DFS benefit.\n\nLet me analyze each record:\n\n1. PMID:42063220 - MA.32 exploratory analysis on BMI/metabolic factors. Shows metformin did not impact IDFS or OS in ER/PR+ or - breast cancer. This supports the \"negative phase 3 trial\" part. SUPPORTS.\n\n2. PMID:33527137 - MA.32 substudy on sex hormones. Shows metformin decreased estradiol. This is mechanistic, not directly about clinical outcomes or demand. NEUTRAL.\n\n3. PMID:25740979 - MA.32 metabolic factors analysis. Early metabolic data, not outcome results. NEUTRAL.\n\n4. PMID:35608580 - MA.32 primary outcome paper. \"found no benefit for disease-free survival or overall survival with metformin.\" This directly supports the negative phase 3 trial evidence. SUPPORTS.\n\n5. PMID:34485814 - MA.32 CA 15-3 levels. Shows reduction in tumor marker but not clinical outcomes. NEUTRAL.\n\n6. PMID:37695982 - MA.32 secondary analysis on new primary cancers. \"metformin (v placebo) did not affect invasive disease-free or overall survival.\" SUPPORTS.\n\n7. PMID:37185680 - Review article: \"largest phase 3 randomized trial of metformin as adjuvant therapy for breast cancer, which enrolled 3,649 women with a 5-year follow-up, found no benefit for disease-free survival or overall survival with metformin.\" This supports the negative trial evidence and mentions the observational bias issue. SUPPORTS.\n\n8. PMID:34103538 - MA.32 metabolic factors. Metabolic changes but not clinical outcomes. NEUTRAL.\n\n9. PMID:26111812 - Commentary on metformin in breast cancer, mentions MA.32 ongoing. Historical context, not outcome data. NEUTRAL.\n\n10. PMID:20976543 - Review from 2011 discussing rationale for MA.32 trial. Before results. NEUTRAL.\n\nNone of these directly address patient demand driven by media/community info. They only address the trial evidence part. So I'll classify those showing negative MA.32 results as SUPPORTS (for the clinician rationale part), others NEUTRAL.\n\nI need to provide quotes from the text. Let me extract relevant quotes."
+}

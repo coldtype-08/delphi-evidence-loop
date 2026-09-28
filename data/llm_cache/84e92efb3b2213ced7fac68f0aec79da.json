@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1104,
+  "output": 605
+ },
+ "created_at": "2026-09-28T20:04:06",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS로 월경이 불규칙한 환자에게는 당뇨 적응증으로 메트포르민을 처방하지만 실제 목적은 주기 회복이고 반응은 절반 정도에서 본다는 것이 본인 경험이라고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 적응증으로 처방하나 실제로는 PCOS 월경 주기 회복 목적으로 사용하며 약 절반에서 반응을 본다는 임상 경험"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "클로미펜에 반응이 없던 PCOS 환자에서는 메트포르민 단독으로는 배란이 잘 안 되지만 레트로졸과 같이 쓰면 확실히 낫다는 것이 본인 경험이라고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "클로미펜 저항성 PCOS에서 메트포르민 단독 배란 유도 효과는 낮으나 레트로졸 병용 시 효과가 확실하다는 임상 경험"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record from an OB/GYN infertility clinic. I need to extract claims related to metformin use, classifying them by patient segment and signal type.\n\nLet me analyze the text:\n\n1. \"PCOS로 월경이 불규칙한 환자에게는 당뇨 적응증으로 메트포르민을 처방하지만 실제 목적은 주기 회복이고 반응은 절반 정도에서 본다는 것이 본인 경험이라고 했다.\"\n   - Patient segment: PCOS 여성 (PCOS women)\n   - Signal type: This describes OFF_LABEL_USE - using metformin for diabetes indication but actual purpose is menstrual cycle recovery in PCOS, and observing response in about half. This is actual use experience, not demand.\n   - Also could be REPURPOSING since it's using diabetes drug for PCOS menstrual regulation.\n\n2. \"클로미펜에 반응이 없던 PCOS 환자에서는 메트포르민 단독으로는 배란이 잘 안 되지만 레트로졸과 같이 쓰면 확실히 낫다는 것이 본인 경험이라고 했다.\"\n   - Patient segment: PCOS 여성\n   - Signal type: OFF_LABEL_USE - describing actual clinical experience with combination therapy (metformin + letrozole) for ovulation induction in clomiphene-resistant PCOS. This is off-label use experience.\n\n3. \"환자 재진 안내 관리는 간호사가 맡고 있다고 했다.\" - Not relevant to metformin signals.\n4. \"자가 관리 교육 참여율을 올리는 방안을 교육팀과 논의 중이라고 했다.\" - Not relevant to metformin signals.\n\nLet me extract the claims with exact quotes."
+}

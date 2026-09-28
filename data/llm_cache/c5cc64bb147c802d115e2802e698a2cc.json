@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1072,
+  "output": 497
+ },
+ "created_at": "2026-09-28T20:41:38",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "무월경이 길었던 PCOS 환자에게는 메트포르민을 보조로 쓴 뒤 임신까지 이어진 사례가 지난 1년에 몇 건 있었다는 것이 본인 경험이라고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에게 메트포르민을 보조요법으로 사용 후 임신 사례를 경험함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "다낭성난소증후군으로 의뢰된 환자에게는 메트포르민 사용 후 자궁내막 두께가 정상으로 돌아온 것을 초음파로 확인한 적이 있다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 사용 후 자궁내막 두께 정상화 확인"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in PCOS patients. I need to extract claims according to the specified schema.\n\nLet me analyze the text:\n1. \"무월경이 길었던 PCOS 환자에게는 메트포르민을 보조로 쓴 뒤 임신까지 이어진 사례가 지난 1년에 몇 건 있었다는 것이 본인 경험이라고 했다.\" - This describes actual use of metformin in PCOS patients (off-label use) with observed outcomes (pregnancy). Patient segment: PCOS 여성. Signal type: OFF_LABEL_USE (actually used and observed response).\n\n2. \"다낭성난소증후군으로 의뢰된 환자에게는 메트포르민 사용 후 자궁내막 두께가 정상으로 돌아온 것을 초음파로 확인한 적이 있다는 이야기를 했다.\" - This also describes actual use of metformin in PCOS patients with observed outcome (endometrial thickness normalization). Patient segment: PCOS 여성. Signal type: OFF_LABEL_USE.\n\nBoth are about PCOS women (segment: PCOS 여성) and both describe actual off-label use with observed outcomes, so OFF_LABEL_USE.\n\nNo adverse events mentioned - these are positive outcomes.\n\nI need to extract exact quotes from the text."
+}

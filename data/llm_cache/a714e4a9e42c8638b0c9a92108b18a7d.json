@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1072,
+  "output": 715
+ },
+ "created_at": "2026-09-28T20:45:45",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "REPURPOSING",
+    "quote": "지방간을 동반한 당뇨 전단계 환자를 두고 메트포르민을 지방간 쪽으로 보는 시각이 소화기내과에 있다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자의 지방간 치료 목적으로 메트포르민을 고려하는 소화기내과의 시각이 언급되어 원래 적응증 외 용법(재창출) 논의로 분류함"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "온라인에서 메트포르민 정보를 보고 온 당뇨 전단계 환자에게는 급여가 안 되고 허가도 없어 처방을 거절하는 일이 늘었다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자가 메트포르민을 원하나 급여·허가 부재로 처방이 거절되는 상황으로, 허가 외 사용 수요(OFF_LABEL_DEMAND)에 해당함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in pre-diabetic patients with fatty liver. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"지방간을 동반한 당뇨 전단계 환자를 두고 메트포르민을 지방간 쪽으로 보는 시각이 소화기내과에 있다고 여러 번 말했다.\" - This mentions pre-diabetic patients with fatty liver, and a perspective from gastroenterology about using metformin for fatty liver. This could be REPURPOSING (different use from original indication) or OFF_LABEL_DEMAND/USE.\n\n2. \"온라인에서 메트포르민 정보를 보고 온 당뇨 전단계 환자에게는 급여가 안 되고 허가도 없어 처방을 거절하는 일이 늘었다고 했다.\" - This clearly indicates OFF_LABEL_DEMAND: pre-diabetic patients want metformin but it's not covered by insurance and not approved, so prescriptions are being refused.\n\n3. \"초진 환자 진료 흐름을 코디네이터가 나눠 맡는 방식으로 바꿨다고 했다.\" - This is about clinical workflow, not relevant to the signal types.\n\nPatient populations mentioned: \"당뇨 전단계\" (pre-diabetic) - this is in the allowed list.\n\nSignal types:\n- First sentence: \"메트포르민을 지방간 쪽으로 보는 시각\" - using metformin for fatty liver in pre-diabetics. This is a different use from original T2DM indication, so REPURPOSING. Also could be OFF_LABEL_USE if they're actually doing it. The text says \"시각이 있다\" (there's a perspective/view), not that they're actually using it. But \"여러 번 말했다\" suggests this is a discussed topic. I think REPURPOSING fits best.\n\n- Second sentence: \"급여가 안 되고 허가도 없어 처방을 거절하는 일이 늘었다\" - patients want it but can't get it due to no approval/coverage. This is OFF_LABEL_DEMAND.\n\nLet me create the claims."
+}

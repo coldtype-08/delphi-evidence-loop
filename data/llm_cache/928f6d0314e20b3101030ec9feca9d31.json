@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 2277,
+  "output": 502
+ },
+ "created_at": "2026-09-28T21:04:29",
+ "output": {
+  "statement_ko": "국내 임상의들은 당뇨 전단계(공복혈당장애) 환자에게 검증된 약물 치료 옵션과 급여 교육·추적 체계가 부재해 생활습관 교정만 권고할 수밖에 없으며, 진행 고위험군 선별 도구도 없어 메트포르민 등 약물 개입이 필요한 환자를 식별하지 못하는 미충족 수요가 존재한다고 보고한다.",
+  "statement_en": "Korean clinicians report an unmet need in prediabetes (impaired fasting glucose) management due to the absence of approved pharmacotherapy, reimbursed education/follow-up systems, and risk-stratification tools, leaving lifestyle modification as the sole option and preventing identification of high-risk patients who might benefit from metformin.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title/Abstract] AND (prediabetes[Title/Abstract] OR impaired fasting glucose[Title/Abstract] OR impaired glucose tolerance[Title/Abstract]) AND (prevention[Title/Abstract] OR progression[Title/Abstract] OR risk stratification[Title/Abstract])",
+  "ctgov_condition": "Prediabetes"
+ },
+ "reasoning": "The user has provided a signal bundle for metformin in the \"당뇨 전단계\" (prediabetes) segment with signal type \"UNMET_NEED\". There are 27 mentions from 21 HCPs with various quotes highlighting unmet needs in prediabetes management.\n\nKey themes from the quotes:\n1. Lack of verified treatment options for prediabetes\n2. No reimbursed education programs\n3. No systematic follow-up system in primary care\n4. Lifestyle modification is the only option but adherence is poor\n5. No tools to predict who will progress to diabetes\n6. Family history + weight gain patients might benefit from medication but no domestic approval\n7. Low revisit rates due to lack of patient urgency\n8. Some doctors tried off-label metformin but stopped after reimbursement issues\n\nThis is clearly an UNMET_NEED signal for prediabetes where metformin is not approved (in Korea at least). The label status should be DEVELOPMENT since metformin is not approved for prediabetes in Korea (only for T2DM).\n\nI need to create a hypothesis statement and search queries."
+}

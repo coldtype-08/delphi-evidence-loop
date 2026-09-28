@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 2695,
+  "output": 531
+ },
+ "created_at": "2026-09-28T21:04:10",
+ "output": {
+  "statement_ko": "메트포르민을 장기 복용하는 65세 이상 신기능 저하 환자에서 의사들은 저혈당 위험이 낮아 설폰요소제보다 안전하다고 평가하나, 젖산산증 위험을 과대평가해 과도하게 중단하거나, 비타민 B12 결핍·신기능 급변·설사 유발 낙상·탈수 등 모니터링 공백을 실제 진료에서 겪고 있다.",
+  "statement_en": "In patients ≥65 years with renal impairment on long-term metformin, physicians consider it safer than sulfonylureas due to low hypoglycemia risk, but report over-discontinuation from exaggerated lactic acidosis concerns and monitoring gaps for vitamin B12 deficiency, acute renal function changes, diarrhea-related falls, and dehydration.",
+  "label_status_guess": "IN_LABEL",
+  "pubmed_query": "metformin[Title/Abstract] AND (elderly OR aged OR geriatric) AND (renal impairment OR renal insufficiency OR chronic kidney disease) AND (lactic acidosis OR vitamin B12 deficiency OR monitoring OR discontinuation OR tolerability)",
+  "ctgov_condition": "Type 2 Diabetes Mellitus AND Elderly AND Renal Impairment"
+ },
+ "reasoning": "The user has provided a detailed signal bundle for metformin in elderly patients (65+) with renal impairment, focusing on safety/tolerability concerns. I need to create a hypothesis statement based on these clinical observations and provide search queries for validation.\n\nKey themes from the quotes:\n1. Lactic acidosis risk perception - physicians overestimate risk and discontinue inappropriately\n2. Vitamin B12 deficiency monitoring in long-term use (>5 years)\n3. Renal function monitoring as primary concern\n4. GI side effects (diarrhea) leading to falls/dehydration in elderly\n5. Sick day rules for acute illness\n6. Difficulty distinguishing drug side effects from comorbidities in frail elderly\n7. Metformin preferred over sulfonylureas due to lower hypoglycemia risk, but renal function is key\n\nThe hypothesis should capture the main clinical tension: physicians recognize metformin's safety advantages in elderly (low hypoglycemia risk) but struggle with appropriate renal monitoring, lactic acidosis risk perception, and B12 monitoring in long-term use.\n\nLabel status: This is IN_LABEL since metformin is approved for T2D including elderly with renal monitoring, though the specific monitoring practices (B12, sick day rules) may be development/off-label nuances."
+}

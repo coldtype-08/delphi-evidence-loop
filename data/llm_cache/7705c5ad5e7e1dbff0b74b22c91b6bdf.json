@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1060,
+  "output": 722
+ },
+ "created_at": "2026-09-28T20:11:38",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "무월경이 길었던 PCOS 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 무월경 환자에게 메트포르민 2개월 이상 선행 투여 후 배란 유도 시 주기 취소 감소 경험을 보고함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "다낭성난소증후군으로 의뢰된 환자에게는 메트포르민을 석 달 먼저 쓰고 나서 배란 유도를 다시 시도하면 되는 경우가 여럿 있었다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에게 메트포르민 3개월 선행 투여 후 배란 유도 재시도 시 성공 사례 다수 경험함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the specified schema. Let me analyze the text:\n\nText: \"무월경이 길었던 PCOS 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다는 이야기를 했다. 다낭성난소증후군으로 의뢰된 환자에게는 메트포르민을 석 달 먼저 쓰고 나서 배란 유도를 다시 시도하면 되는 경우가 여럿 있었다고 했다. 다음 방문은 본인 요청대로 다음 분기로 잡았다.\"\n\nThis is about PCOS patients (polycystic ovary syndrome) - which maps to \"PCOS 여성\" in the segment list.\n\nFirst sentence: \"무월경이 길었던 PCOS 환자에게는 메트포르민을 두 달 이상 쓴 뒤 배란 유도에 들어가면 주기 취소가 줄었다는 이야기를 했다.\"\n- This describes using metformin for 2+ months before ovulation induction in PCOS patients with long amenorrhea, resulting in reduced cycle cancellations.\n- This sounds like OFF_LABEL_USE (actually used and observed response) or possibly REPURPOSING (different use from original indication). Metformin's original indication is type 2 diabetes. Using it for PCOS/ovulation induction is off-label. The physician is describing actual clinical experience (\"이야기를 했다\" - told a story/experience), so this is OFF_LABEL_USE.\n\nSecond sentence: \"다낭성난소증후군으로 의뢰된 환자에게는 메트포르민을 석 달 먼저 쓰고 나서 배란 유도를 다시 시도하면 되는 경우가 여럿 있었다고 했다.\"\n- Similar: using metformin for 3 months first, then retrying ovulation induction in PCOS patients, with success in several cases.\n- Again, OFF_LABEL_USE - actual use with observed response.\n\nThird sentence: \"다음 방문은 본인 요청대로 다음 분기로 잡았다.\" - Just scheduling, no signal.\n\nBoth claims are about PCOS 여성 segment, OFF_LABEL_USE signal type. No adverse events mentioned. Dosing is mentioned (2 months, 3 months) but the primary signal is the off-label use for PCOS/ovulation induction.\n\nI need to extract quotes verbatim from the Korean text. Let me create the claims."
+}

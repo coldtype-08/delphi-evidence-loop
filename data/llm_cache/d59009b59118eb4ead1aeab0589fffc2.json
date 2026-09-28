@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1062,
+  "output": 931
+ },
+ "created_at": "2026-09-28T20:07:28",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신부에게 메트포르민을 쓰는 문제는 메트포르민을 쓰고 싶은 마음은 있지만 허가 문제와 태아 안전에 대한 책임 때문에 쓰지 않는다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "임신부에서 메트포르민 사용 의향이 있으나 허가·태아 안전 책임으로 차단됨을 진술"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 허가 밖 사용 동의를 받아야 해서 실제로는 메트포르민을 시도하지 않는다는 점을 강조했다",
+    "is_adverse_event": false,
+    "note_ko": "인슐린 거부 산모에서도 허가외사용 동의 절차 부담으로 메트포르민 시도를 하지 않음"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in pregnant women. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\"임신부에게 메트포르민을 쓰는 문제는 메트포르민을 쓰고 싶은 마음은 있지만 허가 문제와 태아 안전에 대한 책임 때문에 쓰지 않는다고 했다.\" - This indicates a desire to use metformin in pregnant women but being blocked by approval issues and fetal safety responsibility. This sounds like OFF_LABEL_DEMAND for pregnant women (임신부 · 임신성 당뇨).\n\n\"임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 허가 밖 사용 동의를 받아야 해서 실제로는 메트포르민을 시도하지 않는다는 점을 강조했다.\" - This mentions that for gestational diabetes mothers who refuse insulin injections, off-label use consent would be needed, so they don't actually try metformin. This also points to OFF_LABEL_DEMAND for gestational diabetes (임신부 · 임신성 당뇨).\n\nThe patient population here is clearly \"임신부 · 임신성 당뇨\" (pregnant women / gestational diabetes).\n\nSignal types:\n1. First sentence: \"쓰고 싶은 마음은 있지만 허가 문제와 태아 안전에 대한 책임 때문에 쓰지 않는다\" - wants to use but blocked by approval/safety → OFF_LABEL_DEMAND\n2. Second sentence: \"허가 밖 사용 동의를 받아야 해서 실제로는 메트포르민을 시도하지 않는다\" - need off-label consent so don't try → OFF_LABEL_DEMAND\n\nBoth are OFF_LABEL_DEMAND for the same patient population.\n\nI need to extract quotes verbatim from the text. Let me identify the exact segments.\n\nFirst claim:\n- segment: \"임신부 · 임신성 당뇨\"\n- signal_type: \"OFF_LABEL_DEMAND\"\n- quote: \"임신부에게 메트포르민을 쓰는 문제는 메트포르민을 쓰고 싶은 마음은 있지만 허가 문제와 태아 안전에 대한 책임 때문에 쓰지 않는다고 했다\"\n- is_adverse_event: false (no adverse event mentioned)\n- note_ko: \"임신부에서 메트포르민 사용 의향이 있으나 허가·태아 안전 책임으로 차단됨을 진술\"\n\nSecond claim:\n- segment: \"임신부 · 임신성 당뇨\"\n- signal_type: \"OFF_LABEL_DEMAND\"\n- quote: \"임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 허가 밖 사용 동의를 받아야 해서 실제로는 메트포르민을 시도하지 않는다는 점을 강조했다\"\n- is_adverse_event: false\n- note_ko: \"인슐린 거부 산모에서도 허가외사용 동의 절차 부담으로 메트포르민 시도를 하지 않음\"\n\nWait, I should check if these are distinct enough to be separate claims. They are two separate sentences making slightly different points. The first is general desire but blocked. The second is specific to insulin-refusing GDM mothers. Both are OFF_LABEL_DEMAND for the same population. I'll include both as separate claims since they're distinct statements.\n\nLet me call the function."
+}

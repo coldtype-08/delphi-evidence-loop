@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1071,
+  "output": 653
+ },
+ "created_at": "2026-09-28T20:04:09",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 영국이나 호주에서는 메트포르민이 흔히 쓰이는데 국내에서는 허가 밖이라 쓰지 못한다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 산모에서 인슐린 거부 시 메트포르민 사용 희망하나 국내 허가 부재로 사용 불가함을 언급"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신부에게 메트포르민을 쓰는 문제는 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다는 점을 강조했다.",
+    "is_adverse_event": false,
+    "note_ko": "허가만 있다면 인슐린 1차 대신 메트포르민을 1차로 쓰고 싶다는 의향 표명"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in gestational diabetes. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"임신성 당뇨 산모 중 인슐린 주사를 거부하는 경우에는 영국이나 호주에서는 메트포르민이 흔히 쓰이는데 국내에서는 허가 밖이라 쓰지 못한다고 했다.\" - This mentions gestational diabetes patients (임신부 · 임신성 당뇨) and that metformin is used off-label in UK/Australia but not approved in Korea. This sounds like OFF_LABEL_DEMAND (want to use but blocked by approval status).\n\n2. \"임신부에게 메트포르민을 쓰는 문제는 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다는 점을 강조했다.\" - Again, gestational diabetes patients, wanting to use metformin instead of insulin if approved. This is OFF_LABEL_DEMAND.\n\n3. \"당뇨 환자 진료 흐름을 코디네이터가 나눠 맡는 방식으로 바꿨다고 했다.\" - This is about clinical workflow, not directly about metformin signals. Not relevant to the signal types listed.\n\nPatient population: 임신부 · 임신성 당뇨 (pregnant women / gestational diabetes) - this matches one of the listed categories.\n\nSignal types:\n- First statement: OFF_LABEL_DEMAND (want to use but blocked by lack of approval)\n- Second statement: OFF_LABEL_DEMAND (want to use first-line instead of insulin if approved)\n\nNo adverse events mentioned. No dosing, safety, repurposing, unmet need (though unmet need could be argued, but the explicit statement is about wanting to use off-label but being blocked).\n\nLet me extract the quotes exactly as they appear in the text."
+}

@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1082,
+  "output": 720
+ },
+ "created_at": "2026-09-28T20:08:32",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "DOSING",
+    "quote": "PCOS 환자의 메트포르민 처방에서는 500mg으로 시작해 2주마다 올려 1500mg까지 가는 방식을 쓴다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 증량 스케줄(500mg 시작 → 2주 간격 증량 → 1500mg 목표)을 설명함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "무월경이 길었던 PCOS 환자에게는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다.",
+    "is_adverse_event": false,
+    "note_ko": "무월경 동반 PCOS 환자에서 레트로졸 병용 시 메트포르민 추가로 배란율이 상승함을 실제 진료 경험으로 보고함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n1. \"PCOS 환자의 메트포르민 처방에서는 500mg으로 시작해 2주마다 올려 1500mg까지 가는 방식을 쓴다.\" - This is about dosing for PCOS patients. Patient population: PCOS 여성. Signal type: DOSING.\n2. \"무월경이 길었던 PCOS 환자에게는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다.\" - This describes actual use of metformin with letrozole for ovulation induction in PCOS patients with amenorrhea. Patient population: PCOS 여성. Signal type: OFF_LABEL_USE (since it's describing actual use experience, not demand). Also could be REPURPOSING since metformin is being used for ovulation induction which is not its original indication.\n\nWait, let me check the signal types again:\n- OFF_LABEL_DEMAND: wanting to use but blocked\n- OFF_LABEL_USE: actually used off-label and observed response\n- REPURPOSING: different use from original indication\n- UNMET_NEED: current treatment doesn't solve need\n- DOSING: dose/formulation/administration\n- SAFETY_TOLERABILITY: safety/tolerability\n\nThe first sentence is clearly DOSING. The second sentence describes actual off-label use (metformin for ovulation induction in PCOS) with observed response (ovulation rate increases). This fits OFF_LABEL_USE. It could also be REPURPOSING since metformin's original indication is diabetes, not ovulation induction. But the text says \"실제로 써봤다·반응을 보고한 발언\" for OFF_LABEL_USE, which matches. REPURPOSING is \"원래 적응증과 다른 쓰임에 대한 언급\". Both could apply, but OFF_LABEL_USE seems more specific to the description of actual use with response.\n\nI'll extract both claims. The patient population for both is \"PCOS 여성\". No adverse events mentioned. The third sentence about interview duration is not relevant.\n\nLet me create the claims."
+}

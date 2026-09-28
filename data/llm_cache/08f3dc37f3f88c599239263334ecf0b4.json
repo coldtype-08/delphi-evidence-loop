@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1066,
+  "output": 610
+ },
+ "created_at": "2026-09-28T20:12:16",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS 환자 가운데 체중이 계속 느는 경우에는 메트포르민을 쓰면 공복혈당보다 인슐린 수치가 먼저 반응한다는 것을 경험으로 안다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 사용 시 인슐린 수치가 공복혈당보다 먼저 반응함을 임상 경험으로 확인함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "다낭성난소증후군으로 의뢰된 환자에게는 메트포르민을 쓰고 월경이 돌아오면 그 뒤로는 약 없이도 유지되는 경우가 있다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 투여 후 월경 회복 시 약물 중단 후에도 유지되는 경우를 경험함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record from an OB/GYN infertility clinic. The text is in Korean and discusses metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"협진 의뢰는 전화로 회신 받는다고 했다.\" - This is about referral process, not relevant to metformin signals.\n\n2. \"PCOS 환자 가운데 체중이 계속 느는 경우에는 메트포르민을 쓰면 공복혈당보다 인슐린 수치가 먼저 반응한다는 것을 경험으로 안다고 했다.\" - This is about PCOS patients (patient population: PCOS 여성) and describes experience with metformin use - insulin levels respond before fasting glucose. This seems like OFF_LABEL_USE (actual experience using it off-label) or possibly DOSING/SAFETY_TOLERABILITY. But the key is \"경험으로 안다고 했다\" - they know from experience. This is OFF_LABEL_USE since metformin is not officially approved for PCOS in Korea (it's used off-label for insulin resistance in PCOS).\n\n3. \"다낭성난소증후군으로 의뢰된 환자에게는 메트포르민을 쓰고 월경이 돌아오면 그 뒤로는 약 없이도 유지되는 경우가 있다는 이야기를 했다.\" - Again PCOS patients, metformin use, menstrual cycle returns, then maintained without medication. This is also OFF_LABEL_USE - actual experience using metformin off-label for PCOS.\n\nPatient population for both: PCOS 여성 (PCOS women)\nSignal type: OFF_LABEL_USE (actual off-label use experience)\n\nNeither appears to be an adverse event - they're describing therapeutic effects.\n\nLet me create the claims."
+}

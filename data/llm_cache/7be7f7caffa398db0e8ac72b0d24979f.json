@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1072,
+  "output": 771
+ },
+ "created_at": "2026-09-28T20:04:06",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS 진단을 받은 20~30대 여성에게는 메트포르민을 1년 이상 유지한 환자들은 대체로 주기가 안정되어 지금도 계속 쓰고 있다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 여성에서 메트포르민 1년 이상 장기 복용 시 월경 주기 안정화 효과를 실제 진료 경험으로 보고함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "클로미펜에 반응이 없던 PCOS 환자에서는 메트포르민 사용 후 자궁내막 두께가 정상으로 돌아온 것을 초음파로 확인한 적이 있다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "클로미펜 무반응 PCOS 환자에서 메트포르민 투여 후 자궁내막 두께 정상화 소견을 초음파로 확인한 임상 사례 언급"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record (in Korean) about metformin use in PCOS patients. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n\"면담은 외래 마감 후 20분 정도 했다. PCOS 진단을 받은 20~30대 여성에게는 메트포르민을 1년 이상 유지한 환자들은 대체로 주기가 안정되어 지금도 계속 쓰고 있다고 여러 번 말했다. 클로미펜에 반응이 없던 PCOS 환자에서는 메트포르민 사용 후 자궁내막 두께가 정상으로 돌아온 것을 초음파로 확인한 적이 있다는 이야기를 했다.\"\n\nKey points:\n1. Patient population: PCOS women (20-30s) - this matches \"PCOS 여성\" in the segment list\n2. First statement: \"메트포르민을 1년 이상 유지한 환자들은 대체로 주기가 안정되어 지금도 계속 쓰고 있다고 여러 번 말했다\" - This describes actual use and observed response (cycles stabilized, continuing use). This sounds like OFF_LABEL_USE (actually used and observed response) or possibly REPURPOSING (different use from original indication). Metformin's original indication is type 2 diabetes; PCOS is off-label. The physician is describing actual clinical experience with patients who have been on it for 1+ years with cycle stabilization. This is OFF_LABEL_USE.\n3. Second statement: \"클로미펜에 반응이 없던 PCOS 환자에서는 메트포르민 사용 후 자궁내막 두께가 정상으로 돌아온 것을 초음파로 확인한 적이 있다는 이야기를 했다\" - This describes a specific case where metformin was used after clomiphene failure, and endometrial thickness normalized per ultrasound. This is also OFF_LABEL_USE (actual use and observed response).\n\nBoth statements are about PCOS women (segment: \"PCOS 여성\"). Both describe actual clinical use and observed outcomes, not demand/wanting to use but being blocked. So signal_type: OFF_LABEL_USE.\n\nNo adverse events mentioned. No dosing specifics beyond \"1년 이상 유지\". No safety/tolerability concerns raised. No unmet need explicitly stated. No repurposing discussion per se (though PCOS is off-label, the physician is describing actual use, not proposing a new use).\n\nI'll create two claims, one for each distinct observation."
+}

@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1048,
+  "output": 655
+ },
+ "created_at": "2026-09-28T20:08:14",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "비만한 PCOS 환자에서는 메트포르민을 1년 이상 유지한 환자들은 대체로 주기가 안정되어 지금도 계속 쓰고 있다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 1년 이상 메트포르민 유지 시 주기 안정 효과를 관찰하며 계속 사용 중이라는 실제 사용 경험 발언"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 산모들이 메트포르민을 원하는 경우가 많은데 국내 허가가 없어 설명이 길어진다고 다시 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 산모들이 메트포르민 사용을 원하나 국내 허가 부재로 처방이 어려워 설명이 길어진다는 수요 차단 발언"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\"비만한 PCOS 환자에서는 메트포르민을 1년 이상 유지한 환자들은 대체로 주기가 안정되어 지금도 계속 쓰고 있다고 했다.\" - This mentions PCOS women (환자군: PCOS 여성) and describes actual use for over 1 year with stable cycles. This seems like OFF_LABEL_USE (actually used and observed response) or possibly REPURPOSING (different indication). PCOS is not an approved indication for metformin in Korea, so this is off-label use. The phrase \"지금도 계속 쓰고 있다고 했다\" indicates actual use with observed response.\n\n\"임신성 당뇨 산모들이 메트포르민을 원하는 경우가 많은데 국내 허가가 없어 설명이 길어진다고 다시 말했다.\" - This mentions gestational diabetes patients (환자군: 임신부 · 임신성 당뇨) wanting metformin but domestic approval doesn't exist, so explanation takes longer. This is OFF_LABEL_DEMAND (want to use but blocked by lack of approval).\n\n\"진료실에는 전공의가 두 명 있어 목소리를 낮춰 이야기했다.\" - This is just context, not a claim.\n\nSo I have two claims:\n1. PCOS women, OFF_LABEL_USE - quote: \"비만한 PCOS 환자에서는 메트포르민을 1년 이상 유지한 환자들은 대체로 주기가 안정되어 지금도 계속 쓰고 있다고 했다.\"\n2. Gestational diabetes, OFF_LABEL_DEMAND - quote: \"임신성 당뇨 산모들이 메트포르민을 원하는 경우가 많은데 국내 허가가 없어 설명이 길어진다고 다시 말했다.\"\n\nNeither appears to be an adverse event (is_adverse_event: false).\n\nLet me format the response using the function."
+}

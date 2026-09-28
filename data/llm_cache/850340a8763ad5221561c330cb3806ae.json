@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1089,
+  "output": 596
+ },
+ "created_at": "2026-09-28T20:55:00",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "공복혈당장애로 몇 년째 추적 중인 환자에게는 메트포르민이 진행을 늦춘다는 자료가 있어도 적응증 밖이라 쓰지 못해 아쉽다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "공복혈당장애(당뇨 전단계) 환자에게 메트포르민 사용 근거가 있으나 적응증 외라 처방 못 해 아쉽다는 발언"
+   },
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민을 미리 시작하고 싶어도 적응증이 없어 3개월 뒤 재검만 잡는다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자에게 메트포르민 조기 투여 희망하나 적응증 제한으로 재검만 예약한다는 발언"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use. I need to extract claims according to the two axes: patient population and signal type.\n\nLet me analyze the text:\n\n1. \"병원 전산에 검사 결과가 늦게 뜨는 문제로 진료가 밀리는 일이 잦다고 했다.\" - This is about hospital system issues, not relevant to our categories.\n\n2. \"공복혈당장애로 몇 년째 추적 중인 환자에게는 메트포르민이 진행을 늦춘다는 자료가 있어도 적응증 밖이라 쓰지 못해 아쉽다는 이야기를 했다.\" - This mentions \"공복혈당장애\" (impaired fasting glucose) which falls under \"당뇨 전단계\" (pre-diabetes). The doctor says they want to use metformin but can't because it's off-label. This is OFF_LABEL_DEMAND.\n\n3. \"검진센터에서 당뇨 전단계로 의뢰된 환자에게는 메트포르민을 미리 시작하고 싶어도 적응증이 없어 3개월 뒤 재검만 잡는다고 했다.\" - Again \"당뇨 전단계\" (pre-diabetes), wants to start metformin early but can't due to indication. This is also OFF_LABEL_DEMAND.\n\nBoth relevant segments are about pre-diabetes patients (당뇨 전단계) and represent OFF_LABEL_DEMAND - wanting to use but blocked by indication.\n\nI need to extract the exact quotes and map them. Let me create the claims."
+}

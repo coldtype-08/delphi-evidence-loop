@@ -1,0 +1,20 @@
+{
+ "purpose": "hypothesis",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "hypothesis_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 7261,
+  "output": 642
+ },
+ "created_at": "2026-09-28T21:02:05",
+ "output": {
+  "statement_ko": "다낭성난소증후군(PCOS) 여성에서 메트포르민이 당뇨병 적응증 외(오프라벨)로 월경 주기 회복, 배란 유도 보조(레트로졸·클로미펜 병용 시 배란율 상승), 인슐린 저항성 개선(공복 인슐린 선행 감소), 체중 2~3 kg 감량 및 자궁내막 두께 정상화, 시험관아기 시술 전 난소과자극증후군 위험 완화 목적으로 광범위하게 처방되고 있다.",
+  "statement_en": "In women with polycystic ovary syndrome (PCOS), metformin is widely prescribed off-label—beyond its diabetes indication—to restore menstrual cyclicity, augment ovulation induction (higher ovulation rates when combined with letrozole or clomiphene), improve insulin resistance (fasting insulin falls before glucose), achieve 2–3 kg weight loss, normalize endometrial thickness, and mitigate ovarian hyperstimulation syndrome risk prior to IVF.",
+  "label_status_guess": "DEVELOPMENT",
+  "pubmed_query": "metformin[Title/Abstract] AND polycystic ovary syndrome[Title/Abstract] AND (ovulation[Title/Abstract] OR menstrual cycle[Title/Abstract] OR insulin resistance[Title/Abstract] OR endometrial thickness[Title/Abstract] OR ovarian hyperstimulation syndrome[Title/Abstract])",
+  "ctgov_condition": "Polycystic Ovary Syndrome"
+ },
+ "reasoning": "The user wants me to generate a hypothesis based on the provided clinical signal data for metformin use in PCOS women. The signal type is OFF_LABEL_USE with 100 mentions from 60 HCPs. I need to create a single-sentence hypothesis in Korean and English, guess the label status, and provide PubMed and ClinicalTrials.gov search queries.\n\nLooking at the quotes, the key themes are:\n1. Metformin used off-label for PCOS (not diabetes indication)\n2. Used for menstrual cycle regulation, ovulation induction, insulin resistance improvement\n3. Often combined with letrozole or clomiphene for better ovulation rates\n4. Used before IVF to reduce OHSS risk\n5. Weight loss of 2-3kg with cycle recovery\n6. Fasting insulin drops before glucose\n7. Long-term use (1+ years) maintains cycle regularity\n8. Acne/hirsutism improvement with OCP combination\n\nThe hypothesis should capture the main clinical observation: metformin is widely used off-label in PCOS women for menstrual regulation, ovulation induction support, and metabolic improvement, particularly in insulin-resistant phenotypes, often in combination with ovulation induction agents.\n\nLabel status: DEVELOPMENT (since PCOS is not an approved indication for metformin in most jurisdictions)\n\nPubMed query: metformin AND polycystic ovary syndrome AND (ovulation OR menstrual cycle OR insulin resistance)\nClinicalTrials condition: Polycystic Ovary Syndrome"
+}

@@ -1,0 +1,38 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1117,
+  "output": 756
+ },
+ "created_at": "2026-09-28T20:09:13",
+ "output": {
+  "claims": [
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다.",
+    "is_adverse_event": false,
+    "note_ko": "인슐린 저항성 PCOS 환자에서 레트로졸과 메트포르민 병용 시 배란율 상승을 실제 진료 경험으로 보고함"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "무월경이 길었던 PCOS 환자에게는 메트포르민 단독으로는 배란이 잘 안 되지만 레트로졸과 같이 쓰면 확실히 낫다는 이야기를 했다.",
+    "is_adverse_event": false,
+    "note_ko": "장기 무월경 PCOS에서 메트포르민 단독보다 레트로졸 병용이 배란 유도에 효과적임을 임상 경험으로 언급"
+   },
+   {
+    "segment": "PCOS 여성",
+    "signal_type": "OFF_LABEL_USE",
+    "quote": "내분비내과에서 PCOS로 넘어온 환자에게는 메트포르민을 쓰면 체중이 2~3kg 빠지면서 주기가 돌아오는 경우가 많다고 여러 번 말했다.",
+    "is_adverse_event": false,
+    "note_ko": "PCOS 환자에서 메트포르민 사용 시 체중 감소와 월경 주기 회복을 반복적으로 관찰함"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record about metformin use in PCOS patients. I need to extract claims according to the specified schema. Let me analyze the text:\n\n1. \"PCOS 환자 중 인슐린 저항성이 뚜렷한 경우에는 레트로졸에 메트포르민을 얹어 배란 유도를 하는데 배란이 되는 비율이 눈에 띄게 올라간다.\" - This describes actual use of metformin with letrozole for ovulation induction in PCOS patients with insulin resistance. This is OFF_LABEL_USE (metformin is not approved for ovulation induction in PCOS in many jurisdictions, though it's commonly used off-label).\n\n2. \"무월경이 길었던 PCOS 환자에게는 메트포르민 단독으로는 배란이 잘 안 되지만 레트로졸과 같이 쓰면 확실히 낫다는 이야기를 했다.\" - Again, describes actual clinical experience with combination therapy. OFF_LABEL_USE.\n\n3. \"내분비내과에서 PCOS로 넘어온 환자에게는 메트포르민을 쓰면 체중이 2~3kg 빠지면서 주기가 돌아오는 경우가 많다고 여러 번 말했다.\" - Describes observed effects of metformin on weight and menstrual cycle in PCOS patients. This could be OFF_LABEL_USE (actual use experience) or potentially UNMET_NEED (but it's describing successful use, not unmet need). I think OFF_LABEL_USE fits best as it's describing actual clinical experience.\n\nPatient segment: All are PCOS patients, so \"PCOS 여성\" (PCOS women).\n\nSignal types: All appear to be OFF_LABEL_USE - describing actual clinical experience using metformin off-label for PCOS-related indications (ovulation induction, weight loss, menstrual regulation).\n\nNo adverse events mentioned - no harmful events described.\n\nLet me create the claims."
+}

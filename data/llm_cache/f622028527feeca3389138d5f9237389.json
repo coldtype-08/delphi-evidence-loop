@@ -1,0 +1,31 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 1061,
+  "output": 727
+ },
+ "created_at": "2026-09-28T20:07:38",
+ "output": {
+  "claims": [
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "인슐린 대신 먹는 약을 원하는 임신부에게는 메트포르민을 쓸 수 있으면 외래 관리가 훨씬 수월할 텐데 허가가 없어 못 한다고 다시 말했다",
+    "is_adverse_event": false,
+    "note_ko": "임신성 당뇨 환자에게 인슐린 대신 메트포르민을 쓰고 싶으나 허가 부재로 사용 못 함을 호소"
+   },
+   {
+    "segment": "임신부 · 임신성 당뇨",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "임신성 당뇨 환자에게 먹는 약을 쓰는 것에 대해 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다는 점을 강조했다",
+    "is_adverse_event": false,
+    "note_ko": "허가만 있으면 인슐린보다 메트포르민을 1차로 쓰고 싶다는 의향 표명"
+   }
+  ]
+ },
+ "reasoning": "The user has provided a clinical interview record in Korean about metformin use in pregnant women with gestational diabetes. I need to extract claims according to the specified schema.\n\nLet me analyze the text:\n\"최근 학회에서 들은 패널 토론 내용을 간호팀에도 전달했다고 했다. 인슐린 대신 먹는 약을 원하는 임신부에게는 메트포르민을 쓸 수 있으면 외래 관리가 훨씬 수월할 텐데 허가가 없어 못 한다고 다시 말했다. 임신성 당뇨 환자에게 먹는 약을 쓰는 것에 대해 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다는 점을 강조했다.\"\n\nKey points:\n1. The HCP wants to use metformin instead of insulin for pregnant women who prefer oral medication\n2. They mention \"허가가 없어 못 한다\" (cannot because there's no approval) - this indicates OFF_LABEL_DEMAND\n3. They emphasize \"허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다\" (if only there was approval, would want to use metformin first instead of insulin)\n\nPatient segment: 임신부 · 임신성 당뇨 (pregnant women · gestational diabetes)\nSignal type: OFF_LABEL_DEMAND - they want to use it off-label but are blocked by lack of approval\n\nI should extract the relevant quotes verbatim. Let me identify the exact quotes:\n\n1. \"인슐린 대신 먹는 약을 원하는 임신부에게는 메트포르민을 쓸 수 있으면 외래 관리가 훨씬 수월할 텐데 허가가 없어 못 한다고 다시 말했다\" - This expresses desire to use metformin but blocked by lack of approval\n2. \"임신성 당뇨 환자에게 먹는 약을 쓰는 것에 대해 허가만 있으면 인슐린 대신 메트포르민을 먼저 쓰고 싶다는 점을 강조했다\" - Emphasizes wanting to use metformin first if approved\n\nBoth are OFF_LABEL_DEMAND for segment \"임신부 · 임신성 당뇨\".\n\nNo adverse events mentioned. No dosing, safety, repurposing, unmet need (though unmet need is implied, the primary signal is demand blocked by approval).\n\nLet me create the claims."
+}
