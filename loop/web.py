@@ -39,6 +39,11 @@ def index():
     return HTMLResponse(pages.overview(store.load(), store.contract(), _take_banner()))
 
 
+@app.get("/notes", response_class=HTMLResponse)
+def notes():
+    return HTMLResponse(pages.notes_page(store.load(), store.contract(), _take_banner()))
+
+
 @app.get("/claims", response_class=HTMLResponse)
 def claims():
     return HTMLResponse(pages.claims_page(store.load(), store.contract(), _take_banner()))

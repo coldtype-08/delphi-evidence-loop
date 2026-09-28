@@ -10,7 +10,30 @@ import html
 LEVEL = {"fact": "사실", "pattern": "패턴", "interp": "해석", "proposal": "제안", "action": "실행"}
 STANCE = {"SUPPORTS": ("지지", "support"), "CONTRADICTS": ("반대", "oppose"), "NEUTRAL": ("중립", "hold")}
 STATUS_KO = {"DRAFT": "초안", "SCREENED": "근거 수집됨", "REVIEWED": "서명됨", "DELIBERATED": "심의됨"}
-NAV = [("/", "개요"), ("/claims", "발언 카드"), ("/hypotheses", "가설"), ("/checklist", "체크리스트")]
+NAV = [("/", "개요"), ("/notes", "면담 기록"), ("/claims", "발언 카드"), ("/hypotheses", "가설"), ("/checklist", "체크리스트")]
+SIGNAL_KO = {
+    "OFF_LABEL_DEMAND": "쓰고 싶은데 막혔다", "OFF_LABEL_USE": "써봤다 · 반응 보고", "REPURPOSING": "다른 쓰임",
+    "UNMET_NEED": "충족되지 않은 필요", "DOSING": "용량 · 제형", "SAFETY_TOLERABILITY": "안전성 · 내약성",
+}
+
+
+def signal(code: str) -> str:
+    """Code + Korean gloss, so a reader never has to decode OFF_LABEL_DEMAND."""
+    ko = SIGNAL_KO.get(code)
+    return f'{esc(code)} <span class="faint">({esc(ko)})</span>' if ko else esc(code)
+
+
+def highlight(text: str, spans: list[tuple[int, int, str, str]]) -> str:
+    """Escape `text` and wrap verified spans in <mark>. spans: (start, end, css_class, title). Overlaps are skipped."""
+    out, pos = [], 0
+    for start, end, cls, title in sorted(spans):
+        if start is None or start < pos:
+            continue
+        out.append(esc(text[pos:start]))
+        out.append(f'<mark class="{cls}" title="{esc(title)}">{esc(text[start:end])}</mark>')
+        pos = end
+    out.append(esc(text[pos:]))
+    return "".join(out)
 
 CSS = """
 :root{--paper:#FCFCFA;--card:#FFFFFF;--fill-1:rgba(22,38,97,.028);--fill-2:rgba(22,38,97,.052);
@@ -70,6 +93,13 @@ input[type=text]:focus{outline:2px solid rgba(239,139,28,.55);outline-offset:1px
 .row .grow{flex:1;min-width:200px}
 ul{margin:6px 0;padding-left:20px}li{margin:3px 0}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:var(--fs-2xs);color:var(--faint);margin-top:28px;padding-top:12px;border-top:1px solid var(--line)}
+mark{background:var(--orange-soft);color:inherit;padding:0 2px;border-radius:3px}mark.ae{background:var(--rust-soft);text-decoration:underline dotted var(--rust)}mark.other{background:var(--fill-2)}
+.note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 18px;margin:10px 0;line-height:1.85}
+.note .meta{font-size:var(--fs-2xs);color:var(--faint);margin-bottom:6px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{counter-increment:s;background:var(--fill-1);border-radius:6px;padding:8px 10px;font-size:var(--fs-xs)}
+.steps li::before{content:counter(s);display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--navy);color:var(--on-navy);font-size:11px;text-align:center;line-height:18px;margin-right:6px;font-weight:700}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
 """
 
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Noto+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">'
