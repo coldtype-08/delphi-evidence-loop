@@ -38,7 +38,7 @@ HYP_SCHEMA = {
 }
 
 
-def run(state: dict, contract: dict, notes: list[dict], force: bool = False, workers: int = 4) -> dict:
+def run(state: dict, contract: dict, notes: list[dict], force: bool = False, workers: int = 6) -> dict:
     """Extract claims from every note. Returns counts of kept / dropped / adverse-event claims.
 
     Model calls run in parallel (they are independent per note); results are applied in note order so

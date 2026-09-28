@@ -86,13 +86,18 @@ def run(state: dict, hyp_id: str, contract: dict, force: bool = False) -> dict:
     g = gather(hyp, contract)
     hyp_view = {k: hyp[k] for k in ("id", "drug", "segment", "signal_type", "statement_ko", "statement_en")}
     items, dropped = [], []
-    for src in ("pubmed", "ctgov", "label"):
-        recs = g["records"][src]
-        if not recs:
-            continue
-        out = call_structured(f"screen_{src}", system=store.prompt(f"screen_{src}"),
-                              user=json.dumps({"hypothesis": hyp_view, "records": recs}, ensure_ascii=False),
-                              schema_name=f"screen_{src}_items_v1", schema=ITEMS_SCHEMA, max_tokens=6000, force=force)
+    sources = [src for src in ("pubmed", "ctgov", "label") if g["records"][src]]
+
+    def judge(src):   # the three readers are independent — run them side by side
+        return call_structured(f"screen_{src}", system=store.prompt(f"screen_{src}"),
+                               user=json.dumps({"hypothesis": hyp_view, "records": g["records"][src]}, ensure_ascii=False),
+                               schema_name=f"screen_{src}_items_v1", schema=ITEMS_SCHEMA, max_tokens=6000, force=force)
+
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        outputs = dict(zip(sources, pool.map(judge, sources)))
+    for src in sources:
+        recs, out = g["records"][src], outputs[src]
         by_id = {r["id"]: r for r in recs}
         for it in out["items"]:
             rec = by_id.get(it["source_id"])

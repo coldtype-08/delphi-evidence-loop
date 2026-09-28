@@ -499,7 +499,7 @@ def static_report(state: dict, contract: dict) -> str:
              '<h1>현장 신호가 근거를 지나 실행이 되기까지</h1>',
              '<p class="sub">모든 면담 기록은 합성. 숫자는 전부 코드가 계산. 인용은 원문 위치가 확인된 것만.</p>',
              pipeline_strip(state, notes_n), demo_card(state, contract, notes_n, web=False),
-             '<h2 id="notes">면담 기록 (입력) — 추출된 발언을 원문 위에 표시</h2>', note_cards(state, notes, web=False),
+             f'<h2 id="notes">면담 기록 (입력) — 추출된 발언을 원문 위에 표시 · 처음 40건 / 전체 {notes_n}건</h2>', note_cards(state, notes[:40], web=False),
              "<h2>신호 지도</h2>", signal_map(state, contract, web=False),
              "<h2>가설</h2>", hyp_table(state, link=False)]
     for h in state["hypotheses"]:
