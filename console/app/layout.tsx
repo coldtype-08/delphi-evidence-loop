@@ -4,6 +4,10 @@ import ContractBadge from "./contract-badge";
 import Sidebar from "./components/sidebar";
 import { Backdrop } from "./components/ui";
 
+/* 모든 라우트를 요청 시 렌더한다 — 정적 프리렌더를 끄면 useSearchParams 의 Suspense 요구가 사라지고,
+   루트 loading.tsx 없이도 한 덩어리 응답이 된다 (Railway 엣지의 스트리밍 잘림 회피). */
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "DELPHi Console",
   description: "DELPHi — 현장 신호 · 근거 검증 · AI Board 심의 콘솔",
