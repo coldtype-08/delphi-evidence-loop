@@ -600,13 +600,23 @@ async function KolTab() {
               </Panel>
             ))}
           </div>
-          <CollectionView
-            regions={coll.regions}
-            mentions={ment}
-            monthly={coll.monthly}
-            recentSince={coll.recentSince}
-            showTrend={false}   /* 월별 추이는 홈에 있다 — 같은 그림을 두 곳에 두지 않는다 */
-          />
+          {coll.regions.length > 0 ? (
+            <CollectionView
+              regions={coll.regions}
+              mentions={ment}
+              monthly={coll.monthly}
+              recentSince={coll.recentSince}
+              showTrend={false}   /* 월별 추이는 홈에 있다 — 같은 그림을 두 곳에 두지 않는다 */
+            />
+          ) : (
+            /* 이 코퍼스에는 권역 필드가 없다 — 빈 지도를 그리는 대신 그 사실을 한 줄로 적고 표로 내려간다 */
+            <Panel tone="note" pad="lg" className="mt-4">
+              <Eyebrow>권역 정보 없음</Eyebrow>
+              <p className="mt-2 max-w-[76ch] break-keep text-[0.9375rem] leading-[1.75] text-body">
+                면담 기록에 권역 필드가 없어 권역 지도와 환자군 × 권역 격자는 표시하지 않습니다. 아래 표는 발언이 검증된 의료진을 발언 수 순으로 보여 줍니다(가명 참조 ID, 점수화 없음).
+              </p>
+            </Panel>
+          )}
         </>
       )}
 
