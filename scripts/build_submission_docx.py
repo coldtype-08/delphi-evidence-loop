@@ -104,9 +104,12 @@ def table(doc, header, rows, widths=None, size=9.5):
     return t
 
 
+WITH_PICTURES = False   # 제출본은 글로만 — 캡처는 실행 시점마다 달라 본문 숫자와 어긋난다
+
+
 def picture(doc, name, caption):
     path = DOCS / "shots" / name
-    if not path.exists():
+    if not WITH_PICTURES or not path.exists():
         return
     doc.add_picture(str(path), width=Inches(6.4))
     doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
