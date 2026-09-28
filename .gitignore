@@ -5,3 +5,4 @@ __pycache__/
 data/llm_runs.jsonl
 .DS_Store
 data/*.selftest.json
+~$*
