@@ -10,7 +10,7 @@ import html
 LEVEL = {"fact": "사실", "pattern": "패턴", "interp": "해석", "proposal": "제안", "action": "실행"}
 STANCE = {"SUPPORTS": ("지지", "support"), "CONTRADICTS": ("반대", "oppose"), "NEUTRAL": ("중립", "hold")}
 STATUS_KO = {"DRAFT": "초안", "SCREENED": "근거 수집됨", "REVIEWED": "서명됨", "DELIBERATED": "심의됨"}
-NAV = [("/", "개요"), ("/notes", "면담 기록"), ("/claims", "발언 카드"), ("/hypotheses", "가설"), ("/checklist", "체크리스트")]
+NAV = [("/console", "개요"), ("/notes", "면담 기록"), ("/claims", "발언 카드"), ("/hypotheses", "가설"), ("/checklist", "체크리스트")]
 SIGNAL_KO = {
     "OFF_LABEL_DEMAND": "쓰고 싶은데 막혔다", "OFF_LABEL_USE": "써봤다 · 반응 보고", "REPURPOSING": "다른 쓰임",
     "UNMET_NEED": "충족되지 않은 필요", "DOSING": "용량 · 제형", "SAFETY_TOLERABILITY": "안전성 · 내약성",
@@ -93,6 +93,12 @@ input[type=text]:focus{outline:2px solid rgba(239,139,28,.55);outline-offset:1px
 .row .grow{flex:1;min-width:200px}
 ul{margin:6px 0;padding-left:20px}li{margin:3px 0}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:var(--fs-2xs);color:var(--faint);margin-top:28px;padding-top:12px;border-top:1px solid var(--line)}
+.smap{display:flex;flex-direction:column;gap:5px;margin-top:10px}.srow{display:flex;gap:4px;align-items:stretch}
+.srow .seg{flex:0 0 160px;font-size:var(--fs-xs);color:var(--muted);padding:8px 0;font-weight:600}
+.tile{background:var(--navy);color:var(--on-navy);border-radius:4px;padding:7px 9px;font-size:var(--fs-2xs);min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.4}
+.tile b{font-family:Manrope,sans-serif;font-variant-numeric:tabular-nums;font-size:var(--fs-sm)}
+.tile.below{background:var(--card);color:var(--ink);border:1px dashed var(--line-2)}a.tile:hover{text-decoration:none;filter:brightness(1.08)}
+@media(max-width:860px){.srow{flex-direction:column}.srow .seg{flex-basis:auto;padding:4px 0}}
 mark{background:var(--orange-soft);color:inherit;padding:0 2px;border-radius:3px}mark.ae{background:var(--rust-soft);text-decoration:underline dotted var(--rust)}mark.other{background:var(--fill-2)}
 .note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 18px;margin:10px 0;line-height:1.85}
 .note .meta{font-size:var(--fs-2xs);color:var(--faint);margin-bottom:6px}
@@ -138,7 +144,8 @@ def button(label: str, action: str, hidden: dict | None = None, inputs: list[tup
 def shell(title: str, body: str, active: str = "/", banner: str = "", static: bool = False) -> str:
     nav = "" if static else '<nav class="nav">' + "".join(
         f'<a href="{href}" class="{"on" if href == active else ""}">{name}</a>' for href, name in NAV) + "</nav>"
-    side = (f'<aside class="side"><div class="brand">DELPHi<small>근거 관문 루프 · Nemotron</small></div>{nav}'
+    side = (f'<aside class="side"><a href="/" class="brand"><img src="/static/logo-navy.png" alt="DELPHi" style="height:20px;display:block">'
+            f'<small>근거 관문 루프 · Nemotron · <u>소개</u></small></a>{nav}'
             '<div class="foot">모델은 고르고 인용한다.<br>숫자는 코드가 센다.<br>관문은 사람이 지킨다.</div></aside>')
     ban = f'<div class="banner">{esc(banner)}</div>' if banner else ""
     legend = ('<div class="legend"><span>표기 5단계</span>' + "".join(f"<span>{tag(k)}{v}</span>" for k, v in

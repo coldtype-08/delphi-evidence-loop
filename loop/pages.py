@@ -92,6 +92,47 @@ def pipeline_strip(state: dict, notes_n: int) -> str:
         for k, v, s, turn in cells) + "</div>"
 
 
+def signal_map(state: dict, contract: dict, web: bool = True) -> str:
+    """Segment × signal tiles — width is mentions, tint is distinct HCPs, dashed is below threshold.
+    Big-but-pale tiles are one or two people repeating themselves: the map exists to show that difference."""
+    from .sense import tally
+    rows = tally(state)
+    if not rows:
+        return '<p class="sub">아직 신호가 없다 — 추출을 실행하면 채워진다.</p>'
+    thr = contract["threshold"]
+    max_h = max(r["hcps"] for r in rows)
+    hyp_by = {(h["segment"], h["signal_type"]): h["id"] for h in state["hypotheses"]}
+    by_seg: dict[str, list] = {}
+    for r in rows:
+        by_seg.setdefault(r["segment"], []).append(r)
+    out = ['<div class="smap">']
+    for seg in contract["segments"]:
+        cells = by_seg.get(seg)
+        if not cells:
+            continue
+        tiles = []
+        for c in sorted(cells, key=lambda x: -x["mentions"]):
+            passed = c["mentions"] >= thr["min_mentions"] and c["hcps"] >= thr["min_hcps"]
+            op = 0.45 + 0.55 * (c["hcps"] / max_h)
+            label = f'<b>{c["mentions"]}</b>회 · {c["hcps"]}인 · {esc(SIGNAL_KO.get(c["signal_type"], c["signal_type"]))}'
+            title = f'{seg} × {c["signal_type"]} — {c["mentions"]}회 · 독립 의료진 {c["hcps"]}인 · ' + ("문턱 충족" if passed else f'문턱 미달 (기준 {thr["min_mentions"]}회·{thr["min_hcps"]}인)')
+            hid = hyp_by.get((seg, c["signal_type"]))
+            style = f'flex:{c["mentions"]} 1 0;' + (f"opacity:{op:.2f}" if passed else "")
+            if hid and web:
+                tiles.append(f'<a class="tile" href="/hypotheses/{hid}" style="{style}" title="{esc(title)}">{label}</a>')
+            else:
+                tiles.append(f'<span class="tile{"" if passed else " below"}" style="{style}" title="{esc(title)}">{label}</span>')
+        out.append(f'<div class="srow"><div class="seg">{esc(seg)}</div>{"".join(tiles)}</div>')
+    out.append("</div>")
+    near = [r for r in rows if not (r["mentions"] >= thr["min_mentions"] and r["hcps"] >= thr["min_hcps"])
+            and (r["mentions"] >= thr["min_mentions"] - 1 or r["hcps"] >= thr["min_hcps"] - 1)]
+    if near:
+        out.append('<div class="faint" style="margin-top:8px">' + tag("pattern") + '<b>임계 근접</b> — ' +
+                   " · ".join(f'{esc(r["segment"])} × {esc(SIGNAL_KO.get(r["signal_type"], r["signal_type"]))} {r["mentions"]}회/{r["hcps"]}인' for r in near) +
+                   f'. 한 사람만 더 말하면 가설이 된다 — 다음 면담이 물어볼 자리.</div>')
+    return "".join(out)
+
+
 def hyp_table(state: dict, link: bool = True) -> str:
     rows = []
     for h in state["hypotheses"]:
@@ -120,12 +161,15 @@ def overview(state: dict, contract: dict, banner: str = "", web: bool = True) ->
         body.append('<div class="card"><div class="row"><div class="grow"><b>① 추출</b> <span class="sub">면담 기록 12건을 Nemotron이 읽고, 환자군 × 신호 유형에 해당하는 발언을 골라 원문 그대로 인용한다. 코드가 인용을 원문에서 찾아 검증하고, 세고, 문턱(3회·3인)을 넘은 묶음을 가설로 만든다.</span></div>'
                     + button("① 추출 실행", "/run/sense") + '</div>'
                     '<div class="row"><div class="grow faint">결과만 지우고 처음부터 (캐시는 유지)</div>' + button("초기화", "/run/reset", ghost=True) + '</div></div>')
+    body.append('<h2>신호 지도</h2><p class="sub">' + tag("pattern") + '칸 크기는 <b>반복 횟수</b>, 진하기는 <b>독립 의료진 수</b> — 가설이 되려면 둘 다 넘어야 한다. '
+                '<b>크지만 옅은 칸은 한두 사람이 반복한 것</b>이라 반복 횟수만 보면 안 보인다. 점선은 문턱 미달. 칸을 누르면 가설로 간다.</p>')
+    body.append(signal_map(state, contract, web))
     body.append("<h2>가설</h2>")
     body.append(hyp_table(state))
     sq = state["safety_queue"]
     if sq:
         body.append(f'<div class="card" style="border-left:4px solid var(--rust)">{tag("fact")}<b>유해사례 후보 {len(sq)}건</b>이 safety 큐에 있다 — 분석 집계에 섞이지 않고 별도 경로로만 간다. <a href="/claims#safety">보기</a></div>')
-    return shell("개요", "\n".join(body), "/", banner)
+    return shell("개요", "\n".join(body), "/console", banner)
 
 
 def note_cards(state: dict, notes: list[dict], web: bool = True) -> str:
@@ -288,6 +332,7 @@ def static_report(state: dict, contract: dict) -> str:
              '<p class="sub">모든 면담 기록은 합성. 숫자는 전부 코드가 계산. 인용은 원문 위치가 확인된 것만.</p>',
              pipeline_strip(state, notes_n), demo_card(state, contract, notes_n, web=False),
              '<h2 id="notes">면담 기록 (입력) — 추출된 발언을 원문 위에 표시</h2>', note_cards(state, notes, web=False),
+             "<h2>신호 지도</h2>", signal_map(state, contract, web=False),
              "<h2>가설</h2>", hyp_table(state, link=False)]
     for h in state["hypotheses"]:
         parts.append(f'<div id="{esc(h["id"])}" style="margin-top:40px;border-top:1px solid var(--line-2);padding-top:20px"></div>')

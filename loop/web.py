@@ -9,12 +9,16 @@ from __future__ import annotations
 import json
 import traceback
 
+from pathlib import Path
+
 from fastapi import FastAPI, Form
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 
-from . import board, pages, screen, sense, store
+from . import board, intro, pages, screen, sense, store
 
 app = FastAPI(title="DELPHi — Evidence Loop")
+app.mount("/static", StaticFiles(directory=str(Path(__file__).resolve().parent / "static")), name="static")
 LAST = {"msg": ""}
 
 
@@ -23,7 +27,7 @@ def _take_banner() -> str:
     return msg
 
 
-def _do(label: str, fn, back: str = "/"):
+def _do(label: str, fn, back: str = "/console"):
     try:
         LAST["msg"] = f"{label}: {fn()}"
     except SystemExit as e:        # the gates refuse with SystemExit — show the reason, don't crash
@@ -36,6 +40,11 @@ def _do(label: str, fn, back: str = "/"):
 
 @app.get("/", response_class=HTMLResponse)
 def index():
+    return HTMLResponse(intro.render(store.load(), store.contract()))
+
+
+@app.get("/console", response_class=HTMLResponse)
+def console():
     return HTMLResponse(pages.overview(store.load(), store.contract(), _take_banner()))
 
 
