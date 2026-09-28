@@ -1,0 +1,29 @@
+{
+ "purpose": "board_opening_ceo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "json_object (tool path: RateLimitError: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'})",
+ "thinking": null,
+ "usage": {
+  "input": 8400,
+  "output": 1250
+ },
+ "created_at": "2026-09-28T21:37:20",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "메트포르민의 PCOS 오프라벨 사용은 다수의 무작위 대조 시험과 메타분석에서 인슐린 저항성 개선, 배란 유도 보조, 대사·생식 지표 개선에 일관된 혜택을 보여주고 있습니다. 특히 클로미펜 또는 레트로졸 병용 시 단독 요법 대비 배란율과 임신율이 유의하게 상승한다는 3상 및 4상 시험 결과가 이를 뒷받침합니다. 다만 현재 허가사항은 제2형 당뇨병에 한정되어 있어, 적응증 확대를 위한 개발 전략을 수립할 때 안전성 자료의 PCOS 특이적 검토와 규제기관과의 사전 논의가 선행돼야 합니다. 현장 의료진 60명으로부터 100건의 처방 경험이 보고된 점은 미충족 수요가 크다는 신호로 읽힙니다. 따라서 저는 개발 추진에 찬성하되, 라벨 확대 경로와 안전성 모니터링 체계를 동시에 마련하는 조건으로 진행할 것을 제안합니다.",
+  "cited": [
+   "PMID:36703143",
+   "PMID:22525900",
+   "PMID:29183107",
+   "NCT00795808",
+   "NCT01999686",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "PCOS 환자에서 메트포르민 장기 복용 시 젖산산증 등 중대 이상사례 발생률이 당뇨병 환자군과 차이가 있는지 임상적 경험을 여쭙고 싶습니다.",
+  "action_ko": "규제전략팀은 PCOS 적응증 추가를 위한 FDA/EMA 사전 미팅(Pre-IND/Scientific Advice) 일정을 3개월 내 수립해 주십시오."
+ },
+ "reasoning": "The user wants me to act as the CEO in a board meeting discussing the hypothesis HYP-001 about metformin off-label use for PCOS. I need to provide an opening statement (모두발언) with my initial position based on the evidence package provided.\n\nKey points from the hypothesis package:\n- Hypothesis: Metformin widely prescribed off-label for PCOS women for menstrual cycle recovery, ovulation induction assistance (with letrozole/clomiphene), insulin resistance improvement, weight loss 2-3kg, endometrial thickness normalization, OHSS risk reduction in IVF.\n- Label status: DEVELOPMENT (not approved for PCOS)\n- Field signals: 100 mentions, 60 HCPs\n- External tally: 30 total sources (PubMed 10, CT.gov 18, Label 4). Supports: 16, Contradicts: 0, Neutral: 14.\n- Evidence: Multiple PubMed and CT.gov sources supporting various aspects (insulin sensitization, ovulation induction, combination therapy benefits). Label only indicates T2DM.\n- Safety: FAERS shows lactic acidosis, GI issues, etc.\n- Human review signed by 박건태.\n\nAs CEO, I need to give a holistic judgment, risk-first perspective. Stance should be SUPPORT, HOLD, or OPPOSE. Given the evidence: 16 supports, 0 contradicts, but label doesn't include PCOS, and it's off-label. There's substantial clinical evidence but regulatory gap. As CEO, I'd likely be cautious but supportive of further investigation. Probably HOLD or SUPPORT with conditions. Since it's DEVELOPMENT status, we might be considering label expansion. The CEO would weigh the strong clinical evidence vs regulatory/legal risks of off-label promotion.\n\nI'll choose HOLD because while evidence supports efficacy, the label doesn't, and we need to confirm regulatory pathway, safety in PCOS population specifically, and commercial viability. But the instruction says \"미조사·미확인은 HOLD의 사유가 아니다\" - uninvestigated/unconfirmed is not a reason for HOLD. HOLD is when evidence pulls both ways. Here evidence is mostly supportive (16 supports, 0 contradicts, 14 neutral). Neutral doesn't mean contradicts. So maybe SUPPORT? But as CEO, I must consider risk: off-label use is widespread but we cannot promote it. The hypothesis is about label expansion (DEVELOPMENT). The CEO might SUPPORT pursuing label expansion given evidence, but need to confirm regulatory strategy.\n\nI'll go with SUPPORT for pursuing development/label expansion, but with caveats. Confidence maybe 4. Stance_changed false.\n\nNeed to cite source_ids from evidence list. I'll cite a few key ones: PMID:36703143 (gold standard insulin sensitizer), PMID:22525900 (RCT clomiphene+metformin), NCT00795808 (Phase 4 combo better), NCT01999686 (Phase 3 metabolic/reproductive), SPL:...#indications_and_usage (label only T2DM). Also maybe PMID:29183107 (Cochrane meta-analysis).\n\nUtterance 3-6 sentences, formal Korean, complete sentences, no bullets.\n\nQuestion_ko: one line for clinicians. Action_ko: one line for organization.\n\nLet's craft."
+}

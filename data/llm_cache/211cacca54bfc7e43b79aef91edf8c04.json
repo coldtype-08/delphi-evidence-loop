@@ -1,0 +1,29 @@
+{
+ "purpose": "board_final_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 11529,
+  "output": 1054
+ },
+ "created_at": "2026-09-28T21:27:02",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 5,
+  "stance_changed": false,
+  "utterance_ko": "최종 입장은 이 가설의 개발 중단입니다. MA.32 3상 시험(NCT01101438)에서 무병생존율과 전체생존율 개선이 입증되지 않았다는 점이 다수의 논문(PMID:42063220, PMID:37695982, PMID:37185680)에서 일관되게 확인되어, 유방암 재발 예방 적응증으로 허가 확대를 추진할 규제적 근거가 전혀 없습니다. 현행 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)은 제2형 당뇨병에 한정되어 있으며, 오프라벨 사용 요구에 회사가 정보를 제공하거나 지지하는 행위는 허가 외 사용 조장 리스크를 수반합니다. PV 총괄님께서 지적하신 박스 경고상의 젖산산증 위험 인자(수술 직후, 신기능 변동, 고령, 다제 병용)가 이 환자군에 중첩되고 FAERS 데이터에서도 젖산산증 19,411건이 확인되는 점은 안전성 관점에서도 개발 중단을 뒷받침합니다. 따라서 규제 렌즈에서는 이 가설을 더 이상 진행하지 않는 것이 타당합니다.",
+  "cited": [
+   "NCT01101438",
+   "PMID:42063220",
+   "PMID:37695982",
+   "PMID:37185680",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+  ],
+  "question_ko": "귀 기관에서 메트포르민 오프라벨 처방 시 젖산산증 조기 발견을 위한 정기적 젖산·신기능 모니터링 체계를 운영하고 계십니까?",
+  "action_ko": "의학부에 현장 의료진 대상 '근거 부재 사실'과 '라벨 적응증 한정'만을 전달하는 표준 응대 가이드를 배포하고, 영업·마케팅 부서에는 본 건 관련 프로모션 활동 금지를 지시하십시오."
+ },
+ "reasoning": "The user is asking for the final position (최종 입장) from the RA 총괄 (Regulatory Affairs Head) perspective after the board discussion. I need to review the discussion and provide a final stance with the required schema.\n\nLet me analyze the discussion:\n- CMO: OPPOSE - MA.32 showed no benefit, label only for T2DM\n- R&D 총괄: OPPOSE - MA.32 definitive negative, no scientific basis for further development\n- RA 총괄 (my initial position): OPPOSE - No regulatory basis for label expansion, off-label promotion risk\n- PV 총괄: OPPOSE - Safety concerns with lactic acidosis risk in this population\n- CFO: OPPOSE - No efficacy, opportunity cost\n- CCO: Acknowledges demand but efficacy not proven, need to understand info pathways\n- CEO: Demand exists but efficacy not proven, need response principles and check biomarker subgroups\n\nIn the discussion rounds:\n- CCO: Priority is understanding if physicians accept MA.32 negative results\n- CEO: Priority is lactic acidosis monitoring capability\n- PV 총괄: Priority is lactic acidosis monitoring capability\n\nAs RA 총괄, my lens is: label boundaries, regulatory constraints on off-label communication, regulatory pathway needed.\n\nMy initial stance was OPPOSE. The discussion hasn't provided new regulatory evidence that would change this. The MA.32 negative results are confirmed. The label only covers T2DM. Off-label promotion risk remains. No new regulatory pathway or precedent has been identified.\n\nI should maintain OPPOSE stance. The discussion reinforced the regulatory position - no efficacy evidence for label expansion, significant off-label promotion risk, and safety concerns from PV.\n\nI need to provide:\n- stance: OPPOSE (unchanged)\n- confidence: high (4-5)\n- stance_changed: false\n- utterance_ko: 3-6 sentences in Korean, formal, concluding first\n- cited: source_ids from evidence list\n- question_ko: one question for physicians\n- action_ko: one organizational action\n\nLet me craft the response."
+}

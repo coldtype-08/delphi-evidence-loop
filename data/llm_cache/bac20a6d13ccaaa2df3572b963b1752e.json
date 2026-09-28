@@ -1,0 +1,28 @@
+{
+ "purpose": "board_final_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 13463,
+  "output": 1306
+ },
+ "created_at": "2026-09-28T21:43:22",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "의장님, 규제업무 총괄로서 최종 입장은 HOLD를 유지합니다. 2라운드 토론을 거치며 CMO님께서 규제 경로 확정 후 안전성·상업성 병행 추진으로 입장을 조정하신 점, R&D 총괄님께서 임상적 유효성과 규제 과제를 구분하신 점은 모두 타당하나, 현행 허가 라벨(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)이 제2형 당뇨병 단일 적응증만 명시하고 있고 허가 외 정보 전달 금지 규정(21 CFR 312.7, 약사법 제68조)상 규제 경로 확정 없이는 공식 개발 착수가 불가능하다는 제약은 변함이 없습니다. 16건의 지지 근거(PMID:29183107, NCT06405178, NCT00795808 등)가 다기관 3상·4상 RCT로 배란율·인슐린 저항성 개선을 일관되게 입증하고 있어 임상적 타당성은 인정되나, 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)의 젖산산증 위험과 FAERS 신호(젖산산증 19,411건, 급성신손상 18,273건)는 PCOS 여성군에서 전용 안전성 자료 패키지 보완을 요구합니다. 따라서 규제 당국과의 Pre-sNDA 미팅을 통해 적응증 확대 경로(Type II 변경 또는 sNDA)와 요구 자료 범위를 확정하는 것을 선행 과제로 두고, 안전성 모니터링 계획 수립과 상업성 검토를 병행 트랙으로 추진하는 조건부 진행 입장을 정리합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "PMID:29183107",
+   "NCT06405178",
+   "NCT00795808"
+  ],
+  "question_ko": "현재 PCOS 환자에게 메트포르민 처방 시 신기능 검사와 젖산산증 위험 모니터링을 어떤 주기와 기준으로 시행하고 계십니까?",
+  "action_ko": "식약처 및 FDA에 Pre-sNDA 미팅을 신청해 PCOS 적응증 확대 경로(Type II 변경 또는 sNDA)와 제출 자료 범위, 안전성 패키지 요구사항을 확정하겠습니다."
+ },
+ "reasoning": "The user wants me to provide the final position (최종 입장) as the RA 총괄 (Regulatory Affairs Head) after the discussion rounds. I need to consider the discussion and determine if my stance has changed.\n\nFrom the discussion:\n- 1st round: I (RA 총괄) said HOLD, emphasizing regulatory pathway confirmation as prerequisite\n- 2nd round: I maintained that regulatory pathway confirmation via Pre-sNDA meeting should come first, then safety monitoring and commercial review can proceed in parallel\n\nThe CMO adjusted to sequential approach: regulatory pathway first, then parallel safety/commercial.\nPV 총괄 insists safety monitoring plan must be in place BEFORE program launch.\n\nMy position as RA 총괄: Regulatory pathway confirmation (via Pre-sNDA) is the gate. Once that's clarified, safety monitoring plan and commercial review can run in parallel. This hasn't changed from my 2nd round position.\n\nI should maintain HOLD stance because:\n1. Current label only has T2DM indication (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)\n2. Off-label promotion prohibited (21 CFR 312.7, 약사법 제68조)\n3. Need regulatory pathway clarity before formal development program\n4. Safety monitoring plan should be integrated into regulatory submission package\n\nBut I acknowledge clinical efficacy is supported by 16 supporting evidences from RCTs/meta-analyses.\n\nStance: HOLD (maintained)\nConfidence: 4 (strong regulatory rationale)\nStance_changed: false (consistent through rounds)\n\nNeed to cite relevant sources from evidence list:\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage (label limitation)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning (safety concern)\n- PMID:29183107, NCT06405178, NCT00795808 (supporting efficacy)\n- Also reference 21 CFR 312.7, 약사법 제68조 (regulatory constraints mentioned in my statements)\n\nQuestion for clinicians: Ask about current monitoring practices for metformin in PCOS patients, especially renal function and lactic acidosis risk monitoring.\n\nAction for organization: Initiate Pre-sNDA meeting request with regulatory authority to clarify pathway for PCOS indication expansion."
+}

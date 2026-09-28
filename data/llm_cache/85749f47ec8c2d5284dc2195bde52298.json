@@ -1,0 +1,44 @@
+{
+ "purpose": "board_close",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_close_v1",
+ "mode": "tool_call",
+ "thinking": true,
+ "usage": {
+  "input": 16709,
+  "output": 2067
+ },
+ "created_at": "2026-09-28T21:48:36",
+ "output": {
+  "summary_ko": "메트포르민의 다낭성난소증후군(PCOS) 여성 대상 적응증 확대 가설(HYP-001)을 상정해 임원 회의가 진행되었습니다. 현장 신호는 100회 언급, 60명의 의료진으로부터 보고되었으며, 외부 근거 집계(PubMed·ClinicalTrials.gov·허가자료 합계 30건)는 지지 16건, 중립 14건, 반대 0건입니다. 박건태 님이 외부 근거 검토를 완료하고 서명했습니다. CMO·R&D 총괄·CEO는 임상적 유효성이 충분해 개발 추진에 찬성하나 규제 경로 확정과 안전성 모니터링 체계 구축을 선행 조건으로 제시했습니다. RA 총괄·PV 총괄·CFO·CCO는 HOLD 입장을 유지하며, 각각 허가 외 정보 전달 금지 규제 준수, 전용 약물감시 계획 수립, 상업성 불확실성, 오프라벨 프로모션 배제와 실사용 증거 수집을 이유로 들었습니다. 최종 집계는 SUPPORT 3명, HOLD 4명, OPPOSE 0명으로 권고는 HOLD입니다.",
+  "evidence_summary_ko": "외부 근거 30건 중 16건이 가설을 지지합니다. 주요 지지 근거는 코크란 메타분석(PMID:29183107), 3상 이중맹검 RCT(PMID:39803009), 다수의 완료된 3상·4상 임상시험(NCT00795808, NCT06405178, NCT01999686 등)으로, 메트포르민 단독 및 클로미펜·레트로졸 병용 시 배란율·임신율·인슐린 저항성(HOMA-IR)·대사 지표 개선이 일관되게 확인되었습니다. 반대 근거는 없으며, 중립 14건은 연구 프로토콜·정정 공지·메트포르민 비포함 시험 등입니다. 허가자료(SPL)는 제2형 당뇨병 단일 적응증만 명시하고 PCOS 용법은 기재하지 않았으며, 박스 경고로 젖산산증 위험을 경고합니다. FAERS 상위 이상사례에 젖산산증 19,411건, 급성신손상 18,273건이 보고되어 있습니다.",
+  "rationale_ko": "임상적 유효성은 다수의 고품질 RCT와 메타분석으로 입증되었으나, 현재 허가사항이 제2형 당뇨병에 한정되어 있어 적응증 확대를 위한 규제 경로(sNDA/Type II 변경)가 확정되지 않았고, PCOS 여성군 특이적 안전성 모니터링 체계(젖산산증·신기능·호모시스테인·위장관계 이상반응)가 부재하며, 제네릭 전환으로 상업적 편익이 불분명한 점이 종합되어 HOLD로 결정되었습니다. 규제 당국 Pre-sNDA 미팅을 통해 경로가 윤곽을 잡으면 안전성 모니터링 계획과 상업성 검토를 병행 추진하는 순차·병행 접근이 합리적이라는 데 다수 참석자가 동의했습니다.",
+  "kill_criteria_ko": [
+   "규제 당국과의 Pre-sNDA 미팅에서 적응증 확대 경로(Type II 변경 또는 sNDA)와 제출 자료 범위가 합의되지 않을 경우",
+   "PCOS 대상 전용 약물감시 계획(PV Plan)이 수립·승인되지 않아 환자 모집 전 실질 가동이 불가능할 경우",
+   "비용 대비 증분 매출 분석 결과 상업적 타당성이 입증되지 않아 자원 배분 우선순위에서 제외될 경우"
+  ],
+  "risks_ko": [
+   "박스 경고(젖산산증 사망례)와 FAERS 신호(젖산산증 19,411건, 급성신손상 18,273건)가 PCOS 여성군에서 신기능 변동·레트로졸·클로미펜 병용 시 가중될 가능성",
+   "허가 외 정보 전달 금지 규정(21 CFR 312.7, 약사법 제68조) 위반 시 법적 리스크",
+   "제네릭 제품으로서 특허 보호 부재에 따른 상업적 독점성 확보 곤란",
+   "오프라벨 처방 실태가 이미 광범위하여 적응증 확대 시 처방량 증대 효과가 제한적일 가능성"
+  ],
+  "follow_up_questions": [
+   {
+    "question_ko": "PCOS 환자에서 메트포르민 장기 복용 시 신기능 변화와 젖산산증 발생 여부를 주기적으로 모니터링하고 계십니까?",
+    "why_ko": "CMO와 CEO가 공통으로 제기한 안전성 모니터링 실태 파악을 위해 차기 면담에서 의료진에게 직접 확인할 필요가 있습니다."
+   },
+   {
+    "question_ko": "현재 PCOS 환자에게 메트포르민 처방 시 신기능 검사와 젖산산증 위험 모니터링을 어떤 주기와 기준으로 시행하고 계십니까?",
+    "why_ko": "RA 총괄이 규제 제출용 안전성 패키지 설계를 위해 현장 모니터링 프로토콜을 표준화할 필요가 있다고 지적했습니다."
+   },
+   {
+    "question_ko": "PCOS 환자에서 메트포르민과 레트로졸·클로미펜 병용 시 신기능 모니터링 주기와 위장관계 이상반응 관리 프로토콜을 현장에서 어떻게 운영하고 계십니까?",
+    "why_ko": "PV 총괄이 병용 요법 시 위장관계 이상반응 가중과 신기능 모니터링 실태 불확실성을 해소하기 위해 현장 프로토콜 조사가 필요하다고 강조했습니다."
+   }
+  ],
+  "closing_ko": "이상으로 메트포르민 PCOS 적응증 확대 가설(HYP-001)에 대한 경영 심의회를 마칩니다. 권고는 HOLD이며, 규제 당국 Pre-sNDA 미팅 일정 확정과 동시에 PCOS 특이적 약물감시 계획 초안 작성, 기존 3상·4상 RCT 데이터의 규제 제출용 통합 분석 패키지 정리, 현장 실사용 처방 패턴 조사 착수를 병행 트랙으로 추진하기로 했습니다. 상업 액션은 허가 범위 밖 가설이므로 회의록에 포함하지 않습니다. 참석자 여러분께 감사드립니다."
+ },
+ "reasoning": "The user wants me to write the meeting minutes (회의록) based on the provided data. I need to use the board_close_v1 tool to output the structured meeting minutes. The tool requires specific fields: summary_ko, evidence_summary_ko, rationale_ko, kill_criteria_ko, risks_ko, follow_up_questions (max 3), and closing_ko.\n\nI must follow the rules: only facts from the input, no opinions. The hypothesis is DEVELOPMENT (off-label), so commercial actions should not be included in the minutes. The tally shows HOLD recommendation with 3 SUPPORT, 4 HOLD, 0 OPPOSE. The lead is CMO.\n\nI need to extract:\n- Summary: what was discussed, the hypothesis, field signals, external tally, final positions.\n- Evidence summary: summarize the evidence (supporting, neutral, contradictory). Note that there are 16 SUPPORTS, 0 CONTRADICTS, 14 NEUTRAL from external tally. Also mention key studies.\n- Rationale: why HOLD recommendation? Because regulatory pathway not defined, safety monitoring plan needed, commercial viability unclear. The lead CMO and others have conditions.\n- Kill criteria: conditions to drop the hypothesis. From discussion: if regulatory pathway cannot be defined, if safety monitoring plan not feasible, if commercial viability not proven.\n- Risks: lactic acidosis, renal impairment, off-label promotion restrictions, generic status limiting commercial upside.\n- Follow-up questions: up to 3 questions for next meeting with clinicians. From proposals, there are questions from each speaker. I need to pick up to 3 that are for clinicians. The proposals include questions from CMO, RA, PV, R&D, CFO, CCO, CEO. I should select 3 that are most relevant for clinicians. For example: CMO's question about renal function and lactic acidosis monitoring; RA's question about renal function tests and monitoring criteria; PV's question about monitoring schedule and GI adverse event management with letrozole/clomiphene. I'll pick three distinct ones.\n- Closing: formal closing statement.\n\nI must not include commercial actions because label_status is DEVELOPMENT. The blocked_commercial_actions note says \"허가 범위 밖 가설 — 상업 액션은 연결하지 않는다\". So I should not include CCO's action or CFO's action in the minutes.\n\nNow, I'll craft the response using the tool."
+}

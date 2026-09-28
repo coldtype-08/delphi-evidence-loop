@@ -1,0 +1,29 @@
+{
+ "purpose": "board_discussion1_cmo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 11371,
+  "output": 1138
+ },
+ "created_at": "2026-09-28T21:39:34",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "임상적 유효성은 이미 다수의 3상·4상 RCT와 코크란 메타분석(PMID:29183107, PMID:39803009, NCT00795808, NCT06405178)에서 배란율·인슐린 저항성·대사 지표 개선으로 일관되게 입증되었으므로, 임상 판단 근거로는 충분합니다. 다만 RA 총괄님께서 지적하신 허가 외 정보 전달 금지 규제(21 CFR 312.7)와 PV 총괄님께서 강조하신 전용 약물감시 체계는 환자 안전과 법적 보호를 위해 동시에 갖춰져야 할 선행 조건입니다. CFO님의 상업성 검토는 자원 배분 우선순위의 문제로 임상적 타당성과는 별개이나, 회사 주도의 적응증 확대 프로그램을 추진하려면 규제 경로 확정, 안전성 모니터링 체계, 자원 배분 승인이 모두 동시에 충족되어야 실행 가능하다고 봅니다. 단일 조건 충족만으로는 입장 변경이 어렵고, 세 가지가 함께 갖춰질 때 비로소 공식 개발 프로그램으로 전환을 지지하겠습니다.",
+  "cited": [
+   "PMID:29183107",
+   "PMID:39803009",
+   "NCT00795808",
+   "NCT06405178",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "NCT01115140"
+  ],
+  "question_ko": "PCOS 환자에서 메트포르민 장기 복용 시 젖산산증 발생률이 당뇨병 환자군과 유의하게 다른지 확인하기 위한 전향적 코호트 연구가 필요한가요?",
+  "action_ko": "PCOS 특이적 안전성 프로파일 확인을 위한 전용 약물감시 계획(PV 총괄)과 sNDA 규제 전략(RA 총괄)을 병행 수립하도록 요청합니다."
+ },
+ "reasoning": "The user is asking me to respond as the CMO (Chief Medical Officer) to a question from the moderator. The question is about whether I would change my stance if any one of the preconditions (regulatory pathway, safety monitoring, commercial review) is met, or if all must be met simultaneously.\n\nLet me review my previous stance: I was SUPPORT with conditions - I supported proceeding but emphasized regulatory/legal review and clinical guideline preparation must accompany it.\n\nNow I need to answer as CMO. I should consider the evidence cited:\n- PMID:29183107 (Cochrane meta-analysis)\n- PMID:39803009 (Phase 3 double-blind RCT)\n- NCT00795808 (Phase 4, clomiphene+metformin)\n- NCT06405178 (Phase 3, letrozole+metformin)\n- SPL boxed warning for lactic acidosis\n- NCT01115140 (homozygous rise in pregnancy)\n\nMy stance: The clinical evidence is strong (multiple RCTs, meta-analyses). The preconditions raised by others are regulatory (RA), safety monitoring (PV), commercial (CFO). As CMO, my lens is clinical validity and benefit-risk. The clinical evidence already supports use. The preconditions are about implementation, not clinical validity. So I might say that clinical validity is already established, and while safety monitoring is important for any use, the regulatory pathway and commercial decisions are separate from clinical judgment. However, for an off-label indication expansion, all three aspects need to align for a formal program.\n\nBut the question is: would I change stance if ANY ONE condition is met, or must ALL be met? As CMO, I focus on patient benefit and safety. The safety monitoring system (PV's condition) is most relevant to my lens. Regulatory pathway (RA) is necessary for legal promotion. Commercial (CFO) is not my primary concern.\n\nI think I would say: Clinical evidence already supports use. For a formal indication expansion program, all three need to align because you cannot legally promote without regulatory approval, and you need safety monitoring for patient protection. But if the question is about supporting off-label use in clinical practice, that's already happening and supported by evidence. For a company-sponsored program to expand indication, all conditions should be met.\n\nLet me formulate a response. I'll maintain SUPPORT stance but clarify that for a formal development program, all conditions should be met simultaneously because they address different risks (regulatory, safety, resource allocation). However, the clinical evidence alone justifies clinical use.\n\nI need to cite sources from the evidence list. I'll cite the key RCTs and meta-analyses, and the safety concerns.\n\nLet me write the response in Korean, 3-6 sentences, formal tone, citing source_ids."
+}

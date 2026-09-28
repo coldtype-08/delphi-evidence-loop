@@ -1,0 +1,31 @@
+{
+ "purpose": "board_opening_cmo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8168,
+  "output": 1419
+ },
+ "created_at": "2026-09-28T21:49:59",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "최고의학책임자로서 이 가설은 임상적 타당성이 충분하다고 봅니다. DPP 연구(NCT00038727)에서 고위험 내당능장애군 3,000명 이상을 대상으로 메트포르민이 당뇨 발생을 31% 감소시킨 3상 RCT 결과가 있고, 22년 추적 관찰인 DPPOS(PMID:40857175)에서 그 효과가 지속됨을 확인했습니다. 공복혈당장애가 두드러진 군에서는 43% 감소(PMID:32601731), 대사증후군 동반 군에서도 유의한 위험 감소(PMID:24118860)가 나타났으며, 실제 진료 환경인 LIME 연구(PMID:41275221)에서도 HbA1c 6.0-6.4% 고위험군에서 효과가 재현됐습니다. 다만 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)은 제2형 당뇨병에 한정돼 있고, PCOS 동반 당뇨 전단계에서는 엑세나타이드 대비 열세(PMID:32995892), 소아·청소년에서는 장기 자료가 부족(PMID:29173789)한 점은 적응증 확대 시 대상군 선별과 안전성 모니터링 계획에 반영해야 합니다. 수십 년간 축적된 제2형 당뇨병 처방 안전성 데이터(FAERS 상위 이상사례: 위장관 증상, 젖산산증 19,411례)는 고위험 당뇨 전단계에서도 관리 가능한 위험 프로파일을 시사합니다.",
+  "cited": [
+   "NCT00038727",
+   "PMID:40857175",
+   "PMID:32601731",
+   "PMID:24118860",
+   "PMID:41275221",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "PMID:32995892",
+   "PMID:29173789"
+  ],
+  "question_ko": "현장 의료진이 '고위험 당뇨 전단계'를 정의할 때 DPP 기준(IFG/IGT, BMI≥24, 연령≥25세) 외에 어떤 임상 지표를 추가로 고려하십니까?",
+  "action_ko": "적응증 확대 임상 개발 계획 수립 시 DPP 고위험 하위군(IFG 우세, 대사증후군 동반, HbA1c 6.0-6.4%)을 목표 모집단으로 설정하고, 젖산산증 위험 인자(신기능, 고령, 심부전) 사전 선별 기준을 프로토콜에 반영할 것"
+ },
+ "reasoning": "The user is asking for my opening statement as CMO for hypothesis HYP-002 regarding metformin for prediabetes high-risk patients. I need to analyze the evidence package and provide my clinical perspective.\n\nLet me review the key evidence:\n- DPP trial (NCT00038727): metformin reduced diabetes onset by 31% in high-risk IGT\n- DPPOS 22-year follow-up (PMID:40857175): sustained reduction in diabetes incidence\n- DPP post-hoc (PMID:32601731): 43% reduction in IFG-predominant prediabetes vs 26% overall\n- Metabolic syndrome subgroup (PMID:24118860): significant risk reduction\n- LIME study (PMID:41275221): real-world effectiveness in high-risk prediabetes (HbA1c 6.0-6.4%)\n- HIV+ prediabetes RCT (PMID:37460828): glucose lowering effect\n- PCOS study (PMID:32995892): CONTRADICTS - lower remission rate vs exenatide/combination\n- Pediatric review (PMID:29173789): CONTRADICTS - limited data in pediatric population\n- Cochrane protocol (PMID:31794067): NEUTRAL - unknown prevention effect\n- Label: CONTRADICTS - indicated only for T2DM, not prediabetes\n\nExternal tally: SUPPORTS 12, CONTRADICTS 3, NEUTRAL 14\n\nKey clinical points:\n1. Strong RCT evidence from DPP (Phase 3, n=3000+) showing 31% reduction\n2. Long-term follow-up (DPPOS) shows sustained effect\n3. Subgroup analyses show greater benefit in high-risk IFG and metabolic syndrome\n4. Real-world evidence (LIME) supports effectiveness\n5. Safety: well-known GI side effects, lactic acidosis risk (boxed warning) - but extensive safety database from decades of T2DM use\n6. Label contradiction: not approved for prediabetes indication\n7. PCOS data suggests inferiority to GLP-1 agonists in that specific population\n8. Pediatric data limited\n\nAs CMO, my lens is clinical validity and evidence level. The DPP is a landmark RCT with long-term follow-up. The evidence supports efficacy in high-risk prediabetes (IFG/IGT, metabolic syndrome, high BMI). However, the label explicitly doesn't include this indication, and there are some contradictory signals in specific subpopulations (PCOS, pediatrics).\n\nI should take a SUPPORT stance with high confidence given the DPP evidence, but note the label gap and need for regulatory pathway. I'll cite the key RCTs and mention the contradictory evidence for balance.\n\nLet me formulate the response."
+}

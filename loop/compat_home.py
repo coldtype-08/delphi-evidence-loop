@@ -31,9 +31,24 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 
-from . import sense
+import json
+
+from . import sense, store
 
 COMPUTED_BY = "code"
+
+# US census regions — one per virtual HCP, assigned deterministically by scripts/assign_regions.py and kept in
+# data/hcp_regions.json (outside field_notes.json so the extraction cache keys stay valid). Synthetic like the notes.
+REGIONS = [("SOUTH", "남부"), ("WEST", "서부"), ("MIDWEST", "중서부"), ("NORTHEAST", "북동부")]
+REGION_KO = dict(REGIONS)
+REGIONS_FILE = store.DATA / "hcp_regions.json"
+
+
+def hcp_regions() -> dict[str, str]:
+    """hcp_ref → region. An empty dict (file missing) makes every regional view say so instead of drawing blanks."""
+    if not REGIONS_FILE.exists():
+        return {}
+    return json.loads(REGIONS_FILE.read_text())
 
 # Korean gloss for the contract's signal types (the console keeps its own map keyed by the same codes).
 SIGNAL_KO = {
@@ -208,6 +223,27 @@ def collection(state: dict, contract: dict, notes: list[dict]) -> dict:
         by_year[year]["hcps"].add(n.get("hcp_ref"))
     recent_since = _one_year_before(dated[-1]["date"])
     recent_hcp = {n.get("hcp_ref") for n in dated if n["date"] >= recent_since}
+    gap_before = _one_year_before(_one_year_before(dated[-1]["date"]))
+    regions = hcp_regions()
+    region_rows: list[dict] = []
+    if regions:
+        last_contact: dict[str, str] = {}
+        specialty_of: dict[str, str] = {}
+        for n in dated:
+            last_contact[n["hcp_ref"]] = max(last_contact.get(n["hcp_ref"], ""), n["date"])
+            specialty_of.setdefault(n["hcp_ref"], n.get("specialty", ""))
+        for code, _ko in REGIONS:
+            rn = [n for n in dated if regions.get(n["hcp_ref"]) == code]
+            hc = {n["hcp_ref"] for n in rn}
+            spec = Counter(specialty_of[h] for h in hc)
+            region_rows.append({
+                "region": code, "blocks": len(rn), "distinctHcp": len(hc),
+                "recentBlocks": sum(n["date"] >= recent_since for n in rn),
+                "recentHcp": len({n["hcp_ref"] for n in rn if n["date"] >= recent_since}),
+                "gapHcp": sum(last_contact[h] < gap_before for h in hc),
+                "specialties": [{"specialty": s, "hcpCount": k} for s, k in spec.most_common(6)],
+            })
+        region_rows.sort(key=lambda r: -r["blocks"])
     return {
         "computedBy": COMPUTED_BY,
         "corpus": {
@@ -219,7 +255,8 @@ def collection(state: dict, contract: dict, notes: list[dict]) -> dict:
                     for m in months],
         "yearly": [{"year": y, "blocks": v["blocks"], "distinctHcp": len(v["hcps"] - {None})}
                    for y, v in sorted(by_year.items())],
-        "regions": [],
+        "gapBefore": gap_before,
+        "regions": region_rows,
     }
 
 
@@ -263,6 +300,27 @@ def mentions(state: dict, contract: dict, notes: list[dict]) -> dict:
             cross_groups[f"{c['segment']}|{c['signal_type']}"].append(c)
     cross = {k: {"blocks": len(v), "distinctHcp": _distinct_hcp(v)} for k, v in sorted(cross_groups.items())}
 
+    regions = hcp_regions()
+    by_region: dict[str, dict] = {}
+    if regions:
+        for code, _ko in REGIONS:
+            rc = [c for c in claims if regions.get(c.get("hcp_ref")) == code]
+            if not rc:
+                continue
+            dseg: dict[str, list[dict]] = defaultdict(list)
+            dsig: dict[str, list[dict]] = defaultdict(list)
+            for c in rc:
+                if c.get("segment") in by_seg:
+                    dseg[c["segment"]].append(c)
+                if c.get("signal_type") in by_sig:
+                    dsig[c["signal_type"]].append(c)
+            by_region[code] = {
+                "diseases": sorted([{"key": s, "ko": s, "labelScope": _label_scope(s), "blocks": len(v), "distinctHcp": _distinct_hcp(v)}
+                                    for s, v in dseg.items()], key=lambda d: (-d["blocks"], d["key"]))[:5],
+                "signals": sorted([{"key": t, "ko": SIGNAL_KO.get(t, t), "blocks": len(v), "distinctHcp": _distinct_hcp(v)}
+                                   for t, v in dsig.items()], key=lambda d: (-d["blocks"], d["key"]))[:3],
+            }
+
     tol = [c for c in claims if c.get("signal_type") == "SAFETY_TOLERABILITY"]
     ae = list(state.get("safety_queue", []))
     seg_ko = lambda s: UNCLASSIFIED_LABEL_KO if s == UNCLASSIFIED_SEGMENT else s  # noqa: E731
@@ -287,12 +345,12 @@ def mentions(state: dict, contract: dict, notes: list[dict]) -> dict:
             "tolerabilityBlocks": len(tol), "aeBlocks": len(ae), "unclassifiedBlocks": 0,
             "tol": by_segment_chips(tol), "ae": by_segment_chips(ae),
         },
-        "byRegion": {},
+        "byRegion": by_region,
         "noteKo": (
             "언급 블록은 원문 위치가 검증된 발언 카드(claim)의 수이고, 면담 기록 1건이 블록 1개입니다. "
             "환자군과 신호 유형은 활성 Data Contract의 허용값 그대로이며, 허가 범위 안은 허가 연령대인 "
             "청소년 10-17세 환자군만입니다. 환자군이 허용값 밖(OTHER)인 발언은 허가 범위 어느 쪽에도 넣지 않았습니다. "
-            "부작용 의심 발언은 별도 큐에만 있고 다른 어떤 집계에도 들어가지 않습니다. 이 데이터에는 권역 정보가 없습니다."
+            "부작용 의심 발언은 별도 큐에만 있고 다른 어떤 집계에도 들어가지 않습니다. 권역은 가상 의료진마다 하나씩 부여한 합성 값입니다."
         ),
     }
 

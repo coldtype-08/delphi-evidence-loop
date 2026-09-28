@@ -1,0 +1,30 @@
+{
+ "purpose": "board_opening_cmo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8701,
+  "output": 1255
+ },
+ "created_at": "2026-09-28T21:36:17",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "메트포르민의 PCOS 오프라벨 사용은 다수의 무작위 대조시험과 메타분석에서 인슐린 저항성 개선, 배란 유도 보조, 월경 규칙성 회복 등 임상적 유효성이 일관되게 확인되어 임상적 타당성이 충분하다고 판단합니다. 특히 코크란 메타분석(PMID:29183107)과 3상 이중맹검 RCT(PMID:39803009)에서 메트포르민 단독으로도 HOMA-IR 60% 이상 개선과 배란율 향상이 입증되었으며, 클로미펜 또는 레트로졸 병용 시 생식 성과가 추가로 개선됨(NCT00795808, NCT06405178)도 확인됩니다. 다만 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)은 제2형 당뇨병에 한정되어 있어 적응증 확대 시 허가 외 사용에 대한 명확한 근거 체계와 안전성 모니터링 체계가 선행되어야 합니다. 박스 경고의 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)과 위장관계 부작용 빈도(FAERS 상위 이상사례)는 PCOS 환자군에서도 용량 조절과 신기능 모니터링을 통해 관리 가능하나, 임신 중 사용 시 호모시스테인 상승(NCT01115140) 등 추가 안전성 검토가 필요합니다. 다른 참석자들과 달리 저는 대규모 RCT와 메타분석이라는 높은 근거 수준을 근거로 진행 지지를 표명하나, 허가 범위 밖 사용인 만큼 규제·법무 검토와 임상 지침 정비가 병행되어야 함을 강조합니다.",
+  "cited": [
+   "PMID:29183107",
+   "PMID:39803009",
+   "NCT00795808",
+   "NCT06405178",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "NCT01115140"
+  ],
+  "question_ko": "PCOS 환자에서 메트포르민 장기 복용 시 젖산산증 발생률이 당뇨병 환자군과 차이가 있는지, 그리고 임신 전·중 용량 조절 기준이 확립되어 있는지 확인 바랍니다.",
+  "action_ko": "적응증 확대 추진 시 식약처 사전 상담 신청과 함께 PCOS 전용 용법·용량·모니터링 가이드라인 초안 작성을 의료부서에 요청합니다."
+ },
+ "reasoning": "The user is asking me to provide the opening statement (모두발언) as the CMO for the board meeting about metformin for PCOS. I need to analyze the hypothesis package and provide my initial position based on clinical validity and evidence level.\n\nLet me review the key evidence:\n- Hypothesis: Metformin used off-label for PCOS women for menstrual cycle recovery, ovulation induction assistance, insulin resistance improvement, weight loss, endometrial thickness normalization, OHSS risk reduction\n- External tally: 16 SUPPORTS, 0 CONTRADICTS, 14 NEUTRAL\n- Key supporting evidence from PubMed: \n  - PMID:36703143 - Metformin as gold standard insulin sensitizer for PCOS\n  - PMID:22525900 - RCT showing metformin alone and with clomiphene for ovulation induction\n  - PMID:18000088 - Multi-center RCT sub-study showing ovulation rates 48-79%\n  - PMID:29183107 - Cochrane meta-analysis on insulin sensitizers for PCOS\n  - PMID:39803009 - Phase 3 RCT showing metformin alone improved HOMA-IR 60.7%\n  - PMID:16798282 - Review recommending metformin alone or with CC as 2nd step\n- ClinicalTrials.gov: Multiple completed Phase 3/4 trials supporting efficacy\n- Label: Only approved for T2DM, no PCOS indication\n- Safety: Boxed warning for lactic acidosis, common GI side effects\n\nAs CMO, I need to assess clinical validity. The evidence shows multiple RCTs and meta-analyses supporting metformin for PCOS-related insulin resistance, ovulation induction, and metabolic improvements. However, it's off-label use, and the label only covers T2DM. There are safety considerations (lactic acidosis, GI effects).\n\nMy stance should be SUPPORT given the substantial RCT and meta-analysis evidence, but with caveats about off-label status and safety monitoring. Confidence around 4-5.\n\nI need to provide utterance_ko in 3-6 sentences, formal Korean, citing source_ids from the evidence list. No bullet points. First sentence should be the conclusion.\n\nLet me craft the response."
+}

@@ -1,0 +1,28 @@
+{
+ "purpose": "board_opening_cco",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 7244,
+  "output": 867
+ },
+ "created_at": "2026-09-28T21:22:54",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "현장에서 유방암 환자와 보호자가 메트포르민 재발 예방 처방을 지속적으로 요청하고 있다는 64건, 39명 의료진의 신호는 분명한 수요로 보입니다. 그러나 MA.32 3상 시험(NCT01101438)과 이를 분석한 다수의 논문(PMID:42063220, PMID:37695982, PMID:37185680)에서 무병생존율과 전체생존율 개선이 입증되지 않았다는 점이 일관되게 확인됩니다. 라벨상 적응증은 제2형 당뇨병에 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 허가 범위 밖 사용에 대한 상업적 액션은 제안할 수 없습니다. 수요는 실재하나 근거가 이를 뒷받침하지 못하는 상황이므로, 현장 의료진이 어떤 정보 경로로 이 요구를 접하는지, 그리고 근거 설명 시 어떤 지점에서 수용하거나 거부하는지 파악하는 것이 우선입니다.",
+  "cited": [
+   "NCT01101438",
+   "PMID:42063220",
+   "PMID:37695982",
+   "PMID:37185680",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "메트포르민 재발 예방 처방 요청 시 환자·보호자가 주로 참고하는 정보 출처(미디어, 커뮤니티, 논문 등)가 무엇인지, 그리고 의료진이 MA.32 결과 설명 후에도 처방을 고려하는 케이스가 있는지 여쭙고 싶습니다.",
+  "action_ko": "현장 면담에서 환자·보호자의 정보 접촉 경로와 의료진의 근거 설명 수용도를 체계적으로 조사하여 다음 회의에 보고하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as CCO (Chief Commercial Officer) for the hypothesis HYP-003 about metformin for breast cancer recurrence prevention. This is a DEVELOPMENT (off-label) hypothesis. My lens is \"현장 수요의 실체\" - actual field demand from physicians and patients.\n\nKey points from the hypothesis package:\n- 64 mentions from 39 HCPs requesting off-label metformin for breast cancer recurrence prevention\n- MA.32 phase 3 trial (NCT01101438) showed no improvement in disease-free survival or overall survival\n- External evidence: 5 SUPPORTS (all showing no benefit), 0 CONTRADICTS, 23 NEUTRAL\n- Label only indicates type 2 diabetes, not breast cancer\n- This is DEVELOPMENT status (off-label demand)\n\nAs CCO, I need to focus on:\n1. The actual field demand (64 mentions, 39 HCPs) - this is real demand signal\n2. The evidence shows NO clinical benefit from MA.32\n3. Since this is DEVELOPMENT/off-label, I cannot propose commercial actions for promotion\n4. My stance should reflect the tension between field demand and lack of evidence\n\nStance: HOLD - because there's real field demand but no evidence of efficacy. The demand exists but cannot be acted upon commercially without evidence.\n\nConfidence: 4 - strong evidence from MA.32, clear field signal\n\nLet me craft the opening statement in Korean, formal tone, 3-6 sentences, citing source_ids from the evidence list."
+}

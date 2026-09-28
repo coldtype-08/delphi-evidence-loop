@@ -1,0 +1,30 @@
+{
+ "purpose": "board_opening_cco",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8704,
+  "output": 1128
+ },
+ "created_at": "2026-09-28T21:37:43",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "현장 신호 100건과 60명의 의료진 언급은 메트포르민이 PCOS 진료 현장에서 이미 표준적으로 쓰이고 있음을 보여줍니다. PubMed 메타분석과 다수의 3상 임상시험이 인슐린 저항성 개선, 배란율 상승, 월경 규칙성 회복, 체중 감량 등 임상적 유효성을 일관되게 지지하고 있습니다. 허가사항은 제2형 당뇨병에 한정되어 있으나, 의료진이 실제 처방하는 이유와 환자가 얻는 혜택을 문서화하는 것이 상업적 판단의 선행 조건입니다. 안전성 프로파일은 당뇨병 적응증에서 축적된 장기 데이터로 충분히 이해 가능하나, PCOS 특이적 장기 안전성 자료는 추가확인이 필요합니다. 따라서 임상 수요의 실체를 인정하되, 허가 범위 밖 사용에 대한 프로모션은 배제하고 현장 근거 수집에 집중하겠습니다.",
+  "cited": [
+   "PMID:36703143",
+   "PMID:22525900",
+   "PMID:29183107",
+   "PMID:39803009",
+   "NCT00795808",
+   "NCT06405178",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "PCOS 환자군 중 메트포르민 처방 시 가장 임상적 혜택이 큰 표현형(비만 동반, 인슐린 저항성 확인, 클로미펜 저항성 등)과 실사용 용량·기간을 어떻게 정하고 계십니까?",
+  "action_ko": "산부인과·내분비과 자문단을 구성해 PCOS 진료 현장의 메트포르민 사용 패턴, 미충족 수요, 환자 선호도를 체계적으로 수집하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as CCO (Chief Commercial Officer) for the board meeting about metformin's off-label use in PCOS women. I need to provide my initial position based on my lens - which focuses on actual clinical demand from healthcare providers and patients, what they're actually requesting, and what the field needs to know. I should not propose commercial actions for off-label hypotheses.\n\nLet me analyze the evidence:\n- Field signals: 100 mentions from 60 HCPs - this shows significant real-world usage\n- External evidence: 16 SUPPORTS, 0 CONTRADICTS, 14 NEUTRAL from PubMed, CT.gov, and labels\n- Key supporting evidence: Multiple RCTs and meta-analyses show metformin improves ovulation rates, insulin resistance, menstrual regularity, weight loss in PCOS\n- Label status: DEVELOPMENT (off-label) - only approved for T2DM\n- Safety: Known GI side effects, lactic acidosis risk (boxed warning)\n\nAs CCO, my lens is clinical demand reality. The field signals show 60 HCPs mentioning this 100 times - that's strong real-world demand. The evidence supports clinical benefits for PCOS symptoms. But it's off-label, so I cannot propose promotional/commercial actions. My stance should be SUPPORT for recognizing the clinical demand, but HOLD on any commercial action since it's off-label.\n\nI need to cite source_ids from the evidence list. Let me pick relevant ones:\n- PMID:36703143 (gold standard insulin sensitizer for PCOS)\n- PMID:22525900 (RCT with clomiphene + metformin)\n- PMID:29183107 (Cochrane meta-analysis)\n- PMID:39803009 (Phase 3 RCT showing HOMA-IR improvement)\n- NCT00795808 (Phase 4 showing combo with clomiphene better)\n- NCT06405178 (Phase 3 completed on letrozole + metformin)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage (label shows only T2DM approved)\n\nMy utterance should be 3-6 sentences, formal Korean, conclusion first. No bullet points. Stance: SUPPORT for clinical demand recognition, but with caveats about off-label status. Confidence: 4 (strong field signals + supporting evidence). stance_changed: false.\n\nQuestion for clinicians: What specific PCOS phenotypes or patient subgroups do you find metformin most beneficial for, and what dosing regimens are you using in practice?\n\nAction: Organize clinical advisory board to document real-world usage patterns and unmet needs in PCOS management."
+}

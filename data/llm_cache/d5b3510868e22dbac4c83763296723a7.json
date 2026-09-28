@@ -1,0 +1,25 @@
+{
+ "purpose": "board_opening_pv_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8706,
+  "output": 1439
+ },
+ "created_at": "2026-09-28T21:36:43",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "약물감시 총괄로서 이 가설에 대해 HOLD 입장을 표명합니다. 허가자료의 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)는 메트포르민 연관 젖산산증 사망례를 명시하고 있으며, FAERS 상위 반응에 젖산산증 19,411건과 급성신손상 18,273건이 올라와 있어 신기능 저하 동반 가능성이 있는 PCOS 군에서 전용 안전성 자료 없이 적응증을 확대하는 것은 부적절합니다. 현재 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)은 제2형 당뇨병만 적응증으로 두고 있어 오프라벨 처방 시 이상사례 수집·평가 체계가 부재합니다. 레트로졸·클로미펜 병용 시 위장관계 이상반응 가중과 신기능 모니터링 실태가 불확실한 점도 우려됩니다. 따라서 전용 약물감시 계획 수립 전까지는 진행을 보류해야 합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "PCOS 환자에서 메트포르민 처방 시 신기능(eGFR) 기준치와 모니터링 주기를 현장에서 어떻게 적용하고 계십니까?",
+  "action_ko": "PCOS 적응증 확대 시 전용 약물감시 계획(PV Plan) 초안 작성 및 안전성 스펙 정의 착수"
+ },
+ "reasoning": "The user is asking for my opening statement as the PV Head (약물감시 총괄) for the board meeting about metformin's off-label use in PCOS women. I need to provide my initial position based on my lens (safety signals, boxed warnings, FAERS top reactions, renal function risks, concomitant therapy risks, adverse event handling pathways).\n\nLet me analyze the evidence from the hypothesis package:\n\nKey safety concerns from my lens:\n1. Boxed warning: Lactic acidosis (postmarketing cases resulting in death, hypothermia, hypotension, resistant bradyarrhythmias)\n2. FAERS top reactions: LACTIC ACIDOSIS (19,411), ACUTE KIDNEY INJURY (18,273), plus GI issues (nausea, diarrhea, vomiting)\n3. PCOS patients may have renal function considerations, especially if they have comorbidities\n4. Concomitant therapy with letrozole/clomiphene - need to consider drug interactions\n5. Off-label use means no formal safety monitoring for this population\n\nThe evidence shows:\n- 16 SUPPORTS, 0 CONTRADICTS, 14 NEUTRAL from external sources\n- But label only indicates T2DM, not PCOS\n- Boxed warning for lactic acidosis\n- FAERS shows significant lactic acidosis and acute kidney injury reports\n\nMy stance should be HOLD or OPPOSE from a safety perspective because:\n- Off-label use in a population not studied for safety\n- Lactic acidosis risk (boxed warning)\n- Renal function monitoring needed\n- Concomitant use with ovulation induction agents not well characterized for safety\n- No formal PV plan for this indication\n\nBut the instruction says stance_changed is false (this is opening statement), and I need to give initial position.\n\nI'll go with HOLD because while there are safety concerns, the evidence doesn't clearly say \"don't proceed\" - it says \"need safety plan\". Actually, from PV lens, the boxed warning and FAERS signals for lactic acidosis and AKI in a population that may have renal issues (PCOS with metabolic syndrome) suggests OPPOSE or strong HOLD.\n\nLet me think: The hypothesis is about expanding indication. From PV perspective, proceeding without dedicated safety data for this population is concerning. But the external evidence shows efficacy signals. So HOLD - need more safety data.\n\nConfidence: 4 (strong safety signals but not absolute contraindication)\n\nI need to cite source_ids from the evidence list. Relevant ones:\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning (lactic acidosis warning)\n- FAERS data from numbers (but that's not in evidence list with source_id)\n- The label sources are in evidence\n\nFrom evidence list, I can cite:\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage (shows only T2DM approved)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use (renal considerations in elderly)\n\nAlso the FAERS top reactions are in numbers but not as evidence with source_id. I should reference the FAERS data from the numbers section.\n\nWait, the rule says cited must use source_id from evidence list. The FAERS data is in numbers, not in evidence array. But the boxed_warning is in evidence.\n\nI'll cite the boxed_warning and indications_and_usage from label.\n\nNow craft the utterance in Korean, 3-6 sentences, formal, complete sentences.\n\nStance: HOLD (안전성 자료가 해당 군에서 충분하지 않아 진행 전 전용 감시 계획 필요)\nConfidence: 4\nstance_changed: false\nquestion_ko: ask clinicians about renal monitoring practice in PCOS patients on metformin\naction_ko: request dedicated PV plan for PCOS indication"
+}

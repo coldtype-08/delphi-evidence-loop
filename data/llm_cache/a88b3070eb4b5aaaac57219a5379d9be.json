@@ -1,0 +1,39 @@
+{
+ "purpose": "board_opening_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8701,
+  "output": 1285
+ },
+ "created_at": "2026-09-28T21:37:29",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "의장님, 규제업무 총괄로서 현재 허가 사항과 외부 근거를 검토한 결과 이 가설에 대해 HOLD 입장입니다. 현행 허가 라벨(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)은 제2형 당뇨병 단일 적응증만 명시하고 있으며, PCOS·월경·배란·체중 감량 등 오프라벨 용법은 전혀 기재되어 있지 않습니다. 반면 PubMed와 ClinicalTrials.gov에서 16건의 지지 근거(PMID:36703143, PMID:22525900, PMID:18000088, PMID:29183107, PMID:39803009, PMID:16798282, NCT06405178, NCT03008551, NCT01999686, NCT07323589, NCT07585396, NCT01791647, NCT00795808, NCT02446834, NCT01892254, NCT07687667)가 다기관 3상·4상 RCT로 배란율·인슐린 저항성·월경 개선 효과를 일관되게 보여주고 있습니다. 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)의 젖산산증 위험은 신기능 정상인 젊은 PCOS 여성군에서도 배제할 수 없어, 적응증 확대 시 안전성 자료 보완이 필요합니다. 따라서 임상적 유효성은 인정되나, 허가 외 정보 전달 금지 규제(21 CFR 312.7, 약사법 제68조)를 준수하면서 적응증 추가를 위한 sNDA/Type II 변경을 추진할지, 아니면 오프라벨 사용 실태 조사에 머물지 결정해야 합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "PMID:36703143",
+   "PMID:22525900",
+   "PMID:18000088",
+   "PMID:29183107",
+   "PMID:39803009",
+   "PMID:16798282",
+   "NCT06405178",
+   "NCT03008551",
+   "NCT01999686",
+   "NCT07323589",
+   "NCT07585396",
+   "NCT01791647",
+   "NCT00795808",
+   "NCT02446834"
+  ],
+  "question_ko": "PCOS 환자에서 메트포르민 장기 복용 시 젖산산증 발생률이 당뇨병 환자군과 차이가 있는지, 신기능 정상 젊은 여성 대상 안전성 자료가 있는지 확인 부탁드립니다.",
+  "action_ko": "식약처 사전상담(Pre-IND/Pre-sNDA) 신청을 위한 규제 전략 문서와 안전성 보완 자료 범위 검토를 착수하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the Regulatory Affairs (RA) Head for the hypothesis HYP-001 about metformin's off-label use in PCOS women. I need to provide my initial position based on the regulatory lens - focusing on approval scope, label boundaries, regulatory constraints on off-label information dissemination, and the regulatory pathway needed.\n\nLet me analyze the evidence:\n- The hypothesis is labeled as \"DEVELOPMENT\" (off-label use)\n- Current label only indicates type 2 diabetes mellitus (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)\n- External evidence: 16 SUPPORTS, 0 CONTRADICTS, 14 NEUTRAL from PubMed and CT.gov\n- Multiple Phase 3/4 trials support efficacy for ovulation induction, insulin resistance, menstrual regularity\n- But label has no mention of PCOS, menstrual, ovulation, or weight loss indications\n- Boxed warning for lactic acidosis exists\n\nAs RA Head, my stance should be HOLD because:\n1. Strong clinical evidence exists (SUPPORTS from multiple RCTs)\n2. But current label is strictly for T2DM only\n3. Off-label promotion is prohibited - we cannot communicate these uses\n4. Need regulatory pathway (sNDA/Type II variation) for label expansion\n5. Safety in PCOS population needs specific assessment (lactic acidosis risk in young women with normal renal function?)\n\nI should cite the label sources and key clinical trial evidence. Let me formulate the response."
+}

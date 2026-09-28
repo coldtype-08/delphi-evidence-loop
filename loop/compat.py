@@ -369,7 +369,9 @@ def analytics_unmapped(limit: int = 1):
 @router.get("/analytics/kol")
 def analytics_kol(limit: int = 40):
     """Physicians by how much they said — refs only, no names, no scoring (counts per HCP, sorted)."""
+    from . import compat_home
     state, notes = store.load(), _notes()
+    regions = compat_home.hcp_regions()
     meta = {}
     for n in notes:
         m = meta.setdefault(n["hcp_ref"], {"specialty": n["specialty"], "last": n["date"]})
@@ -378,7 +380,7 @@ def analytics_kol(limit: int = 40):
     for c in state["claims"]:
         if not c["verified"]:
             continue
-        r = rows.setdefault(c["hcp_ref"], {"hcpRef": c["hcp_ref"], "specialty": meta.get(c["hcp_ref"], {}).get("specialty", ""), "region": "—",
+        r = rows.setdefault(c["hcp_ref"], {"hcpRef": c["hcp_ref"], "specialty": meta.get(c["hcp_ref"], {}).get("specialty", ""), "region": regions.get(c["hcp_ref"], "—"),
                                            "provisional": {"claimCount": 0, "highGradeCount": 0, "distinctSegments": 0}, "official": {"claimCount": 0, "highGradeCount": 0},
                                            "lastClaimAt": meta.get(c["hcp_ref"], {}).get("last"), "_segs": set()})
         r["provisional"]["claimCount"] += 1; r["provisional"]["highGradeCount"] += 1
@@ -393,9 +395,42 @@ def analytics_kol(limit: int = 40):
 
 @router.get("/analytics/coverage")
 def analytics_coverage():
-    """No regions in this dataset — the grid stays empty and the page says so."""
-    c = store.contract()
-    return ok({"regions": [], "rows": [], "threshold": {"repeat": c["threshold"]["min_mentions"], "hcp": c["threshold"]["min_hcps"]}, "computedBy": "SQL"})
+    """Coverage grid — patient segment × region, counted from verified claims joined to each HCP's region.
+    Zero cells stay in the rows (they are the point of the grid). `sample` only on rows below the threshold."""
+    from collections import defaultdict
+    from . import compat_home
+    state, notes, c = store.load(), _notes(), store.contract()
+    thr = {"repeat": c["threshold"]["min_mentions"], "hcp": c["threshold"]["min_hcps"]}
+    regions = compat_home.hcp_regions()
+    if not regions:
+        return ok({"regions": [], "rows": [], "threshold": thr, "computedBy": "SQL"})
+    dates = {n["doc_id"]: n["date"] for n in notes}
+    claims = [x for x in state["claims"] if x["verified"] and x["segment"] != "OTHER"]
+    hyp_ids: dict[str, list[str]] = defaultdict(list)
+    for h in state["hypotheses"]:
+        hyp_ids[h["segment"]].append(h["id"])
+    rows = []
+    for seg in c["segments"]:
+        sc = [x for x in claims if x["segment"] == seg]
+        cells, empty = [], []
+        for code, _ko in compat_home.REGIONS:
+            rc = [x for x in sc if regions.get(x["hcp_ref"]) == code]
+            cells.append({"region": code, "claimCount": len(rc), "distinctHcp": len({x["hcp_ref"] for x in rc}), "officialCount": len(rc)})
+            if not rc:
+                empty.append(code)
+        total = {"claimCount": len(sc), "distinctHcp": len({x["hcp_ref"] for x in sc})}
+        below = total["claimCount"] < thr["repeat"] or total["distinctHcp"] < thr["hcp"]
+        row = {"segment": seg, "labelKo": seg, "labelScope": compat_home._label_scope(seg), "hypothesisIds": hyp_ids.get(seg, []),
+               "total": total, "official": {"claimCount": len(sc)}, "cells": cells, "emptyRegions": empty,
+               "belowThreshold": below, "lastMentionAt": max((dates.get(x["doc_id"], "") for x in sc), default=None)}
+        if below and sc:
+            s = max(sc, key=lambda x: dates.get(x["doc_id"], ""))
+            row["sample"] = {"claimId": s["id"], "quote": s["quote"], "signalType": s["signal_type"], "reviewGrade": "HIGH",
+                             "hcpRef": s["hcp_ref"], "region": regions.get(s["hcp_ref"], ""), "occurredOn": dates.get(s["doc_id"], ""),
+                             "evidence": {"docId": s["doc_id"], "charStart": s["char_start"], "charEnd": s["char_end"]}}
+        rows.append(row)
+    return ok({"regions": [{"region": code, "labelKo": ko} for code, ko in compat_home.REGIONS], "threshold": thr,
+               "rows": rows, "computedBy": "SQL"})
 
 
 @router.get("/contract/status")

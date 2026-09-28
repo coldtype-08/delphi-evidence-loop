@@ -1,0 +1,28 @@
+{
+ "purpose": "board_opening_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 7241,
+  "output": 1004
+ },
+ "created_at": "2026-09-28T21:22:07",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 5,
+  "stance_changed": false,
+  "utterance_ko": "현재 허가사항은 제2형 당뇨병에 한정되어 있으며 유방암 재발 예방 적응증은 라벨 어디에도 없습니다. MA.32 3상 시험(NCT01101438)에서 무병생존율과 전체생존율 개선이 입증되지 않았다는 다수의 논문(PMID:42063220, PMID:37695982, PMID:37185680)이 일관되게 보고하고 있어, 이 적응증으로 허가 확대를 추진할 규제적 근거가 없습니다. 오프라벨 사용 요구가 현장에 있다 해도, 회사가 이를 지지하거나 정보를 제공하는 행위는 허가 외 사용 조장(risk of promoting off-label use)으로 간주될 수 있어 규제 리스크가 큽니다. 다른 참석자께서 임상적 필요성이나 환자 접근성을 논하실 수 있으나, 규제 렌즈에서는 유효성 입증 실패가 확정된 이상 개발 중단 또는 보류가 타당합니다.",
+  "cited": [
+   "PMID:42063220",
+   "PMID:37695982",
+   "PMID:37185680",
+   "NCT01101438",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "의료진은 MA.32 결과 발표 후에도 특정 하위군(예: 인슐린 저항성 동반 환자)에서 혜택을 기대하며 처방을 고려하십니까?",
+  "action_ko": "규제팀은 현재 라벨 외 적응증 관련 문의 대응 가이드를 배포하고, 영업·마케팅 부서에 허가 외 사용 정보 제공 금지 사항을 재교육하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the Regulatory Affairs Head (RA 총괄) for the hypothesis HYP-003 about metformin for breast cancer recurrence prevention. I need to provide my initial position based on the regulatory lens - focusing on approval scope, label boundaries, regulatory constraints on off-label information dissemination, and the regulatory pathway needed.\n\nLet me analyze the evidence:\n- The hypothesis is labeled \"DEVELOPMENT\" meaning it's outside approved indications\n- MA.32 phase 3 trial (NCT01101438) showed no benefit for disease-free or overall survival\n- Current label only indicates type 2 diabetes mellitus\n- There's patient demand for off-label use but physicians are refusing based on negative trial results\n- External evidence: 5 SUPPORTS (all showing no benefit), 0 CONTRADICTS, 23 NEUTRAL\n\nFrom a regulatory perspective:\n1. The label only covers T2DM - breast cancer recurrence prevention is not an approved indication\n2. The pivotal phase 3 trial (MA.32) failed to show efficacy\n3. Promoting or facilitating off-label use for this indication would be problematic\n4. Any regulatory pathway would require new clinical evidence showing benefit\n5. Current evidence strongly contradicts efficacy for this use\n\nMy stance should be OPPOSE or HOLD. Given the strong negative evidence from the pivotal trial, and the fact that this is a DEVELOPMENT (off-label) hypothesis, I should OPPOSE proceeding with any commercial/regulatory action for this indication. The regulatory pathway is blocked by negative phase 3 data.\n\nI need to cite the relevant source_ids from the evidence list. Key ones:\n- PMID:42063220 (MA.32 primary results - no DFS/OS benefit)\n- PMID:37695982 (MA.32 secondary analysis - confirms no benefit)\n- PMID:37185680 (meta-analysis/review confirming no benefit)\n- NCT01101438 (MA.32 trial record)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage (label shows only T2DM)\n\nLet me craft the response in Korean, formal tone, 3-6 sentences, with stance OPPOSE, confidence high (4-5), stance_changed false."
+}

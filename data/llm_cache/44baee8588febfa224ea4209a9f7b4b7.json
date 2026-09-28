@@ -1,0 +1,28 @@
+{
+ "purpose": "board_opening_pv_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 7246,
+  "output": 1090
+ },
+ "created_at": "2026-09-28T21:22:10",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 5,
+  "stance_changed": false,
+  "utterance_ko": "약물감시 총괄로서 이 가설에 반대합니다. MA.32 3상 시험(NCT01101438)에서 무병생존율과 전체생존율 개선이 입증되지 않았음에도 불구하고, 유방암 수술 후 보조요법 환자군에서 오프라벨 처방 요구가 지속되고 있습니다. 라벨의 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)는 수술, 신기능 저하, 65세 이상, 조영제 검사, 저산소 상태, 병용 약물 등을 젖산산증 위험 인자로 명시하고 있는데, 이 환자군은 수술 직후 상태이고 항암화학요법으로 인한 신기능 변동, 고령 비율, 다제 병용 요법 등 위험 인자가 중첩됩니다. FAERS 상위 이상반응에 젖산산증(19,411건)과 급성신손상(18,273건)이 포함되어 있어(FAERS 데이터), 효능 근거 없는 적응증 확대는 안전성 프로파일을 악화시킬 우려가 큽니다. 따라서 안전성 관점에서 진행에 반대하며, 현장 의료진에게 오프라벨 사용 시 젖산산증 모니터링 체계가 갖춰져 있는지 확인할 필요가 있습니다.",
+  "cited": [
+   "NCT01101438",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "PMID:42063220",
+   "PMID:37695982",
+   "PMID:37185680"
+  ],
+  "question_ko": "유방암 보조요법 중 메트포르민 오프라벨 처방 시 신기능 모니터링 주기와 젖산산증 의심 증상 교육이 어떻게 이루어지고 있습니까?",
+  "action_ko": "오프라벨 사용 현황 파악을 위해 의료진 대상 안전성 설문 조사를 실시하고, 젖산산증 위험 인자 중첩 환자군에 대한 주의 자료를 배포하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the PV (Pharmacovigilance) Head for the board meeting on HYP-003 (metformin for breast cancer recurrence prevention). I need to provide my initial position based on my lens - safety signals, boxed warnings, FAERS top reactions, risks specific to this patient population (renal function, concomitant therapy), and adverse event handling pathways.\n\nLet me analyze the evidence from the hypothesis package:\n\n1. The hypothesis is about off-label demand for metformin in breast cancer patients (especially HR+, post-surgery adjuvant) for recurrence prevention\n2. MA.32 phase 3 trial (NCT01101438) showed no benefit for disease-free survival or overall survival\n3. Label only indicates type 2 diabetes mellitus\n4. Boxed warning lists risk factors for lactic acidosis: renal impairment, concomitant drugs (carbonic anhydrase inhibitors), age ≥65, radiological studies with contrast, surgery, hypoxic states, excessive alcohol, hepatic impairment\n5. FAERS top reactions include: NAUSEA (30,267), DIARRHOEA (28,320), BLOOD GLUCOSE INCREASED (27,661), DRUG INEFFECTIVE (22,819), FATIGUE (21,563), VOMITING (19,669), LACTIC ACIDOSIS (19,411), ACUTE KIDNEY INJURY (18,273)\n6. The patient population: breast cancer patients on adjuvant therapy, likely post-surgery, possibly elderly, may have renal impairment from chemo, may be on multiple concomitant medications\n\nFrom a PV perspective, the key concerns are:\n- Lactic acidosis risk (boxed warning) - surgery is a risk factor, and these patients are post-surgery\n- Renal impairment risk - chemo can affect renal function\n- Concomitant medications - cancer patients on multiple drugs\n- Age ≥65 - many breast cancer patients are older\n- The drug is being requested for an indication with no proven benefit (MA.32 negative)\n\nMy stance should be OPPOSE or HOLD. Given the clear safety risks in this specific population and no proven efficacy, I should OPPOSE proceeding with this repurposing. The safety signals are clear and the population has multiple risk factors for the boxed warning.\n\nLet me craft the response."
+}

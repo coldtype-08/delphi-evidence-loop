@@ -132,6 +132,7 @@ uv run python scripts/report.py                     # docs/report.html 정적 �
 
 ## 안 만든 것 · 한계
 - 현장 수집 모바일 앱·음성 전사는 이 저장소에 없다 (`data/field_notes.json`이 그 출력이라고 가정).
+- 권역은 가상 의료진마다 하나씩 결정론적으로 부여한 합성 값이다(`scripts/assign_regions.py` → `data/hcp_regions.json`, 미국 4개 인구조사 권역). 주(州) 단위 수치는 없고 지도는 권역 값을 입힌다.
 - OpenShell 안에서 실행해 보지 않았다 (개발 환경이 macOS). 정책은 `sandbox/EGRESS.md`.
 - `data/state.json` 하나가 정본이라 **명령은 한 번에 하나씩** 돌린다. 동시에 돌리면 나중 저장이 앞 저장을 덮는다.
 - 모델 호출 1회 ≈ 20~60초(Nemotron 3 Ultra, 무료 엔드포인트). 무료 엔드포인트는 지속 호출 시 429로 제한해 면담 282건 추출에 약 2시간이 걸렸다(캐시 재생은 1초). 같은 입력은 캐시에서 즉시 재생된다.

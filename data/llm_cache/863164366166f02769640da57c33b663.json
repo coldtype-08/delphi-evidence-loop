@@ -1,0 +1,29 @@
+{
+ "purpose": "board_opening_cmo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 7241,
+  "output": 1122
+ },
+ "created_at": "2026-09-28T21:23:07",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 5,
+  "stance_changed": false,
+  "utterance_ko": "최대 규모 3상 시험인 MA.32(NCT01101438, 3,649명)에서 메트포르민이 무병생존율과 전체생존율을 개선하지 못함이 확인되었으므로, 유방암 재발 예방 적응증 확대를 진행하지 않아야 합니다. PMID:42063220과 PMID:37695982, PMID:37185680이 이 결과를 일관되게 보고하고 있습니다. 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)은 제2형 당뇨병만 적응증으로 명시하며, 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)는 수술을 젖산산증 위험 인자로 열거해 수술 후 보조요법 중인 환자에서 안전성 우려를 더합니다. 현장 수요가 근거를 앞설 수 없으며, 이 가설은 임상적 타당성이 없습니다.",
+  "cited": [
+   "PMID:42063220",
+   "PMID:37695982",
+   "PMID:37185680",
+   "NCT01101438",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+  ],
+  "question_ko": "MA.32 결과 발표 후에도 오프라벨 처방을 원하는 환자군에서 어떤 임상적 특성(예: 인슐린 저항성, 비만, 당뇨병 전단계)이 공통적으로 관찰되는지 확인해 주십시오.",
+  "action_ko": "의료진 대상 MA.32 결과와 라벨 적응증 불일치를 정리한 근거 기반 소통 자료를 배포하십시오."
+ },
+ "reasoning": "The user is asking for my opening statement as CMO for the hypothesis HYP-003 about metformin for breast cancer recurrence prevention. I need to provide my initial position based on the clinical evidence lens.\n\nLet me analyze the evidence:\n- The hypothesis is about off-label demand for metformin in breast cancer patients (especially HR+, post-surgery adjuvant setting) for recurrence prevention\n- MA.32 phase 3 trial (NCT01101438, n=3649) showed no improvement in invasive disease-free survival or overall survival\n- Multiple PubMed articles (PMID:42063220, PMID:37695982, PMID:37185680) confirm this negative result\n- External tally: SUPPORTS 5, CONTRADICTS 0, NEUTRAL 23 - but the SUPPORTS are actually supporting the NEGATIVE finding (i.e., they support that metformin does NOT work)\n- The label only indicates type 2 diabetes, not breast cancer\n- Safety concerns: lactic acidosis risk factors include surgery, renal impairment, age ≥65 - relevant for breast cancer patients post-surgery\n\nMy stance as CMO: The largest phase 3 trial (MA.32) definitively showed no benefit for disease-free or overall survival. The evidence strongly contradicts the off-label use for recurrence prevention. I should OPPOSE proceeding with this indication expansion.\n\nConfidence: High (4-5) given the definitive phase 3 results.\n\nI need to cite the relevant source_ids from the evidence list. Let me pick the key ones:\n- PMID:42063220 (MA.32 primary result)\n- PMID:37695982 (MA.32 secondary analysis)\n- PMID:37185680 (meta-analysis/review confirming no benefit)\n- NCT01101438 (MA.32 trial registration)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage (label shows only diabetes indication)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning (safety concerns relevant to post-surgical patients)\n\nNow I'll craft the opening statement in Korean, 3-6 sentences, formal tone, conclusion first."
+}

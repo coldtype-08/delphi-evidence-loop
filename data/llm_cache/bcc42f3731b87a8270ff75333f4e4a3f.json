@@ -1,0 +1,29 @@
+{
+ "purpose": "board_discussion1_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 11371,
+  "output": 957
+ },
+ "created_at": "2026-09-28T21:40:25",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "의장님, 규제업무 총괄로서 답변드리겠습니다. CMO님과 R&D 총괄님께서 임상적 유효성이 충분함을 지적하신 점에는 동의하나, 허가 외 정보 전달 금지 규정(21 CFR 312.7, 약사법 제68조)상 적응증 확대 없이는 의료진 대상 정보 제공 자체가 제한되므로 규제 경로 확정이 선행 조건입니다. PV 총괄님께서 제기하신 전용 약물감시 계획은 sNDA/Type II 변경 신청 시 제출할 안전성 자료 패키지의 일부로 통합되어야 하며, 별도 선행 조건이라기보다 규제 경로 확정 후 병행 과제입니다. CFO님의 상업성 검토 역시 규제 경로가 정해져야 개발 비용과 일정을 산출할 수 있으므로 후순위입니다. 따라서 모든 조건이 동시에 갖춰질 필요는 없으나, 규제 경로 확정 없이는 다음 단계로 나아갈 수 없다는 입장을 유지합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "PMID:29183107",
+   "PMID:39803009",
+   "NCT06405178",
+   "NCT00795808"
+  ],
+  "question_ko": "식약처 사전 미팅(Pre-IND/Pre-sNDA)을 통해 PCOS 적응증 추가를 위한 확증적 3상 설계 요건과 안전성 자료 범위를 확정할 수 있는지 확인해 주시겠습니까?",
+  "action_ko": "식약처 사전 미팅 신청을 위한 브리핑 패키지(임상 효능·안전성 요약, 제안 프로토콜 개요, 비교 약물 근거) 작성을 RA팀에 지시합니다."
+ },
+ "reasoning": "The user is asking me to respond as the RA 총괄 (Regulatory Affairs Head) to a question from the moderator. The question is whether any single one of the preconditions (regulatory pathway confirmation, safety monitoring system, commercial review) being met would change my stance, or if all must be met simultaneously.\n\nLet me analyze my current position from the opening statement:\n- I stated HOLD stance\n- Reasons: Current label only has T2DM indication, PCOS is off-label\n- 16 supporting evidences from RCTs/meta-analyses show efficacy\n- Boxed warning for lactic acidosis risk exists\n- Need to decide between pursuing sNDA/Type II variation vs staying with off-label use survey\n- Must comply with off-label communication restrictions (21 CFR 312.7, Pharmaceutical Affairs Act Article 68)\n\nNow I need to answer the moderator's question. As RA 총괄, my view would be:\n- Regulatory pathway confirmation is the PRIMARY gate - without a clear regulatory path (sNDA vs Type II variation vs other), we cannot proceed legally\n- Safety monitoring system is necessary but can be developed in parallel once regulatory path is clear\n- Commercial review is important but secondary to regulatory feasibility\n- All conditions don't need to be met SIMULTANEOUSLY, but regulatory path must be defined FIRST\n\nI should reference other attendees' statements:\n- CMO: supports proceeding but acknowledges regulatory/guideline preparation needed\n- PV 총괄: HOLD until dedicated pharmacovigilance plan\n- R&D 총괄: supports, distinguishes clinical efficacy from regulatory/development tasks\n- CFO: HOLD due to commercial uncertainty\n- CCO: acknowledges clinical need but excludes promotion, focuses on evidence collection\n- CEO: supports development with conditions\n\nMy stance remains HOLD because regulatory pathway is not yet defined. I should explain that regulatory path confirmation is the prerequisite that enables the others.\n\nLet me craft the response in Korean, 3-6 sentences, formal tone, citing relevant evidence IDs."
+}

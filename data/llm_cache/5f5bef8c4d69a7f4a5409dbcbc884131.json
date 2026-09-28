@@ -1,0 +1,39 @@
+{
+ "purpose": "board_opening_cfo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8700,
+  "output": 1091
+ },
+ "created_at": "2026-09-28T21:36:52",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 3,
+  "stance_changed": false,
+  "utterance_ko": "CFO로서 이 가설에 대해 HOLD 입장을 표명합니다. 메트포르민은 이미 제네릭으로 전환되어 특허 보호가 없으며, PCOS 오프라벨 처방이 현장에서 100회 언급, 60명 의료진으로부터 보고될 정도로 광범위하게 이루어지고 있습니다. 외부 근거 30건 중 16건이 지지하고 반대는 0건으로, 배란 유도와 인슐린 저항성 개선에 대한 임상적 근거는 충분히 축적되어 있습니다. 다만 정식 적응증 확대를 위한 추가 임상시험과 허가 신청에 드는 비용 대비, 제네릭 제품으로서 얻을 수 있는 상업적 편익이 불분명합니다. 현재 Part D 연간 지출이 4억 달러 규모이나 이는 당뇨병 적응증 기준이며, PCOS 적응증 추가가 처방량 증대로 이어질지 확실하지 않습니다. 다른 신약 파이프라인과의 자원 배분 우선순위 비교가 선행되어야 합니다.",
+  "cited": [
+   "PMID:36703143",
+   "PMID:22525900",
+   "PMID:18000088",
+   "PMID:29183107",
+   "PMID:39803009",
+   "PMID:16798282",
+   "NCT06405178",
+   "NCT03008551",
+   "NCT01999686",
+   "NCT07323589",
+   "NCT07585396",
+   "NCT01791647",
+   "NCT00795808",
+   "NCT02446834",
+   "NCT01892254",
+   "NCT07687667"
+  ],
+  "question_ko": "PCOS 적응증 확대를 위한 추가 3상 임상시험 설계와 소요 예산, 일정을 임상개발본부에서 산출해 주실 수 있습니까?",
+  "action_ko": "제네릭 메트포르민의 PCOS 적응증 확대 사업성 분석(비용-편익, 경쟁 약물 대비 포지셔닝)을 전략기획팀에 의뢰합니다."
+ },
+ "reasoning": "The user is asking me to provide my opening statement as CFO for the board meeting about metformin for PCOS (HYP-001). I need to analyze the hypothesis package from a CFO perspective - focusing on resource allocation, cost-benefit of gathering more evidence, and prioritization relative to other hypotheses. I should not estimate revenue or market size.\n\nLet me review the key data points:\n- Hypothesis: Metformin off-label use in PCOS women for menstrual cycle recovery, ovulation induction assistance, insulin resistance improvement, weight loss 2-3kg, endometrial thickness normalization, OHSS risk reduction\n- Label status: DEVELOPMENT (off-label)\n- Field signals: 100 mentions, 60 HCPs\n- External evidence: 30 total (16 SUPPORTS, 0 CONTRADICTS, 14 NEUTRAL)\n- Key evidence: Multiple RCTs and meta-analyses supporting use for ovulation induction, insulin resistance, metabolic parameters\n- Safety: Known GI side effects, lactic acidosis risk (boxed warning)\n- Current label: Only T2DM indication\n- Part D spending: ~$400-600M/year, 8.8M beneficiaries (2024)\n- 5 brands in Part D\n\nFrom CFO lens: This is an off-label use with substantial clinical evidence (16 supporting studies, multiple Phase 3/4 trials completed). The drug is generic, low cost, widely used. The question is whether to invest in formal indication expansion (which would require new trials, regulatory submission) vs. maintaining status quo of off-label use.\n\nKey considerations:\n1. Generic drug - no patent protection, so ROI on formal indication expansion is questionable\n2. Already widely used off-label (100 mentions, 60 HCPs) - clinical adoption exists\n3. Strong evidence base (16 SUPPORTS, 0 CONTRADICTS) - but mostly for surrogate endpoints (ovulation, HOMA-IR) not live birth\n4. Safety profile well-known from diabetes use\n5. Cost of new trials + regulatory submission vs. benefit of formal labeling\n6. Prioritization vs. other hypotheses\n\nI should take a HOLD stance - the evidence supports clinical use but the business case for formal indication expansion needs more analysis. The stance_changed is false as instructed.\n\nLet me craft the response."
+}

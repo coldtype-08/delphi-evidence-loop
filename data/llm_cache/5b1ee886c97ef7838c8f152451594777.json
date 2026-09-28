@@ -1,0 +1,30 @@
+{
+ "purpose": "board_opening_rnd_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8160,
+  "output": 1467
+ },
+ "created_at": "2026-09-28T21:49:32",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "임상개발 총괄로서 이 가설은 진행할 임상적 근거가 충분하다고 봅니다. DPP 연구(NCT00038727)에서 메트포르민이 고위험 내당능장애군의 당뇨 발생을 31% 감소시켰고, 22년 추적 관찰(PMID:40857175)에서 효과가 지속됨을 확인했습니다. 특히 공복혈당장애가 두드러진 당뇨 전단계군에서 43% 감소 효과(PMID:32601731)와 대사증후군 동반군에서 유의한 위험 감소(PMID:24118860)는 가설의 대상군인 고위험군과 정확히 일치합니다. 임신성 당뇨병력 여성(NCT02338193)과 HIV 동반 당뇨 전단계(PMID:37460828)에서도 3상·2상 RCT가 완료되어 다양한 고위험군에서 일관된 신호가 있습니다. 다만 국내 허가용으로 쓰려면 한국인 고위험 당뇨 전단계를 대상으로 한 전용 3상 예방 시험이 필요하며, 현재 모집 중인 심혈관 아웃컴 시험(NCT02915198) 결과도 참고해야 합니다. 안전성은 제2형 당뇨병 수십 년 사용 자료로 충분히 확보되어 있습니다.",
+  "cited": [
+   "NCT00038727",
+   "PMID:40857175",
+   "PMID:32601731",
+   "PMID:24118860",
+   "NCT02338193",
+   "PMID:37460828",
+   "NCT02915198"
+  ],
+  "question_ko": "국내 의료진이 메트포르민 처방을 고려하는 당뇨 전단계 고위험군의 구체적 HbA1c 컷오프와 동반 위험인자 기준은 무엇입니까?",
+  "action_ko": "한국인 고위험 당뇨 전단계 대상 메트포르민 3상 예방 시험 프로토콜 설계를 착수합니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the R&D Head (임상개발 총괄) for hypothesis HYP-002 about metformin for prediabetes. I need to provide my initial stance based on the clinical evidence lens.\n\nLet me analyze the evidence package:\n\n1. **Hypothesis**: Metformin for prediabetes high-risk group (IFG/IGT, HbA1c ~6.2%, BMI ≥30, family history) - physicians believe evidence is sufficient but can't prescribe due to lack of domestic approval/reimbursement.\n\n2. **External evidence tally**: \n   - PubMed: 6 SUPPORTS, 2 CONTRADICTS, 1 NEUTRAL\n   - CT.gov: 6 SUPPORTS, 0 CONTRADICTS, 9 NEUTRAL\n   - Label: 0 SUPPORTS, 1 CONTRADICTS, 4 NEUTRAL\n   - Total: 12 SUPPORTS, 3 CONTRADICTS, 14 NEUTRAL\n\n3. **Key clinical evidence**:\n   - DPP study (NCT00038727): Metformin reduced diabetes onset by 31% in high-risk IGT\n   - DPPOS 22-year follow-up (PMID:40857175): Consistent reduction in diabetes incidence\n   - DPP post-hoc (PMID:32601731): 43% reduction in IFG-predominant prediabetes vs 26% overall\n   - MetS subgroup (PMID:24118860): Significant reduction in diabetes risk\n   - LIME study (PMID:41275221): Real-world effectiveness in high-risk prediabetes (HbA1c 6.0-6.4%)\n   - HIV+ prediabetes RCT (PMID:37460828): Phase 2 double-blind placebo-controlled\n   - GDM history women (NCT02338193): Phase 3 completed\n   - CV outcomes in prediabetes+CVD (NCT02915198): Phase 4 recruiting\n\n4. **Contradicting evidence**:\n   - PCOS study (PMID:32995892): Metformin monotherapy remission 32% vs exenatide 56% and combo 64%\n   - Pediatric (PMID:29173789): Prevention effects not studied, limited long-term data\n   - Cochrane protocol (PMID:31794067): Unknown if metformin prevents/delays T2DM\n\n5. **Label status**: DEVELOPMENT - approved only for T2DM, not for prediabetes\n\nFrom an R&D/clinical development perspective:\n- Strong evidence from DPP (landmark RCT) and long-term follow-up\n- Subgroup analyses show greater benefit in high-risk IFG-predominant patients (matches the hypothesis target population)\n- Multiple completed Phase 3/4 trials in relevant populations\n- Ongoing CV outcomes trial in prediabetes+CVD\n- Safety profile well-established from decades of T2DM use\n- Gap: No dedicated Phase 3 trial specifically for prediabetes indication in general high-risk population (most are subgroup analyses or specific populations like GDM, HIV, PCOS)\n- Regulatory path would need a dedicated prevention trial or bridging from existing data\n\nMy stance: SUPPORT - The clinical evidence from DPP and follow-up studies, plus subgroup analyses in high-risk populations, provides a strong foundation. However, a dedicated Phase 3 prevention trial in the general high-risk prediabetes population (matching the Korean target profile) would be needed for regulatory approval. The evidence supports proceeding with development.\n\nConfidence: 4/5 - Strong evidence base but regulatory path requires dedicated trial.\n\nQuestions for clinicians: What is the real-world HbA1c threshold and risk factor profile Korean physicians use to define \"high-risk prediabetes\" for metformin consideration?\n\nAction: Design a Phase 3 prevention trial protocol for high-risk prediabetes in Korean population."
+}

@@ -1,0 +1,27 @@
+{
+ "purpose": "board_discussion2_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 12385,
+  "output": 1492
+ },
+ "created_at": "2026-09-28T21:42:38",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "의장님, 규제업무 총괄로서 제 입장은 1라운드에서 밝힌 내용과 일관됩니다. CMO님께서 세 조건 동시 완비를 말씀하셨고 PV 총괄님께서 전용 약물감시 계획을 선행 필수 조건으로 두셨으나, 저는 규제 당국과의 Pre-sNDA 미팅을 통해 적응증 확대 경로(Type II 변경 또는 sNDA)와 요구 자료 범위가 확정되는 순간, 안전성 모니터링 계획 수립과 상업성 검토를 병행 추진하는 것으로 충분하다고 봅니다. 현행 허가 라벨(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)은 제2형 당뇨병 단일 적응증만 명시하고 있어, 허가 외 정보 전달 금지 규정(21 CFR 312.7, 약사법 제68조)상 규제 경로 확정 전에는 공식적인 개발 착수가 불가능합니다. 그러나 16건의 지지 근거(PMID:29183107, NCT06405178, NCT00795808 등)가 다기관 3상·4상 RCT로 배란율·인슐린 저항성 개선을 일관되게 입증하고 있으므로, 규제 경로만 윤곽이 잡히면 나머지 두 과제는 병행 트랙으로 진행해도 개발 일정에 지장이 없습니다. 따라서 규제 경로 확정 선행, 이후 안전성·상업성 병행이라는 순차·병행 혼합 접근으로 입장을 정리합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "PMID:29183107",
+   "NCT06405178",
+   "NCT00795808"
+  ],
+  "question_ko": "PCOS 환자군에서 메트포르민 장기 복용 시 젖산산증·신기능 이상 발생률이 당뇨병 적응증 임상시험 데이터와 유의하게 다른지, sNDA 제출용 안전성 자료로 별도 수집이 필요한지 확인해 주십시오.",
+  "action_ko": "식약처·FDA 대상 Pre-sNDA 미팅 일정을 조율하고, 적응증 확대 경로(Type II 변경 vs sNDA)와 필수 제출 자료 범위를 확정하겠습니다."
+ },
+ "reasoning": "The user is asking me to respond as the RA 총괄 (Regulatory Affairs Head) to a specific question from the chair. The question is: \"If the regulatory pathway is clarified first through a pre-meeting with regulators (Pre-IND/Pre-sNDA), would you adjust your position to allow parallel pursuit of safety monitoring plan and commercial review, or do you still require all conditions to be simultaneously in place before starting an official development program?\"\n\nI need to answer as RA 총괄, citing evidence from the hypothesis package, and referencing other attendees' statements by their titles. I must follow the format: stance, confidence, stance_changed, utterance_ko, cited, question_ko, action_ko.\n\nLet me analyze the situation:\n- My previous stance was HOLD, emphasizing regulatory pathway confirmation as prerequisite.\n- CMO said all three conditions must be met simultaneously.\n- PV 총괄 said safety monitoring plan is a prerequisite that must be in place first.\n- Now the chair asks if I'd adjust if regulatory pathway is clarified first.\n\nAs RA 총괄, my position: Regulatory pathway clarification (via Pre-sNDA meeting) is the critical first step. Once that's defined, safety monitoring plan and commercial review can proceed in parallel because:\n1. The safety monitoring plan will be part of the sNDA package anyway (as I mentioned in round 1)\n2. Commercial review depends on knowing the regulatory pathway (cost, timeline)\n3. They don't need to be \"simultaneously complete\" before starting - they can be developed in parallel after regulatory clarity\n\nSo I would adjust my position: regulatory pathway first, then parallel execution of safety monitoring plan and commercial review. This is a stance change from \"regulatory pathway must be confirmed first\" to \"regulatory pathway first, then parallel\" - but actually my round 1 statement already said safety monitoring is \"integrated into sNDA package\" and \"parallel task after regulatory pathway confirmation\". So maybe not a full stance change, but a clarification.\n\nWait, the question is whether I'd adjust to allow parallel pursuit AFTER regulatory pathway is clarified. My round 1 answer: \"PV 총괄님께서 제기하신 전용 약물감시 계획은 sNDA/Type II 변경 신청 시 제출할 안전성 자료 패키지의 일부로 통합되어야 하며, 별도 선행 조건이라기보다 규제 경로 확정 후 병행 과제입니다.\" So I already said it's a parallel task after regulatory pathway confirmation. The chair is asking for confirmation.\n\nI should confirm this position, perhaps with slight adjustment acknowledging that once regulatory pathway is clear, we can proceed with parallel workstreams. My stance remains HOLD (since we still need the regulatory meeting to happen first), but I'm clarifying the sequence.\n\nLet me craft the response:\n- Stance: HOLD (still holding until regulatory pathway is actually clarified)\n- Confidence: 4 (fairly confident in this regulatory logic)\n- Stance_changed: false (my position is consistent with round 1)\n- Utterance: Acknowledge CMO and PV 총괄's positions, confirm that regulatory pathway clarification via Pre-sNDA is the gate, after which safety monitoring plan and commercial review can proceed in parallel. Cite relevant evidence: label showing only T2DM indication, the 16 supporting studies, and the regulatory framework (21 CFR 312.7).\n- Cited: SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage, PMID:29183107, NCT06405178, NCT00795808 (as examples of supporting evidence), and maybe the regulatory reference.\n- Question_ko: Ask medical team about PCOS-specific safety data gaps for the sNDA package.\n- Action_ko: Schedule Pre-sNDA meeting with MFDS/FDA.\n\nLet me write this in Korean, formal tone, 3-6 sentences."
+}

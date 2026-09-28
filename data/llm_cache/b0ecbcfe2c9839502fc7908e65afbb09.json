@@ -1,0 +1,27 @@
+{
+ "purpose": "board_convene",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_convene_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8036,
+  "output": 529
+ },
+ "created_at": "2026-09-28T21:48:45",
+ "output": {
+  "hypothesis_type": "INDICATION_EXPANSION",
+  "lead": "CMO",
+  "speaking_order": [
+   "CMO",
+   "RA_HEAD",
+   "PV_HEAD",
+   "RND_HEAD",
+   "CFO",
+   "CCO",
+   "CEO"
+  ],
+  "opening_ko": "이번 회의는 HYP-002, 메트포르민의 당뇨 전단계 고위험군 대상 진행 지연 적응증 확대 가설을 상정합니다. 현장 신호는 92회 언급, 61명의 의료진으로부터 접수되었으며, 외부 근거 집계는 퍼브메드·시티고브·라벨 합계 기준 지지 12건, 반대 3건, 중립 14건입니다. 가설 패키지는 박건태 님이 서명하여 검토를 마쳤습니다. 라벨 상태는 DEVELOPMENT로, 현재 국내 허가·급여 범위 밖입니다. 주무 임원은 최고의학책임자(CMO)이며, 발언 순서는 CMO, RA 총괄, PV 총괄, R&D 총괄, CFO, CCO, CEO 순으로 진행하겠습니다."
+ },
+ "reasoning": "The user wants me to run the CONVENE mode for the board meeting. I need to:\n1. Choose a hypothesis type from the enum\n2. Select a lead executive\n3. Set speaking order\n4. Give an opening statement in Korean\n\nLooking at the hypothesis package:\n- Drug: metformin\n- Segment: 당뇨 전단계 (prediabetes)\n- Signal type: OFF_LABEL_DEMAND\n- Statement: Domestic physicians believe evidence is sufficient for metformin's delay of progression in high-risk prediabetes, but cannot prescribe due to lack of domestic approval/reimbursement\n- Label status: DEVELOPMENT\n\nThis is clearly an INDICATION_EXPANSION - expanding from type 2 diabetes to prediabetes indication.\n\nThe lead should be CMO (Chief Medical Officer) as this is about clinical evidence for indication expansion.\n\nSpeaking order: typically CMO first (lead), then RA_HEAD (regulatory), PV_HEAD (pharmacovigilance), RND_HEAD (R&D), CFO, CCO, CEO.\n\nOpening statement should state facts only: what's being proposed, field signal counts, external evidence tally, who signed off.\n\nLet me craft the opening statement in Korean with proper honorifics and complete sentences."
+}

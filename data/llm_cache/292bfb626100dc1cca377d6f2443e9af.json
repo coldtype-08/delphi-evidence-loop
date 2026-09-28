@@ -1,0 +1,47 @@
+{
+ "purpose": "board_close",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_close_v1",
+ "mode": "tool_call",
+ "thinking": true,
+ "usage": {
+  "input": 14967,
+  "output": 3346
+ },
+ "created_at": "2026-09-28T21:30:25",
+ "output": {
+  "summary_ko": "HYP-003 메트포르민 유방암 재발 예방 적응증 확대(REPURPOSING) 가설에 대해 전원 반대(OPPOSE 6명, HOLD 1명→최종 OPPOSE)로 의견이 모아져 개발 중단(DROP) 권고가 확정되었습니다. 현장 신호 64건·39명 의료진의 오프라벨 처방 요구가 확인되었으나, MA.32 3상 시험(NCT01101438, 3,649명, 5년 추적)에서 무병생존율과 전체생존율 개선이 없음이 세 편의 논문(PMID:42063220, PMID:37695982, PMID:37185680)에서 일관되게 입증되었고, 외부 근거 집계도 SUPPORTS 5건(모두 효과 없음)·CONTRADICTS 0건·NEUTRAL 23건으로 효능 근거가 부재합니다. 허가사항은 제2형 당뇨병에 한정되며, 박스 경고상 젖산산증 위험 인자(수술 직후·신기능 변동·고령·다제 병용)가 수술 후 보조항암요법 환자군에 중첩되고 FAERS에서도 젖산산증 19,411건·급성신손상 18,273건이 상위 보고되어 안전성 우려가 큽니다. 이에 자원 배정 중단과 현장 의료진 대상 근거 기반 대응 가이드 배포가 결정되었습니다.",
+  "evidence_summary_ko": "반대 근거: MA.32 3상 시험(NCT01101438, n=3,649, 5년 추적)에서 메트포르민이 무병생존율과 전체생존율을 위약 대비 유의하게 개선하지 못함이 세 편의 논문(PMID:42063220, PMID:37695982, PMID:37185680)에서 일관되게 확인됨. 외부 근거 집계에서 SUPPORTS 5건이 모두 효과 없음을 지지하고 CONTRADICTS 0건. 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)은 제2형 당뇨병만 적응증으로 명시. 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)는 수술·신기능 저하·65세 이상·조영제 검사·저산소·다제 병용을 젖산산증 위험 인자로 열거하며, 이 환자군에 모두 해당. FAERS 상위 이상반응에 젖산산증 19,411건·급성신손상 18,273건 포함. 현재 진행 중인 다른 시험들은 선행화학요법 병용·원발암 예방·인슐린 저항성 개선·심장보호 효과 등 본 가설(호르몬수용체 양성 수술 후 보조요법 중 재발 예방)과 설정·평가변수가 다름. 중립 근거: MA.32 하위 분석에서 에스트라디올 감소(PMID:33527137), 대사 지표 개선(PMID:25740979, PMID:34103538) 등 생물표지자 변화만 보고되고 임상 결과와 무관. 시험 설계 단계 논평(PMID:26111812, PMID:20976543) 및 설정 다른 다수 임상시험(NCT04387630 등 15건)이 NEUTRAL로 분류됨.",
+  "rationale_ko": "결정적 3상 시험에서 효능이 입증되지 않았고(MA.32, 3,649명, 5년 추적), 외부 근거 전체가 효과 없음을 지지하며 반박 근거가 없는 상태에서, 허가 범위 밖 적응증 확대를 위한 규제·임상·상업적 근거가 모두 부재함. 또한 수술 후 보조항암요법 환자군은 박스 경고의 젖산산증 위험 인자가 중첩되어 효능 없는 오프라벨 사용이 순수하게 안전성 리스크만 증가시킴. 현장 수요(64건·39명)는 실재하나 근거를 대체할 수 없으며, 회사가 오프라벨 사용을 지지·정보 제공하는 것은 허가 외 사용 조장 리스크와 안전성 리스크를 동시에 수반하므로 개발 추진과 자원 배정을 중단함.",
+  "kill_criteria_ko": [
+   "MA.32 3상 시험에서 무병생존율 또는 전체생존율 개선이 통계적으로 유의하게 입증되지 않음(이미 확정)",
+   "허가사항에 유방암 재발 예방 적응증이 추가되지 않음(현재 제2형 당뇨병만 적응증)",
+   "박스 경고상 젖산산증 위험 인자(수술·신기능 변동·고령·다제 병용)가 대상 환자군에 중첩됨",
+   "외부 근거 집계에서 CONTRADICTS(효능 지지) 근거가 0건이고 SUPPORTS(효능 없음)만 존재함",
+   "추가 임상 개발을 뒷받침할 과학적 근거(하위군·생물표지자·새로운 기전)가 확인되지 않음"
+  ],
+  "risks_ko": [
+   "규제 리스크: 허가 범위 밖 적응증 관련 정보 제공·지지가 오프라벨 프로모션으로 간주될 가능성",
+   "안전성 리스크: 효능 근거 없는 오프라벨 사용 시 젖산산증·급성신손상 등 중대 이상반응 발생 위험 증가(FAERS 젖산산증 19,411건·급성신손상 18,273건)",
+   "평판 리스크: 근거 없는 오프라벨 권유로 비치는 경우 의료진·환자 신뢰 훼손",
+   "자원 배분 리스크: 효능 입증 실패가 확정된 가설에 개발비 투입 시 우선순위 높은 파이프라인 대비 기회비용 과대",
+   "현장 소통 리스크: 의료진이 MA.32 결과 설명 후에도 처방 의향을 유지할 경우 안전성 모니터링 체계 미비 기관에서 환자 피해 발생 가능"
+  ],
+  "follow_up_questions": [
+   {
+    "question_ko": "MA.32 3상 시험에서 메트포르민이 무병생존율과 전체생존율을 개선하지 못했다는 결과를 설명드렸을 때, 선생님께서는 이 근거를 어떻게 받아들이시는지요?",
+    "why_ko": "현장 의료진의 근거 수용도를 첫 지표로 측정해 대응 원칙의 기준점으로 삼기 위함(CCO 제안)."
+   },
+   {
+    "question_ko": "메트포르민 재발 예방 목적으로 처방 고려 시, 해당 환자에게 정기적 젖산·신기능 모니터링 체계를 운영하고 계십니까?",
+    "why_ko": "박스 경고상 젖산산증 위험 인자(수술·신기능 변동·고령·다제 병용)가 중첩되는 환자군에서 안전성 모니터링 역량 유무를 최우선 확인하기 위함(CMO·PV·CEO 공통 제안)."
+   },
+   {
+    "question_ko": "MA.32 3상 결과(무병생존율·전체생존율 개선 없음)를 접한 후에도 메트포르민 재발 예방 처방을 고려하신다면, 어떤 하위군이나 생물표지자 근거를 바탕으로 하시는지 여쭙습니다.",
+    "why_ko": "의료진이 효능 근거 부재에도 처방을 고려하는 과학적 근거가 있는지 파악해 향후 연구 방향성 검토에 참고하기 위함(R&D 총괄 제안)."
+   }
+  ],
+  "closing_ko": "이상으로 HYP-003 메트포르민 유방암 재발 예방 적응증 확대 가설에 대한 경영 심의회를 마칩니다. 전원 반대 의견으로 개발 중단(DROP)이 확정되었으며, 의학부와 임상개발부는 MA.32 결과와 안전성 근거를 정리한 현장 의료진 대상 대응 가이드를 배포하고, 영업·마케팅 부서는 허가 범위 밖 적응증 관련 정보 제공을 중단하겠습니다. 현장 면담 시 위 세 가지 질문을 통해 의료진의 근거 수용도와 안전성 모니터링 역량을 확인하고, 미비 기관에는 처방 중단 권고 가이드를 제공하겠습니다. 수고하셨습니다."
+ },
+ "reasoning": "The user wants me to write the meeting minutes (회의록) based on the provided hypothesis package and meeting records. The mode is CLOSE, so I need to use the board_close_v1 tool to output the structured meeting minutes.\n\nLet me analyze the input data:\n\n1. Hypothesis: HYP-003, metformin for breast cancer recurrence prevention (OFF_LABEL_DEMAND), label_status: DEVELOPMENT\n2. Field signals: 64 mentions, 39 HCPs\n3. External tally: SUPPORTS 5, CONTRADICTS 0, NEUTRAL 23\n4. All attendees' final positions: CMO (OPPOSE), R&D 총괄 (OPPOSE), RA 총괄 (OPPOSE), PV 총괄 (OPPOSE), CFO (OPPOSE), CCO (OPPOSE), CEO (OPPOSE - changed from HOLD)\n5. Tally: SUPPORT 0, HOLD 1, OPPOSE 6; weights: SUPPORT 0.0, HOLD 4.0, OPPOSE 32.5\n6. Recommendation: DROP\n7. Label status: DEVELOPMENT (so no commercial actions in minutes)\n8. Proposals with questions and actions from each attendee\n9. Blocked commercial actions (should not be included since label_status is DEVELOPMENT)\n\nI need to write:\n- summary_ko: 요약\n- evidence_summary_ko: 근거 요약 (반대 근거가 있으면 그것부터)\n- rationale_ko: 권고 사유\n- kill_criteria_ko: 중단 기준 (이 가설을 접어야 하는 조건)\n- risks_ko: 위험\n- follow_up_questions: 다음 면담에서 의료진에게 물을 질문 3개 이내 (question_ko, why_ko)\n- closing_ko: 마무리 발언\n\nLet me structure this based on the meeting records and the tally.\n\nKey facts:\n- MA.32 phase 3 trial (NCT01101438, n=3,649, 5-year follow-up) showed no improvement in invasive disease-free survival or overall survival\n- Three papers consistently confirm this: PMID:42063220, PMID:37695982, PMID:37185680\n- Label only indicates type 2 diabetes (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)\n- Boxed warning lists lactic acidosis risk factors: surgery, renal impairment, age ≥65, contrast studies, hypoxia, alcohol, hepatic impairment - all overlapping in this patient population\n- FAERS shows lactic acidosis (19,411) and acute kidney injury (18,273) as top adverse events\n- External evidence: SUPPORTS 5 (all showing no benefit), CONTRADICTS 0, NEUTRAL 23\n- Field demand: 64 mentions, 39 HCPs requesting off-label use\n- All attendees ultimately OPPOSE (CEO changed from HOLD to OPPOSE)\n- Recommendation: DROP\n\nFor follow_up_questions, I need to pick up to 3 questions from the proposals that would be asked to medical staff in the next meeting. The proposals contain questions from each attendee. I should select the most relevant ones.\n\nLooking at the proposals:\n1. CMO: \"메트포르민 재발 예방 목적으로 처방 고려 시, 해당 환자에게 정기적 젖산·신기능 모니터링 체계를 운영하고 계십니까?\"\n2. R&D 총괄: \"MA.32 3상 결과(무병생존율·전체생존율 개선 없음)를 접한 후에도 메트포르민 재발 예방 처방을 고려하신다면, 어떤 하위군이나 생물표지자 근거를 바탕으로 하시는지 여쭙습니다.\"\n3. RA 총괄: \"귀 기관에서 메트포르민 오프라벨 처방 시 젖산산증 조기 발견을 위한 정기적 젖산·신기능 모니터링 체계를 운영하고 계십니까?\"\n4. PV 총괄: \"귀 기관에서 메트포르민 투여 환자에게 젖산산증 조기 발견을 위한 정기적 젖산·신기능 모니터링 체계를 운영하고 계십니까?\"\n5. CFO: \"메트포르민 재발 예방 오프라벨 처방 시 젖산산증 조기 발견을 위한 정기적 젖산·신기능 모니터링 체계를 현재 갖추고 계십니까?\"\n6. CCO: \"MA.32 3상 시험에서 메트포르민이 무병생존율과 전체생존율을 개선하지 못했다는 결과를 설명드렸을 때, 선생님께서는 이 근거를 어떻게 받아들이시는지요?\"\n7. CEO: \"귀 기관에서 메트포르민 투여 환자에게 젖산산증 조기 발견을 위한 정기적 젖산·신기능 모니터링 체계를 갖추고 있습니까?\"\n\nMany are similar about lactic acidosis monitoring. CCO's question is about acceptance of MA.32 results. R&D's question is about biomarker rationale.\n\nI'll select 3 diverse questions:\n1. CCO's question about acceptance of MA.32 results (efficacy evidence acceptance)\n2. CMO/PV/CEO's question about lactic acidosis monitoring (safety monitoring)\n3. R&D's question about biomarker/subgroup rationale (scientific basis)\n\nNow let me write the meeting minutes in Korean, following the format requirements."
+}

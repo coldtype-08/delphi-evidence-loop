@@ -1,0 +1,28 @@
+{
+ "purpose": "board_opening_ceo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 7226,
+  "output": 1113
+ },
+ "created_at": "2026-09-28T21:23:18",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "이번 가설은 유방암 환자와 의료진 사이에서 메트포르민 재발 예방 오프라벨 처방 요구가 64회, 39명 의료진으로부터 확인됐다는 현장 신호로 시작됐습니다. 그러나 MA.32 3상 시험(NCT01101438, n=3,649, 5년 추적)에서 무병생존율과 전체생존율 모두 위약 대비 유의한 개선이 없었다는 점이 세 편의 논문(PMID:42063220, PMID:37695982, PMID:37185680)에서 일관되게 확인됩니다. 라벨상 적응증은 제2형 당뇨병에 한정돼 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 현재 근거로는 효능 주장이 불가능합니다. 수요가 있다는 사실 자체가 리스크이자 기회인데, 조직으로서 근거 없는 오프라벨 권유로 비치지 않게 대응 원칙을 정하고, 혹시 생물표지자 하위군이나 진행 중인 시험에서 확인할 여지가 있는지 의학부와 임상개발부가 함께 검토해 주시기 바랍니다.",
+  "cited": [
+   "PMID:42063220",
+   "PMID:37695982",
+   "PMID:37185680",
+   "NCT01101438",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "MA.32 이후 생물표지자 기반 하위군 분석이나 메트포르민 재발 예방 효능을 탐색 중인 진행성 임상시험이 있는지 확인해 주십시오.",
+  "action_ko": "의학부와 임상개발부가 공동으로 현장 문의 대응용 근거 요약본을 마련하고, 오프라벨 프로모션 리스크 차단 가이드를 배포하십시오."
+ },
+ "reasoning": "The user is asking for the CEO's opening statement (모두발언) for the board meeting regarding HYP-003 (metformin for breast cancer recurrence prevention). I need to provide my stance, confidence, utterance, cited sources, question, and action.\n\nLet me analyze the hypothesis package:\n- Hypothesis: Metformin off-label demand for breast cancer recurrence prevention (especially HR+ post-surgery adjuvant), but MA.32 phase 3 trial showed no improvement in disease-free survival\n- Label status: DEVELOPMENT (not approved for this indication)\n- Field signals: 64 mentions, 39 HCPs - significant demand\n- External evidence: 5 SUPPORTS (all showing NO benefit from MA.32), 0 CONTRADICTS, 23 NEUTRAL\n- Key evidence: MA.32 trial (NCT01101438) with 3,649 women, 5-year follow-up, no benefit for DFS or OS\n- Safety: Known metformin safety profile (lactic acidosis risk, GI side effects)\n- Current label: Only for type 2 diabetes\n\nAs CEO, my lens is \"comprehensive judgment, risk first, organizational capacity to decide, what needs confirmation.\"\n\nKey points for CEO opening:\n1. Significant patient/physician demand (64 mentions, 39 HCPs) - market signal\n2. But definitive phase 3 evidence (MA.32) shows NO efficacy for recurrence prevention\n3. This is OFF_LABEL_DEMAND with DEVELOPMENT status - we cannot promote\n4. Risk: If we engage, could be seen as promoting off-label use\n5. Need to understand: Is there any subgroup where it might work? Any ongoing trials?\n6. Organizational decision: Should we invest in further research? Or just monitor?\n\nStance: HOLD - evidence strongly contradicts efficacy (5 SUPPORTS all showing no benefit), but demand exists. Need to understand if there's any path forward or if we should just communicate evidence to medical community.\n\nConfidence: 4 (strong evidence from phase 3 trial)\n\nCited sources: PMID:42063220, PMID:37695982, PMID:37185680 (all SUPPORTS showing no benefit), NCT01101438 (MA.32 trial), SPL label (shows only diabetes indication)\n\nQuestion for medical affairs: Any biomarker-defined subgroups where metformin might work? Any ongoing trials we should watch?\n\nAction: Medical affairs to prepare evidence summary for field teams to address inquiries appropriately."
+}
