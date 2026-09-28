@@ -1,0 +1,31 @@
+{
+ "purpose": "board_final_cco",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 11430,
+  "output": 1112
+ },
+ "created_at": "2026-09-28T17:34:27",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "현장 신호 6건과 4명의 의료진 경험, 9건의 지지 근거가 인슐린 저항성 PCOS 여성에서 메트포르민 병용 수요가 실재함을 일관되게 보여줍니다. 허가사항이 제2형 당뇨병에 한정되어 있고 박스 경고의 젖산산증 위험이 전 인구군에 적용되는 현 상태에서는 상업적 액션을 제안할 수 없습니다. R&D 총괄님과 RA 총괄님, PV 총괄님께서 식약처 사전 상담의 필요성과 지참 자료 범위에 대해 이견을 좁히지 못한 점은 규제 경로 확정 전까지 상업 계획 수립이 불가능함을 재확인시켜 줍니다. 현장이 이미 클로미펜·레트로졸 병용을 표준처럼 쓰고 있고 체중 감소·월경 회복 같은 환자 체감 혜택이 처방 지속을 이끄는 동력이라는 점은 허가 확대 시 상업적 잠재력을 시사하나, 안전성 관리 체계와 규제 경로가 선행되어야 합니다. 따라서 상업적 관점에서도 개발 검토 진행은 유보하되, 현장 수요의 실체를 지속 모니터링하며 규제·안전성 선행 조건 충족 시점을 준비하는 입장을 유지합니다.",
+  "cited": [
+   "PMID:30806102",
+   "PMID:31647106",
+   "PMID:21518135",
+   "PMID:29183107",
+   "NCT00795808",
+   "NCT06405178",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+  ],
+  "question_ko": "현재 클로미펜 또는 레트로졸 병용 시 메트포르민 용량과 투여 기간을 어떻게 결정하시며, 신기능 모니터링은 어떤 주기로 실시하십니까?",
+  "action_ko": "규제·안전성 선행 조건 충족 시점에 맞춰 현장 수요 검증 자료를 정리하고 허가 확대 후 상업 준비 시나리오를 수립한다."
+ },
+ "reasoning": "The user wants me to provide the final position (최종 입장) as the CCO (Chief Commercial Officer) after the board discussion. I need to consider the discussion that took place and determine if my stance has changed from my initial opening statement.\n\nLet me review my initial opening statement as CCO:\n- I acknowledged the field signals (6 mentions from 4 HCPs) and 9 supporting evidence items\n- I noted the label is limited to T2DM and boxed warning for lactic acidosis applies\n- I stated commercial actions should be held until label expansion\n- I emphasized that the field is already using clomiphene/letrozole combinations as standard and patient-perceived benefits (weight loss, menstrual recovery) drive prescription persistence\n\nNow after the discussion:\n- R&D wants to proceed with pre-IND meeting with FDA/MFDS using existing evidence\n- RA wants global precedent review and strategic intent clarification first\n- PV wants PK/PD data, risk management plan, and pregnancy registry before pre-IND meeting\n- CFO wants strategic intent clarification before resource allocation\n- CEO wants cautious approach, regulatory pathway and safety management first\n\nAs CCO, my lens is \"field demand reality\" - what physicians and patients actually request, what the field needs to know. I should not propose commercial actions for off-label hypotheses.\n\nMy stance should remain HOLD because:\n1. Label is still T2DM only - no commercial promotion possible for PCOS\n2. Safety concerns (lactic acidosis, GI AEs) need resolution before any commercial planning\n3. Regulatory pathway undefined\n4. But field demand is real and documented (6 signals, 4 HCPs, 9 supporting evidence)\n\nI should not change stance to SUPPORT because commercial actions are still blocked by label status. I should not change to OPPOSE because field demand is real and evidence supports clinical utility.\n\nMy stance remains HOLD (유보) - same as initial. stance_changed = false.\n\nI need to provide:\n- stance: HOLD\n- confidence: 1-5 (I'll say 4 - fairly confident)\n- stance_changed: false\n- utterance_ko: 3-6 sentences in Korean, formal, complete sentences, no bullets\n- cited: source_ids from evidence list only\n- question_ko: one question for physicians in next meeting\n- action_ko: one organizational action item\n\nLet me craft the response."
+}

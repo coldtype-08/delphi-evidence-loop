@@ -1,0 +1,39 @@
+{
+ "purpose": "board_opening_cco",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6880,
+  "output": 1073
+ },
+ "created_at": "2026-09-28T17:28:41",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 3,
+  "stance_changed": false,
+  "utterance_ko": "현장에서는 인슐린 저항성 동반 PCOS 여성에서 메트포르민을 레트로졸 또는 클로미펜과 병용해 배란 유도와 월경 주기 회복 목적으로 사용하고 있다는 신호가 4명의 의료진으로부터 6건 보고되었습니다. 외부 근거 중 퍼브메드 7건과 씨티고브 2건이 병용 요법의 배란율·임신율 개선을 지지하나, 허가 사항은 제2형 당뇨병에 한정되어 있고 라벨 어디에도 PCOS 적응증이나 병용 권고가 없습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage). 위장관계 부작용과 젖산산증 경고가 전 인구군에 적용되는 점도 현장이 인지해야 할 안전성 정보입니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning). 따라서 현장 수요는 실재하나, 허가 범위 밖 사용에 대한 상업적 액션은 제안할 수 없으며 의학부·법무와 정렬된 대응 방안을 먼저 확인해야 합니다.",
+  "cited": [
+   "CLM-FN-2026-0709-02-01",
+   "CLM-FN-2026-0709-02-02",
+   "CLM-FN-2026-0805-06-01",
+   "CLM-FN-2026-0909-11-01",
+   "CLM-FN-2026-0916-12-01",
+   "CLM-FN-2026-0916-12-02",
+   "PMID:30806102",
+   "PMID:31647106",
+   "PMID:21518135",
+   "PMID:29183107",
+   "PMID:17804299",
+   "PMID:10576524",
+   "PMID:15262344",
+   "NCT06405178",
+   "NCT00795808",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage, "
+  ],
+  "question_ko": "현재 진료 현장에서 메트포르민 병용 시 용량·기간·모니터링 기준을 어떻게 정하고 계십니까?",
+  "action_ko": "의학부와 함께 현장 사용 실태와 안전성 모니터링 체계를 정리한 브리프를 준비해 주십시오."
+ },
+ "reasoning": "The user is asking for my opening statement as CCO (Chief Commercial Officer) for the board meeting on hypothesis HYP-001 about metformin use in PCOS women with insulin resistance. I need to provide my initial position based on my lens - focusing on actual field demand from healthcare providers and patients, what they're actually requesting, and what the field needs to know. I must not propose commercial actions for off-label/DEVELOPMENT hypotheses.\n\nLet me analyze the evidence:\n- 6 field mentions from 4 HCPs\n- External evidence: 9 SUPPORTS (7 PubMed, 2 CTGOV), 0 CONTRADICTS, 27 NEUTRAL\n- Key supporting evidence: Several RCTs and meta-analyses show metformin + clomiphene/letrozole improves ovulation rates, pregnancy rates, menstrual regularity\n- Label status: DEVELOPMENT (off-label), label only indicates T2DM\n- Safety: Known GI side effects, lactic acidosis risk (boxed warning)\n\nAs CCO, my lens is field demand reality. The field signals (6 mentions from 4 HCPs) indicate real clinical usage and demand. The external evidence supports efficacy for ovulation induction when combined with clomiphene or letrozole. However, this is off-label (DEVELOPMENT status), so I cannot propose promotional/commercial actions.\n\nMy stance: HOLD - because while there's field demand and supporting evidence, it's off-label and we need to understand the regulatory pathway and medical affairs alignment before any commercial consideration. The field is using it, but we need to be careful about how we engage.\n\nI'll craft my opening statement in Korean, 3-6 sentences, formal tone, citing source_ids from the evidence list."
+}

@@ -1,0 +1,27 @@
+{
+ "purpose": "board_convene",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_convene_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6925,
+  "output": 418
+ },
+ "created_at": "2026-09-28T18:13:48",
+ "output": {
+  "hypothesis_type": "INDICATION_EXPANSION",
+  "lead": "CMO",
+  "speaking_order": [
+   "CMO",
+   "RA_HEAD",
+   "PV_HEAD",
+   "RND_HEAD",
+   "CFO",
+   "CCO",
+   "CEO"
+  ],
+  "opening_ko": "HYP-002 메트포르민 당뇨 전단계 적응증 확대 가설이 상정됐습니다. 현장 신호는 4개 의료진으로부터 4회 언급됐으며, 외부 근거 집계는 지지 23건, 반대 2건, 중립 13건입니다. 라벨 상태는 DEVELOPMENT로 당뇨 전단계는 현재 허가 범위 밖입니다. 검토자 서명으로 패키지가 확정됐습니다. 개회합니다."
+ },
+ "reasoning": "The user wants me to convene a board meeting for hypothesis HYP-002 about metformin for prediabetes. I need to:\n1. Choose the hypothesis type from the enum\n2. Select the lead executive\n3. Set speaking order\n4. Give an opening statement in Korean\n\nLooking at the hypothesis: it's about off-label demand for metformin in high-risk prediabetes patients, with label status \"DEVELOPMENT\". The signal type is \"OFF_LABEL_DEMAND\". This seems like an INDICATION_EXPANSION type - expanding indication from type 2 diabetes to prediabetes.\n\nThe lead should be CMO (Chief Medical Officer) since it's about clinical indication expansion. Speaking order should include all executives.\n\nLet me craft the opening statement based on the data: 4 field mentions from 4 HCPs, external tally shows 23 supports, 2 contradicts, 13 neutral. Human reviewer signed off. Label status is DEVELOPMENT (not approved for prediabetes).\n\nI'll use the board_convene_v1 tool."
+}

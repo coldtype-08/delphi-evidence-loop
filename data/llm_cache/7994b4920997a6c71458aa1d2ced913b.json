@@ -1,0 +1,29 @@
+{
+ "purpose": "board_final_cmo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 11427,
+  "output": 1167
+ },
+ "created_at": "2026-09-28T17:33:52",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": true,
+  "utterance_ko": "토론을 거치며 임상적 유효성 근거는 코크란 메타분석(PMID:29183107), 개별 참여자 데이터 메타분석(PMID:31647106), 클로미펜 병용 4상(NCT00795808), 레트로졸 병용 3상(NCT06405178) 등에서 일관되게 확인되어 타당성이 충분하다고 유지합니다. 그러나 PV 총괄께서 지적하신 박스 경고의 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)이 가임기 여성에서 용량·신기능별로 어떻게 달라지는지 약동학·약력학 자료가 없고, 병용 시 위장관계 이상반응(오심 30,267건, 설사 28,320건)이 탈수·급성신손상(18,273건)으로 이어지는 위험관리계획이 미비한 점, 그리고 임신 노출 레지스트리 설계가 없는 점은 환자 안전성 확보 차원에서 선결되어야 합니다. RA 총괄께서 제시한 식약처 사전 상담 지참 자료에 이 안전성 보완 패키지가 포함되어야 한다는 점에 동의하며, 임상적 유효성은 인정하되 안전성 관리 체계가 구체화되기 전까지 개발 진행은 유보하는 것으로 입장을 조정합니다.",
+  "cited": [
+   "PMID:29183107",
+   "PMID:31647106",
+   "NCT00795808",
+   "NCT06405178",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations"
+  ],
+  "question_ko": "인슐린 저항성 PCOS 환자에서 메트포르민 병용 시 신기능 기준치(eGFR 컷오프)와 모니터링 주기를 현행 당뇨병 지침과 다르게 적용해야 한다고 보시는지요?",
+  "action_ko": "가임기 여성 대상 메트포르민 약동학·약력학 자료 검토와 위험관리계획(신기능 모니터링·용량 감량 알고리즘·임신 노출 레지스트리) 초안 작성을 PV·R&D 공동으로 착수한다."
+ },
+ "reasoning": "The user is asking for the final position (최종 입장) from the CMO perspective after the board discussion. I need to review the entire discussion and provide a final stance with the required schema.\n\nLet me analyze the discussion:\n\n1. **Initial CMO position (모두발언)**: CMO stated clinical validity exists - citing Cochrane meta-analysis (PMID:29183107), IPD meta-analysis (PMID:31647106), and clomiphene combination Phase 4 trial (NCT00795808). Letrozole combination Phase 3 (NCT06405178) completed. However, label limited to T2DM, off-label use needs separate approval. GI side effects and lactic acidosis risk known from diabetes use, but long-term safety in reproductive-age women needs further review.\n\n2. **Discussion rounds**: \n   - R&D wants to proceed with development review, proposes pre-IND meeting with MFDS\n   - RA wants global precedent review and strategic intent clarification first\n   - PV wants PK/PD data for lactic acidosis in reproductive-age women, risk management plan, pregnancy exposure registry first\n   - CFO wants commercial rationale clarified\n   - CEO says cautious approach needed\n\n3. **Key points for CMO final position**:\n   - Clinical evidence is consistent and supportive (9 SUPPORTS, 0 CONTRADICTS)\n   - Safety concerns are valid: lactic acidosis boxed warning, GI side effects, renal monitoring needed\n   - Regulatory pathway needs clarification (currently DEVELOPMENT/off-label)\n   - The discussion converged on need for MFDS pre-meeting but disagreed on timing and required materials\n\nAs CMO, my lens is clinical validity and evidence level. The evidence supports clinical benefit (ovulation/pregnancy rates improved consistently across RCTs and meta-analyses). Safety concerns are real but manageable with proper monitoring. The stance should reflect that clinical validity is established but safety/regulatory prerequisites must be met before proceeding.\n\nI'll set stance as HOLD (since safety/regulatory prerequisites not yet met) but with high confidence in clinical evidence. Stance_changed from initial SUPPORT to HOLD after discussion revealed safety/regulatory gaps.\n\nLet me craft the response."
+}

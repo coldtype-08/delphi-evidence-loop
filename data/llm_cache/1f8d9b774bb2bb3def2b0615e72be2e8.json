@@ -1,0 +1,30 @@
+{
+ "purpose": "board_opening_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6867,
+  "output": 1156
+ },
+ "created_at": "2026-09-28T17:30:03",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 3,
+  "stance_changed": false,
+  "utterance_ko": "현재 허가사항은 제2형 당뇨병 단일 적응증에 한정되어 있어 PCOS, 배란 유도, 레트로졸·클로미펜 병용, 월경 주기 회복, 체중 감소 등 본 가설의 모든 임상 주장이 허가 범위 밖에 있습니다. 그럼에도 퍼브메드 7건과 임상시험 2건이 병용 요법의 배란·임신율 개선을 지지하고 있어 임상적 근거 자체는 일관되게 축적되어 있습니다. 허가 외 사용 정보 전달은 식약처 가이드라인상 엄격한 제약을 받으므로, 의료진 대상 정보 제공만으로는 적응증 확대를 대체할 수 없습니다. 박스 경고의 젖산산증 위험이 PCOS 여성군에서 용량·신기능 모니터링 체계 없이 확대 적용될 때 안전성 프로파일이 어떻게 달라지는지 규제 당국이 요구할 자료가 선행되어야 합니다. 따라서 임상 근거는 충분하나 규제 경로와 안전성 보완 자료가 확정되기 전까지는 진행 여부를 유보합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "PMID:30806102",
+   "PMID:31647106",
+   "PMID:21518135",
+   "NCT00795808",
+   "NCT06405178"
+  ],
+  "question_ko": "PCOS 여성에서 메트포르민 병용 시 신기능·젖산 모니터링을 당뇨병 적응증과 동일하게 적용 가능한지, 별도 프로토콜이 필요한지 임상 현장에서 어떻게 운영 중이십니까?",
+  "action_ko": "식약처 사전 상담(Pre-IND/Pre-sNDA) 일정을 잡고 PCOS 적응증 추가를 위한 필수 제출 자료 범위와 안전성 데이터 요구사항을 확정하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the Regulatory Affairs (RA) Head for the hypothesis HYP-001 about metformin use in PCOS women with insulin resistance. I need to provide my initial position based on the regulatory lens - focusing on approval scope, label boundaries, regulatory constraints on off-label information dissemination, and regulatory pathways/precedents needed.\n\nLet me analyze the evidence package:\n- Hypothesis: Metformin used off-label with letrozole or clomiphene for ovulation induction in PCOS women with insulin resistance\n- Label status: DEVELOPMENT (meaning off-label)\n- Current label: Only approved for Type 2 Diabetes Mellitus (T2DM) - no mention of PCOS, ovulation induction, letrozole/clomiphene combination, menstrual cycle recovery, or weight loss\n- External evidence: 9 SUPPORTS (7 PubMed + 2 CTgov), 0 CONTRADICTS, 27 NEUTRAL\n- Key supportive evidence: Several RCTs and meta-analyses showing benefit of metformin + clomiphene/letrozole for ovulation induction in PCOS\n- But label is strictly T2DM only\n\nAs RA Head, my stance should be HOLD because:\n1. Strong clinical evidence exists (SUPPORTS from multiple RCTs/meta-analyses)\n2. BUT current label is strictly T2DM - no PCOS indication\n3. Off-label use information dissemination is heavily constrained by regulations\n4. Need to assess regulatory pathway for indication expansion (sNDA, new indication)\n5. Need to evaluate risk-benefit for PCOS population specifically (lactic acidosis risk, renal function monitoring)\n6. No precedent in current label for reproductive health indications\n\nI should cite relevant sources from the evidence package. Let me pick the most relevant ones:\n- Label sources showing T2DM-only indication (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)\n- Supportive clinical evidence (PMID:30806102, PMID:31647106, PMID:21518135, NCT00795808, NCT06405178)\n- Boxed warning for lactic acidosis (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)\n\nMy utterance should be 3-6 sentences, formal Korean, ending each sentence properly. No bullet points. Stance HOLD with confidence around 3-4. stance_changed false. Need question_ko and action_ko."
+}

@@ -1,0 +1,29 @@
+{
+ "purpose": "board_opening_cfo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6319,
+  "output": 1456
+ },
+ "created_at": "2026-09-28T17:11:25",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "메트포르민 유방암 보조요법 수요 가설에 대해 자원 배분 관점에서 반대 입장을 표명합니다. 결정적인 3상 시험인 MA.32(NCT01101438)에서 무침습 생존율과 전체 생존율 개선 효과가 입증되지 않았고, 메타분석(PMID:34137294)에서도 전이·재발 환자의 생존 혜택이 확인되지 않았습니다. 전임상적으로는 에스트로겐 결핍 상태에서 휴면 암세포 생존을 촉진할 수 있다는 우려(PMID:32321715)도 존재합니다. 현재 허가사항은 제2형 당뇨병에 한정되며(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 1.9만 건의 젖산산증 보고는 안전성 부담을 더합니다. 관찰 연구 위주의 지지 근거만으로 추가 개발 투자를 정당화하기 어렵고, 자원은 더 강력한 근거를 가진 가설에 집중해야 합니다.",
+  "cited": [
+   "PMID:42063220",
+   "PMID:34137294",
+   "PMID:32321715",
+   "NCT01101438",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+  ],
+  "question_ko": "현장 의료진은 환자 요청의 근거가 된 언론 보도 내용을 구체적으로 어떤 경로로 접했는지, 그리고 요청 환자군의 당뇨병 동반 여부를 확인해 주시겠습니까?",
+  "action_ko": "메트포르민 유방암 적응증 확대 개발 예산 배정을 보류하고, MA.32 결과와 안전성 신호를 반영한 위험조정 수익성 분석을 차기 회의에 제출하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as CFO for hypothesis HYP-003 about metformin's off-label demand for breast cancer adjuvant therapy. I need to analyze the evidence package from a CFO perspective - focusing on resource allocation, cost vs benefit of gathering more evidence, and prioritization compared to other hypotheses.\n\nKey points from the evidence:\n- Field signals: 3 claims from 3 HCPs about patient demand driven by media reports\n- External tally: 10 SUPPORTS, 3 CONTRADICTS, 19 NEUTRAL\n- Key contradictory evidence: MA.32 trial (PMID:42063220) - large phase 3 RCT showing no benefit in invasive disease-free survival or overall survival\n- Meta-analysis (PMID:34137294) showing no significant effect on OS/PFS in metastatic/recurrent breast cancer\n- Preclinical evidence (PMID:32321715) suggesting metformin may promote dormant ER+ cell survival\n- Supporting evidence is mostly epidemiological/observational (PMID:23714455, 22490993, 19560877, 21800293)\n- Clinical trials: Several phase 2/3 trials ongoing or completed, but the major phase 3 (MA.32/NCT01101438) was negative\n- Label: Only indicated for type 2 diabetes, no breast cancer indication\n- FAERS data shows significant safety signals (lactic acidosis 19,411 cases, acute kidney injury 18,273 cases)\n- Part D spending: ~$400-600M/year, 8.8M beneficiaries (2024) - but this is for diabetes indication\n\nAs CFO, my lens is resource allocation and prioritization. The key question: Should we invest resources in pursuing this off-label demand hypothesis?\n\nThe evidence shows:\n1. Major phase 3 trial (MA.32) was negative - this is a strong signal against efficacy\n2. Supporting evidence is mostly observational/epidemiological, not RCT-level\n3. Safety concerns exist (lactic acidosis, AKI)\n4. Current label doesn't support this use\n5. Patient demand is driven by media, not clinical evidence\n6. Multiple ongoing trials but the definitive one was negative\n\nFrom a resource allocation perspective: Investing in this would mean pursuing an indication where the pivotal trial failed. The cost of further development (phase 3 confirmatory trials, regulatory filing) would be substantial with low probability of success given the negative MA.32 result. Resources would be better allocated to hypotheses with stronger evidence base.\n\nStance: OPPOSE - clear evidence against proceeding (negative phase 3 trial, safety concerns, only observational support)\nConfidence: 4 (strong evidence from MA.32 trial)\nStance_changed: false (this is opening statement)\n\nI need to cite specific source_ids from the evidence list. Let me use:\n- PMID:42063220 (MA.32 negative result)\n- PMID:34137294 (meta-analysis negative)\n- PMID:32321715 (preclinical concern)\n- NCT01101438 (the MA.32 trial)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage (label limited to diabetes)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning (lactic acidosis warning)\n\nNow I'll craft the response in Korean, 3-6 sentences, formal tone, conclusion first."
+}

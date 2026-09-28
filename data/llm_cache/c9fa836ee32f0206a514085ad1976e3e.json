@@ -1,0 +1,27 @@
+{
+ "purpose": "board_discussion2_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 10875,
+  "output": 1409
+ },
+ "created_at": "2026-09-28T18:17:41",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "간사님, 규제기관 사전 미팅(Type B/Pre-sNDA)을 먼저 완료하는 것이 전체 일정의 불확실성을 줄이는 최적의 순서입니다. PV 총괄님께서 강조하신 당뇨 전단계 안전성 데이터베이스 재분석(FAERS 젖산산증 19,411건, 급성신손상 18,273건)은 필수이나, FDA가 요구하는 분석 범위와 층화 기준을 사전 미팅에서 확정받지 않으면 재작업 위험이 큽니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning). R&D 총괄님께서 정리하신 유효성 패키지(DPP 3상 NCT00038727, 하위분석 PMID:32601731)는 이미 충실하므로, 사전 미팅 2~3개월 전부터 안전성 재분석을 병행 착수해 미팅 시 예비 데이터를 제시하고, 미팅 결과에 맞춰 최종 분석을 완성하는 병행 전략이 전체 소요 기간을 12~18개월에서 10~14개월로 단축합니다. 현재 허가사항이 제2형 당뇨병으로 한정된 점(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)과 제네릭 품목 특성을 고려하면, FDA와의 사전 합의가 경로 확정의 열쇠입니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "NCT00038727",
+   "PMID:32601731"
+  ],
+  "question_ko": "현장에서 당뇨 전단계 환자에게 메트포르민 처방 시 신기능과 비타민 B12를 어떤 주기로 모니터링하고 계십니까?",
+  "action_ko": "FDA Type B/Pre-sNDA 미팅 신청 준비와 동시에 당뇨 전단계 안전성 데이터베이스 재분석 착수"
+ },
+ "reasoning": "The user is asking me to respond as the RA 총괄 (Regulatory Affairs Head) to a specific question from the chair (간사) about the sequence of regulatory pre-meeting (Type B/Pre-sNDA) vs. safety database re-analysis for prediabetes population, and the impact on overall timeline. I need to provide my stance, confidence, whether stance changed, utterance in Korean, cited sources, question for clinicians, and action item.\n\nLet me analyze the context:\n- Current hypothesis: Metformin for prediabetes (HYP-002), label_status: DEVELOPMENT (off-label)\n- My previous stance: HOLD (regulatory pathway not confirmed)\n- Key sources: SPL label showing indication limited to T2DM, DPP trial NCT00038727, various PubMed and CT.gov sources supporting efficacy, FAERS safety signals (lactic acidosis 19,411, AKI 18,273)\n- PV 총괄 emphasized safety database re-analysis first (8-11 months)\n- R&D 총괄 wants to start package preparation now\n- I previously mentioned sNDA pathway 10-12 months, RWE 18-24 months, and need FDA pre-meeting first\n\nThe question asks specifically: which should be completed first - regulatory pre-meeting (Type B/Pre-sNDA) OR prediabetes safety database re-analysis - and impact on overall schedule.\n\nAs RA 총괄, my regulatory lens: The pre-meeting with FDA is critical to define what exactly is required for the submission. Without knowing FDA's expectations, we might do unnecessary work or miss critical requirements. However, PV 총괄 argues safety re-analysis must come first to have data for the meeting.\n\nMy position: The pre-meeting should come first (or at least be scheduled early) because it defines the scope of what safety/efficacy data FDA requires. But we need some preliminary safety analysis to have a meaningful meeting. So it's not strictly sequential - we can start safety re-analysis in parallel while scheduling the pre-meeting. The pre-meeting outcome then guides the depth of safety analysis needed.\n\nLet me craft the response:\n- Stance: HOLD (maintaining - regulatory pathway still not confirmed)\n- Confidence: 4 (fairly confident in regulatory strategy)\n- Stance_changed: false (still HOLD)\n- Utterance: Address the chair's question, reference PV 총괄 and R&D 총괄 comments, explain sequence and timeline impact\n- Cited: Use relevant source_ids from evidence (SPL label, NCT00038727, FAERS data mentioned in PV's remarks but need to check if FAERS source_ids are in evidence list... looking at evidence, I see FAERS data in numbers but not as individual evidence items with source_ids. The evidence list has SPL sources, PubMed, CT.gov. FAERS top terms are in numbers section. I should cite from evidence list only. Let me check: SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage, SPL:...#boxed_warning, NCT00038727, PMID:32601731, etc.)\n- Question_ko: Ask clinicians about current monitoring practices for prediabetes patients on metformin\n- Action_ko: Schedule FDA Type B meeting and initiate safety database re-analysis in parallel\n\nLet me write the Korean response following the format rules: 3-6 sentences, complete honorific sentences, no bullets, cite source_ids from evidence list."
+}

@@ -1,0 +1,27 @@
+{
+ "purpose": "board_convene",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_convene_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6726,
+  "output": 714
+ },
+ "created_at": "2026-09-28T17:27:36",
+ "output": {
+  "hypothesis_type": "INDICATION_EXPANSION",
+  "lead": "CMO",
+  "speaking_order": [
+   "CMO",
+   "RA_HEAD",
+   "PV_HEAD",
+   "RND_HEAD",
+   "CFO",
+   "CCO",
+   "CEO"
+  ],
+  "opening_ko": "이번 회의는 메트포르민의 적응증 확대 가설 HYP-001을 상정합니다. 인슐린 저항성을 동반한 다낭성 난소 증후군(PCOS) 여성에서 메트포르민이 레트로졸 또는 클로미펜과 병용될 때 배란 유도 효과를 보조하고 월경 주기 회복 및 체중 감소에 기여한다는 현장 경험이 축적되어 있습니다. 현장 신호는 6건의 멘션과 4명의 의료진으로부터 보고되었습니다. 외부 근거 집계 결과 퍼브메드 7건 지지, 씨티고브 2건 지지, 라벨 0건 지지로 총 9건 지지, 0건 반대, 27건 중립으로 나타났습니다. 본 가설 패키지는 박기현 님께서 서명하셨습니다. 라벨 상태는 DEVELOPMENT로 허가 범위 밖 개발 가설입니다."
+ },
+ "reasoning": "The user wants me to convene a board meeting for hypothesis HYP-001 about metformin use in PCOS women. I need to:\n\n1. Choose a hypothesis type from the enum: INDICATION_EXPANSION, AGE_EXPANSION, COMBINATION_THERAPY, SAFETY_SIGNAL, REPURPOSING, OTHER\n2. Select a lead executive from: CMO, RA_HEAD, PV_HEAD, RND_HEAD, CFO, CCO, CEO\n3. Set speaking order for all executives\n4. Give an opening statement in Korean\n\nLooking at the hypothesis: It's about metformin (approved for type 2 diabetes) being used off-label in PCOS women in combination with letrozole or clomiphene for ovulation induction, menstrual cycle recovery, and weight loss. This is clearly an INDICATION_EXPANSION (expanding indication from diabetes to PCOS) and also involves COMBINATION_THERAPY (with letrozole/clomiphene). But the primary type is INDICATION_EXPANSION since the label_status is DEVELOPMENT and it's about a new indication.\n\nThe lead should be CMO (Chief Medical Officer) since this is about clinical evidence and medical rationale for indication expansion.\n\nSpeaking order: Typically CMO first (as lead), then RA_HEAD (regulatory), PV_HEAD (safety), RND_HEAD (clinical development), CFO (financial), CCO (commercial), CEO (final).\n\nOpening statement should state: what's being proposed, field signal counts (6 mentions, 4 HCPs), external evidence tally (9 SUPPORTS, 0 CONTRADICTS, 27 NEUTRAL), and who signed off (human_review by \"ë°ê±´í\" - appears to be Korean name encoded).\n\nLet me craft the opening statement in Korean, formal 존댓말, complete sentences, conclusion first."
+}

@@ -1,0 +1,27 @@
+{
+ "purpose": "board_opening_rnd_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6972,
+  "output": 1017
+ },
+ "created_at": "2026-09-28T18:14:14",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "임상개발 관점에서 메트포르민의 당뇨 전단계 적응증 확대는 강력한 임상 근거가 뒷받침하므로 진행 타당성이 높습니다. DPP 대규모 3상 시험(NCT00038727)에서 메트포르민이 고위험 당뇨 전단계군에서 당뇨 발생을 31% 감소시켰고, 공복혈당장애가 두드러진 하위군에서는 43% 감소 효과가 확인됐습니다(PMID:32601731). 다민족 아시아인 코호트에서도 생활요법에 메트포르민을 단계적으로 추가한 군이 3년 당뇨 전환율을 유의하게 낮췄습니다(PMID:40970814). 다만 현재 허가사항이 제2형 당뇨병으로 한정돼 당뇨 전단계는 적응증 밖입니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage). 추가로 필요한 것은 규제기관과의 적응증 확대 논의를 위한 안전성·유효성 패키지 정리와, 고위험군 정의의 표준화입니다.",
+  "cited": [
+   "NCT00038727",
+   "PMID:32601731",
+   "PMID:40970814",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "현장에서 '고위험 당뇨 전단계'를 어떻게 선별·정의하고 있으며, 메트포르민 처방 시 어떤 모니터링을 수행 중인지요?",
+  "action_ko": "규제기관 사전 미팅(pre-IND/Type B) 준비용으로 기존 DPP/DPPOS 데이터와 진행 중인 4상 심혈관 시험(NCT02915198) 결과를 통합한 적응증 확대 브리프를 작성하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the R&D Head (임상개발 총괄) for the hypothesis HYP-002 about metformin for prediabetes. I need to provide my initial position based on the clinical evidence lens.\n\nLet me analyze the evidence package:\n- Hypothesis: Metformin has off-label demand for high-risk prediabetes patients but prescription is limited due to label/reimbursement restrictions\n- Label status: DEVELOPMENT (prediabetes is outside approved indication)\n- Field signals: 4 mentions from 4 HCPs\n- External tally: 23 SUPPORTS, 2 CONTRADICTS, 13 NEUTRAL\n- Key evidence: DPP trial (NCT00038727) showed 31% reduction in diabetes onset; multiple RCTs support efficacy in high-risk prediabetes; but label only indicates T2DM\n\nFrom a clinical development perspective:\n- Strong evidence base from DPP and follow-up studies supporting metformin for diabetes prevention in prediabetes\n- Multiple Phase 3/4 trials completed or ongoing\n- However, label restriction is a clear regulatory barrier\n- Need to consider what additional studies would be needed for label expansion\n- Safety profile well-established but lactic acidosis risk exists\n\nMy stance: SUPPORT - there's strong clinical evidence for efficacy in prediabetes, but regulatory path needs clarification. Confidence: 4 (strong evidence but label gap remains).\n\nI need to cite specific source_ids from the evidence list. Let me pick the most relevant ones:\n- PMID:32601731 (DPP subgroup analysis showing 43% reduction in high-risk IFG)\n- NCT00038727 (DPP main trial showing 31% reduction)\n- PMID:40970814 (Asian cohort RCT showing significant reduction)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage (label contradiction - only T2DM indicated)\n\nI'll formulate my opening statement in Korean, 3-6 sentences, formal tone, conclusion first."
+}

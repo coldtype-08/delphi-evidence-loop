@@ -1,0 +1,31 @@
+{
+ "purpose": "board_discussion1_rnd_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 9452,
+  "output": 1423
+ },
+ "created_at": "2026-09-28T18:15:41",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "RA 총괄님께서 지적하신 sNDA 경로 확정과 PV 총괄님께서 강조하신 당뇨 전단계 안전성 프로파일 정립이 바로 적응증 확대 신청의 양대 최소 요건입니다. DPP 3상(NCT00038727)과 하위분석(PMID:32601731), 다민족 코호트(PMID:40970814) 등 유효성 패키지는 이미 확보돼 있으므로, 남은 과제는 당뇨 전단계 고위험군 정의 표준화와 기존 안전성 데이터베이스의 이 인구군 재분석, 그리고 신기능·비타민 B12 모니터링 계획을 담은 라벨 초안 작성입니다. 제네릭 의약품임을 고려해도 전담팀 4~5명 기준으로 사전 미팅 준비부터 제출까지 12~18개월, 직접 비용은 수억 원대 초반으로 추정되며, 이는 CFO님께서 언급하신 자원 투입 대비 근거 확보 효율과 부합합니다. CEO님께서 우려하신 법적·급여 리스크는 허가 확대 후 해소되는 구조이므로, 임상개발 관점에서는 지금 패키지 정리를 시작하는 것이 타당합니다.",
+  "cited": [
+   "NCT00038727",
+   "PMID:32601731",
+   "PMID:40970814",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations"
+  ],
+  "question_ko": "당뇨 전단계 고위험군을 공복혈당장애(IFG) 위주로 정의할지, 당화혈색소 5.7~6.4%까지 포함할지 임상 현장에서 어느 기준이 더 실용적인가요?",
+  "action_ko": "규제기관 사전 미팅(Type B) 신청을 위한 브리핑 패키지(유효성·안전성 통합 요약, 제안 라벨, 고위험군 정의 초안) 8주 내 완성"
+ },
+ "reasoning": "The user is asking me to respond as the R&D 총괄 (Head of R&D/Clinical Development) to a specific question from the chair: \"What do you see as the minimum requirements for an indication expansion application, and how do you estimate the timeline and resources to meet those requirements?\" I need to answer this question, reference other attendees' statements by their titles, agree or disagree, and provide my stance with confidence.\n\nLet me analyze the situation:\n- The hypothesis is about metformin for prediabetes (high-risk) - currently off-label (DEVELOPMENT status)\n- Strong clinical evidence from DPP trial (NCT00038727) showing 31% reduction in diabetes incidence, 43% in high-risk subgroup (PMID:32601731)\n- Multiple supporting RCTs and real-world evidence\n- Current label only for T2DM (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)\n- Safety concerns: lactic acidosis boxed warning, FAERS reports, renal monitoring needs\n- RA 총괄: HOLD - needs regulatory pathway clarification (sNDA or RWE)\n- PV 총괄: HOLD - needs safety profile establishment for prediabetes population\n- R&D 총괄 (me): Previously SUPPORT - strong clinical evidence supports proceeding\n- CFO: sees resource efficiency but commercial incentive limited due to generic\n- CCO: confirmed field demand but can't propose commercial actions due to off-label\n- CEO: acknowledges efficacy but questions legal/reimbursement risks and pathway efficiency\n\nNow I need to answer the specific question about minimum requirements for indication expansion, timeline, and resources. As R&D 총괄, I should focus on clinical development requirements.\n\nKey points to address:\n1. Minimum requirements for sNDA/indication expansion\n2. Timeline and resource estimates\n3. Reference other attendees' statements (RA 총괄, PV 총괄, etc.)\n4. Maintain or update my stance\n\nFrom the evidence:\n- DPP trial (NCT00038727) is a completed Phase 3 showing 31% reduction\n- Multiple supporting studies\n- But label is only for T2DM\n- Need safety data specific to prediabetes population (PV 총괄's point)\n- Need regulatory pathway clarity (RA 총괄's point)\n\nAs R&D, I would say:\n- Minimum requirements: Completed Phase 3 efficacy data (have DPP), safety database for prediabetes population (need to compile/analyze), defined high-risk prediabetes population, dosing regimen for prediabetes\n- Timeline: If leveraging existing DPP data + safety compilation, maybe 12-18 months for sNDA preparation\n- Resources: Moderate since it's a generic drug, but need dedicated team for regulatory compilation\n\nI should agree with RA 총괄 that regulatory pathway needs clarification, and with PV 총괄 that safety profile for this specific population needs to be well-characterized. But I maintain that the efficacy evidence is strong and we have a substantial foundation.\n\nLet me craft the response in Korean, formal business tone, 3-6 sentences, with citations from the evidence package."
+}

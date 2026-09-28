@@ -1,0 +1,29 @@
+{
+ "purpose": "board_opening_rnd_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6859,
+  "output": 1131
+ },
+ "created_at": "2026-09-28T17:30:12",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "임상개발 총괄로서 이번 가설은 임상적 근거가 충분히 축적되어 있어 개발 검토를 진행할 만하다고 판단합니다. 클로미펜 병용 요법은 다수의 무작위 대조 시험과 코크란 메타분석에서 배란율과 임신율 개선이 일관되게 확인되었습니다(PMID:30806102, PMID:31647106, PMID:21518135, PMID:29183107, NCT00795808). 레트로졸 병용에 대해서는 3상 시험(NCT06405178)이 완료되어 결과를 기다리고 있으며, 이는 현재 표준 치료로 자리 잡은 레트로졸 1차 요법에 메트포르민을 보조제로 더했을 때의 추가 가치를 직접 평가합니다. 체중 감소 효과는 메트포르민 단독 대비 병용 시에도 일관되지 않아 주평가변수로는 신중해야 하나, 인슐린 저항성 개선을 통한 대사·생식 아웃컴 동시 개선이라는 기전적 타당성은 명확합니다. 허가사항상 PCOS 적응증이 없는 DEVELOPMENT 단계이나, 이미 임상 현장에서 오프라벨로 널리 쓰이고 있고 안전성 프로파일도 당뇨병 적응증에서 장기 축적되어 있어 개발 리스크는 상대적으로 낮습니다.",
+  "cited": [
+   "PMID:30806102",
+   "PMID:31647106",
+   "PMID:21518135",
+   "PMID:29183107",
+   "NCT00795808",
+   "NCT06405178"
+  ],
+  "question_ko": "레트로졸 1차 요법 실패군에서 메트포르민 추가 시 배란 회복률과 이상반응 프로파일이 클로미펜 병용군과 어떻게 다른지 임상 현장에서 체감하시는 차이는 무엇입니까?",
+  "action_ko": "NCT06405178 결과 공개 시점과 상세 데이터를 확보해 레트로졸 병용의 확증적 근거 수준을 재평가하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the R&D Head (임상개발 총괄) for the board meeting on HYP-001. I need to provide my initial position based on the clinical evidence lens.\n\nLet me analyze the evidence package:\n\n1. Hypothesis: Metformin as adjunct to letrozole or clomiphene for ovulation induction in insulin-resistant PCOS women, with benefits for menstrual cycle recovery and weight loss.\n\n2. Evidence summary:\n   - PubMed: 7 SUPPORTS, 8 NEUTRAL, 0 CONTRADICTS\n   - ClinicalTrials.gov: 2 SUPPORTS, 14 NEUTRAL, 0 CONTRADICTS\n   - Label: 5 NEUTRAL (indication limited to T2DM)\n\nKey supporting evidence:\n- PMID:30806102 - RCT showing metformin + L-carnitine + clomiphene improved menstrual regularity, ovulation rate, pregnancy rate vs clomiphene + metformin and placebo\n- PMID:31647106 - IPD meta-analysis comparing letrozole alone vs clomiphene+metformin vs clomiphene alone\n- PMID:21518135 - RCT showing 1000mg metformin as effective as 1700mg for ovulation/pregnancy induction with clomiphene (84-88% ovulation rate)\n- PMID:29183107 - Cochrane meta-analysis on insulin-sensitizing agents for PCOS anovulation\n- NCT00795808 - Phase 4 trial showing metformin + clomiphene more effective than either alone in BMI ≤32\n- NCT06405178 - Phase 3 trial assessing metformin as adjuvant to letrozole for ovulation induction\n\nNeutral evidence includes many animal studies, reviews without specific combination data, and trials comparing other agents.\n\nLabel status: DEVELOPMENT (off-label use), approved only for T2DM.\n\nMy stance: The clinical evidence supports the hypothesis - multiple RCTs and a Cochrane meta-analysis show metformin improves ovulation rates when combined with clomiphene, and there's a phase 3 trial specifically testing metformin as adjuvant to letrozole. However, the evidence for letrozole combination is less robust than for clomiphene, and weight loss effects are modest/inconsistent. No safety concerns specific to PCOS population beyond known metformin profile.\n\nI'll set stance as SUPPORT with high confidence (4-5), stance_changed false, and provide a 3-6 sentence utterance in Korean with proper citations."
+}

@@ -1,0 +1,29 @@
+{
+ "purpose": "board_opening_cco",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6870,
+  "output": 1393
+ },
+ "created_at": "2026-09-28T17:30:32",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "현장 신호 6건이 4명의 의료진으로부터 보고되었고, 클로미펜 병용 시 배란율과 임신율 개선을 보인 RCT(PMID:30806102, PMID:21518135)와 레트로졸 병용 3상 시험(NCT06405178) 등 9건의 지지 근거가 있어 인슐린 저항성 PCOS 여성에서 메트포르민 병용 수요가 실재함을 확인합니다. 다만 허가사항은 제2형 당뇨병에 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 박스 경고의 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)이 전 인구군에 적용되므로 상업적 액션은 허가 확대 전까지 보류해야 합니다. 다른 참석자와 달리 저는 현장이 이미 클로미펜·레트로졸 병용을 표준처럼 쓰고 있다는 점, 그리고 체중 감소·월경 회복 같은 환자 체감 혜택이 처방 지속을 이끄는 동력임을 강조합니다.",
+  "cited": [
+   "PMID:30806102",
+   "PMID:21518135",
+   "NCT06405178",
+   "NCT00795808",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+  ],
+  "question_ko": "클로미펜 또는 레트로졸 단독으로 배란 유도에 실패한 인슐린 저항성 PCOS 환자에게 메트포르민 병용을 언제, 어떤 용량으로 시작하시는지요?",
+  "action_ko": "의료진 면담 가이드에 인슐린 저항성 확인 방법과 젖산산증 위험 모니터링 포인트를 추가하여 현장 수요 파악을 체계화하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as CCO (Chief Commercial Officer) for the board meeting about HYP-001 (metformin for PCOS off-label use). I need to provide my initial position based on my lens - focusing on real-world demand from clinicians and patients, what they're actually asking for, and what the field needs to know. I must not propose commercial actions for off-label hypotheses.\n\nLet me analyze the evidence package:\n- Hypothesis: Metformin as adjunct to letrozole/clomiphene for ovulation induction in insulin-resistant PCOS women, with menstrual cycle recovery and weight loss benefits\n- Label status: DEVELOPMENT (off-label)\n- Field signals: 6 mentions from 4 HCPs, 6 claim IDs\n- External evidence: 9 SUPPORTS, 0 CONTRADICTS, 27 NEUTRAL\n- Key supporting evidence: Several RCTs and meta-analyses showing benefit of metformin + clomiphene/letrozole for ovulation rates, pregnancy rates, menstrual regularity\n- Label: Only approved for T2DM, no mention of PCOS/ovulation induction\n\nAs CCO, my lens is \"real-world demand from the field\" - what clinicians and patients are actually asking for. The field signals show 6 mentions from 4 HCPs, which indicates some real-world interest. The external evidence shows 9 supporting studies (RCTs, meta-analyses) with no contradictions. However, this is off-label (DEVELOPMENT status), so I cannot propose commercial actions.\n\nMy stance should be HOLD or SUPPORT? The evidence supports the clinical benefit (9 SUPPORTS, 0 CONTRADICTS), and there are field signals (6 mentions from 4 HCPs). But it's off-label. As CCO, I see real demand but cannot act commercially on off-label use. I should probably be SUPPORT on the clinical evidence but HOLD on commercial action due to label status. Actually, the stance criteria: SUPPORT if my lens shows reasons to proceed backed by evidence. My lens is field demand - there IS field demand (6 mentions, 4 HCPs). But the label status is DEVELOPMENT (off-label). The rule says: \"허가 범위 밖(DEVELOPMENT) 가설에 대해 프로모션·영업 목표·메시지 같은 상업 액션을 제안하면 코드가 차단하고 기록에 남긴다.\" So I must not propose commercial actions.\n\nI think my stance should be SUPPORT for the clinical validity (evidence supports it) but with clear caveat that it's off-label. Actually, the stance is about \"proceeding\" - but proceeding with what? The hypothesis is about the clinical claim. As CCO, I see field demand supporting the clinical hypothesis. But commercial action is blocked. So maybe HOLD? Let me think: \"SUPPORT: 당신의 렌즈에서 진행할 이유가 근거로 뒷받침될 때\" - my lens is field demand. There IS field demand (6 mentions, 4 HCPs). The evidence supports the clinical claim (9 SUPPORTS). So there are reasons to proceed from a field demand perspective. But \"진행\" what? The hypothesis is about the clinical statement. I think SUPPORT is appropriate for the clinical validity, but I must note the off-label status and not propose commercial actions.\n\nConfidence: 4 (good evidence, clear field signals, but off-label)\nStance_changed: false (first turn)\nUtterance: 3-6 sentences, formal Korean, cite source_ids from evidence list\nQuestion_ko: one question for clinicians\nAction_ko: one organizational action (but not commercial promotion for off-label)\n\nLet me craft the response."
+}

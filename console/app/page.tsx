@@ -249,7 +249,7 @@ export default async function Home() {
           <Panel tone="note" pad="lg" className="mt-10">
             <b className="text-[0.9375rem] text-rust">백엔드에 연결할 수 없습니다.</b>
             <pre className="mono mt-2.5 rounded-xl bg-card px-4 py-3 text-[0.8125rem] leading-[1.8] text-body">
-              cd backend && uv run uvicorn app.main:app --reload{"\n"}
+              uv run uvicorn loop.web:app --port 8030 --reload{"\n"}
               (최초 1회: uv run --project backend python scripts/seed_db.py)
             </pre>
           </Panel>
@@ -272,7 +272,7 @@ export default async function Home() {
               채워집니다 — 이 타일들은 결정론 언급 집계라 계약 확정·판독 없이도 정확합니다.
             </p>
             <pre className="mono mt-2.5 rounded-xl bg-card px-4 py-3 text-[0.8125rem] leading-[1.8] text-body">
-              bash scripts/dev.sh
+              uv run uvicorn loop.web:app --port 8030
             </pre>
           </Panel>
         )}

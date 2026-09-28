@@ -1,0 +1,45 @@
+{
+ "purpose": "board_close",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_close_v1",
+ "mode": "tool_call",
+ "thinking": true,
+ "usage": {
+  "input": 15866,
+  "output": 2458
+ },
+ "created_at": "2026-09-28T17:20:47",
+ "output": {
+  "summary_ko": "가설 HYP-003(메트포르민 유방암 보조요법 수요 증가)은 전원 합의로 개발 추진 및 상업적 대응을 중단(DROP)하기로 결정했습니다. 현장 신호 3건(3명 의료진)이 접수되었으나, 결정적 3상 RCT인 MA.32 시험(NCT01101438, PMID:42063220)에서 무침습 생존율과 전체 생존율 개선이 입증되지 않았고, 메타분석(PMID:34137294)에서도 전이·재발 환자의 전체 생존(HR 1.13)과 무진행 생존(HR 1.14)에 유의한 혜택이 없었으며, 전임상적으로는 에스트로겐 결핍 상태에서 휴면 ER+ 세포 생존을 촉진해 재발 위험을 높일 수 있다는 우려(PMID:32321715)까지 제기되었습니다. 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 1.9만 건 보고는 항암화학요법 병용 시 안전성 부담을 명확히 합니다. 다만 현장 수요가 실재하므로 의학부 주관으로 효능 근거 부재와 안전성 위험만을 중립적으로 정리한 HCP용 Q&A와 안전성 서한(DHPC)을 법무·컴플라이언스 검토 후 배포하고, 학회 채널을 통한 데이터 중심 과학적 교류를 의학부 단독 주관으로 진행하는 비상업적 액션에 한정합니다.",
+  "evidence_summary_ko": "반대 근거가 압도적입니다. MA.32 3상 무작위 대조시험(NCT01101438, PMID:42063220)에서 메트포르민이 위약 대비 무침습 생존율과 전체 생존율을 개선하지 못함이 확인되었습니다. 전이·재발 유방암 메타분석(PMID:34137294)에서도 전체 생존(HR 1.13, 95% CI 0.71-1.81)과 무진행 생존(HR 1.14, 95% CI 0.86-1.50)에 유의한 효과가 없었습니다. 전임상 연구(PMID:32321715)는 메트포르민이 지방산 산화에 의한 미토콘드리아 호흡 증가를 통해 에스트로겐 결핍 상태의 ER+ 유방암 세포와 종양의 생존을 촉진해 재발 위험을 높일 수 있음을 시사합니다. 지지 근거는 역학·관찰 연구 4건(PMID:23714455, PMID:22490993, PMID:19560877, PMID:21800293)에 머물러 있으며, 이를 검증한 대규모 RCT에서 모두 부정적 결과가 나왔습니다. 안전성 측면에서 FAERS 젖산산증 19,411건과 급성신손상 18,273건, 박스 경고의 젖산산증 사망·저체온·저혈압·서맥성 부정맥 위험, 항암화학요법 병용 시 신기능·간기능 악화 우려(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)가 확인됩니다. 현재 진행 중인 3상 시험들(NCT04387630, NCT06763328, NCT01905046, NCT07815808) 역시 재발 억제 직접 평가가 아니거나 예방·심장보호·인슐린 저항성 개선이 주목적입니다.",
+  "rationale_ko": "결정적 3상 RCT(MA.32)와 메타분석에서 효능이 입증되지 않았고, 전임상적 위해 가능성까지 제기된 상황에서 허가사항은 제2형 당뇨병에 한정되어 있으며, 젖산산증 등 중대한 안전성 위험이 항암화학요법 병용 시 증폭될 수 있습니다. 관찰 연구의 역학적 연관성만으로는 보조요법 적응증 개발의 임상적·규제적 근거가 되지 못하므로 개발 투자와 상업적 대응을 중단합니다. 다만 환자 안전과 의학적 사실 전달을 위해 의학부 주관의 비상업적 정보 제공(Q&A, DHPC, 학회 채널 데이터 중심 발표)을 최소한으로 진행합니다.",
+  "kill_criteria_ko": [
+   "MA.32 3상 시험(NCT01101438) 또는 동등 수준의 RCT에서 메트포르민이 위약 대비 무침습 생존율 또는 전체 생존율을 통계적으로 유의하게 개선함을 입증하지 못하는 경우",
+   "메타분석에서 전이·재발 유방암 환자의 전체 생존 또는 무진행 생존에 대한 메트포르민의 유의한 혜택(HR < 1, 95% CI가 1을 포함하지 않음)이 확인되지 않는 경우",
+   "전임상적 재발 위험 촉진 기전(지방산 산화·미토콘드리아 호흡 증가에 의한 휴면 ER+ 세포 생존 촉진)이 추가 연구에서 재현되거나 임상적으로 확인되는 경우",
+   "허가 당국이 제2형 당뇨병 외 적응증으로 유방암 보조요법을 승인하지 않는 경우"
+  ],
+  "risks_ko": [
+   "언론 보도와 관찰 연구만으로 환자 요청이 지속·확대되어 허가 외 사용이 증가할 경우 환자 위해(젖산산증, 급성신손상, 재발 위험 촉진 가능성) 발생",
+   "의료진이 효능 근거 부재와 안전성 위험을 환자에게 충분히 설명하지 못해 분쟁·민원 발생",
+   "경쟁사 또는 제3자가 관찰 연구를 근거로 허가 외 사용을 조장하는 마케팅을 전개할 경우 규제 대응 필요",
+   "비상업적 정보 제공 자료가 프로모션으로 오인되어 규제 위반 지적받을 가능성"
+  ],
+  "follow_up_questions": [
+   {
+    "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때 MA.32 3상 무효 결과와 젖산산증 위험을 어떻게 설명하고 계십니까?",
+    "why_ko": "현장 의료진의 실제 응대 현황과 환자 반응을 파악해 Q&A·DHPC 문구 보완에 반영하기 위함"
+   },
+   {
+    "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, 의료진은 MA.32 3상 무효 결과와 허가사항상 유방암 적응증이 없음을 어떻게 설명하고 계십니까?",
+    "why_ko": "허가 범위 내 중립적 사실 전달이 현장에서 일관되게 이루어지는지 확인하고 표준 안내 문구 필요성 검증"
+   },
+   {
+    "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 젖산산증 박스 경고를 어떻게 설명하고 계십니까?",
+    "why_ko": "안전성 서한(DHPC) 배포 후 의료진의 인지 변화와 처방 행태 변화를 모니터링하기 위함"
+   }
+  ],
+  "closing_ko": "이상으로 가설 HYP-003에 대한 경영 심의회를 마칩니다. 전원 합의로 개발 추진 및 상업적 대응을 중단(DROP)하며, 의학부 주관의 비상업적 사실 전달 액션(Q&A, DHPC, 학회 채널 데이터 중심 발표)을 법무·컴플라이언스 검토 후 즉시 진행하기로 결정했습니다. 후속 액션 이행 현황은 차기 회의에서 보고받겠습니다. 수고하셨습니다."
+ },
+ "reasoning": "The user wants me to write the meeting minutes (회의록) based on the provided hypothesis package and meeting records. The mode is CLOSE, so I need to use the board_close_v1 tool to generate the meeting minutes.\n\nLet me analyze the input data:\n\n1. Hypothesis: HYP-003 - Metformin breast cancer adjuvant therapy demand increase (OFF_LABEL_DEMAND, DEVELOPMENT status)\n2. Field signals: 3 claims, 3 HCPs\n3. External tally: SUPPORTS 10, CONTRADICTS 3, NEUTRAL 19\n4. Key evidence: MA.32 phase 3 trial (NCT01101438, PMID:42063220) showed no benefit; meta-analysis (PMID:34137294) showed no survival benefit; preclinical study (PMID:32321715) suggests potential harm\n5. Safety: FAERS shows lactic acidosis 19,411 cases, acute kidney injury 18,273 cases; boxed warning for lactic acidosis\n6. Label: Only approved for type 2 diabetes glycemic control\n7. All 7 executives OPPOSE (counts: OPPOSE 7, SUPPORT 0, HOLD 0)\n8. Recommendation: DROP\n9. Lead: CMO\n10. Proposals include questions for HCPs and actions for medical affairs to distribute Q&A and DHPC\n\nI need to create:\n- summary_ko: Summary of the meeting\n- evidence_summary_ko: Evidence summary (opposing evidence first)\n- rationale_ko: Rationale for recommendation\n- kill_criteria_ko: Kill criteria (conditions to drop this hypothesis)\n- risks_ko: Risks\n- follow_up_questions: Up to 3 questions for next meeting with HCPs\n- closing_ko: Closing statement\n\nLet me structure this properly."
+}

@@ -1,0 +1,29 @@
+{
+ "purpose": "board_discussion1_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8794,
+  "output": 1286
+ },
+ "created_at": "2026-09-28T17:12:31",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 5,
+  "stance_changed": false,
+  "utterance_ko": "간사님, PV 총괄님께서 지적하신 항암화학요법 병용 시 신기능 저하군에서의 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning, FAERS 19,411건)과 CCO님께서 확인하신 현장 수요의 실재는 모두 중요한 포인트입니다. 현재 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), MA.32 3상 시험(NCT01101438, PMID:42063220)에서 보조요법으로서 무침습 생존율과 전체 생존율 개선이 입증되지 않았으므로, 의료진에게는 '허가된 적응증 외 사용에 대한 권장·유도·지원은 금지되며, 환자 문의 시 MA.32 무효 결과와 젖산산증 박스 경고 등 허가사항에 기재된 사실만 중립적으로 안내한다'는 원칙의 표준 응대 지침이 필요합니다. CMO님과 R&D 총괄님께서 제시하신 메타분석(PMID:34137294)과 전임상적 우려(PMID:32321715)도 함께 인용해 효능 근거 부재를 명확히 해야 합니다. 이는 프로모션이 아닌 의학적 사실 전달로 한정되어야 하며, 상업적 대응으로 비치지 않도록 법무·컴플라이언스 검토를 거쳐 배포해야 합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "NCT01101438",
+   "PMID:42063220",
+   "PMID:34137294",
+   "PMID:32321715"
+  ],
+  "question_ko": "현장에서 환자가 메트포르민 보조요법을 요청할 때, 허가사항과 MA.32 결과를 바탕으로 '효능 입증 없음·안전성 위험 존재'를 어떻게 설명하고 계십니까?",
+  "action_ko": "의료진용 표준 응대 지침(비프로모션, 사실 기반) 초안을 법무·컴플라이언스 검토 후 배포한다."
+ },
+ "reasoning": "The user is asking me to respond as the RA 총괄 (Regulatory Affairs Head) to a specific question from the chair (간사). The question is about what standardized guidance or response guidelines are needed for healthcare providers to explain to patients the lack of efficacy evidence (MA.32 results) and safety risks (lactic acidosis) for metformin as adjuvant breast cancer therapy, based on current labeling and MA.32 results.\n\nI need to:\n1. Answer the question directly\n2. Reference other attendees' statements by their titles (CMO, PV 총괄, CCO, etc.)\n3. Agree or disagree with their points\n4. Provide my stance (SUPPORT/HOLD/OPPOSE) - but not use the code in the utterance\n5. Include cited source_ids from the evidence list\n6. Provide question_ko (for clinicians) and action_ko (for organization)\n7. Keep utterance_ko to 3-6 sentences in formal Korean\n8. Not use bullet points or arrows\n\nLet me analyze the evidence and previous statements:\n- MA.32 trial (NCT01101438, PMID:42063220) showed no improvement in invasive disease-free survival or overall survival\n- Meta-analysis (PMID:34137294) showed no significant effect on OS (HR 1.13) or PFS (HR 1.14)\n- Preclinical study (PMID:32321715) suggests metformin may promote survival of dormant ER+ cells\n- Labeling only indicates type 2 diabetes (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)\n- Boxed warning for lactic acidosis (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)\n- FAERS shows 19,411 lactic acidosis cases\n- PV 총괄 emphasized safety risks with chemo combination\n- CCO noted real field demand but evidence gap\n- CMO opposed due to lack of clinical evidence\n\nAs RA 총괄, I should emphasize regulatory constraints: off-label promotion is prohibited, need for factual/scientific communication only, and the importance of adhering to approved labeling. I should agree with PV 총괄 on safety risks and CCO on need for field guidance, but stress that any communication must be non-promotional and scientifically accurate.\n\nMy stance remains OPPOSE to any commercial action, but I can support developing regulatory-compliant communication materials for HCPs.\n\nLet me craft the response."
+}

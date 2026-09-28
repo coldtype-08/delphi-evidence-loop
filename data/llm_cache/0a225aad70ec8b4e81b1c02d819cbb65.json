@@ -1,0 +1,30 @@
+{
+ "purpose": "board_opening_cco",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6983,
+  "output": 885
+ },
+ "created_at": "2026-09-28T18:14:32",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "현장 신호 4건 모두 고위험 당뇨 전단계 환자에서 메트포르민 처방 필요성을 언급하고 있어 수요의 실체는 확인됩니다. 외부 근거 역시 DPP 대규모 3상(NCT00038727)에서 31% 당뇨 발생 감소, 하위분석(PMID:32601731)에서 공복혈당장애 두드러진 군 43% 감소 등 임상적 유효성이 일관되게 지지됩니다. 다만 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)이 제2형 당뇨병으로 한정돼 당뇨 전단계는 명백히 허가 범위 밖이므로, 상업 액션을 제안할 수 없는 상태입니다. 의료진이 실제로 겪는 급여·처방 장벽과 이들이 필요로 하는 정보가 무엇인지 현장에서 더 들어봐야 합니다.",
+  "cited": [
+   "CLM-FN-2026-0702-01-01",
+   "CLM-FN-2026-0722-04-01",
+   "CLM-FN-2026-0729-05-02",
+   "CLM-FN-2026-0909-11-02",
+   "NCT00038727",
+   "PMID:32601731",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "고위험 당뇨 전단계 환자에서 메트포르민 처방 시 급여 거절이나 심사 지침상 어떤 구체적 장애를 겪고 계십니까?",
+  "action_ko": "현장 의료진 4인 대상 심층 면담 일정 조율 및 급여·처방 장벽 구체화"
+ },
+ "reasoning": "The user is asking for my opening statement as CCO (Chief Commercial Officer) for the hypothesis HYP-002 about metformin for prediabetes. I need to provide my initial position based on my lens - focusing on actual field demand from healthcare providers and patients, what they're actually requesting, and what the field needs to know. I must not propose commercial actions for off-label hypotheses.\n\nLet me analyze the hypothesis package:\n- Hypothesis: Metformin use demand for high-risk prediabetes patients, but limited by label/coverage restrictions\n- Field signals: 4 mentions from 4 HCPs\n- External tally: 23 SUPPORTS, 2 CONTRADICTS, 13 NEUTRAL\n- Label status: DEVELOPMENT (prediabetes is off-label)\n- Key evidence: DPP trial showed 31% reduction in diabetes onset, stronger in younger/heavier patients; various RCTs support efficacy\n- Label contradiction: Indication limited to T2DM only\n\nAs CCO, my lens is field demand reality. The field signals show 4 HCPs mentioning this need. The evidence strongly supports efficacy (23 supports vs 2 contradicts). However, the label explicitly contradicts use for prediabetes. Since this is DEVELOPMENT/off-label, I cannot propose commercial actions.\n\nMy stance should be HOLD because:\n1. Strong clinical evidence supports efficacy\n2. Field signals confirm demand (4 HCPs)\n3. But label explicitly restricts to T2DM only\n4. Off-label means no commercial action can be proposed\n5. Need to understand what HCPs actually need/want\n\nI'll craft my opening statement in Korean, formal tone, 3-6 sentences, citing relevant source_ids."
+}

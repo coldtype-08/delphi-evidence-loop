@@ -1,0 +1,28 @@
+{
+ "purpose": "board_discussion1_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 8980,
+  "output": 1451
+ },
+ "created_at": "2026-09-28T17:32:00",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "간사님, 규제업무 총괄로서 임상개발 검토 진행의 선행 조건을 세 가지로 정리하겠습니다. 첫째, 식약처와의 사전 미팅을 통해 PCOS 적응증 확대 시 요구되는 임상 데이터 패키지 범위와 변경허가 가능 여부를 확정해야 합니다. 둘째, 허가사항이 제2형 당뇨병에 한정된 현 라벨(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)상 모든 임상 주장이 허가 범위 밖이므로, 의료진 대상 정보 전달만으로는 적응증 확대를 대체할 수 없다는 식약처 가이드라인 제약을 해소할 규제 경로가 필요합니다. 셋째, PV 총괄께서 지적하신 신기능 모니터링 기준과 병용 시 용량 조절 지침, 그리고 박스 경고의 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)이 가임기 여성 집단에서 어떻게 관리될지 안전성 보완 자료가 선행되어야 합니다. CMO님과 R&D 총괄님께서 임상적 타당성을 인정하셨으나, CFO님 말씀대로 상업적 회수 경로가 불명확한 제네릭 품목에서 규제 비용을 투입하기 전에는 전략적 의도와 글로벌 선례(FDA, EMA의 메트포르민 PCOS 관련 결정) 검토가 병행되어야 한다고 봅니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "PMID:29183107",
+   "NCT06405178",
+   "NCT00795808"
+  ],
+  "question_ko": "인슐린 저항성 PCOS 여성에서 메트포르민·레트로졸/클로미펜 병용 시 신기능 모니터링 주기와 용량 조절 기준을 현장에서 어떻게 적용하고 계십니까?",
+  "action_ko": "식약처 사전 미팅 신청 및 메트포르민 PCOS 적응증 확대 글로벌 규제 선례 조사 착수"
+ },
+ "reasoning": "The user is asking me to respond as the RA 총괄 (Regulatory Affairs Head) to the chair's question about what preconditions must be met from regulatory, safety, and commercial perspectives before proceeding with clinical development review. I need to answer based on my regulatory lens, cite evidence from the hypothesis package, and reference other attendees' statements by their titles.\n\nLet me analyze the situation:\n- The hypothesis is about metformin for PCOS with letrozole/clomiphene combination (OFF_LABEL_USE, DEVELOPMENT status)\n- Current label only covers type 2 diabetes (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)\n- Boxed warning for lactic acidosis (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)\n- FAERS shows lactic acidosis 19,411 cases, acute kidney injury 18,273 cases\n- 7 PubMed SUPPORTS, 2 CTGOV SUPPORTS for efficacy\n- But all clinical claims (PCOS, ovulation induction, combination with letrozole/clomiphene, menstrual cycle recovery, weight loss) are outside approved label\n- Off-label communication is strictly constrained by MFDS guidelines\n- Safety monitoring in reproductive-age women without renal function monitoring framework is a concern\n\nFrom my previous opening statement (RA 총괄), I said: \"임상 근거는 충분하나 규제 경로와 안전성 보완 자료가 확정되기 전까지는 진행 여부를 유보합니다.\" (Clinical evidence is sufficient but holding until regulatory pathway and safety supplementary data are confirmed.)\n\nNow I need to specify concrete preconditions. As RA 총괄, my lens is: approval scope and label boundaries, regulatory constraints on off-label information dissemination, regulatory pathway and precedents needed.\n\nKey preconditions from regulatory perspective:\n1. Regulatory pathway clarification: Need to confirm with MFDS whether this would be a new indication application (변경허가) or a new drug application, and what clinical data package is required\n2. Safety data package: Renal function monitoring criteria, dosing adjustments for combination therapy, lactic acidosis risk mitigation in reproductive-age women\n3. Off-label communication constraints: MFDS guidelines on medical information dissemination - cannot promote off-label use\n4. Precedent review: Are there precedents for metformin label expansion to PCOS or reproductive indications globally (FDA, EMA)?\n5. Commercial consideration (though not my primary lens): CFO raised commercial pathway uncertainty\n\nI should reference other attendees:\n- CMO: Clinical validity acknowledged but label limited to T2DM, long-term safety in reproductive-age women needs review\n- PV 총괄: HOLD, needs renal function criteria, monitoring intervals, dose adjustment guidelines for combination\n- R&D 총괄: Evidence sufficient, NCT06405178 completed for letrozole combination\n- CFO: HOLD, commercial recovery path unclear, generic status, need strategic intent\n- CCO: Field signals real, but commercial action on hold until label expansion\n- CEO: Cautious approach, need prospective clinical data for label expansion\n\nMy stance remains HOLD (유보) - clinical evidence exists but regulatory pathway and safety framework not defined. Confidence: 4 (strong regulatory rationale). stance_changed: false (consistent with opening).\n\nI need to produce a response in Korean, 3-6 sentences, complete honorific sentences, no bullets. First sentence states conclusion. Cite source_ids from evidence list. Include question_ko for clinicians and action_ko for organization.\n\nLet me craft the response."
+}

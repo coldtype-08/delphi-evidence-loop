@@ -6,7 +6,7 @@ import { Backdrop } from "./components/ui";
 
 export const metadata: Metadata = {
   title: "DELPHi Console",
-  description: "Growth Intelligence for XCOPRI — 검토·가설·심의 대시보드",
+  description: "DELPHi — 현장 신호 · 근거 검증 · AI Board 심의 콘솔",
 };
 
 /**

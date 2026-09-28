@@ -1,0 +1,28 @@
+{
+ "purpose": "board_discussion1_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 9460,
+  "output": 1194
+ },
+ "created_at": "2026-09-28T18:15:46",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "간사님, 적응증 확대 신청을 위한 최소 요건은 첫째, 현행 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)과의 차이를 메울 임상·안전성 패키지, 둘째, 당뇨 전단계 고위험군의 정의와 진단 기준 표준화, 셋째, 제네릭 품목 특성을 고려한 실사용증거(RWE) 또는 sNDA 경로별 제출 자료 범위 확정입니다. PV 총괄께서 지적하신 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning, FAERS 19,411건)과 신기능 모니터링 공백은 안전성 패키지에서 반드시 해소해야 할 항목입니다. R&D 총괄께서 말씀하신 DPP 3상(NCT00038727)과 하위분석(PMID:32601731) 근거는 유효성 기반으로 충분하나, CFO께서 언급하신 제네릭 상업적 유인 제약 하에서 FDA와의 사전 미팅(Type B/Pre-sNDA)을 통해 경로별 소요 기간과 비용을 확정하는 것이 선행돼야 합니다. 통상 sNDA 경로는 제출 후 10~12개월, RWE 경로는 자료 생성부터 제출까지 18~24개월이 소요되며, 전담 인력 3~5명과 외부 컨설팅 비용이 수반됩니다. 따라서 규제기관 사전 협의 완료 전까지는 진행 보류(HOLD) 입장을 유지합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "NCT00038727",
+   "PMID:32601731",
+   "PMID:40970814"
+  ],
+  "question_ko": "당뇨 전단계 고위험군(공복혈당장애 두드러진 군 등)을 실제 진료에서 어떻게 선별·진단하시는지, 그리고 메트포르민 처방 시 신기능·비타민 B12 모니터링을 어떤 주기로 수행하시는지 알려주십시오.",
+  "action_ko": "FDA Type B/Pre-sNDA 미팅 신청을 위한 브리핑 패키지 초안 작성과 제네릭 품목 특성을 반영한 RWE·sNDA 경로별 비교 분석을 착수하겠습니다."
+ },
+ "reasoning": "The user is asking me to respond as the RA 총괄 (Regulatory Affairs Head) to a specific question from the chairperson about the minimum requirements for an indication expansion application and the estimated timeline and resources needed. I need to provide a response in the required format using the board_turn_v1 tool.\n\nLet me analyze the context:\n- The hypothesis is about metformin for prediabetes (HYP-002)\n- Current label status: DEVELOPMENT (off-label)\n- My previous stance was HOLD - \"임상적 근거는 충분하나 규제 경로 확정 전까지는 진행 보류\"\n- The chair is asking specifically about minimum requirements for sNDA/RWE pathway and timeline/resource estimates\n- I need to cite evidence from the hypothesis package\n- I should reference other attendees' statements by title\n- I need to maintain HOLD stance unless something changes\n\nKey evidence from the package:\n- SPL label shows indication limited to T2DM (CONTRADICTS)\n- DPP trial NCT00038727 shows 31% reduction (SUPPORTS)\n- Subgroup analysis PMID:32601731 shows 43% reduction in high-risk IFG (SUPPORTS)\n- Multiple other RCTs support efficacy\n- PV head raised safety concerns about lactic acidosis in prediabetes population\n- R&D head says strong clinical evidence supports proceeding\n- CFO mentions generic status limits commercial incentive\n\nAs RA 총괄, I should:\n1. Answer the specific question about minimum requirements\n2. Reference other attendees' comments\n3. Maintain HOLD stance (regulatory pathway not yet defined)\n4. Provide question_ko for clinicians and action_ko for organization\n5. Cite relevant source_ids from the evidence list\n\nLet me structure the response:\n- Stance: HOLD (unchanged)\n- Confidence: 4 (fairly confident based on regulatory experience)\n- Stance_changed: false\n- Utterance: 3-6 sentences in Korean, formal, referencing others by title\n- Cited: relevant source_ids\n- Question_ko: one question for clinicians\n- Action_ko: one action for organization"
+}

@@ -1,0 +1,28 @@
+{
+ "purpose": "board_opening_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6320,
+  "output": 1034
+ },
+ "created_at": "2026-09-28T17:10:27",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 5,
+  "stance_changed": false,
+  "utterance_ko": "이 가설은 허가 범위 밖 사용에 대한 환자 수요 증가를 다루고 있으나, 결정적인 3상 시험인 MA.32(NCT01101438)에서 메트포르민이 조기 유방암 보조요법으로 무침습 생존율과 전체 생존율을 개선하지 못함이 확인되었습니다(PMID:42063220). 메타분석에서도 전이·재발 유방암에서 전체 생존과 무진행 생존에 유의한 효과가 없었으며(PMID:34137294), 전임상적으로는 휴면 ER+ 세포 생존을 촉진할 가능성까지 제기되었습니다(PMID:32321715). 현재 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 언론 보도에 근거한 환자 요청만으로 허가 외 사용을 권장하거나 지원하는 것은 규제상 허용되지 않습니다. 따라서 이 수요에 대응하기 위한 상업적 액션이나 정보 제공은 규제 위반 소지가 크므로 진행에 반대합니다.",
+  "cited": [
+   "PMID:42063220",
+   "PMID:34137294",
+   "PMID:32321715",
+   "NCT01101438",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "현장에서 접수된 3건의 클레임 중 의료진이 환자에게 메트포르민 보조요법을 실제로 처방했는지, 아니면 환자 요청을 단순히 전달만 했는지 확인 바랍니다.",
+  "action_ko": "의약학부와 협의하여 허가 외 사용 문의 대응 가이드라인을 배포하고, 영업·마케팅 부서에는 해당 적응증 관련 프로모션 금지 지침을 재확인 요청합니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the Regulatory Affairs (RA) Head for hypothesis HYP-003 about metformin's off-label demand as adjuvant therapy for breast cancer patients. I need to provide my initial position based on the regulatory lens - focusing on approval scope, label boundaries, regulatory constraints on off-label information dissemination, and regulatory pathways/precedents needed.\n\nLet me analyze the evidence package:\n- Hypothesis: Breast cancer patients requesting metformin as adjuvant therapy after media reports about recurrence reduction\n- Label status: DEVELOPMENT (off-label)\n- Field signals: 3 claims from 3 HCPs\n- External tally: 10 SUPPORTS, 3 CONTRADICTS, 19 NEUTRAL\n- Key evidence: MA.32 trial (NCT01101438) showed NO benefit in invasive disease-free survival or overall survival (PMID:42063220, CONTRADICTS)\n- Meta-analysis showed no significant effect on OS/PFS in metastatic/recurrent breast cancer (PMID:34137294, CONTRADICTS)\n- Preclinical study suggests metformin may promote dormant ER+ cell survival (PMID:32321715, CONTRADICTS)\n- Several observational studies show associations (SUPPORTS) but these are not RCT evidence\n- Current label only indicates type 2 diabetes mellitus glycemic control\n- Multiple ongoing/completed trials but the definitive Phase 3 MA.32 was negative\n\nFrom a regulatory perspective:\n1. The label does NOT include breast cancer adjuvant therapy\n2. The pivotal Phase 3 trial (MA.32) was negative - this is critical regulatory evidence\n3. Off-label promotion/communication constraints apply\n4. No regulatory pathway established for this indication\n5. Media reports driving patient demand create regulatory risk\n\nMy stance should be OPPOSE or HOLD. Given the negative Phase 3 data and lack of regulatory pathway, I should OPPOSE proceeding with any commercial/regulatory action supporting this off-label use. The evidence contradicts the hypothesis from a regulatory standpoint.\n\nLet me craft the response in Korean, formal tone, 3-6 sentences, citing source_ids from the evidence list."
+}

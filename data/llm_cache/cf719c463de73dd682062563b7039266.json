@@ -1,0 +1,29 @@
+{
+ "purpose": "board_final_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 11427,
+  "output": 1261
+ },
+ "created_at": "2026-09-28T17:34:02",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "토론을 거치며 임상적 유효성 근거가 일관되게 축적되어 있음을 재확인했으나, 현 허가사항이 제2형 당뇨병에 한정되어 있고 박스 경고의 젖산산증 위험이 가임기 여성에서 용량·신기능별로 어떻게 달라지는지 보여주는 약동학·약력학 자료가 여전히 부재하다는 점에서 근본적 규제 제약은 해소되지 않았습니다. 식약처 사전 상담의 필요성에는 세 분 모두 동의하셨으나, 상담 지참 최소 패키지에 글로벌 선례 검토 결과와 내부 전략적 의도 정리, 그리고 PV 총괄님께서 요구하신 신기능 기준·모니터링 주기·용량 감량 알고리즘을 담은 위험관리계획 초안과 임신 노출 레지스트리 설계안이 반드시 포함되어야 한다는 점에서 선행 조건이 보다 구체화되었습니다. 허가 외 사용 정보 전달만으로는 적응증 확대를 대체할 수 없다는 식약처 가이드라인 제약 하에서, 제네릭 품목의 상업적 회수 경로가 불명확한 상황에서 규제 비용을 투입하기 전에는 FDA·EMA의 메트포르민 PCOS 관련 결정 선례 검토와 내부 전략 확정이 선행되어야 합니다. 따라서 임상 개발 검토 착수 여부는 위 선행 자료와 체계가 갖춰진 뒤 식약처 사전 상담 결과를 바탕으로 재논의하는 것으로 입장을 유지합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations",
+   "PMID:29183107",
+   "NCT00795808",
+   "NCT06405178"
+  ],
+  "question_ko": "인슐린 저항성 PCOS 환자에서 메트포르민 병용 시 신기능 모니터링 주기와 용량 조절 기준을 현장에서 어떻게 적용하고 계십니까?",
+  "action_ko": "FDA·EMA의 메트포르민 PCOS 적응증 관련 결정문 검토와 내부 전략적 의도 정리, 안전성 관리 계획 초안(위험관리계획·임신 노출 레지스트리 설계)을 4주 내 완료하여 식약처 사전 상담 지참 패키지를 구성한다."
+ },
+ "reasoning": "The user wants me to provide the final position (최종 입장) as the RA 총괄 (Regulatory Affairs Head) after the discussion rounds. I need to consider the discussion and determine if my stance has changed from the initial HOLD position.\n\nLet me review the initial RA 총괄 position from the 모두발언:\n- Stance: HOLD (진행 여부를 유보합니다)\n- Key points: Clinical evidence is sufficient but regulatory pathway and safety supplementary data need to be confirmed first. Off-label information dissemination has strict constraints. Box warning lactic acidosis risk needs safety data for PCOS women without renal function monitoring system.\n\nAfter the discussion rounds:\n- R&D 총괄 suggested early pre-consultation with MFDS with existing clinical evidence and draft safety management plan\n- PV 총괄 insisted safety supplementary data (PK/PD, risk management plan, pregnancy registry) must be secured BEFORE pre-consultation\n- RA 총괄 (my previous response in 2라운드) emphasized need for global precedent review and internal strategic intent clarification BEFORE pre-consultation\n\nNow for 최종 입장, I need to:\n1. State if stance changed (stance_changed: true/false)\n2. If changed, explain why in first sentence\n3. Provide utterance_ko (3-6 sentences, formal Korean, complete sentences)\n4. Cite source_ids from evidence list only\n5. Provide question_ko (one line for next clinician interview)\n6. Provide action_ko (one line for organizational action)\n\nMy current thinking: The discussion has clarified that while clinical evidence exists, the regulatory pathway requires:\n- Global precedent review (FDA/EMA decisions on metformin for PCOS)\n- Internal strategic intent clarification (commercial rationale for generic)\n- Safety supplementary data (PK/PD in reproductive age women, risk management plan, pregnancy registry)\n- MFDS pre-consultation with proper preparation\n\nThe initial HOLD stance remains appropriate because the pre-conditions are not yet met. However, the discussion has refined WHAT exactly needs to be done before proceeding. So stance_changed could be false (still HOLD) but with more specific conditions, OR true if I now see a clearer path forward with specific steps.\n\nActually, looking at the discussion, the RA 총괄 in 2라운드 still maintains that global precedent review and strategic intent should come BEFORE pre-consultation. The position hasn't fundamentally changed - still HOLD until these are done. But the discussion has produced alignment on the need for pre-consultation and what materials are needed.\n\nI think stance_changed: false is appropriate - still HOLD, but with clearer pre-conditions defined through discussion. The first sentence should acknowledge the discussion clarified the pre-conditions but the fundamental regulatory constraints remain.\n\nLet me craft the response."
+}

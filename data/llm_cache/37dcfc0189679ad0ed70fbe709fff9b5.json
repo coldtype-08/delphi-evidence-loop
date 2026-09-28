@@ -1,0 +1,29 @@
+{
+ "purpose": "board_final_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 11684,
+  "output": 1038
+ },
+ "created_at": "2026-09-28T17:19:31",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 5,
+  "stance_changed": false,
+  "utterance_ko": "최종 입장은 변함없이 반대입니다. MA.32 3상 시험(NCT01101438, PMID:42063220)에서 메트포르민이 조기 유방암 보조요법으로 무침습 생존율과 전체 생존율을 개선하지 못함이 확인되었고, 메타분석(PMID:34137294)에서도 전이·재발 유방암에서 생존 혜택이 없었으며, 전임상적으로는 휴면 ER+ 세포 생존 촉진 우려(PMID:32321715)까지 제기되었습니다. 현재 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 1.9만 건의 젖산산증 보고는 안전성 부담을 명확히 합니다. 따라서 이 수요에 대한 상업적 대응이나 개발 추진은 규제상 허용되지 않으며, 허가 외 사용을 권장·유도·지원하는 일체의 액션에 반대합니다. 다만 의학부 주관으로 허가사항 범위 내 중립적 사실만 전달하는 비상업적 의학정보 활동(Q&A, 안전성 서한)은 법무·컴플라이언스 검토를 거쳐 진행하는 것에 이견이 없습니다.",
+  "cited": [
+   "PMID:42063220",
+   "PMID:34137294",
+   "PMID:32321715",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "NCT01101438"
+  ],
+  "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, 의료진은 MA.32 3상 무효 결과와 허가사항상 유방암 적응증이 없음을 어떻게 설명하고 계십니까?",
+  "action_ko": "의학부 주관으로 MA.32 무효 결과, 허가사항, 젖산산증 박스 경고만을 중립적으로 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 배포한다."
+ },
+ "reasoning": "The user is asking for the final position (최종 입장) from the RA 총괄 (Regulatory Affairs Head) perspective after the discussion rounds. I need to review the discussion and determine if my stance has changed from the initial opening statement.\n\nFrom the opening statement, RA 총괄 was OPPOSE (opposed to commercial action/promotion for off-label use). The discussion rounds have focused on:\n1. Need for HCP guidance/Q&A documents\n2. Safety communications (DHPC)\n3. Non-commercial, factual information dissemination\n4. Compliance review\n\nThe RA 총괄 in round 1 emphasized: \"의료진에게는 '허가된 적응증 외 사용에 대한 권장·유도·지원은 금지되며, 환자 문의 시 MA.32 무효 결과와 젖산산증 박스 경고 등 허가사항에 기재된 사실만 중립적으로 안내한다'는 원칙의 표준 응대 지침이 필요합니다.\"\n\nIn round 2, RA 총괄 didn't speak again (CEO, CCO, PV 총괄 spoke).\n\nMy stance remains OPPOSE to any commercial action or promotion for off-label use. However, I can SUPPORT non-commercial, factual information dissemination within label boundaries. The stance hasn't fundamentally changed - still opposed to commercial response, but supportive of compliant medical information activities.\n\nThe question asks for final position. I should maintain OPPOSE stance for commercial/development action, but note support for compliant medical information dissemination. The stance_changed should be false since my core regulatory position hasn't changed.\n\nLet me craft the response."
+}

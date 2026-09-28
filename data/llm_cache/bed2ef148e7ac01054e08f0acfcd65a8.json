@@ -1,0 +1,34 @@
+{
+ "purpose": "board_opening_ceo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6852,
+  "output": 1377
+ },
+ "created_at": "2026-09-28T17:30:41",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 3,
+  "stance_changed": false,
+  "utterance_ko": "메트포르민의 PCOS 적응증 확대 가설에 대해 종합적으로 볼 때 현재 단계에서는 신중한 접근이 필요합니다. 퍼브메드 7건과 임상시험 2건이 배란 유도 보조 효과를 지지하고 있으나, 허가자료는 제2형 당뇨병 적응증에 한정되어 있고 PCOS 관련 언급이 전혀 없습니다. 특히 라벨에 박스 경고로 명시된 젖산산증 위험이 가임기 여성 집단에서 어떻게 관리될지, 그리고 체중 감소 효과가 인슐린 저항성 개선에 기인하는지 별도 확인이 필요합니다. 현장 신호 6건과 의료진 4명의 경험은 의미 있으나, 이를 허가 확대 근거로 삼기에는 전향적 임상 데이터가 추가로 요구됩니다. 따라서 임상적 유효성 신호는 인정하되, 규제 경로와 안전성 관리 체계를 먼저 구체화한 뒤 진행 여부를 결정하는 것이 타당합니다.",
+  "cited": [
+   "PMID:30806102",
+   "PMID:31647106",
+   "PMID:21518135",
+   "PMID:29183107",
+   "PMID:17804299",
+   "PMID:10576524",
+   "PMID:15262344",
+   "NCT06405178",
+   "NCT00795808",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+  ],
+  "question_ko": "인슐린 저항성 PCOS 여성에서 메트포르민 병용 시 젖산산증 발생률이 당뇨병 환자군과 유의하게 다른지, 그리고 배란 유도 프로토콜상 용량 조절 기준이 확립되어 있는지 확인 바랍니다.",
+  "action_ko": "규제전략팀은 PCOS 적응증 확대 시 필요한 전향적 임상시험 설계 요건과 FDA/EMA 사전 미팅 일정을 검토하여 다음 회의에 보고해 주십시오."
+ },
+ "reasoning": "The user is asking for the CEO's opening statement (모두발언) for the board meeting about hypothesis HYP-001 regarding metformin use in PCOS women. I need to provide a structured response using the board_turn_v1 function with the required fields.\n\nLet me analyze the hypothesis package:\n- Drug: metformin\n- Segment: PCOS women with insulin resistance\n- Signal type: OFF_LABEL_USE\n- Statement: Metformin assists ovulation induction when combined with letrozole or clomiphene, contributes to menstrual cycle recovery and weight loss in PCOS women with insulin resistance\n- Label status: DEVELOPMENT (not approved for this indication)\n\nEvidence summary:\n- PubMed: 7 SUPPORTS, 8 NEUTRAL, 0 CONTRADICTS\n- ClinicalTrials: 2 SUPPORTS, 14 NEUTRAL, 0 CONTRADICTS\n- Label: 5 NEUTRAL (label only indicates T2DM, no PCOS mention)\n- Total: 9 SUPPORTS, 0 CONTRADICTS, 27 NEUTRAL\n\nKey supporting evidence:\n- PMID:30806102 - RCT showing metformin + L-carnitine + clomiphene improved menstrual regularity, ovulation rate, pregnancy rate\n- PMID:31647106 - IPD meta-analysis comparing letrozole vs clomiphene+metformin vs clomiphene alone\n- PMID:21518135 - RCT on metformin dose (1000mg vs 1700mg) with clomiphene, ovulation rates 84-88%\n- PMID:29183107 - Cochrane meta-analysis on insulin-sensitizing agents for PCOS anovulation\n- PMID:17804299 - Review suggesting metformin addition for clomiphene failure\n- PMID:10576524 - Review on metformin restoring spontaneous/clomiphene-induced ovulation independent of weight loss\n- PMID:15262344 - Review on metformin improving menstrual cyclicity and clomiphene/FSH ovulation induction success\n- NCT06405178 - Phase 3 trial assessing metformin as adjuvant to letrozole for ovulation induction\n- NCT00795808 - Phase 4 trial showing metformin+clomiphene more effective than either alone in BMI ≤32\n\nKey neutral/limitations:\n- Many animal studies (rats/mice) not directly applicable\n- Label only approved for T2DM, no PCOS indication\n- FAERS shows significant adverse events (nausea, diarrhea, lactic acidosis, etc.)\n- No CONTRADICTS evidence, but many NEUTRAL\n\nAs CEO, I need to:\n1. Give overall judgment - risk first\n2. Assess if organization can bear the decision\n3. Identify what needs confirmation\n4. Use only cited source_ids from evidence\n5. 3-6 sentences in Korean, formal\n6. No stance code in utterance, but stance field in output\n7. question_ko for clinician follow-up, action_ko for org action\n\nMy stance: HOLD seems appropriate because:\n- Evidence supports efficacy but is mostly off-label use\n- Label doesn't support PCOS indication\n- Safety profile known but needs consideration in PCOS population\n- Need more confirmatory data for regulatory pathway\n- Commercial considerations for DEVELOPMENT status\n\nConfidence: 3-4 (moderate)\n\nLet me craft the response."
+}

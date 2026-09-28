@@ -1,0 +1,29 @@
+{
+ "purpose": "board_opening_cmo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6867,
+  "output": 1313
+ },
+ "created_at": "2026-09-28T17:30:03",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "최고의학책임자로서 이번 가설에 대해 임상적 타당성이 있다고 판단합니다. 코크란 메타분석(PMID:29183107)과 개별 참여자 데이터 메타분석(PMID:31647106), 그리고 클로미펜 병용 4상 시험(NCT00795808)에서 메트포르민이 인슐린 저항성 PCOS 여성의 배란율과 임신율을 유의하게 개선한다는 일관된 근거가 확인됩니다. 레트로졸 병용 3상 시험(NCT06405178)도 보조 효과를 평가 완료한 상태입니다. 다만 허가사항은 제2형 당뇨병에 한정되어 있어(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage) 적응증 확대에는 별도 허가 절차가 필요합니다. 위장관계 부작용과 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)은 당뇨병 사용 경험으로 잘 알려져 있으나 가임기 여성에서의 장기 안전성 자료는 추가 검토가 필요합니다.",
+  "cited": [
+   "PMID:29183107",
+   "PMID:31647106",
+   "NCT00795808",
+   "NCT06405178",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+  ],
+  "question_ko": "현장 의료진께서는 메트포르민 병용 시 용량 조절 기준과 신기능 모니터링 주기를 어떻게 적용하고 계십니까?",
+  "action_ko": "가임기 PCOS 여성 대상 메트포르민 장기 안전성 자료(특히 임신 전후)를 체계적 문헌고찰로 정리하여 차기 회의에 제출하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as CMO for the hypothesis HYP-001 about metformin use in PCOS women with insulin resistance, combined with letrozole or clomiphene for ovulation induction. I need to provide my initial position based on the clinical evidence lens.\n\nLet me analyze the evidence:\n- PubMed: 7 SUPPORTS, 8 NEUTRAL, 0 CONTRADICTS\n- ClinicalTrials: 2 SUPPORTS, 14 NEUTRAL, 0 CONTRADICTS\n- Label: 5 NEUTRAL (indication limited to T2DM)\n\nKey supporting evidence:\n1. PMID:30806102 - RCT showing metformin + L-carnitine + clomiphene improved menstrual regularity, ovulation rate, pregnancy rate vs clomiphene + metformin and placebo\n2. PMID:31647106 - Individual participant data meta-analysis comparing letrozole alone vs clomiphene+metformin vs clomiphene alone\n3. PMID:21518135 - RCT comparing metformin doses, showing 1000mg as effective as 1700mg for ovulation/pregnancy induction with clomiphene\n4. PMID:29183107 - Cochrane meta-analysis on insulin-sensitizing agents for PCOS anovulation\n5. PMID:17804299 - Review suggesting metformin addition for clomiphene failure\n6. PMID:10576524 - Review showing metformin restores spontaneous/clomiphene-induced ovulation independent of weight loss\n7. PMID:15262344 - Review suggesting metformin improves menstrual cyclicity and clomiphene/FSH ovulation induction success\n\nClinical trials supporting:\n- NCT06405178 - Phase 3 completed, assessing metformin as adjuvant to letrozole for ovulation induction\n- NCT00795808 - Phase 4 completed, metformin + clomiphene more effective than either alone in BMI ≤32\n\nNeutral evidence includes many animal studies, reviews without specific combination data, and trials comparing other agents.\n\nThe label shows metformin is only approved for T2DM, not PCOS.\n\nAs CMO, I should note:\n- There is RCT and meta-analysis level evidence supporting metformin as adjunct to clomiphene/letrozole for ovulation induction in PCOS with insulin resistance\n- The evidence base includes Cochrane meta-analysis and individual participant data meta-analysis\n- However, the indication is off-label (DEVELOPMENT status)\n- Safety profile is well-known from diabetes use (lactic acidosis risk, GI side effects)\n- No contradictory evidence found\n\nMy stance should be SUPPORT with moderate-high confidence given the RCT/meta-analysis evidence, but noting this is off-label use requiring careful consideration.\n\nI need to cite specific source_ids from the evidence list. Let me select the strongest ones: PMID:30806102, PMID:31647106, PMID:29183107, NCT00795808, NCT06405178.\n\nI'll formulate my opening statement in Korean, 3-6 sentences, formal tone, addressing other attendees by title."
+}

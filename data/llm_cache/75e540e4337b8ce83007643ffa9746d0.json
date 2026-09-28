@@ -1,0 +1,28 @@
+{
+ "purpose": "board_discussion1_pv_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 9465,
+  "output": 1316
+ },
+ "created_at": "2026-09-28T18:16:31",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "간사님, 약물감시 총괄로서 적응증 확대 신청의 최소 안전성 요건을 세 가지로 정리합니다. 첫째, 당뇨 전단계 환자군 전용의 안전성 데이터베이스 분석이 필요합니다. 현재 FAERS 상위 반응에 젖산산증 19,411건과 급성신손상 18,273건이 보고돼 있으나(FAERS 상위 반응), 이 환자군의 신기능 저하 동반 비율이 높아 젖산산증 위험군이 될 수 있으므로 연령·신기능·병용약물별 층화 분석이 선행돼야 합니다. 둘째, 박스 경고인 젖산산증(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)에 대한 위험완화전략(REMS 수준의 모니터링 프로토콜 포함)을 당뇨 전단계 용량·용법에 맞춰 수립해야 합니다. 현재 허가사항에는 당뇨 전단계 별도 용량이 없고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration), 노인에서 신기능 빈번 평가만 권고할 뿐(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use) 구체적 모니터링 경로가 없습니다. 셋째, 시판후 안전성 연구(PMR) 계획서를 포함해 유해사례 수집·평가·보고 체계를 허가외 사용 시 책임 소재까지 명확히 하는 거버넌스로 정비해야 합니다. RA 총괄님께서 언급하신 sNDA 경로와 R&D 총괄님의 임상 패키지 정리에는 동의하나, 안전성 프로파일 정립 없이 규제 논의부터 진입하는 것은 위험합니다. 기간은 안전성 데이터베이스 재분석 3~4개월, 위험완화전략 수립 2~3개월, PMR 프로토콜 작성 및 규제기관 사전협의 3~4개월로 최소 8~11개월, 전담 인력 3~4인·외부 컨설팅 포함 약 2~3억 원 규모로 추정합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "당뇨 전단계 환자에서 메트포르민 장기 처방 시 신기능 모니터링 주기와 젖산산증 조기 발견을 위한 임상적 지표를 현행 진료 흐름에 어떻게 통합하실 계획입니까?",
+  "action_ko": "당뇨 전단계 환자군 대상 FAERS·국내 부작용 보고자료 연령·신기능·병용약물별 층화 분석 착수 및 위험완화전략 초안 작성"
+ },
+ "reasoning": "The user is asking me to respond as the PV 총괄 (Pharmacovigilance Head) to a specific question from the moderator about minimum requirements for indication expansion application, and the time/resources needed. I need to answer based on my PV lens - focusing on safety signals, boxed warnings, FAERS data, and safety monitoring requirements for prediabetic patients.\n\nLet me analyze the key safety concerns from the evidence:\n1. Boxed warning for lactic acidosis (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)\n2. FAERS top reactions: lactic acidosis 19,411 cases, acute kidney injury 18,273 cases\n3. No specific dosing for prediabetes (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration)\n4. Geriatric use - need frequent renal function assessment but no specific monitoring pathway (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use)\n5. Prediabetic patients may have higher renal impairment risk\n\nAs PV 총괄, my minimum requirements would be:\n- Safety database analysis for prediabetic population specifically\n- Renal function monitoring protocol for prediabetic patients\n- Lactic acidosis risk mitigation strategy\n- Post-marketing safety study plan\n- Benefit-risk assessment for prediabetic population\n\nI should reference the specific evidence IDs and respond in Korean with proper honorifics. I'll maintain my HOLD stance since safety profile for this specific population isn't established."
+}

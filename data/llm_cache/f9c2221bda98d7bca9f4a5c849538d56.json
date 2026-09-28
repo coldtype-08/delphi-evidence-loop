@@ -1,0 +1,31 @@
+{
+ "purpose": "board_opening_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6877,
+  "output": 910
+ },
+ "created_at": "2026-09-28T17:27:54",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "현재 허가사항은 제2형 당뇨병에 한정되어 있어 PCOS 대상 배란 유도 병용요법은 허가 범위 밖입니다. 다만 퍼브메드 7건과 씨티고브 2건의 지지 근거가 클로미펜 또는 레트로졸 병용 시 배란율·임신율 개선을 일관되게 보여주고 있어 임상적 타당성은 인정됩니다. 라벨에 PCOS 적응증이 없고 박스 경고인 젖산산증 위험이 전 인구군에 적용되므로, 이를 프로모션하거나 정보 제공으로 유도하는 것은 규제상 금지됩니다. 적응증 확대를 위해서는 sNDA 경로로 효능·안전성 패키지를 구축해 FDA·식약처 심사를 받아야 하며, 그 전까지는 의료진 자문·문헌 지원 등 비프로모션 채널에 한정해야 합니다. 이 가설을 진행하려면 규제 전략 수립과 임상 데이터 갭 분석이 선행되어야 한다고 봅니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "PMID:30806102",
+   "PMID:31647106",
+   "PMID:21518135",
+   "PMID:29183107",
+   "NCT00795808",
+   "NCT06405178"
+  ],
+  "question_ko": "현재 임상 현장에서 메트포르민을 레트로졸 또는 클로미펜과 병용할 때 용량·기간·모니터링 기준을 어떻게 정하고 계십니까?",
+  "action_ko": "PCOS 적응증 추가를 위한 sNDA 규제 전략 수립과 기존 임상 데이터 갭 분석을 착수하겠습니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the Regulatory Affairs (RA) Head for the hypothesis HYP-001 about metformin use in PCOS women with insulin resistance. I need to provide my initial position based on the regulatory lens - focusing on label scope, regulatory constraints for off-label use communication, and regulatory pathways needed.\n\nLet me analyze the evidence:\n- Hypothesis: Metformin as adjunct to letrozole or clomiphene for ovulation induction in PCOS women with insulin resistance\n- Label status: DEVELOPMENT (off-label)\n- Current label: Only approved for type 2 diabetes mellitus (T2DM)\n- External evidence: 9 SUPPORTS (7 PubMed + 2 CTGOV), 0 CONTRADICTS, 27 NEUTRAL\n- Key supportive evidence: Several RCTs and meta-analyses show benefit of metformin + clomiphene/letrozole for ovulation induction\n- Label evidence: All NEUTRAL - label only covers T2DM, no mention of PCOS, ovulation induction, etc.\n\nAs RA Head, my stance should be HOLD because:\n1. Strong clinical evidence exists (SUPPORTS from RCTs)\n2. BUT current label is strictly T2DM only - no PCOS indication\n3. Off-label use communication is heavily constrained\n4. Need regulatory pathway (sNDA, new indication) to promote this use\n5. Safety considerations: lactic acidosis boxed warning applies to all populations\n\nI should not SUPPORT because we cannot promote off-label use. I should not OPPOSE because evidence exists and pathway is possible. HOLD is appropriate - need to pursue regulatory pathway first.\n\nLet me craft the response in Korean, formal tone, 3-6 sentences, with citations from the evidence package."
+}

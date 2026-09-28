@@ -139,7 +139,7 @@ const preMeeting = (h: Hyp) => h.status === "IN_REVIEW" && h.hasMinutes === fals
 const statusKo = (h: Hyp) =>
   preMeeting(h) ? "상정됨 · 회의 소집 대기" : (STATUS_KO[h.status] ?? h.status);
 /** 임계값 문구 — 정본은 backend/app/hypothesis_gen.py 의 THRESHOLD_*. 바뀌면 여기도. */
-const THRESHOLD_KO = { repeat: 5, hcp: 3 };
+const THRESHOLD_KO = { repeat: 3, hcp: 3 };
 
 const GRADE: Record<string, "h" | "m" | "l"> = { HIGH: "h", MEDIUM: "m", LOW: "l" };
 /* 회의장 진입 문구(BOARD_ROOM)·실행 컴포넌트 import 는 08/31 에 함께 지웠다 — 전부
@@ -204,7 +204,7 @@ export const dynamic = "force-dynamic";
 
 // 임계값은 서버가 정한다 (hypothesis_gen.THRESHOLD_*). 화면은 설명만 하므로 상수로 둔다 —
 // 값이 바뀌면 백엔드가 진실이고 여기는 문구다.
-const THRESHOLD = { repeat: 5, hcp: 3 };
+const THRESHOLD = { repeat: 3, hcp: 3 };
 
 /* 「작업 카드」(HypCard) 는 08/31 에 지웠다 — board 칸의 2열 그리드가 유일한 사용처였고,
    그 자리를 안건 대장(AgendaLedger)이 대신하면서 부르는 곳이 없어졌다. 되살릴 일이

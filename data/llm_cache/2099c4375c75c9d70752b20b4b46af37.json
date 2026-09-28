@@ -1,0 +1,28 @@
+{
+ "purpose": "board_discussion2_pv_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 10263,
+  "output": 1431
+ },
+ "created_at": "2026-09-28T17:33:26",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "간사님, 약물감시 관점에서 식약처 사전 상담의 적정 시점은 안전성 보완 자료가 확보된 이후여야 한다고 봅니다. R&D 총괄님께서 기존 유효성 근거(PMID:29183107, NCT00795808, NCT06405178)를 토대로 사전 상담을 신청해 규제 경로를 구체화하자는 의견에는 상담 자체의 필요성에는 동의하나, 박스 경고의 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)이 가임기 여성에서 용량·신기능별로 어떻게 달라지는지 보여주는 약동학·약력학 자료가 없으면 상담에서 안전성 관리 계획을 구체적으로 논의하기 어렵습니다. RA 총괄님께서 사전 상담을 통해 요구 자료 범위를 확정하자는 입장에는 규제 경로 확정의 시급성에는 공감하나, 상담 지참 자료로 신기능 기준치·모니터링 주기·용량 감량 알고리즘을 담은 위험관리계획(FAERS 상위 반응: 젖산산증 19,411건, 급성신손상 18,273건, 오심 30,267건, 설사 28,320건)과 임신 노출 레지스트리 설계안(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)이 최소한 포함되어야 한다는 점에서 시점과 자료 범위 모두에서 차이가 있습니다. 따라서 세 분의 입장은 '사전 상담 필요성'에서는 일치하나, '상담 전 확보해야 할 안전성 자료의 완성도'와 '상담 지참 최소 패키지'에서 엇갈린다고 정리하겠습니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations",
+   "PMID:29183107",
+   "NCT00795808",
+   "NCT06405178"
+  ],
+  "question_ko": "가임기 PCOS 여성에서 메트포르민 용량별·신기능별 젖산산증 발생률을 확인할 수 있는 약동학·약력학 자료나 실사용 데이터가 현재 확보되어 있는지, 없다면 생성 계획이 어떻게 되는지 여쭙고 싶습니다.",
+  "action_ko": "메트포르민 가임기 여성 대상 용량·신기능별 젖산산증 위험 평가를 위한 약동학·약력학 연구 계획 수립과 임신 노출 레지스트리 프로토콜 초안 작성을 안전성팀에 지시하겠습니다."
+ },
+ "reasoning": "The user is asking me to respond as the PV 총괄 (Pharmacovigilance Head) to a specific question from the moderator about the appropriate timing for MFDS pre-consultation and the minimum data package required. I need to compare my position with R&D 총괄 and RA 총괄, noting where we align and diverge.\n\nLet me analyze the previous statements:\n\n**R&D 총괄**: Suggested pre-consultation as a prerequisite for clinical development review. Wants to use existing evidence (letrozole Phase 3 NCT06405178 results, clomiphene Phase 4 NCT00795808, Cochrane meta-analysis PMID:29183107) to request pre-consultation and establish safety management plan with renal function criteria, monitoring intervals, dose adjustment guidelines for combination therapy.\n\n**RA 총괄**: Three prerequisites: 1) Pre-meeting with MFDS to define clinical data package scope and approval pathway, 2) Regulatory pathway to overcome label limitations (current label only T2DM), 3) Safety supplementary data for lactic acidosis risk in reproductive-age women, renal monitoring criteria, dose adjustment guidelines. Also wants global precedent review (FDA/EMA) and strategic intent clarification before investing regulatory costs.\n\n**PV 총괄 (me)**: Three prerequisites: 1) PK/PD data on how lactic acidosis risk (boxed warning) differs by dose/renal function in reproductive-age women, 2) Risk management plan with renal function thresholds, monitoring intervals, dose reduction algorithms to prevent GI AEs leading to dehydration/AKI, 3) Pregnancy exposure registry design since label only has general warning about unintended pregnancy, no fetal/maternal safety data for ovulation induction combination therapy. Emphasized that T2DM long-term safety data doesn't cover this population's specificity.\n\nNow the moderator asks: \"What is the appropriate timing for MFDS pre-consultation and the minimum data package that must be brought? Where do the three of you align and diverge?\"\n\nAs PV 총괄, I need to:\n1. Answer the question directly\n2. Reference other attendees by title (R&D 총괄님, RA 총괄님)\n3. Agree or disagree with their points\n4. State my stance (SUPPORT/HOLD/OPPOSE) - I previously said HOLD, so likely still HOLD\n5. Provide cited evidence from the hypothesis package\n6. Include question_ko and action_ko\n\nMy stance: Still HOLD because safety prerequisites not met. The pre-consultation timing should be AFTER safety data package is ready, not before. Minimum package must include the three safety items I mentioned.\n\nAlignment with R&D: Agree that pre-consultation is needed, but disagree on timing - R&D wants to use existing efficacy data to request pre-consultation NOW, while I think safety data must come first.\n\nAlignment with RA: Agree on need for safety supplementary data and regulatory pathway, but RA sees pre-consultation as first step to define requirements, while I see safety data generation as prerequisite TO pre-consultation.\n\nLet me craft the response."
+}

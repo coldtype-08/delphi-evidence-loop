@@ -1,0 +1,25 @@
+{
+ "purpose": "board_final_pv_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 11432,
+  "output": 1032
+ },
+ "created_at": "2026-09-28T17:34:08",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "토론을 거치며 안전성 보완 자료의 구체적 범위와 식약처 사전 상담 지참 패키지에 대한 합의가 이루어졌으나, 박스 경고의 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)이 가임기 여성에서 용량·신기능별로 어떻게 달라지는지 보여주는 약동학·약력학 자료와 임신 노출 레지스트리 설계안이 여전히 확보되지 않았습니다. FAERS 상위 반응인 젖산산증 19,411건, 급성신손상 18,273건, 오심 30,267건, 설사 28,320건이 병용 요법 시 탈수와 신기능 악화로 이어질 수 있다는 우려도 해소되지 않았습니다. 허가사항에 가임기 여성에게 의도치 않은 임신 가능성을 알리라는 일반 권고만 있을 뿐(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations), 배란 유도 목적 병용요법의 태아·모체 안전성 자료가 전무한 점도 동일합니다. 따라서 신기능 기준치·모니터링 주기·용량 감량 알고리즘을 담은 위험관리계획과 임신 안전성 자료가 마련되기 전에는 개발 검토 진행에 신중해야 한다는 HOLD 입장을 유지합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations"
+  ],
+  "question_ko": "인슐린 저항성 PCOS 환자에게 메트포르민-레트로졸/클로미펜 병용 처방 시 신기능 검사 주기와 중단 기준을 어떻게 운영하고 계십니까?",
+  "action_ko": "가임기 여성 대상 메트포르민 병용요법의 약동학·약력학 자료 확보 계획과 임신 노출 레지스트리 설계안을 수립하여 차기 회의에 보고한다."
+ },
+ "reasoning": "The user wants me to provide the final position (최종 입장) as the PV 총괄 (Pharmacovigilance Head) after the discussion rounds. I need to use the board_turn_v1 tool with the appropriate parameters.\n\nLet me analyze the discussion:\n- PV 총괄 initially held HOLD position due to safety concerns (lactic acidosis, renal monitoring, pregnancy safety)\n- In round 1, PV 총괄 specified three preconditions: PK/PD data for lactic acidosis in reproductive-age women, risk management plan with renal criteria/monitoring/dose adjustment, and pregnancy exposure registry design\n- In round 2, PV 총괄 maintained that pre-meeting safety data is needed before FDA pre-submission meeting, differing from R&D who wants early meeting with existing efficacy data\n\nThe stance hasn't fundamentally changed - still HOLD because safety data gaps remain. The discussion clarified the specific safety data needed but didn't resolve them. So stance_changed should be false.\n\nI need to cite relevant sources from the evidence package:\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning (lactic acidosis warning)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations (pregnancy warning)\n- FAERS data mentioned in the numbers: lactic acidosis 19,411, acute kidney injury 18,273, nausea 30,267, diarrhea 28,320\n\nThe utterance should be 3-6 sentences in Korean, formal, ending with complete sentences. First sentence should state the final position.\n\nQuestion for clinicians: about renal monitoring practices or pregnancy exposure tracking\nAction for organization: prepare safety data package or risk management plan\n\nLet me craft the response."
+}

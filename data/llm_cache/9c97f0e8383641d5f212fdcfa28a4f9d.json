@@ -1,0 +1,29 @@
+{
+ "purpose": "board_discussion2_rnd_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 10250,
+  "output": 1342
+ },
+ "created_at": "2026-09-28T17:33:21",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "RA 총괄님과 PV 총괄님께서 제시하신 선행 조건들은 모두 타당하며, 식약처 사전 상담의 지참 자료로 반드시 포함되어야 한다는 점에서 세 분의 입장이 일치합니다. 다만 상담 시점에 대해서는 RA 총괄님께서 글로벌 선례 검토와 전략적 의도 확정을 선행 조건으로 두신 반면, 저는 기존 임상 근거(레트로졸 병용 3상 NCT06405178, 클로미펜 병용 4상 NCT00795808, 코크란 메타분석 PMID:29183107)와 안전성 관리 계획 초안을 바탕으로 사전 상담을 조기에 신청해 규제 경로를 구체화하는 것이 효율적이라고 봅니다. PV 총괄님께서 요구하신 약동학·약력학 자료와 위험관리계획, 임신 노출 레지스트리 설계는 상담 지참 자료로 준비하되, 상담 자체가 이 자료들의 완성도를 높이는 피드백 루프가 될 수 있습니다. 따라서 최소 지참 패키지는 기존 임상 근거 요약, 안전성 관리 계획 초안, 글로벌 선례 검토 결과로 하되, PV 총괄님의 약동학·임신 안전성 자료는 상담 후 보완 제출하는 단계적 접근을 제안합니다.",
+  "cited": [
+   "NCT06405178",
+   "NCT00795808",
+   "PMID:29183107",
+   "PMID:31647106",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations"
+  ],
+  "question_ko": "식약처 사전 상담 시 제출할 임상 데이터 패키지에 레트로졸 병용 3상(NCT06405178) 결과보고서 전체가 포함되어야 하는지, 아니면 중간 분석이나 요약본으로도 가능한지 확인해 주십시오.",
+  "action_ko": "기존 임상 근거 요약본, 안전성 관리 계획 초안, 글로벌 선례 검토 자료를 취합해 식약처 사전 상담 신청 패키지를 4주 내 준비하겠습니다."
+ },
+ "reasoning": "The user is asking me to respond as the R&D 총괄 (Clinical Development Head) in a board meeting discussion. The question is about the appropriate timing for a pre-submission consultation with MFDS (Korean FDA) and the minimum data package required for that consultation, and where the three roles (R&D, RA, PV) align and diverge.\n\nLet me analyze the previous statements:\n\n1. R&D 총괄 (my previous statement): Suggested pre-consultation with MFDS as a prerequisite, using existing evidence (NCT06405178 letrozole combo Phase 3 results, NCT00795808 clomiphene combo Phase 4, Cochrane meta-analysis PMID:29183107) to define regulatory pathway and develop safety management plan.\n\n2. RA 총괄: Three prerequisites - (1) pre-meeting with MFDS to define clinical data package scope and variation approval feasibility, (2) regulatory pathway to overcome label limitations (current label only T2DM), (3) safety supplementary data for lactic acidosis risk in reproductive-age women, plus strategic intent and global precedents (FDA/EMA decisions on metformin PCOS).\n\n3. PV 총괄: Three prerequisites - (1) PK/PD data on lactic acidosis risk by dose/renal function in reproductive-age women, (2) risk management plan with renal function criteria/monitoring/dose adjustment algorithm for combo with clomiphene/letrozole, (3) pregnancy exposure registry design for fetal/maternal safety of ovulation induction combo therapy.\n\nNow I need to respond as R&D 총괄, addressing where we align and diverge on timing and minimum data package for MFDS pre-consultation.\n\nKey points of alignment:\n- All three agree MFDS pre-consultation is needed\n- All three agree safety data (renal function, lactic acidosis, pregnancy) is critical\n- All agree current label is T2DM only\n\nKey points of divergence:\n- Timing: R&D wants to use pre-consultation TO define pathway with existing evidence; RA wants regulatory pathway clarity BEFORE pre-consultation (global precedents, strategic intent); PV wants safety data packages READY before pre-consultation\n- Minimum data package: R&D thinks existing clinical evidence (RCTs, meta-analyses) + safety management plan draft is sufficient for initial consultation; RA wants global precedents and strategic intent defined first; PV wants PK/PD data, risk management plan, and pregnancy registry design ready first\n\nMy stance: SUPPORT for proceeding with development review, but acknowledging the prerequisites. Confidence: 4 (strong evidence base but regulatory/safety gaps remain). Stance unchanged from opening statement.\n\nI need to cite relevant sources from the evidence package. Let me pick the most relevant ones:\n- NCT06405178 (letrozole combo Phase 3 completed)\n- NCT00795808 (clomiphene combo Phase 4 showing superiority)\n- PMID:29183107 (Cochrane meta-analysis)\n- PMID:31647106 (IPD meta-analysis letrozole vs clomiphene+metformin)\n- SPL boxed warning for lactic acidosis\n- SPL use_in_specific_populations for pregnancy warning\n\nLet me craft the response in Korean, 3-6 sentences, formal tone, citing source_ids."
+}

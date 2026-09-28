@@ -1,0 +1,31 @@
+{
+ "purpose": "board_discussion2_cco",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 10289,
+  "output": 2443
+ },
+ "created_at": "2026-09-28T17:19:15",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "간사님, CMO님과 R&D 총괄님께서 MA.32 3상 무효 결과(PMID:42063220)와 메타분석(PMID:34137294), 전임상적 우려(PMID:32321715)로 효능 근거가 없음을 재확인해 주셨고, PV 총괄님께서 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 1.9만 건, 항암화학요법 병용 시 신기능·간기능 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)을 강조하셨으며, RA 총괄님께서 허가사항 범위 내 중립적 사실 전달과 컴플라이언스 검토 원칙(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)을 제시하신 점에 모두 동의합니다. CEO님께서 '상업적으로 대응하거나 방치하지 않겠다'고 하신 방향에 맞춰, 의학부 주관으로 MA.32 무효 결과와 허가사항, 안전성 경고를 담은 HCP용 Q&A 문서와 안전성 서한(Dear Healthcare Professional Letter)을 법무·컴플라이언스 검토 후 배포하고, 대한암학회·대한종양내과학회 등 학회 채널을 통해 동일 내용을 안내하는 비상업적 액션을 즉시 추진해야 한다고 봅니다. 이는 프로모션이 아닌 의학적 사실 전달로 한정되며, 현장 의료진이 환자에게 '근거 없는 처방은 하지 않는다'는 일관된 메시지를 전할 수 있게 하는 최소한의 지원입니다.",
+  "cited": [
+   "PMID:42063220",
+   "PMID:34137294",
+   "PMID:32321715",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations",
+   "NCT01101438"
+  ],
+  "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때 구체적으로 어떤 질문이나 기대를 표현하시는지, 그리고 응대 시 가장 필요한 자료가 무엇인지 알려주십시오.",
+  "action_ko": "의학부 주도로 MA.32 무효 결과·허가사항·안전성 경고를 담은 HCP용 Q&A와 안전성 서한을 2주 내 법무·컴플라이언스 검토 후 배포하고, 주요 학회 채널을 통한 동일 안내를 추진하겠습니다."
+ },
+ "reasoning": "The user is asking me to respond as the CCO (Chief Commercial Officer) in a board meeting discussion. The context is:\n\n1. Hypothesis HYP-003: Metformin breast cancer adjuvant therapy demand increase (OFF_LABEL_DEMAND, DEVELOPMENT status)\n2. All executives have OPPOSED development/commercial response\n3. But field demand is real (3 claims from 3 HCPs)\n4. The moderator (간사) is asking me specifically: \"Since development is opposed by all but field demand exists, what specific non-commercial actions should the company take (e.g., medical affairs Q&A distribution, safety letter, academic channel guidance) so that HCPs can consistently tell patients 'we don't prescribe without evidence' without promoting off-label use?\"\n\nI need to:\n- Answer the question directly\n- Reference other executives' statements by title\n- Agree or disagree with their points\n- Provide stance (SUPPORT/HOLD/OPPOSE) - but since this is about non-commercial actions to address field demand, and I previously acknowledged field demand is real, I should probably SUPPORT taking non-commercial actions\n- Provide confidence (1-5)\n- stance_changed (boolean) - my stance hasn't changed from opening statement where I said field demand is real but evidence doesn't support it\n- utterance_ko (3-6 sentences, formal Korean, complete sentences)\n- cited (source_ids from evidence list only)\n- question_ko (one line for next clinician interview, or empty)\n- action_ko (one line for organizational action, or empty)\n\nKey evidence to cite:\n- PMID:42063220 (MA.32 negative result)\n- PMID:34137294 (meta-analysis negative)\n- PMID:32321715 (preclinical concern)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage (label - T2DM only)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning (lactic acidosis)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use (renal monitoring)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations (hepatic impairment avoidance)\n- NCT01101438 (MA.32 trial)\n- FAERS data (lactic acidosis 19,411, AKI 18,273)\n\nMy previous opening statement: \"현장에서는 유방암 환자들이 언론 보도를 보고 메트포르민 보조요법 처방을 요청하는 사례가 3건, 3명의 의료진으로부터 보고되었습니다. 그러나 가장 큰 3상 RCT인 MA.32 시험(NCT01101438)에서 메트포르민이 무침습 생존율과 전체 생존율을 개선하지 못했음이 확인되었습니다(PMID:42063220). 메타분석에서도 전이·재발 유방암에서 전체 생존과 무진행 생존에 유의한 효과가 없었습니다(PMID:34137294). 지지 근거는 주로 역학·관찰 연구에 머물러 있고, 허가사항에는 제2형 당뇨병만 적응증으로 명시되어 있습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage). 환자 수요는 실재하나 그 근거가 임상적 사실과 괴리되어 있어, 의료진이 환자에게 무엇을 설명해야 할지 현장의 니즈를 먼저 파악해야 합니다.\"\n\nIn round 1, I said: \"CMO님께서 지적하신 MA.32 3상 결과(PMID:42063220)와 메타분석(PMID:34137294)의 무효 근거, PV 총괄님께서 강조하신 젖산산증 1.9만 건과 급성신손상 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning, FAERS 자료), 그리고 RA 총괄님께서 경고하신 허가 외 사용 권유의 규제 위반 소지(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)는 모두 현장 의료진이 환자에게 정확히 전달해야 할 핵심 사실입니다. 현재 허가사항에 유방암 적응증이 없고 제2형 당뇨병만 명시되어 있는 상황에서, 의료진이 환자 요청에 대해 '근거 없는 처방은 하지 않는다'는 일관된 메시지를 전할 수 있도록 법무·의학부 검토를 거친 표준 안내 문구가 시급히 필요하다고 봅니다. 특히 항암화학요법 병용 시 신기능·간기능 모니터링 강화와 간장애 환자 금기(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations) 같은 구체적 안전성 정보도 포함되어야 합니다.\"\n\nNow the moderator asks me specifically about concrete non-commercial actions.\n\nMy stance: SUPPORT (for taking non-commercial actions to equip HCPs with accurate information)\nConfidence: 4 (strong but not absolute since need legal/compliance review)\nstance_changed: false (consistent with my previous position)\n\nUtterance should:\n- Acknowledge the question\n- Reference other executives' points (CMO, PV 총괄, RA 총괄, CEO)\n- Propose specific non-commercial actions: medical affairs-led Q&A, safety communication (Dear Healthcare Professional letter), academic society channel guidance\n- Emphasize these are non-promotional, evidence-based, compliance-reviewed\n- Mention the need for consistent messaging about MA.32 negative results, label restrictions, safety warnings\n\nQuestion for clinicians: What specific questions do breast cancer patients ask when requesting metformin? What materials would help you respond?\n\nAction: Medical affairs to draft HCP Q&A and safety communication for legal/compliance review within 2 weeks."
+}

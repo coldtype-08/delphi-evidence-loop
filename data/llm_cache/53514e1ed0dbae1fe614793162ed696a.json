@@ -1,0 +1,26 @@
+{
+ "purpose": "board_discussion2_pv_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 10880,
+  "output": 1184
+ },
+ "created_at": "2026-09-28T18:17:21",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 5,
+  "stance_changed": false,
+  "utterance_ko": "간사님, 약물감시 총괄로서 당뇨 전단계 안전성 데이터베이스 재분석을 규제기관 사전 미팅보다 먼저 완료해야 한다고 봅니다. FAERS 상위 반응에 젖산산증 19,411건과 급성신손상 18,273건이 올라와 있고(FAERS 상위 반응), 박스 경고가 당뇨 전단계 환자군을 특정하지 않으며(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning), 현재 허가사항에는 이 환자군 별도 용량·용법과 신기능 모니터링 경로가 없습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use). RA 총괄님께서 말씀하신 사전 미팅(Type B/Pre-sNDA)에 안전성 패키지 없이 진입하면 FDA가 당뇨 전단계 연령·신기능·병용약물별 층화 분석과 위험완화전략을 요구하며 미팅이 지연될 가능성이 큽니다. PV 총괄로서 앞서 제시한 8~11개월(재분석 3~4개월, 위험완화전략 2~3개월, PMR 프로토콜 3~4개월) 안전성 선행 작업이 끝나고 나서 사전 미팅을 잡는 것이 전체 일정을 2~3개월 단축하는 경로입니다. R&D 총괄님께서 말씀하신 패키지 정리 시작에는 동의하나, 안전성 프로파일 정립이 선행돼야 유효성 패키지와 결합해 완결된 sNDA 패키지가 됩니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use"
+  ],
+  "question_ko": "당뇨 전단계 환자에서 메트포르민 장기 처방 시 신기능 모니터링 주기와 젖산산증 조기 발견을 위한 임상 지표를 현장 의료진이 어떻게 운영 중인지 확인해 주십시오.",
+  "action_ko": "FAERS 당뇨 전단계 연령·신기능·병용약물별 층화 분석 착수 및 위험완화전략(REMS 수준 모니터링 프로토콜) 초안 작성 개시"
+ },
+ "reasoning": "The user is asking me to respond as the PV 총괄 (Pharmacovigilance Head) to a specific question from the moderator about whether regulatory pre-meeting (Type B/Pre-sNDA) or prediabetes safety database re-analysis should be completed first, and the impact on overall timeline. I need to reference other attendees' statements by title and agree/disagree.\n\nLet me analyze the context:\n- RA 총괄 said regulatory pre-meeting should come first (HOLD until pre-meeting done)\n- PV 총괄 (me) said safety profile establishment first (HOLD until safety profile done) - 8-11 months for safety DB re-analysis, risk mitigation, PMR protocol\n- R&D 총괄 said start package preparation now (SUPPORT for proceeding)\n\nThe question asks me to choose between regulatory pre-meeting vs safety database re-analysis first, and explain timeline impact.\n\nAs PV 총괄, my lens is safety signals, boxed warnings, FAERS top reactions, renal risk in this population, AE handling pathways. I've already stated safety profile must be established first. The FAERS data shows lactic acidosis 19,411 and acute kidney injury 18,273 - top signals. Prediabetes patients have higher renal impairment risk. No prediabetes-specific dosing or monitoring in label.\n\nI should maintain HOLD stance, emphasize safety first, and explain that doing regulatory meeting without safety package would be premature/risky. Timeline: safety DB re-analysis 3-4 months, risk mitigation 2-3 months, PMR protocol 3-4 months = 8-11 months total. Regulatory meeting after safety package is ready would be more productive.\n\nI need to cite sources from the evidence package: SPL boxed warning, FAERS top reactions, label dosing/geriatric use sections, and possibly the DPP trial references for context.\n\nLet me craft the response in Korean, 3-6 sentences, formal 존댓말, citing source_ids from evidence list."
+}

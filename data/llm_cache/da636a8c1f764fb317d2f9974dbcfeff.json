@@ -1,0 +1,25 @@
+{
+ "purpose": "board_opening_pv_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6872,
+  "output": 1307
+ },
+ "created_at": "2026-09-28T17:30:50",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "약물감시 관점에서 이 가설은 HOLD 의견을 냅니다. 허가자료의 박스 경고에서 젖산산증 사망례가 명시되어 있고 FAERS 상위 반응에 젖산산증 19,411건과 급성신손상 18,273건이 올라와 있어 신기능 모니터링이 필수적인 이 환자군에서 안전성 검증이 선행되어야 합니다. 레트로졸 또는 클로미펜과의 병용 시 위장관계 이상반응(오심 30,267건, 설사 28,320건, 구토 19,669건)이 순응도를 떨어뜨리고 탈수·신기능 악화를 유발할 수 있는 점도 우려됩니다. 가임기 여성에게 의도치 않은 임신 가능성을 알리라는 허가사항 일반 권고만 있을 뿐, 배란 유도 목적 병용요법에 대한 안전성 자료는 허가범위 밖에 있습니다. 따라서 신기능 기준·모니터링 주기·병용 시 용량 조절 지침이 마련되기 전에는 진행에 신중해야 합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations"
+  ],
+  "question_ko": "현장 의료진은 메트포르민 병용 시 신기능 검사 주기와 젖산산증 의심 증상 교육을 어떻게 시행하고 계십니까?",
+  "action_ko": "PCOS 여성 대상 메트포르민-레트로졸/클로미펜 병용요법의 안전성 프로파일(신기능 변화, 젖산산증 발생률, 위장관계 이상반응로 인한 중단율) 수집을 위한 시판후 조사 계획 수립을 요청합니다."
+ },
+ "reasoning": "The user is asking for my opening statement as the PV (Pharmacovigilance) Lead for the board meeting on HYP-001. I need to provide my initial position based on the safety lens - looking at safety signals, boxed warnings, FAERS top reactions, and risks specific to this patient population (renal function, combination therapy).\n\nLet me analyze the data from the hypothesis package:\n\n1. **Boxed Warning**: Lactic acidosis - postmarketing cases resulting in death, hypothermia, hypotension, resistant bradyarrhythmias. This is a serious safety concern.\n\n2. **FAERS Top Reactions** (from 440,270 total reports):\n   - Nausea: 30,267\n   - Diarrhoea: 28,320\n   - Blood glucose increased: 27,661\n   - Drug ineffective: 22,819\n   - Fatigue: 21,563\n   - Vomiting: 19,669\n   - Lactic acidosis: 19,411\n   - Acute kidney injury: 18,273\n\n3. **Patient Population**: PCOS women with insulin resistance, combining with letrozole or clomiphene for ovulation induction. This is OFF_LABEL_USE (DEVELOPMENT status).\n\n4. **Key Safety Concerns for this population**:\n   - Renal function: Metformin is contraindicated in renal impairment. PCOS patients may have varying renal function.\n   - Lactic acidosis risk: Boxed warning, 19,411 FAERS reports\n   - GI side effects (nausea, diarrhea, vomiting) - very common, may affect compliance\n   - Combination therapy safety: Letrozole/clomiphene + metformin - need to assess drug-drug interactions and additive toxicities\n   - Pregnancy potential: Label mentions \"Advise premenopausal females of the potential for an unintended pregnancy\" - relevant since this is for ovulation induction\n\n5. **Evidence**: 9 SUPPORTS, 0 CONTRADICTS, 27 NEUTRAL - but most evidence is about efficacy, not safety in this specific combination/population.\n\nMy stance should be HOLD because:\n- There's a serious boxed warning (lactic acidosis)\n- High FAERS reports for lactic acidosis and acute kidney injury\n- This is off-label use in a population (PCOS women seeking pregnancy) where renal function monitoring and pregnancy planning are critical\n- Combination with letrozole/clomiphene hasn't been thoroughly evaluated for safety in the label\n- Need more safety data specific to this population and combination\n\nI need to cite relevant sources from the evidence list. Let me identify the relevant source_ids:\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning (lactic acidosis warning)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations (pregnancy potential)\n- The FAERS data is in the numbers section but not as individual evidence items with source_ids. I should reference the FAERS top reactions from the numbers data.\n\nWait, the rules say I can only use source_ids from the evidence list. The FAERS data is in the \"numbers\" section, not in the evidence array. But the boxed warning and label sections are in evidence. I'll cite those.\n\nLet me craft the response in Korean, 3-6 sentences, formal tone, conclusion first."
+}

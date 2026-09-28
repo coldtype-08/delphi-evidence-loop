@@ -1,0 +1,28 @@
+{
+ "purpose": "board_discussion2_ra_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 10258,
+  "output": 1388
+ },
+ "created_at": "2026-09-28T17:33:30",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "R&D 총괄님께서 식약처 사전 상담을 통해 규제 경로를 구체화하자고 하신 점, PV 총괄님께서 신기능·임신 안전성 보완 자료와 위험관리계획이 선행되어야 한다고 하신 점 모두 타당합니다. 세 분의 입장이 일치하는 지점은 현 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)이 제2형 당뇨병에 한정되어 있어 PCOS 적응증 확대에 별도 변경허가가 필수이고, 박스 경고의 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)이 가임기 여성에서 어떻게 관리될지 안전성 자료가 필요하다는 점입니다. 엇갈리는 지점은 사전 상담의 시점과 지참 자료입니다. R&D 총괄님은 기존 임상 근거(PMID:29183107, NCT00795808, NCT06405178)를 들고 상담을 통해 경로를 정하자고 하나, 저는 FDA·EMA가 메트포르민 PCOS 적응증에 대해 어떤 결정을 내렸는지 글로벌 선례와 내부 전략적 의도를 먼저 정리한 뒤 상담에 임해야 식약처가 요구하는 데이터 패키지 범위를 정확히 예측할 수 있다고 봅니다. PV 총괄님께서 요구하시는 약동학·약력학 자료와 임신 노출 레지스트리 설계는 상담 지참 자료로 포함하되, 이들이 확보되기 전이라도 선례 검토와 전략 확정을 통해 상담 일정을 앞당길 수 있는지 검토해야 합니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "PMID:29183107",
+   "NCT00795808",
+   "NCT06405178"
+  ],
+  "question_ko": "식약처 사전 상담 시 제출할 비교약물(레트로졸, 클로미펜 단독) 대비 메트포르민 병용의 추가 혜택을 입증할 임상시험 설계안이 준비되어 있습니까?",
+  "action_ko": "FDA·EMA의 메트포르민 PCOS 관련 규제 결정문과 선례를 정리해 내부 전략 문서로 작성하고, 식약처 사전 상담 신청 전 검토 일정을 확정한다."
+ },
+ "reasoning": "The user is asking me to respond as the RA 총괄 (Regulatory Affairs Head) in a board meeting discussion. The question is about the appropriate timing for a pre-submission meeting with MFDS (Korean FDA) and the minimum data package required for that meeting. I need to compare my position with R&D 총괄 and PV 총괄, noting where we align and where we differ.\n\nLet me analyze the positions:\n\n**R&D 총괄's position (from 1st round discussion):**\n- Pre-submission meeting with MFDS to clarify regulatory pathway\n- Bring existing evidence: letrozole combo Phase 3 (NCT06405178) results, clomiphene combo Phase 4 (NCT00795808), Cochrane meta-analysis (PMID:29183107)\n- Develop safety management plan with renal function criteria, monitoring intervals, dose adjustment guidelines for combination therapy\n- Commercial pathway can be defined later as strategic value of combination platform\n\n**RA 총괄's position (my previous statement in 1st round):**\n- Three preconditions:\n  1. Pre-meeting with MFDS to define clinical data package scope and variation approval feasibility\n  2. Regulatory pathway to overcome MFDS guideline constraints on off-label info dissemination (current label only T2DM)\n  3. Safety supplementary data: renal monitoring criteria, dose adjustment guidelines, lactic acidosis risk management in reproductive-age women (boxed warning)\n- Also need strategic intent review and global precedents (FDA, EMA decisions on metformin PCOS) BEFORE pre-meeting\n\n**PV 총괄's position (from 1st round):**\n- Three preconditions:\n  1. PK/PD data on how lactic acidosis risk (boxed warning) varies by dose/renal function in reproductive-age women\n  2. Risk management plan with renal function thresholds, monitoring intervals, dose reduction algorithms for GI AEs leading to dehydration/AKI\n  3. Pregnancy exposure registry design (current label only has general warning about unintended pregnancy)\n- T2DM long-term safety data doesn't cover this population's specificity\n- Patient safety before commercial pathway\n\n**Key alignments:**\n- All three agree MFDS pre-meeting is needed\n- All three agree safety management plan (renal monitoring, dose adjustment) is required\n- All three acknowledge current label is T2DM only\n\n**Key differences:**\n- **Timing**: R&D wants to use pre-meeting TO define pathway; RA wants pathway/precedents clarified BEFORE pre-meeting; PV wants specific safety data (PK/PD, pregnancy registry) BEFORE pre-meeting\n- **Data package**: R&D brings existing clinical evidence; RA wants global regulatory precedents + strategic intent; PV wants PK/PD data + pregnancy registry design\n- **Commercial vs safety priority**: RA aligns with CFO on strategic intent first; PV puts safety first; R&D sees commercial as secondary to platform strategy\n\nMy stance remains HOLD - regulatory pathway and safety data must be clarified before proceeding. Confidence 4/5. No stance change.\n\nI need to respond in Korean, formal business tone, 3-6 sentences, citing source_ids from the evidence package."
+}

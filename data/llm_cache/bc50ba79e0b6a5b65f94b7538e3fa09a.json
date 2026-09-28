@@ -1,0 +1,29 @@
+{
+ "purpose": "board_opening_pv_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6985,
+  "output": 1860
+ },
+ "created_at": "2026-09-28T18:14:43",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "약물감시 총괄로서 이 가설에 대해 HOLD 입장을 표명합니다. 메트포르민은 박스 경고로 젖산산증 사망례를 명시하고 있으며(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning), FAERS 상위 반응에 젖산산증 19,411건과 급성신손상 18,273건이 올라와 있습니다. 당뇨 전단계 환자는 신기능 저하 동반 비율이 높아 젖산산증 위험군이 될 수 있으나, 현재 허가사항에는 당뇨 전단계 별도 용량·용법이 없고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration), 노인에서 신기능 빈번 평가를 권고할 뿐 구체적 모니터링 경로가 없습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations). 적응증 자체가 제2형 당뇨병으로 한정되어 있어(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 허가외 사용 시 안전성 책임 소재가 불명확합니다. DPP 등 유효성 근거는 인정하나, 이 환자군에서의 안전성 프로파일과 유해사례 처리 체계가 먼저 정립돼야 진행 여부를 판단할 수 있습니다.",
+  "cited": [
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#warnings_and_cautions"
+  ],
+  "question_ko": "당뇨 전단계 환자에서 메트포르민 투여 시 신기능 모니터링 주기와 젖산산증 조기 발견을 위한 구체적 프로토콜을 현장에서 어떻게 운영 중이십니까?",
+  "action_ko": "당뇨 전단계 허가외 사용 시 안전성 모니터링 계획서(신기능·비타민B12·젖산산증 감시 포함) 초안 작성 및 PV 부서 검토 요청"
+ },
+ "reasoning": "The user is asking for my opening statement as the PV (Pharmacovigilance) Head for the board meeting on HYP-002 (metformin for prediabetes). I need to provide my initial position based on my lens - safety signals, boxed warnings, FAERS top reactions, risks specific to this patient population (renal function, concomitant therapy), and adverse event handling pathways.\n\nLet me analyze the evidence from a safety perspective:\n\n1. **Boxed Warning**: Lactic acidosis - postmarketing cases resulting in death, hypothermia, hypotension, resistant bradyarrhythmias (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)\n\n2. **FAERS Top Reactions** (from numbers.faers_top):\n   - NAUSEA: 30,267\n   - DIARRHOEA: 28,320\n   - BLOOD GLUCOSE INCREASED: 27,661\n   - DRUG INEFFECTIVE: 22,819\n   - FATIGUE: 21,563\n   - VOMITING: 19,669\n   - LACTIC ACIDOSIS: 19,411\n   - ACUTE KIDNEY INJURY: 18,273\n\n3. **Key Safety Concerns for Prediabetes Population**:\n   - Lactic acidosis risk (boxed warning) - 19,411 FAERS reports\n   - Acute kidney injury - 18,273 FAERS reports\n   - Renal function monitoring critical (geriatric use section mentions assess renal function more frequently)\n   - Vitamin B12 deficiency warning\n   - Hepatic impairment - avoid use\n   - No specific dosing for prediabetes (dosage_and_administration only for T2DM)\n\n4. **Label contradictions**: Indication limited to T2DM only (SPL:...#indications_and_usage CONTRADICTS)\n\n5. **Clinical trial evidence**: Multiple CTGOV studies show metformin use in prediabetes populations, but safety monitoring in these trials would be important.\n\nMy stance should be HOLD or OPPOSE from a safety perspective because:\n- The drug has a boxed warning for lactic acidosis\n- Significant FAERS signals for lactic acidosis and acute kidney injury\n- Prediabetes patients may have different renal function profiles\n- No established dosing for prediabetes\n- Off-label use without safety data specific to this population\n\nBut there's also supporting evidence from DPP and other trials showing benefit. So HOLD seems appropriate - safety concerns need addressing before supporting expansion.\n\nI need to cite only source_ids from the evidence list. Let me identify relevant ones:\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning (lactic acidosis warning)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage (indication limited to T2DM)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#warnings_and_cautions (lactic acidosis, B12 deficiency)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use (renal function monitoring)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations (hepatic impairment avoidance, renal monitoring)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration (no prediabetes dosing)\n- SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#pediatric_use (limited to T2DM)\n\nAlso the FAERS data is in numbers.faers_top but not as a source_id in evidence. The evidence list doesn't have FAERS as a source. I should only cite from the evidence list source_ids.\n\nLet me craft the response."
+}

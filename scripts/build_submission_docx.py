@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 OUT = DOCS / "[NVIDIA 해커톤_AI Pioneer_DELPHi].docx"
 NAVY, ORANGE, GREY = RGBColor(0x16, 0x26, 0x61), RGBColor(0xEF, 0x8B, 0x1C), RGBColor(0x55, 0x55, 0x55)
+CONSOLE = "https://delphi-console-production-8ae8.up.railway.app"
 APP = "https://delphi-web-production-52d6.up.railway.app"
 REPO = "https://github.com/coldtype-08/delphi-evidence-loop"
 PAGES = "https://coldtype-08.github.io/delphi-evidence-loop/report.html"
@@ -106,7 +107,8 @@ def build():
     r = p.add_run("Project DELPHi"); r.bold = True; r.font.size = Pt(11); r.font.color.rgb = NAVY
 
     t = doc.add_table(rows=0, cols=2); t.style = "Table Grid"
-    for k, url, label in [("배포 URL (웹 콘솔 — 직접 실행 가능)", APP, APP), ("GitHub 저장소", REPO, REPO),
+    for k, url, label in [("배포 URL — 콘솔 (홈 · 신호의 여정 · 가설 · 다중 에이전트 검증 · AI Board 회의실 · 안전 · 실행 기록)", CONSOLE, CONSOLE),
+                          ("API · 소개 페이지 (FastAPI)", APP, APP), ("GitHub 저장소", REPO, REPO),
                           ("정적 리포트 (실행 없이 결과 열람)", PAGES, PAGES),
                           ("실행 기록 (한 바퀴 전체 출력)", f"{REPO}/blob/main/docs/demo_run.txt", "docs/demo_run.txt"),
                           ("에이전트 스킬 정의", f"{REPO}/blob/main/skills/evidence-loop/SKILL.md", "skills/evidence-loop/SKILL.md")]:
@@ -137,7 +139,9 @@ def build():
         ["⑤ AI Board", "간사 + 임원 7인", "개회 → 모두발언 → 토론 → 최종 입장 → 회의록, 약 20턴 병렬. 입장 집계(확신 가중, 주무 ×1.5)와 인용 ID 검증은 코드가 하고 권고는 집계로 정한다. 허가 범위 밖 가설에 붙은 상업 액션은 코드가 차단해 기록에 남긴다."],
         ["⑥ 관문 2", "사람", "권고를 받아들이면 후속 질문이 다음 면담 체크리스트로 내려간다 — 루프가 닫힌다."],
     ], [1.1, 1.2, 4.4])
-    picture(doc, "intro.png", "소개 페이지(배포 URL 첫 화면): 왜 만들었나 → Fig. 01 분해도(아홉 칸 중 사람은 세 곳) → 무엇을 세나 → 규칙 → 데모 장면 → NVIDIA 스택.")
+    picture(doc, "console_home.png", "콘솔 홈: KPI(면담 · 언급 블록 · 가설 · 계약) · 상위 환자군 추세 · 신호 유형 분포 · 환자군 × 신호 교차 칩 · 안전성 신호.")
+    picture(doc, "journey.png", "신호의 여정: 현장 → SENSE → SCREEN → AI BOARD 레인. 코드가 세는 단계와 AI가 판단하는 단계(✦), 사람 관문 두 곳이 한 보드에 있다.")
+    picture(doc, "intro.png", "소개 페이지(API 첫 화면): 문제 정의 → 처리 순서 9단계 → 추출 항목 → 규칙 → 데모 결과 → NVIDIA 스택.")
     picture(doc, "overview.png", "콘솔 개요: 파이프라인 스트립 · «이 데모는 무엇을 하나» 안내 · 신호 지도(칸 크기 = 반복, 진하기 = 의료진 수, 점선 = 문턱 미달, 임계 근접) · 가설 표.")
     picture(doc, "notes.png", "면담 기록(입력) 화면: 합성 면담 12건 원문 위에 모델이 고른 발언이 형광펜으로 표시된다 — 표시된 자리가 코드가 검증한 원문 위치. 유해사례 후보는 다른 색으로 분리.")
 
@@ -172,7 +176,9 @@ def build():
         ["젖산산증 입원 · B12 결핍 신경병증", "2건", "—", "safety 큐. 분석에 섞이지 않는다."],
     ], [1.8, 0.7, 1.4, 2.8])
     picture(doc, "hyp003.png", "HYP-003 상세: 검색식 · KPI(PubMed 11 · RCT 3 · CT.gov 64 · 3상 6 · FAERS · Part D) · 근거 표(판정 · 출처 링크 · 인용 원문 위치 · 해석).")
-    picture(doc, "board.png", "AI Board 심의 기록: 입장 변화표(모두발언 → 최종) · 코드 집계와 권고 · 회의 기록(첫 문장이 결론, 인용 ID) · 차단된 상업 제안 · 회의록(중단 기준 · 위험 · 다음 면담 질문).")
+    picture(doc, "boardroom_top.png", "AI Board 회의실(콘솔): 회의 정보(안건 · 참석 7인 · 주무) · 참석자 레일(입장 칩) · 간사 질의 · 임원 발언이 순서대로 재생된다.")
+    picture(doc, "boardroom_verdict.png", "회의 끝의 의장 판정 패널: 코드 집계(지지 · 보류 · 반대, 주무 가중) · 권고 · 추진/조건부 추진/보류/기각 · 의장 서명. 판정은 사람이 내린다.")
+    picture(doc, "board.png", "AI Board 심의 기록(API 페이지): 입장 변화표(모두발언 → 최종) · 코드 집계와 권고 · 회의 기록 · 차단된 상업 제안 · 회의록(중단 기준 · 위험 · 다음 면담 질문).")
     picture(doc, "checklist.png", "체크리스트: 사람이 받아들인 권고의 후속 질문이 다음 면담 항목이 된다 — 루프가 닫히는 곳.")
 
     heading(doc, "6. 실행 · 데이터 · 보안")

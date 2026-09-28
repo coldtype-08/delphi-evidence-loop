@@ -1,0 +1,31 @@
+{
+ "purpose": "board_discussion2_pv_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 10291,
+  "output": 1393
+ },
+ "created_at": "2026-09-28T17:18:40",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 5,
+  "stance_changed": false,
+  "utterance_ko": "CCO님께서 현장 의료진의 실전적 응대 문구 필요성을, RA 총괄님께서 허가사항 범위 내 중립적 사실 전달과 컴플라이언스 검토를 강조하신 점에 전적으로 동의합니다. PV 관점에서 가장 시급한 비상업적 액션은 의학부 주관으로 '유방암 보조요법 목적 메트포르민 사용 시 젖산산증·급성신손상 위험 증가'를 알리는 안전성 서한(DHPC)을 배포하고, 위험관리계획(RMP)에 항암화학요법 병용군 신기능 모니터링 강화 조항을 추가하는 것입니다. MA.32 3상(NCT01101438, PMID:42063220)과 메타분석(PMID:34137294)에서 효능이 입증되지 않았고, 전임상적으로 휴면 ER+ 세포 생존 촉진 우려(PMID:32321715)까지 있는 상황에서 FAERS 젖산산증 19,411건과 급성신손상 18,273건, 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning), 신기능·간기능 주의사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)은 의료진이 환자에게 반드시 전달해야 할 객관적 사실입니다. 학회 채널을 통한 안전성 심포지엄 개최와 의학부 Q&A 문서 배포도 병행하되, 모든 자료는 '허가된 적응증은 제2형 당뇨병 혈당 조절뿐이며(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 유방암 재발 감소 효과는 입증되지 않았다'는 문구로 시작하고 끝나야 합니다.",
+  "cited": [
+   "PMID:42063220",
+   "PMID:34137294",
+   "PMID:32321715",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations",
+   "NCT01101438"
+  ],
+  "question_ko": "항암화학요법 병용 시 메트포르민 용량 조절 또는 중단 기준을 현장 의료진이 즉시 적용할 수 있도록 신기능·간기능 수치별 구체적 가이드를 마련해 주실 수 있습니까?",
+  "action_ko": "의학부 주관으로 젖산산증·급성신손상 위험을 강조한 안전성 서한(DHPC) 초안을 작성하고, RMP에 항암화학요법 병용군 신기능 모니터링 강화 조항을 추가하는 절차를 즉시 개시하겠습니다."
+ },
+ "reasoning": "The user is asking me to respond as the PV 총괄 (Pharmacovigilance Head) in a board meeting discussion. The context is about metformin off-label demand for breast cancer adjuvant therapy. All executives have opposed development/commercial response, but there's real field demand (3 claims from 3 HCPs). The chair is asking for specific non-commercial actions the company should take to help HCPs communicate \"no evidence for prescription\" consistently, without promoting off-label use.\n\nI need to:\n1. Respond as PV 총괄\n2. Address the chair's question about specific non-commercial actions\n3. Reference other attendees' statements by title\n4. Maintain OPPOSE stance on development/commercial response\n5. Provide specific safety-focused actions\n6. Use only cited evidence from the hypothesis package\n7. Follow the format: stance, confidence, stance_changed, utterance_ko, cited, question_ko, action_ko\n\nLet me think about what PV 총괄 would say:\n- Agree with CCO on need for field guidance\n- Agree with RA 총괄 on compliance/neutral communication\n- Emphasize safety risks: lactic acidosis (19,411 FAERS), acute kidney injury (18,273), boxed warning\n- Highlight that breast cancer patients on chemo have renal/hepatic impairment risks\n- Suggest specific PV actions: Dear Healthcare Professional Letter (DHPC) on safety risks, updated RMP, safety communication via medical affairs\n- Reference MA.32 negative result (PMID:42063220), meta-analysis (PMID:34137294), preclinical concern (PMID:32321715)\n- Reference label: boxed warning, geriatric use, specific populations\n\nStance remains OPPOSE (on development/commercial response), but supportive of safety communication actions. stance_changed = false.\n\nConfidence: 5 (strong evidence base)\n\nNow craft the response in Korean, 3-6 sentences, formal 존댓말, complete sentences, no bullets."
+}

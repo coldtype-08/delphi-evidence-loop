@@ -1,0 +1,29 @@
+{
+ "purpose": "board_opening_ceo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6305,
+  "output": 1230
+ },
+ "created_at": "2026-09-28T17:11:28",
+ "output": {
+  "stance": "OPPOSE",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "이번 가설은 유방암 환자들이 언론 보도만으로 메트포르민 보조요법을 요청하는 현상을 다루고 있습니다. 가장 큰 3상 RCT인 MA.32 시험(NCT01101438)에서 메트포르민이 무침습 생존율과 전체 생존율을 개선하지 못함이 확인됐고(PMID:42063220), 전이·재발 환자 메타분석에서도 전체 생존과 무진행 생존에 유의한 효과가 없었습니다(PMID:34137294). 전임상적으로는 에스트로겐 결핍 상태에서 휴면 ER+ 세포 생존을 촉진해 재발 위험을 높일 수 있다는 우려도 있습니다(PMID:32321715). 허가사항은 제2형 당뇨병 혈당 조절로 한정되며 유방암 적응증은 전혀 없습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage). 젖산산증 박스 경고와 FAERS 상위 이상사례를 볼 때, 근거 없이 보조요법으로 쓰는 것은 환자 안전상 감당하기 어려운 리스크입니다. 따라서 이 수요에 상업적으로 대응하거나 방치하지 않겠다는 것이 제 초기 입장입니다.",
+  "cited": [
+   "PMID:42063220",
+   "PMID:34137294",
+   "PMID:32321715",
+   "NCT01101438",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+  ],
+  "question_ko": "현장에서 환자 요청이 들어왔을 때 의료진은 어떻게 대응하고 있으며, 환자에게 어떤 근거를 설명하고 있습니까?",
+  "action_ko": "메디컬 어페어즈 주도로 근거 공백과 안전성 우려를 정리한 의료진 대상 커뮤니케이션 가이드를 금주 내 마련하겠습니다."
+ },
+ "reasoning": "The user is asking for the CEO's opening statement (모두발언) for the board meeting regarding hypothesis HYP-003 about metformin's off-label demand for breast cancer adjuvant therapy. I need to provide my initial position based on the evidence package.\n\nLet me analyze the evidence:\n- Hypothesis: Breast cancer patients are increasingly requesting metformin as adjuvant therapy after media reports about recurrence reduction\n- Label status: DEVELOPMENT (not approved for this indication)\n- Field signals: 3 claims from 3 HCPs\n- External tally: SUPPORTS 10, CONTRADICTS 3, NEUTRAL 19\n- Key evidence: MA.32 trial (NCT01101438) - large phase 3 RCT showed NO benefit for invasive disease-free survival or overall survival (PMID:42063220, CONTRADICTS)\n- Meta-analysis shows no significant effect on OS/PFS in metastatic/recurrent breast cancer (PMID:34137294, CONTRADICTS)\n- Preclinical study suggests metformin may promote dormant ER+ cell survival (PMID:32321715, CONTRADICTS)\n- Supporting evidence is mostly observational/epidemiological studies showing associations, not causal evidence from RCTs\n- Label only indicates type 2 diabetes, no mention of breast cancer\n- Safety concerns: lactic acidosis (boxed warning), FAERS shows significant adverse events\n\nAs CEO, my lens is comprehensive judgment - risk first, whether the organization can bear the decision, what needs confirmation.\n\nThe evidence strongly contradicts the hypothesis that metformin reduces recurrence in breast cancer adjuvant setting. The largest RCT (MA.32) was negative. Observational studies show associations but RCTs don't confirm. This is OFF_LABEL_DEMAND driven by media, not evidence.\n\nMy stance should be OPPOSE or HOLD. Given the strong negative RCT evidence and safety risks, I should OPPOSE proceeding with any commercial action, but HOLD on whether to actively discourage - need to understand patient safety implications better.\n\nActually, the hypothesis is about DEMAND increasing, not about efficacy. The demand is real (3 claims from HCPs). But as CEO, I need to judge whether we should respond to this demand. The evidence shows the demand is based on misleading media reports contradicted by RCT evidence. We should not promote or facilitate off-label use.\n\nStance: OPPOSE (to any commercial response to this demand)\nConfidence: 4 (strong RCT evidence against efficacy, safety risks)\nStance_changed: false (first statement)\nNeed to cite the key contradictory evidence: PMID:42063220 (MA.32), PMID:34137294 (meta-analysis), NCT01101438 (the trial itself), and label showing no breast cancer indication.\n\nQuestion for clinicians: How are they responding to patient requests?\nAction: Prepare medical affairs response clarifying evidence gap."
+}

@@ -1,0 +1,45 @@
+{
+ "purpose": "board_close",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_close_v1",
+ "mode": "tool_call",
+ "thinking": true,
+ "usage": {
+  "input": 14706,
+  "output": 2496
+ },
+ "created_at": "2026-09-28T17:35:24",
+ "output": {
+  "summary_ko": "메트포르민의 다낭성 난소 증후군(PCOS) 적응증 확대 가설(HYP-001)에 대한 경영 심의회를 개최했습니다. 현장 신호 6건(의료진 4명), 외부 근거 집계는 퍼브메드 7건 지지·8건 중립, 클리니컬트라이얼즈 2건 지지·14건 중립, 허가자료 5건 중립으로 총 지지 9건, 반대 0건, 중립 27건이었습니다. 최종 집계는 지지 1표, 보류 6표, 반대 0표(가중치 지지 4.0, 보류 26.0)로 권고는 HOLD이며, 라벨 상태는 DEVELOPMENT입니다. 주무 임원은 CMO입니다.",
+  "evidence_summary_ko": "주요 지지 근거는 코크란 메타분석(PMID:29183107), 개별 참여자 데이터 메타분석(PMID:31647106), 클로미펜 병용 4상 시험(NCT00795808), 레트로졸 병용 3상 시험(NCT06405178) 등에서 배란율·임신율 개선이 일관되게 확인되었습니다. 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205)은 제2형 당뇨병에 한정되며 PCOS·배란 유도·병용 요법·월경 회복·체중 감소 언급이 없습니다. 박스 경고로 젖산산증 위험이 명시되어 있고, FAERS 상위 이상반응에 젖산산증 19,411건, 급성신손상 18,273건, 오심 30,267건, 설사 28,320건 등이 보고되어 있습니다.",
+  "rationale_ko": "임상적 유효성 신호는 인정되나, 허가 범위 밖 적응증 확대를 위한 규제 경로가 미확정이고(식약처 변경허가 필수), 가임기 여성에서 젖산산증 위험·신기능 모니터링·임신 노출 안전성 자료가 부재하며, 제네릭 품목의 상업적 회수 경로와 전략적 의도가 불명확하여 자원 투입의 선행 조건이 충족되지 않았습니다. 이에 개발 검토 착수는 식약처 사전 상담 지참 패키지(기존 임상 근거 요약, 안전성 관리 계획 초안, 글로벌 선례 검토, 신기능·임신 안전성 보완 자료 확보 계획) 완성 후 재논의하기로 했습니다.",
+  "kill_criteria_ko": [
+   "식약처 사전 상담에서 추가 확증 임상시험이 필수적이라는 결론이 나고 그 규모·비용이 감당 불가능한 수준일 때",
+   "가임기 여성 PCOS 환자에서 메트포르민 병용요법의 젖산산증·급성신손상 발생률이 당뇨병 적응증 대비 유의하게 높다는 안전성 신호가 확인될 때",
+   "전략적 의도 검토 결과 상업적 회수 경로와 병용 플랫폼 가치가 모두 부정되어 내부 투자 우선순위에서 영구 제외될 때",
+   "신기능 기준치·모니터링 주기·용량 감량 알고리즘을 담은 위험관리계획 수립이 기술적·규제적으로 불가능하다고 판단될 때"
+  ],
+  "risks_ko": [
+   "규제 위험: 허가 외 사용 정보 전달만으로는 적응증 확대를 대체할 수 없어 식약처 가이드라인 위반 소지가 있음",
+   "안전성 위험: 박스 경고의 젖산산증 위험이 가임기 여성·병용요법에서 어떻게 달라지는지 미확인, 위장관계 이상반응에 따른 순응도 저하·탈수·신기능 악화 연쇄 가능성",
+   "상업 위험: 제네릭 전환으로 독점권 부재, Part D 연간 4억~6억 달러 지출은 당뇨병 기준이며 PCOS 확대 시 추가 매출·독점 가치 불투명",
+   "운영 위험: R&D·RA·PV 총괄 간 식약처 사전 상담 시점과 지참 자료 완성도에 대한 이견으로 내부 일정 지연 가능성"
+  ],
+  "follow_up_questions": [
+   {
+    "question_ko": "인슐린 저항성 PCOS 환자에서 메트포르민 병용 시 신기능 기준치(eGFR 컷오프)와 모니터링 주기를 현행 당뇨병 지침과 다르게 적용해야 한다고 보시는지요?",
+    "why_ko": "CMO가 환자 안전성 확보 차원에서 가임기 여성 대상 신기능 모니터링 체계의 차별화 필요성을 제기했기 때문입니다."
+   },
+   {
+    "question_ko": "레트로졸 또는 클로미펜 1차 요법 실패 시 메트포르민 병용을 어느 시점에, 어떤 용량 스케줄로 고려하시는지요?",
+    "why_ko": "R&D 총괄이 임상개발 프로토콜 설계를 위해 현장 처방 패턴과 용량 결정 근거를 확인할 필요가 있기 때문입니다."
+   },
+   {
+    "question_ko": "메트포르민 병용 처방 시 환자 본인 부담금과 보험 급여 현황이 처방 지속에 어떤 영향을 주는지 현장에서 체감하십니까?",
+    "why_ko": "CFO가 상업적 타당성 검토를 위해 실처방 환경의 경제적 장벽과 지속 처방 동인을 파악해야 하기 때문입니다."
+   }
+  ],
+  "closing_ko": "이번 회의는 메트포르민 PCOS 적응증 확대 가설의 임상적 유효성 신호는 인정하되, 규제 경로·안전성 관리 체계·상업적 타당성이 선행되어야 한다는 데 의견이 모아져 HOLD로 종결합니다. R&D·RA·PV 총괄은 식약처 사전 상담 지참 최소 패키지를 4주 내 확정해 보고하고, 전략기획팀은 시나리오별 비용-편익 분석과 전략적 의도 정의안을 2주 내 제출해 주시기 바랍니다. 차기 회의에서는 위 선행 조건 충족 여부를 기준으로 진행 여부를 재논의하겠습니다."
+ },
+ "reasoning": "The user wants me to write the meeting minutes (회의록) based on the provided data. I need to use the board_close_v1 tool to output the structured meeting minutes. The input includes the hypothesis package, meeting records, and the final tally/recommendation from the code. I must follow the rules: only facts, no opinions, Korean honorifics, first sentence as conclusion, etc. The tool requires specific fields: summary_ko, evidence_summary_ko, rationale_ko, kill_criteria_ko, risks_ko, follow_up_questions (max 3), closing_ko.\n\nI need to extract from the provided data:\n\n- Hypothesis: HYP-001, metformin, PCOS women, OFF_LABEL_USE, DEVELOPMENT label status.\n- Field signals: 6 mentions, 4 HCPs, 6 claim IDs.\n- External tally: PubMed 7 supports, 0 contradicts, 8 neutral; CT.gov 2 supports, 0 contradicts, 14 neutral; Label 0 supports, 0 contradicts, 5 neutral. Totals: 9 supports, 0 contradicts, 27 neutral.\n- Evidence: list of PubMed, CT.gov, Label sources with stances and quotes.\n- Human review by 박건태.\n- Meeting records: opening, statements, discussions, final positions, tally.\n- Tally: counts: SUPPORT 1, HOLD 6, OPPOSE 0. Weights: SUPPORT 4.0, HOLD 26.0, OPPOSE 0.0. Lead: CMO. Recommendation: HOLD. Label_status: DEVELOPMENT. Proposals with questions and actions. Blocked_commercial_actions: empty.\n\nNow I need to write the meeting minutes in Korean, following the format.\n\nFirst, summary_ko: Should summarize the meeting: hypothesis HYP-001 discussed, field signals, external evidence tally, final recommendation HOLD with 1 SUPPORT, 6 HOLD, 0 OPPOSE. Lead CMO. Label status DEVELOPMENT.\n\nEvidence_summary_ko: Summarize evidence: PubMed 7 supports, 8 neutral; CT.gov 2 supports, 14 neutral; Label 5 neutral. Key supporting studies: Cochrane meta-analysis (PMID:29183107), individual participant data meta-analysis (PMID:31647106), clomiphene combination phase 4 (NCT00795808), letrozole combination phase 3 (NCT06405178). Label limited to type 2 diabetes, boxed warning for lactic acidosis. FAERS top adverse events: nausea, diarrhea, lactic acidosis, acute kidney injury.\n\nRationale_ko: Reason for HOLD: clinical efficacy signals consistent but regulatory pathway undefined (label limited to T2DM), safety concerns (lactic acidosis risk in reproductive-age women, need for renal monitoring, pregnancy exposure registry), commercial uncertainty (generic, no exclusivity, unclear ROI). Need for pre-IND meeting with MFDS, safety management plan, global precedent review, strategic intent clarification.\n\nKill_criteria_ko: Conditions to kill hypothesis: if MFDS pre-meeting indicates additional pivotal trials required beyond feasible scope; if safety data shows unacceptable lactic acidosis risk in PCOS population; if strategic review concludes no viable commercial/strategic rationale; if renal monitoring plan cannot be established.\n\nRisks_ko: Regulatory risk (off-label promotion constraints), safety risk (lactic acidosis, renal impairment, GI adverse events affecting adherence), commercial risk (generic, no exclusivity, investment without clear return), operational risk (misalignment on pre-meeting timing and package).\n\nFollow_up_questions: Need up to 3 questions for next meeting with clinicians. From proposals, there are many questions. I should pick 3 that are most critical. The proposals include questions from each attendee. I'll select three that cover safety monitoring, dosing schedule, and insurance/reimbursement impact. But the instruction says \"다음 면담에서 의료진에게 물을 질문 3개 이내\". So questions for clinicians. The proposals have questions from each speaker. I'll pick three distinct ones: maybe CMO's question on renal function cutoff and monitoring, R&D's question on timing and dosing of metformin add-on, CFO's question on patient out-of-pocket and insurance impact. Or PV's question on renal monitoring and discontinuation criteria. I'll choose three.\n\nClosing_ko: Final closing statement summarizing decision and next steps.\n\nNow I'll call the tool."
+}

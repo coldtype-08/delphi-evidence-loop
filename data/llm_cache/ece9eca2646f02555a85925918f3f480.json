@@ -1,0 +1,39 @@
+{
+ "purpose": "board",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_memo_v1",
+ "mode": "tool_call",
+ "thinking": true,
+ "usage": {
+  "input": 5867,
+  "output": 1674
+ },
+ "created_at": "2026-09-28T16:08:22",
+ "output": {
+  "label_status": "DEVELOPMENT",
+  "recommendation": "DROP",
+  "evidence_summary_ko": "유방암 보조요법으로서 메트포르민의 재발 억제 효과를 검증한 대규모 3상 RCT(MA.32, NCT01101438)에서 위약 대비 무침습 생존율(IDFS) 및 전체 생존율(OS) 개선 효과가 없음이 확인됨(PMID:42063220). 메타분석에서도 전이/재발 유방암에서 OS(HR 1.13) 및 PFS(HR 1.14) 유의한 차이 없음(PMID:34137294). 전임상적으로는 메트포르민이 휴면 ER+ 세포 생존을 촉진해 재발 위험을 높일 수 있다는 기전적 우려도 제기됨(PMID:32321715). 지지 근거는 주로 역학 관찰 연구와 2상 이하 소규모 시험에 국한되며, 허가사항(라벨)에는 제2형 당뇨병 혈당 조절 외 적응증 없음. 현장 신호 3건(의료진 3명)은 언론 보도 후 환자 요청 증가 현상을 반영하나, 최고 수준 근거(RCT)와 상충.",
+  "rationale_ko": "가장 강력한 근거인 MA.32 3상 RCT(NCT01101438, 완료)가 보조요법 세팅에서 메트포르민의 재발 억제 효과를 입증하지 못함. 이는 가설이 겨냥한 '유방암 환자 보조요법으로서 재발 감소'와 정확히 일치하는 피험군·중재·대조·1차 종료점을 가진 결정적 시험임. 메타분석(PMID:34137294)도 전이/재발 설정에서 생존 이득 없음을 확인. 지지 근거(역학 연관성, 2상 pCR 탐색 등)는 인과관계 입증력이 낮고, 진행 중인 3상 6건(NCT04387630 등)은 모집 중이거나 다른 세팅(수술 전, 예방, 심장보호 등)을 다루어 기존 음성 결과를 뒤집을 직접 증거가 되지 못함. 라벨에도 유방암 적응증 없음. 따라서 추가 투자·검토 없이 기각(DROP) 권고.",
+  "follow_up_questions": [
+   {
+    "question_ko": "MA.32 3상 결과(보조요법 무효) 발표 후에도 환자·보호자가 메트포르민 처방을 요청하는 주된 이유는 무엇이라고 보십니까?",
+    "why_ko": "음성 RCT 결과가 알려진 시점에도 수요가 지속되는 동인(언론 보도, 인터넷 커뮤니티, 의사 권유 등)을 파악해 향후 커뮤니케이션 전략 수립에 활용하기 위함"
+   },
+   {
+    "question_ko": "진료 현장에서 메트포르민 보조요법 요청 시, MA.32 결과와 라벨 외 사용임을 어떻게 설명하고 계십니까?",
+    "why_ko": "의료진의 설명 방식과 환자 수용도 차이를 확인해, 근거 기반 상담 가이드 필요성 판단에 참고하기 위함"
+   },
+   {
+    "question_ko": "당뇨병 동반 유방암 환자에서 메트포르민을 혈당 조절 목적으로 처방 중인 경우, 보조요법 효과 기대를 별도로 논의하십니까?",
+    "why_ko": "당뇨병 적응증으로 이미 복용 중인 환자군에서 '보조요법 효과'에 대한 오해·기대 형성 여부를 확인하기 위함"
+   }
+  ],
+  "risks_ko": [
+   "최고 수준 근거(3상 RCT) 음성 결과에도 불구하고 오프라벨 사용 권유·처방 시 법적·윤리적 리스크",
+   "언론·온라인 매체 보도로 인한 환자 기대 형성과 근거 간 괴리 확대",
+   "메트포르민 장기 복용 시 젖산산증(박스 경고), 신기능 저하 등 안전성 이슈가 암 환자군에서 더 크게 나타날 가능성",
+   "자원 투입(임상시험, 의학부 활동) 대비 임상적 유익성 입증 실패로 인한 기회비용"
+  ]
+ },
+ "reasoning": "The user has provided a comprehensive evidence package for hypothesis HYP-003 about metformin for breast cancer adjuvant therapy. Let me analyze this carefully.\n\nKey points:\n1. Hypothesis: Breast cancer patients requesting metformin as adjuvant therapy after media reports about recurrence reduction\n2. Label status: DEVELOPMENT (off-label use)\n3. Field signals: 3 mentions from 3 HCPs\n4. External evidence tally: 10 SUPPORTS, 3 CONTRADICTS, 19 NEUTRAL\n5. Critical evidence: Large Phase 3 RCT (MA.32, NCT01101438) CONTRADICTS - showed no benefit in invasive disease-free survival or overall survival\n6. Other CONTRADICTS: Meta-analysis showing no significant effect on OS/PFS in metastatic/recurrent breast cancer; preclinical study suggesting metformin may promote dormant ER+ cell survival\n7. SUPPORTS are mostly observational/epidemiological studies and early-phase trials\n8. Label: Only indicated for type 2 diabetes, no mention of breast cancer\n9. Human review by 박건태: \"3상 무효 결과까지 읽음\" (read through Phase 3 negative results)\n\nGiven the rules:\n- DEVELOPMENT label status → recommendation must be PROCEED_TO_EXPERT_REVIEW, HOLD, or DROP\n- Must lead with contradictory evidence (especially large RCT)\n- No commercial activity suggestions\n- Follow-up questions for field interviews (max 3)\n- Use only numbers from input\n\nThe MA.32 trial is a large Phase 3 RCT that directly contradicts the hypothesis. This is the strongest evidence. The meta-analysis also contradicts. The supports are mostly observational/epidemiological which are lower quality evidence.\n\nGiven the strong negative Phase 3 data, the recommendation should be DROP or HOLD. Since there are still ongoing trials (6 Phase 3 recruiting), HOLD might be appropriate to monitor upcoming results. But the MA.32 trial is completed and negative - that's a definitive result for the adjuvant setting.\n\nActually, looking at the CT.gov data: NCT01101438 (MA.32) is \"completed, phase 3, early breast cancer, metformin vs placebo for recurrence prevention\" - and the PubMed CONTRADICTS entry says it \"did not impact invasive disease-free survival or overall survival\". This is a definitive negative result for the exact hypothesis (adjuvant therapy for recurrence prevention).\n\nThe other SUPPORTS trials are mostly Phase 2 or earlier, or for different settings (neoadjuvant, prevention in high-risk, metastatic with PIK3CA mutation, etc.).\n\nGiven the definitive negative Phase 3 result for the exact indication, DROP seems appropriate. But HOLD could also be argued since there are other ongoing trials. However, the MA.32 trial was specifically designed for this hypothesis (adjuvant metformin for recurrence prevention in early breast cancer) and was negative.\n\nI'll recommend DROP with rationale leading with the MA.32 result."
+}

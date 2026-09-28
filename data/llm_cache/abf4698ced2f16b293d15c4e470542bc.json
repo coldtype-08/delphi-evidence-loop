@@ -1,0 +1,33 @@
+{
+ "purpose": "board_final_cco",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 12137,
+  "output": 1449
+ },
+ "created_at": "2026-09-28T18:19:02",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "현장 수요 4건은 고위험 당뇨 전단계 환자에서 메트포르민 처방 필요성을 일관되게 제기하고 있어 수요의 실체는 확인됩니다. 외부 근거 역시 DPP 3상(NCT00038727)과 하위분석(PMID:32601731), 다민족 코호트(PMID:40970814) 등에서 당뇨 예방 효과가 재현되고 있습니다. 그러나 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)이 제2형 당뇨병으로 한정돼 당뇨 전단계는 명백히 허가 범위 밖이므로, 상업적 프로모션이나 영업 목표 설정 같은 액션은 제안할 수 없습니다. 토론에서 RA 총괄님과 PV 총괄님, R&D 총괄님께서 안전성 재분석 선행과 규제기관 사전 미팅 병행이라는 실행 경로에 수렴하신 점은 긍정적이나, 허가 확대 확정 전까지는 현장의 급여·처방 장벽과 의료진이 필요로 하는 안전성 정보를 파악하는 데 집중해야 합니다.",
+  "cited": [
+   "CLM-FN-2026-0702-01-01",
+   "CLM-FN-2026-0722-04-01",
+   "CLM-FN-2026-0729-05-02",
+   "CLM-FN-2026-0909-11-02",
+   "NCT00038727",
+   "PMID:32601731",
+   "PMID:40970814",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration"
+  ],
+  "question_ko": "당뇨 전단계 고위험 환자에게 메트포르민을 고려할 때, 급여 미적용 상태에서 환자 설명과 동의 과정에서 가장 어려움을 겪는 부분은 무엇입니까?",
+  "action_ko": "의료진 면담을 통해 허가외 사용 시 겪는 처방·급여 장벽과 안전성 정보 니즈를 체계적으로 수집해 차기 회의에 보고한다."
+ },
+ "reasoning": "The user wants me to provide the final position (최종 입장) as the CCO (최고상업책임자) after the discussion rounds. I need to consider the discussion that took place and formulate my stance.\n\nLet me review the key points from the discussion:\n\n1. **CMO**: Clinical validity supported by large RCTs (DPP 31% reduction, subgroup 43%), but off-label due to label restriction. Box warning for lactic acidosis and B12 deficiency, renal monitoring needed.\n\n2. **RA 총괄**: HOLD - Need regulatory pathway clarification first. sNDA or RWE pathway. Need pre-meeting with FDA. Safety package must address lactic acidosis risk.\n\n3. **PV 총괄**: HOLD - Need safety profile establishment first. FAERS shows lactic acidosis 19,411 cases, acute kidney injury 18,273. Need stratified analysis by age/renal function/comedications. Need REMS-like monitoring protocol. Need PMR plan. 8-11 months for safety work.\n\n4. **R&D 총괄**: SUPPORT - Efficacy package already strong. Need to start package preparation now. Safety re-analysis and regulatory pre-meeting can run in parallel. 12-18 months timeline.\n\n5. **CFO**: Resource efficiency high, but generic product limits commercial incentive. Priority comparison needed.\n\n6. **CCO (my previous statement)**: Field demand confirmed (4 HCPs). Clinical efficacy consistent. But label restricts to T2DM, so cannot propose commercial actions. Need to hear more from field about reimbursement/prescription barriers and information needs.\n\n7. **CEO**: Efficacy strong but safety monitoring burden. Legal/reimbursement risks of off-label use. Need to decide between clinical trial vs RWE pathway.\n\n**Discussion Round 1**: RA says regulatory pre-meeting first. PV says safety database re-analysis first. R&D says start package prep now, safety re-analysis and pre-meeting prep in parallel.\n\n**Discussion Round 2**: RA says pre-meeting first to define analysis scope, but can run safety re-analysis in parallel 2-3 months before meeting. PV says safety re-analysis must be done FIRST before pre-meeting, otherwise FDA will ask for it and delay. R&D agrees with PV: safety re-analysis first, parallel prep for pre-meeting, then meeting with preliminary data.\n\nAs CCO, my lens is: **field demand reality - what physicians and patients actually request, what the field needs to know. No commercial actions for off-label hypotheses.**\n\nFrom the discussion, the key commercial-relevant insights:\n- Field demand is real (4 HCPs mentioned need)\n- But label restriction (T2DM only) means no promotional/commercial actions possible\n- Physicians face reimbursement/prescription barriers\n- Need to understand what information physicians need to manage these patients safely off-label\n- The safety concerns (lactic acidosis, renal monitoring) are exactly what physicians would need guidance on\n- The regulatory pathway decision (sNDA vs RWE) affects timeline for any future commercial activity\n\nMy stance should reflect: The field demand is confirmed, but commercial action is blocked by label. The organization should focus on understanding physician information needs and barriers, while the regulatory/safety/clinical teams resolve the pathway. I should not shift to SUPPORT for commercial action since it's still DEVELOPMENT/off-label. HOLD seems appropriate - wait for regulatory clarity but continue field engagement to understand needs.\n\nLet me formulate the final position."
+}

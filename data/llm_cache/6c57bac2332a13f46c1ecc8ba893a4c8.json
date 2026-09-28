@@ -1,0 +1,29 @@
+{
+ "purpose": "board_discussion2_rnd_head",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 10867,
+  "output": 1418
+ },
+ "created_at": "2026-09-28T18:17:33",
+ "output": {
+  "stance": "SUPPORT",
+  "confidence": 4,
+  "stance_changed": false,
+  "utterance_ko": "간사님, 임상개발 관점에서 당뇨 전단계 안전성 데이터베이스 재분석을 먼저 완료하고, 그 예비 결과를 바탕으로 규제기관 사전 미팅(Type B/Pre-sNDA)에 임하는 것이 전체 일정을 단축하는 경로입니다. PV 총괄님께서 제시하신 3~4개월 재분석 기간 동안 RA 총괄님께서 언급하신 사전 미팅 준비(전담팀 구성, 질문서 작성, 컨설팅 계약)를 병행하면, 미팅 시점에 이미 연령·신기능·병용약물별 층화 분석 예비치와 젖산산증 위험완화전략 초안을 들고 갈 수 있습니다. DPP 3상(NCT00038727)과 하위분석(PMID:32601731), 다민족 코호트(PMID:40970814) 등 유효성 패키지는 이미 확보돼 있으므로, FDA가 가장 우려할 박스 경고 젖산산증(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning, FAERS 19,411건)과 당뇨 전단계 별도 용량 부재(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration)에 대한 답변을 미팅에서 바로 제시할 수 있습니다. 반대로 미팅을 먼저 하면 안전성 공백으로 인해 추가 자료 제출 요구만 받고 2차 미팅이 불가피해져 전체 3~6개월이 더 지연됩니다. 따라서 안전성 재분석 선행, 병행 준비, 미팅 후속이라는 순서가 최적입니다.",
+  "cited": [
+   "NCT00038727",
+   "PMID:32601731",
+   "PMID:40970814",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+  ],
+  "question_ko": "당뇨 전단계 환자에서 신기능 단계별(eGFR 구간) 젖산산증 발생률을 기존 FAERS·전자의무기록 데이터로 층화 분석할 수 있는지, 그리고 분석에 필요한 최소 환자 수와 추적 기간을 어떻게 설정하실지 여쭙고 싶습니다.",
+  "action_ko": "안전성 데이터베이스 재분석 프로토콜(연령·신기능·병용약물 층화, 젖산산증·급성신손상·비타민 B12 결핍 엔드포인트)을 2주 내 확정하고, 병행해 FDA Pre-sNDA 미팅 요청서와 질문서 초안을 작성해 RA 총괄과 공유한다."
+ },
+ "reasoning": "The user is asking me to respond as the R&D 총괄 (Head of R&D) in a board meeting discussion. The question is about whether regulatory pre-meeting (Type B/Pre-sNDA) or safety database re-analysis for prediabetes should be done first, and the impact on overall timeline.\n\nLet me analyze the context:\n- This is HYP-002: metformin for prediabetes (DEVELOPMENT label status)\n- RA 총괄 says: regulatory pre-meeting first, then hold until that's done\n- PV 총괄 says: safety profile establishment first (8-11 months), then regulatory discussion\n- R&D 총괄 (me) previously said: start package preparation now, both are needed\n\nThe question asks me to choose which should be done FIRST and explain the sequence impact on timeline.\n\nAs R&D 총괄, my lens is clinical development feasibility. I need to consider:\n1. The efficacy package is already strong (DPP, sub-analyses, multiple RCTs)\n2. Safety re-analysis is needed for the specific prediabetes population\n3. Regulatory pre-meeting would benefit from having safety re-analysis done first to have a complete package\n4. But pre-meeting could also clarify what exactly FDA wants\n\nLooking at the evidence:\n- Strong efficacy: NCT00038727 (DPP 31% reduction), PMID:32601731 (43% in high-risk IFG), PMID:40970814 (Asian cohort), PMID:39196872 (Nigerian RCT)\n- Safety concerns: FAERS lactic acidosis 19,411, AKI 18,273; boxed warning; no prediabetes-specific dosing\n- Label: only T2DM indication (SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)\n\nMy position: Safety database re-analysis should come FIRST because:\n1. The pre-sNDA meeting is more productive with a complete safety profile for the target population\n2. FDA will ask about lactic acidosis risk in prediabetes (renal impairment prevalence)\n3. The re-analysis (3-4 months per PV) can run in parallel with pre-meeting preparation\n4. But the pre-meeting itself should wait for preliminary safety findings\n\nActually, looking more carefully: PV 총괄 said 3-4 months for safety database re-analysis. RA 총괄 said pre-meeting preparation needs 3-5 people and consulting. These can be done in parallel, but the pre-meeting should be scheduled AFTER preliminary safety findings are available.\n\nLet me formulate my response as R&D 총괄. I'll cite relevant evidence."
+}

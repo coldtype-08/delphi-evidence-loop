@@ -7,7 +7,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from fastapi import APIRouter, Body, Query
+from fastapi import APIRouter, Body, Query, Request
 from fastapi.responses import JSONResponse
 
 from . import board, live, runner, store
@@ -35,20 +35,19 @@ def _notes() -> list[dict]:
     return json.loads(store.FIELD_NOTES.read_text())
 
 
+def _with_runtime(state: dict) -> dict:
+    """Runtime-only markers the card mapping reads (never saved — compat_hyp strips them before store.save)."""
+    state["_screening"] = sorted(runner.SCREENING)
+    return state
+
+
 def _hyp_detail(state: dict, hid: str) -> dict:
-    h = store.hypothesis(state, hid)
-    try:
-        from . import compat_hyp
-        return compat_hyp.hyp_detail(h, state, store.contract())
-    except ImportError:   # minimal card until the full mapping module is present
-        memo = state["board"].get(hid) or {}
-        dec = memo.get("decision")
-        return {"id": hid, "titleKo": h["statement_ko"], "kind": "IN_LABEL" if h["label_status"] == "IN_LABEL" else "DEVELOPMENT",
-                "status": "IN_REVIEW" if h["status"] in ("REVIEWED", "DELIBERATED") else h["status"], "patientSegment": h["segment"],
-                "commercialActionBlocked": h["label_status"] != "IN_LABEL", "notBoardReadyReason": None,
-                "driverSummaryKo": f'{h["field"]["mentions"]}회 · 의료진 {h["field"]["hcps"]}인', "aggregate": {"claimCount": h["field"]["mentions"], "distinctHcp": h["field"]["hcps"], "distinctRegions": 0},
-                "decisions": [{"decision": dec["accepted"], "decidedBy": dec["by"], "rationaleKo": memo.get("rationale_ko"), "decidedAt": dec["at"]}] if dec else [],
-                "approvedActions": []}
+    from . import compat_hyp
+    return compat_hyp.hyp_detail(store.hypothesis(state, hid), _with_runtime(state), store.contract())
+
+
+def _refused(e) -> JSONResponse:
+    return err(getattr(e, "status", 409), getattr(e, "code", "REFUSED"), getattr(e, "message_ko", str(e)))
 
 
 # ── board room ─────────────────────────────────────────────────────────────────
@@ -263,13 +262,16 @@ def hypotheses_generate():
 @router.post("/hypotheses/transition")
 def hypotheses_transition(body: dict = Body(...)):
     from . import compat_hyp
-    return ok(compat_hyp.transition(store.load(), body.get("ids") or [], body.get("to")))
+    try:
+        return ok(compat_hyp.transition(_with_runtime(store.load()), body.get("ids") or [], body.get("to")))
+    except compat_hyp.Refused as e:
+        return _refused(e)
 
 
 @router.get("/hypotheses")
 def hypotheses_list(stage: str | None = None):
     from . import compat_hyp
-    state, contract = store.load(), store.contract()
+    state, contract = _with_runtime(store.load()), store.contract()
     return ok([compat_hyp.hyp_brief(h, state, contract) for h in state["hypotheses"]])
 
 
@@ -288,6 +290,8 @@ def hypothesis_screen(hid: str):
         store.hypothesis(state, hid)
     except SystemExit:
         return err(404, "NOT_FOUND", "가설이 없습니다.")
+    if hid in runner.SCREENING:
+        return err(409, "RUN_IN_PROGRESS", "이 가설의 근거 조사가 진행 중입니다.")
     runner.start_screen(hid)
     return ok({"started": True, "hypothesisId": hid})
 
@@ -296,7 +300,9 @@ def hypothesis_screen(hid: str):
 def hypothesis_evidence_review(hid: str, body: dict = Body(...)):
     from . import compat_hyp
     try:
-        return ok(compat_hyp.evidence_review(store.load(), hid, bool(body.get("reviewed", True)), body.get("reviewedBy")))
+        return ok(compat_hyp.evidence_review(_with_runtime(store.load()), hid, bool(body.get("reviewed", True)), body.get("reviewedBy")))
+    except compat_hyp.Refused as e:
+        return _refused(e)
     except SystemExit as e:
         return err(409, "SCREEN_NOT_DONE", str(e))
 
@@ -370,8 +376,10 @@ def system_product():
 
 
 @router.get("/safety/candidates")
-def safety_candidates():
+def safety_candidates(request: Request):
     from . import compat_hyp
+    if request.headers.get("x-delphi-role", "").upper() != "SAFETY":   # rule #6 — the safety path is its own role
+        return err(403, "PURPOSE_SCOPE_VIOLATION", "안전성 후보는 SAFETY 롤만 볼 수 있습니다.")
     return ok(compat_hyp.safety_candidates(store.load(), _notes()))
 
 

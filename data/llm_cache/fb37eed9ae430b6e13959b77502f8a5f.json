@@ -1,0 +1,30 @@
+{
+ "purpose": "board_opening_ceo",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_turn_v1",
+ "mode": "tool_call",
+ "thinking": null,
+ "usage": {
+  "input": 6965,
+  "output": 1013
+ },
+ "created_at": "2026-09-28T18:14:42",
+ "output": {
+  "stance": "HOLD",
+  "confidence": 3,
+  "stance_changed": false,
+  "utterance_ko": "메트포르민의 당뇨 전단계 예방 효과는 DPP 대규모 3상(NCT00038727)과 다수의 RCT(PMID:32601731, PMID:40970814, PMID:39196872)에서 일관되게 확인됩니다. 특히 공복혈당장애가 두드러진 고위험군에서 43% 위험 감소(PMID:32601731)라는 강력한 근거가 있습니다. 그러나 현재 허가사항은 제2형 당뇨병에 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 박스 경고인 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)과 FAERS 19,411건 보고는 더 넓은 인구군 적용 시 안전성 모니터링 부담을 시사합니다. 현장 수요 4건(CLM-FN-2026-0702-01-01 외 3건)은 존재하나, 허가외 사용에 따른 법적·급여 리스크를 조직이 감당할 수 있는지, 적응증 확대 임상시험이나 실사용증거 수집 중 어느 경로가 효율적인지 추가 검토가 필요합니다.",
+  "cited": [
+   "NCT00038727",
+   "PMID:32601731",
+   "PMID:40970814",
+   "PMID:39196872",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+   "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+   "CLM-FN-2026-0702-01-01"
+  ],
+  "question_ko": "고위험 당뇨 전단계 환자군에서 메트포르민 장기 복용 시 젖산산증 발생률이 당뇨병 환자군과 유의하게 다른지 임상적 판단 부탁드립니다.",
+  "action_ko": "규제·법무·의학부서 합동으로 적응증 확대 임상시험 설계안과 실사용증거 수집 로드맵을 비교 검토해 다음 회의에 보고해 주십시오."
+ },
+ "reasoning": "The user is asking for my opening statement as CEO for hypothesis HYP-002 regarding metformin for prediabetes. I need to provide my initial position based on the evidence package.\n\nLet me analyze the evidence:\n- Hypothesis: Clinical demand for metformin in high-risk prediabetes patients, but prescription limited due to label/coverage restrictions\n- Label status: DEVELOPMENT (prediabetes is outside approved indication)\n- Field signals: 4 mentions from 4 HCPs\n- External tally: 23 SUPPORTS, 2 CONTRADICTS, 13 NEUTRAL\n- Key evidence: DPP trial showed 31% reduction in diabetes onset with metformin, stronger effect in younger/heavier patients (43% in high-risk IFG subgroup)\n- Multiple RCTs support metformin for prediabetes\n- Label clearly states indication only for type 2 diabetes\n- Safety concerns: lactic acidosis (boxed warning), GI side effects, B12 deficiency\n- FAERS data shows significant adverse events including lactic acidosis (19,411 reports)\n\nAs CEO, I need to weigh:\n1. Strong clinical evidence for efficacy in prediabetes (especially high-risk)\n2. Clear off-label status - not approved for prediabetes\n3. Safety profile concerns for broader population\n4. Regulatory/reimbursement barriers\n5. Organizational risk/benefit\n\nMy stance should be HOLD - strong evidence for efficacy but significant regulatory and safety considerations. Need more clarity on path forward.\n\nI'll craft the response with proper citations from the evidence package."
+}
