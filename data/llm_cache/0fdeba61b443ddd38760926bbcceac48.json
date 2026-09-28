@@ -1,0 +1,81 @@
+{
+ "purpose": "screen_pubmed",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_pubmed_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 4444,
+  "output": 2504
+ },
+ "created_at": "2026-09-28T14:15:12",
+ "output": {
+  "items": [
+   {
+    "source_id": "PMID:42063220",
+    "stance": "CONTRADICTS",
+    "quote": "In the MA.32 randomized adjuvant breast cancer trial, metformin (vs placebo) did not impact invasive disease-free survival or overall survival in estrogen and/or progesterone receptor-positive or -negative breast cancer",
+    "note_ko": "대규모 3상 RCT에서 메트포르민이 보조요법으로 무침습 생존율이나 전체 생존율을 개선하지 못함을 보여줌"
+   },
+   {
+    "source_id": "PMID:34137294",
+    "stance": "CONTRADICTS",
+    "quote": "Metformin showed little to no difference in OS (hazard ratio [HR] = 1.13; 95% CI = 0.71-1.81; certainty of evidence [COE], moderate) and PFS (HR = 1.14; 95% CI = 0.86-1.50; COE, moderate) in patients with metastasis/recurrence",
+    "note_ko": "메타분석에서 전이/재발 유방암 환자의 전체 생존과 무진행 생존에 메트포르민의 유의한 효과가 없음"
+   },
+   {
+    "source_id": "PMID:32321715",
+    "stance": "CONTRADICTS",
+    "quote": "metformin promoted the persistence of estrogen-deprived cells and tumors through increased mitochondrial respiration driven by fatty acid oxidation",
+    "note_ko": "전임상 연구에서 메트포르민이 휴면 ER+ 유방암 세포의 생존을 촉진하여 재발 위험을 높일 수 있음을 시사"
+   },
+   {
+    "source_id": "PMID:23714455",
+    "stance": "SUPPORTS",
+    "quote": "the use of metformin, a diabetes medication that reduces insulin levels, has been epidemiologically associated with reduced breast cancer risk among patients with diabetes, and a recent observational study found a higher rate of pathologic complete responses among patients with diabetes and breast cancer who were using metformin",
+    "note_ko": "역학 연구에서 메트포르민 사용이 유방암 위험 감소 및 병리학적 완전 관해율 증가와 연관됨을 보고하여 언론 보도의 근거가 될 수 있음"
+   },
+   {
+    "source_id": "PMID:22490993",
+    "stance": "SUPPORTS",
+    "quote": "many epidemiological studies have shown that metformin use is associated with a lower cancer incidence and mortality through a dose-response relationship, with greater exposure being associated with stronger risk reduction. Randomized clinical trials testing the effects of metformin on both recurrence and survival in early-stage breast cancer are on-going",
+    "note_ko": "역학적 용량-반응 관계와 진행 중인 RCT를 언급하여 메트포르민의 항암 효과에 대한 기대감을 형성할 수 있는 내용"
+   },
+   {
+    "source_id": "PMID:19560877",
+    "stance": "SUPPORTS",
+    "quote": "Metformin causes Her-2 suppression via the inhibition of mTOR in breast cancer cells. Thus, we believe that the time has arrived both to target insulin reduction and to alter Her-2 oncogene based molecular pathogenetic steps in breast cancer by using metformin as an adjuvant therapy in breast cancer patients",
+    "note_ko": "메트포르민의 HER2 억제 기전을 제시하며 보조요법으로서의 가능성을 주장한 초기 논문으로 언론 보도의 과학적 근거가 될 수 있음"
+   },
+   {
+    "source_id": "PMID:21800293",
+    "stance": "SUPPORTS",
+    "quote": "Recent observational studies have shown that metformin use in diabetic patients decreases both cancer incidence and mortality. Metformin use is also independently predictive of pathologic complete response",
+    "note_ko": "관찰 연구에서 메트포르민 사용이 암 발생률과 사망률 감소, 병리학적 완전 관해 예측과 연관됨을 보고"
+   },
+   {
+    "source_id": "PMID:27681864",
+    "stance": "NEUTRAL",
+    "quote": "In those with early-stage colorectal cancer, metformin use was associated with a significant benefit in all outcomes [RFS hazard ratio (HR) 0.63, 95% confidence interval (CI) 0.47-0.85; OS HR 0.69, CI 0.58-0.83; CSS HR 0.58, CI 0.39-0.86]",
+    "note_ko": "대장암 관찰 연구 결과로 유방암 보조요법 수요 가설과 직접 관련 없음"
+   },
+   {
+    "source_id": "PMID:27118574",
+    "stance": "NEUTRAL",
+    "quote": "the clinical trials regarding metformin in combination of chemotherapeutic drugs were presented and the clinical obstacle or limitation related to the potential role of metformin in cancer treatment was also discussed in this review",
+    "note_ko": "메트포르민 병용요법의 임상시험 현황과 한계를 논의한 리뷰로 환자 수요 증가 현상과는 무관"
+   },
+   {
+    "source_id": "PMID:29788487",
+    "stance": "NEUTRAL",
+    "quote": "This study investigated the effects of metformin and weight loss on biomarkers associated with breast cancer prognosis",
+    "note_ko": "생체표지자 변화 연구로 재발 감소나 환자 수요와 직접 관련 없음"
+   },
+   {
+    "source_id": "PMID:29282430",
+    "stance": "NEUTRAL",
+    "quote": "Her medical history includes type 2 diabetes mellitus and hypertension, which are adequately controlled with metformin and lisinopril",
+    "note_ko": "당뇨병 치료제로 메트포르민을 복용 중인 유방암 환자 사례보고로 보조요법 수요와 무관"
+   }
+  ]
+ }
+}

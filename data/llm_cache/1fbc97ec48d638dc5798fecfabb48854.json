@@ -1,0 +1,27 @@
+{
+ "purpose": "screen_ctgov",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_ctgov_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 1246,
+  "output": 1470
+ },
+ "created_at": "2026-09-28T14:17:46",
+ "output": {
+  "items": [
+   {
+    "source_id": "NCT04001725",
+    "stance": "NEUTRAL",
+    "quote": "The aim is to investigate the metformin efficacy in preventing the onset of glucocorticoid-induced diabetes and other metabolic perturbations in patients with brain metastases from melanoma, lung or breast cancer.",
+    "note_ko": "뇌전이 환자에서 스테로이드 유발 당뇨 예방을 위한 메트포르민 2상 시험(모집 상태 불명)으로, 항암 치료 중 메트포르민 유지를 평가하는 설계가 아님."
+   },
+   {
+    "source_id": "NCT02695121",
+    "stance": "NEUTRAL",
+    "quote": "The primary objectives of this study are (1) to compare the incidence of breast cancer, by insulin use at cohort entry, among females with type 2 diabetes who are new users of dapagliflozin and females who are new users of antidiabetic drugs (ADs) in classes other than sodium-glucose cotransporter 2 (SGLT2) inhibitors, insulin monotherapy, metformin monotherapy, or sulfonylurea monotherapy",
+    "note_ko": "당뇨병 신규 약물 사용자의 유방암 발생률을 비교하는 대규모 관찰 연구(완료)로, 이미 유방암이 있는 환자에서 항암 치료 중 메트포르민 지속 여부를 다루지 않음."
+   }
+  ]
+ }
+}

@@ -1,0 +1,111 @@
+{
+ "purpose": "screen_ctgov",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_ctgov_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 4327,
+  "output": 4348
+ },
+ "created_at": "2026-09-28T14:21:56",
+ "output": {
+  "items": [
+   {
+    "source_id": "NCT01394887",
+    "stance": "SUPPORTS",
+    "quote": "To determine the effect of metformin on the concentrations of resistin and other insulin resistance or inflammatory markers... in minors with glucose intolerance.",
+    "note_ko": "완료된 2/3상 시험으로 당뇨 전단계 소아에서 메트포르민의 인슐린 저항성 및 염증 표지자 효과를 평가함."
+   },
+   {
+    "source_id": "NCT02338193",
+    "stance": "SUPPORTS",
+    "quote": "Women with a history of gestational diabetes (GDM) are at substantially increased risk of type 2 diabetes mellitus (T2DM).",
+    "note_ko": "완료된 3상 시험으로 임신성 당뇨병력이 있는 고위험 여성에서 메트포르민 병용요법을 평가함."
+   },
+   {
+    "source_id": "NCT03968224",
+    "stance": "SUPPORTS",
+    "quote": "The management of alterations in the glucose metabolism in this unit is made by dietary treatment and with the use of metformin at doses of 1,700 mg/day",
+    "note_ko": "완료된 2/3상 시험에서 비만 클리닉의 당뇨 전단계 환자에게 메트포르민 1,700mg/day가 표준 치료로 사용됨을 언급함."
+   },
+   {
+    "source_id": "NCT04131582",
+    "stance": "SUPPORTS",
+    "quote": "The goal of this trial is to evaluate the effect of empagliflozin + linagliptin + metformin + lifestyle on physiopathological parameters... in patients with impaired fasting glucose plus impaired glucose tolerance",
+    "note_ko": "상태 불명의 3상 시험으로 당뇨 전단계 환자에서 메트포르민 병용요법의 효과를 평가함."
+   },
+   {
+    "source_id": "NCT00038727",
+    "stance": "SUPPORTS",
+    "quote": "The DPP has ended early demonstrating that lifestyle reduced diabetes onset by 58% and metformin reduced diabetes onset by 31%.",
+    "note_ko": "완료된 3상 대규모 시험으로 당뇨 전단계 고위험군에서 메트포르민이 당뇨 발생을 31% 감소시킴을 입증함."
+   },
+   {
+    "source_id": "NCT00570739",
+    "stance": "SUPPORTS",
+    "quote": "Two-hundred sixty subjects with type 2 diabetes (T2DM) and 200 pre-diabetic subjects are planned to be enrolled.",
+    "note_ko": "완료된 3상 시험으로 당뇨 전단계 환자 200명을 포함한 메트포르민 관련 병용요법 연구임."
+   },
+   {
+    "source_id": "NCT03774108",
+    "stance": "SUPPORTS",
+    "quote": "patients with prediabetes (who meet the fasting impaired glucose criteria) will be identified and treated with metformin or placebo for 8 weeks",
+    "note_ko": "상태 불명의 4상 시험으로 HIV 환자의 당뇨 전단계에서 메트포르민의 염증 효과를 평가함."
+   },
+   {
+    "source_id": "NCT02446834",
+    "stance": "SUPPORTS",
+    "quote": "Compare the efficacy between intensive lifestyle intervention and drugs (GLP-1 Receptor Agonists, metformin and acarbose) for PCOS patients with early onset diabetes",
+    "note_ko": "완료된 시험으로 PCOS 동반 당뇨 전단계 환자에서 메트포르민을 약물 치료군에 포함하여 비교함."
+   },
+   {
+    "source_id": "NCT04549415",
+    "stance": "SUPPORTS",
+    "quote": "The Influence of Metformin on Chronic Heart Failure Clinical Course in Patients With Prediabetes",
+    "note_ko": "완료된 4상 시험으로 당뇨 전단계 동반 만성심부전 환자에서 메트포르민의 임상 경과 영향을 평가함."
+   },
+   {
+    "source_id": "NCT03558867",
+    "stance": "SUPPORTS",
+    "quote": "clinical practice, backed by randomised trials, reports that many patients treated with standard dietary guidelines or with the first-line treatment of diabetes patients, metformin, do not improve blood glucose control sufficiently.",
+    "note_ko": "완료된 시험으로 당뇨 전단계에서 메트포르민 단독요법의 혈당 조절 효과가 불충분함을 지적하며 개인맞춤형 접근을 모색함."
+   },
+   {
+    "source_id": "NCT01351753",
+    "stance": "NEUTRAL",
+    "quote": "There are drugs that have been approved for other diseases but which also reduce weight.",
+    "note_ko": "중단된 2상 비만 시험으로 메트포르민을 체중 감량 약물로 언급하나 당뇨 전단계 초점은 아님."
+   },
+   {
+    "source_id": "NCT07209527",
+    "stance": "NEUTRAL",
+    "quote": "This study evaluates the effectiveness of Truway Health-sourced portable diagnostic devices, including ultrasound and blood glucose monitors",
+    "note_ko": "모집 중인 초기 1상 진단기기 평가 시험으로 메트포르민 중재와 무관함."
+   },
+   {
+    "source_id": "NCT02915198",
+    "stance": "SUPPORTS",
+    "quote": "This research will help us to learn if the medicine called metformin reduces the risk of death, heart attacks, and/or strokes in Veterans who have pre-diabetes and heart or blood vessel problems.",
+    "note_ko": "모집 중인 4상 대규모 시험으로 심혈관질환 동반 당뇨 전단계 환자에서 메트포르민의 심혈관 사건 예방 효과를 평가함."
+   },
+   {
+    "source_id": "NCT05052918",
+    "stance": "SUPPORTS",
+    "quote": "evaluate whether there is a difference between the group in which exercise programs were applied and those who received only lifestyle change and metformin.",
+    "note_ko": "상태 불명의 시험으로 당뇨 전단계 환자에서 운동요법과 메트포르민 병용요법을 비교함."
+   },
+   {
+    "source_id": "NCT02234440",
+    "stance": "SUPPORTS",
+    "quote": "patients with cryptogenic cirrhosis... with Diabetes or Impaired Glucose Tolerance or Insulin Resistance... randomised to either metformin arm or conventional treatment arm",
+    "note_ko": "완료된 시험으로 암호성 간경변 동반 당뇨 전단계 환자에서 메트포르민의 질병 진행 효과를 평가함."
+   },
+   {
+    "source_id": "NCT07131384",
+    "stance": "SUPPORTS",
+    "quote": "We will be comparing the responses in individuals who are taking metformin to those who are naive to metformin.",
+    "note_ko": "모집 중인 시험으로 당뇨 전단계 환자에서 메트포르민 복용군과 비복용군의 무기질산염 보충제 반응을 비교함."
+   }
+  ]
+ }
+}

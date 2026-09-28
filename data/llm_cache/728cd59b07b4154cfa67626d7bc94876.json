@@ -1,0 +1,36 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 1029,
+  "output": 1300
+ },
+ "created_at": "2026-09-28T14:04:27",
+ "output": {
+  "claims": [
+   {
+    "segment": "유방암 환자",
+    "signal_type": "REPURPOSING",
+    "quote": "메트포르민을 먹으면 재발이 준다는 이야기",
+    "is_adverse_event": false,
+    "note_ko": "메트포르민을 유방암 수술 후 재발 억제 목적으로 쓰는 재창출 용례 언급"
+   },
+   {
+    "segment": "유방암 환자",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "수술 후 환자들이 메트포르민을 먹으면 재발이 준다는 이야기를 어디선가 듣고 온다",
+    "is_adverse_event": false,
+    "note_ko": "환자들이 허가 외 적응증(재발 억제)으로 메트포르민 처방을 원하며 내원함"
+   },
+   {
+    "segment": "유방암 환자",
+    "signal_type": "UNMET_NEED",
+    "quote": "근거가 어디까지 왔는지 한 장으로 정리된 자료가 있으면 좋겠다고 했다",
+    "is_adverse_event": false,
+    "note_ko": "유방암 재발 억제 목적의 메트포르민 근거 수준을 정리한 요약 자료가 필요함"
+   }
+  ]
+ }
+}

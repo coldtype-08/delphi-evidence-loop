@@ -1,0 +1,87 @@
+{
+ "purpose": "screen_ctgov",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_ctgov_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 3404,
+  "output": 2101
+ },
+ "created_at": "2026-09-28T14:08:57",
+ "output": {
+  "items": [
+   {
+    "source_id": "NCT03774108",
+    "stance": "SUPPORTS",
+    "quote": "patients with prediabetes (who meet the fasting impaired glucose criteria) will be identified and treated with metformin or placebo for 8 weeks",
+    "note_ko": "PHASE4, 모집 상태 UNKNOWN, HIV 동반 당뇨 전단계 환자 40명을 대상으로 메트포르민 투여를 시험 중."
+   },
+   {
+    "source_id": "NCT02446834",
+    "stance": "SUPPORTS",
+    "quote": "Compare the efficacy between intensive lifestyle intervention and drugs (GLP-1 Receptor Agonists, metformin and acarbose) for PCOS patients with early onset diabetes",
+    "note_ko": "완료된 시험, 당뇨 전단계(IGT) 동반 PCOS 환자에서 메트포르민을 약물군에 포함해 비교 연구함."
+   },
+   {
+    "source_id": "NCT04549415",
+    "stance": "SUPPORTS",
+    "quote": "The Influence of Metformin on Chronic Heart Failure Clinical Course in Patients With Prediabetes",
+    "note_ko": "PHASE4 완료 시험, 당뇨 전단계 동반 만성심부전 환자 97명에서 메트포르민 효과를 평가함."
+   },
+   {
+    "source_id": "NCT01394887",
+    "stance": "SUPPORTS",
+    "quote": "Children with glucose intolerance are given either metformin or placebo for 12 consecutive weeks",
+    "note_ko": "PHASE2/3 완료 시험, 당뇨 전단계(내당능장애) 소아 52명에서 메트포르민 위약 대조 연구 수행."
+   },
+   {
+    "source_id": "NCT03558867",
+    "stance": "SUPPORTS",
+    "quote": "many patients treated with standard dietary guidelines or with the first-line treatment of diabetes patients, metformin, do not improve blood glucose control sufficiently",
+    "note_ko": "완료된 관찰 연구, 당뇨 전단계 및 초기 제2형 당뇨에서 메트포르민 단독요법의 한계를 지적하며 개인화 치료를 모색함."
+   },
+   {
+    "source_id": "NCT02338193",
+    "stance": "SUPPORTS",
+    "quote": "Dapagliflozin and Metformin, Alone and in Combination, in Overweight/Obese Prior GDM Women",
+    "note_ko": "PHASE3 완료 시험, 임신성 당뇨병력 고위험 여성 69명에서 메트포르민 단독·병용 효과를 검증함."
+   },
+   {
+    "source_id": "NCT01351753",
+    "stance": "NEUTRAL",
+    "quote": "There are drugs that have been approved for other diseases but which also reduce weight. One promising approach to treating obesity is combination therapy with orlistat and one or more of these other agents",
+    "note_ko": "PHASE2 중단 시험, 비만 치료제 병용요법 탐색이며 당뇨 전단계 적응증과는 직접 무관함."
+   },
+   {
+    "source_id": "NCT07209527",
+    "stance": "NEUTRAL",
+    "quote": "This study evaluates the effectiveness of Truway Health-sourced portable diagnostic devices, including ultrasound and blood glucose monitors, in early detection of chronic conditions",
+    "note_ko": "EARLY_PHASE1 모집 중, 진단 기기 평가 시험으로 메트포르민 처방과는 무관함."
+   },
+   {
+    "source_id": "NCT02915198",
+    "stance": "SUPPORTS",
+    "quote": "This research will help us to learn if the medicine called metformin reduces the risk of death, heart attacks, and/or strokes in Veterans who have pre-diabetes",
+    "note_ko": "PHASE4 모집 중, 당뇨 전단계 퇴역군인 7,410명 대상 메트포르민 심혈관 아웃컴 대규모 시험 진행 중."
+   },
+   {
+    "source_id": "NCT05052918",
+    "stance": "SUPPORTS",
+    "quote": "evaluate whether there is a difference between the group in which exercise programs were applied and those who received only lifestyle change and metformin",
+    "note_ko": "상태 UNKNOWN, 당뇨 전단계 환자 90명에서 운동+메트포르민 병용 효과를 경동맥 내중막 두께로 평가함."
+   },
+   {
+    "source_id": "NCT02234440",
+    "stance": "SUPPORTS",
+    "quote": "patients with cryptogenic cirrhosis (NASH-related cirrhosis) ... with Diabetes or Impaired Glucose Tolerance or Insulin Resistance ... randomised to either metformin arm or conventional treatment arm",
+    "note_ko": "완료된 시험, NASH 간경변 동반 당뇨 전단계/인슐린저항성 환자 86명에서 메트포르민 질병 진행 효과 검증."
+   },
+   {
+    "source_id": "NCT07131384",
+    "stance": "SUPPORTS",
+    "quote": "comparing the responses in individuals who are taking metformin to those who are naive to metformin",
+    "note_ko": "모집 중, 당뇨 전단계 성인 24명에서 메트포르민 복용군 vs 비복용군 간 질산염 보충제 상호작용 탐색."
+   }
+  ]
+ }
+}

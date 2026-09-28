@@ -1,0 +1,21 @@
+{
+ "purpose": "screen_ctgov",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_ctgov_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 947,
+  "output": 495
+ },
+ "created_at": "2026-09-28T14:26:15",
+ "output": {
+  "items": [
+   {
+    "source_id": "NCT04300790",
+    "stance": "NEUTRAL",
+    "quote": "Study to Evaluate the Effect of Metformin in the Prevention of HG in HR[+]/HER2[-] PIK3CA-mut Advanced BC Patients",
+    "note_ko": "완료된 2상 시험으로 PIK3CA 변이 진행성 유방암 환자에서 고혈당 예방을 위한 메트포르민 효과를 평가했으나, 대사증후군 동반 유방암 환자 전반에 대한 통합적 근거를 다루지는 않음."
+   }
+  ]
+ }
+}

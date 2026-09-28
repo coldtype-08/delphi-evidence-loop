@@ -1,0 +1,111 @@
+{
+ "purpose": "screen_ctgov",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_ctgov_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 4272,
+  "output": 3312
+ },
+ "created_at": "2026-09-28T14:20:02",
+ "output": {
+  "items": [
+   {
+    "source_id": "NCT01482286",
+    "stance": "NEUTRAL",
+    "quote": "Weight loss and increased insulin sensitivity appear to drive improvements in reproductive outcomes in women with Polycystic ovary syndrome; however, the mechanism connecting these changes with the reproductive axis is not fully understood.",
+    "note_ko": "종료된 3상 시험으로 체중 감량과 인슐린 감수성이 생식 결과에 미치는 영향을 탐색함."
+   },
+   {
+    "source_id": "NCT06405178",
+    "stance": "SUPPORTS",
+    "quote": "The aim of the study is to assess the efficacy of adjuvant therapy dapagliflozin, metformin as monotherapy and combination of both in comparison to control group in induction of ovulation with letrozole in women PCOS, focusing specifically on rates of ovulation and pregnancy.",
+    "note_ko": "완료된 3상 시험으로 레트로졸 배란 유도 시 메트포르민 병용의 보조 효과를 평가함."
+   },
+   {
+    "source_id": "NCT03008551",
+    "stance": "NEUTRAL",
+    "quote": "This a randomised open-label parallel study involving women with polycystic ovary syndrome (PCOS). The patients will be randomised either to metformin 1500mg or empagliflozin 25mg daily for three months.",
+    "note_ko": "완료된 2/3상 시험으로 엠파글리플로진과 메트포르민 단독요법을 비교함."
+   },
+   {
+    "source_id": "NCT01999686",
+    "stance": "NEUTRAL",
+    "quote": "This is a 3-arm, randomized, double-blind, double-dummy, and controlled clinical study over 6 months of treatment to evaluate the metabolic and clinical efficacy as well as the safety of DLBS3233 alone, metformin and combination of both.",
+    "note_ko": "완료된 3상 시험으로 DLBS3233과 메트포르민 단독 및 병용요법을 비교함."
+   },
+   {
+    "source_id": "NCT07323589",
+    "stance": "NEUTRAL",
+    "quote": "The goal of this clinical trial (prospective randomized controlled trial) is to compare whether myo-inositol alone or in combination with metformin can improve conception rates, treatment compliance, and side-effect profiles in overweight women (BMI ≥25 kg/m²) diagnosed with polycystic ovary syndrome (PCOS).",
+    "note_ko": "완료된 3상 시험으로 마이오이노시톨 단독과 메트포르민 병용을 비교함."
+   },
+   {
+    "source_id": "NCT07585396",
+    "stance": "NEUTRAL",
+    "quote": "Thiss study compares between the effect of inositol and metformin in letrozol resistant PCOS women.",
+    "note_ko": "완료된 2/3상 시험으로 레트로졸 저항성 PCOS에서 이노시톨과 메트포르민을 비교함."
+   },
+   {
+    "source_id": "NCT01791647",
+    "stance": "NEUTRAL",
+    "quote": "The aim of this study is to compare the effects of six months treatment of two insulin-lowering therapies on the clinical and endocrine-metabolic parameters in obese women affected by polycystic ovary syndrome.",
+    "note_ko": "완료된 시험으로 비만 PCOS 여성에서 마이오이노시톨과 메트포르민을 비교함."
+   },
+   {
+    "source_id": "NCT04867252",
+    "stance": "NEUTRAL",
+    "quote": "The investigators aim is to conduct a double blind randomized clinical trial, to study the effects of combined Resveratrol and Myo-Inositol on altered metabolic, endocrine parameters and perceived stress response in patients with Polycystic Ovary Syndrome (PCOS).",
+    "note_ko": "완료된 2상 시험으로 레스베라트롤과 마이오이노시톨 병용요법을 평가함."
+   },
+   {
+    "source_id": "NCT01115140",
+    "stance": "NEUTRAL",
+    "quote": "A more recent prospective nonrandomized placebo-controlled double-blind clinical study demonstrated that metformin exerts a slight but significant deleterious effect on serum homocysteine (Hcy) levels in patients with PCOS, and supplementation with folate is useful to increase the beneficial effect of metformin on the vascular endothelium.",
+    "note_ko": "완료된 4상 시험으로 임신 중 PCOS 여성에서 메트포르민과 엽산 병용을 평가함."
+   },
+   {
+    "source_id": "NCT00795808",
+    "stance": "SUPPORTS",
+    "quote": "Metformin in combination with clomiphene, is more effective than clomiphene alone or metformin alone improves fertility outcomes in women with PCOS of reasonably healthy body weight (BMI </= 32).",
+    "note_ko": "완료된 4상 시험으로 클로미펜과 메트포르민 병용이 단독요법보다 효과적임을 확인함."
+   },
+   {
+    "source_id": "NCT07399535",
+    "stance": "NEUTRAL",
+    "quote": "This study will test a combination of herbal medications (Melats P) in women with PCOS to determine which works best to overcome infertility.",
+    "note_ko": "완료된 1상 시험으로 한약 제제의 효과를 평가함."
+   },
+   {
+    "source_id": "NCT07591246",
+    "stance": "NEUTRAL",
+    "quote": "females of polycystic ovary syndromes may complain fatty pancreaetic disorder and thyroid hypofunctions (subclinical hypothyroidism)",
+    "note_ko": "모집 중인 시험으로 신체활동 프로그램이 지방췌장과 갑상선기능저하에 미치는 영향을 평가함."
+   },
+   {
+    "source_id": "NCT02446834",
+    "stance": "NEUTRAL",
+    "quote": "Compare the efficacy between intensive lifestyle intervention and drugs (GLP-1 Receptor Agonists, metformin and acarbose) for PCOS patients with early onset diabetes in their metabolic and reproductive abnormalities treatment.",
+    "note_ko": "완료된 시험으로 집중 생활요법과 약물요법(GLP-1RA, 메트포르민, 아카보스)을 비교함."
+   },
+   {
+    "source_id": "NCT01892254",
+    "stance": "NEUTRAL",
+    "quote": "This study investigates the incretin effect in women with polycystic ovary syndrome (PCOS) before and after removal of their insulin resistance by metformin.",
+    "note_ko": "완료된 4상 시험으로 메트포르민 투여 전후 인크레틴 효과 변화를 평가함."
+   },
+   {
+    "source_id": "NCT07687667",
+    "stance": "NEUTRAL",
+    "quote": "The goal of this clinical trial is to examine whether GLP1-RA and healthy lifestyle education in women with PCOS and obesity prior to fertility treatment improves live birth rate and other reproductive, maternal and perinatal outcomes compared to metformin plus healthy lifestyle education.",
+    "note_ko": "모집 전 시험으로 GLP-1RA와 메트포르민을 생활요법과 병용해 비교함."
+   },
+   {
+    "source_id": "NCT04151459",
+    "stance": "NEUTRAL",
+    "quote": "This is a experimental study, which subjects are obese PCOS patients requiring LSG surgery. Aim to investigate the effects of LSG surgery in PCOS patients whether increases the live birth rate of the offspring.",
+    "note_ko": "상태 불명의 시험으로 비만 PCOS 환자에서 대사수술의 출생아 생존율 효과를 평가함."
+   }
+  ]
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 1034,
+  "output": 1337
+ },
+ "created_at": "2026-09-28T14:03:48",
+ "output": {
+  "claims": [
+   {
+    "segment": "소아 10세 미만",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "허가가 10세 이상이라 그 아래는 쓸 수 없고, 쓸 만한 대안도 마땅치 않다",
+    "is_adverse_event": false,
+    "note_ko": "10세 미만 소아에서 메트포르민 사용 희망하나 허가 연령 제한과 대안 부재로 어려움을 토로함"
+   },
+   {
+    "segment": "청소년 10-17세",
+    "signal_type": "SAFETY_TOLERABILITY",
+    "quote": "청소년에서는 잘 쓰고 있고 내약성도 성인과 비슷하다",
+    "is_adverse_event": false,
+    "note_ko": "청소년 제2형 당뇨에서 메트포르민 내약성이 성인과 유사함을 임상 경험으로 언급함"
+   }
+  ]
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 1046,
+  "output": 805
+ },
+ "created_at": "2026-09-28T14:03:08",
+ "output": {
+  "claims": [
+   {
+    "segment": "유방암 환자",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "유방암 보조요법으로 메트포르민을 넣어달라는 환자 요청이 한 달에 몇 건씩 있다",
+    "is_adverse_event": false,
+    "note_ko": "유방암 보조요법으로 메트포르민 처방을 요청하는 환자가 지속적으로 발생함"
+   },
+   {
+    "segment": "유방암 환자",
+    "signal_type": "UNMET_NEED",
+    "quote": "그래도 대사증후군이 있는 환자군에서는 다르지 않겠느냐는 질문이 남는다. 그 하위군을 본 연구가 있는지 알고 싶어 했다.",
+    "is_adverse_event": false,
+    "note_ko": "대사증후군 동반 유방암 환자에서 메트포르민 효과에 대한 연구 근거 요구"
+   }
+  ]
+ }
+}

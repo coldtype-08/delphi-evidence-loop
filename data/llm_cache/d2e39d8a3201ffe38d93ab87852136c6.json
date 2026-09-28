@@ -1,0 +1,111 @@
+{
+ "purpose": "screen_pubmed",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_pubmed_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 7037,
+  "output": 3501
+ },
+ "created_at": "2026-09-28T14:19:15",
+ "output": {
+  "items": [
+   {
+    "source_id": "PMID:30806102",
+    "stance": "SUPPORTS",
+    "quote": "Clomiphene-citrate, L-carnitine, and metformin group showed significant improvement in the menstrual regularity, ovulation rate, and pregnancy rate compared to CC plus metformin and placebo group (29% vs. 9%, 34.7% vs.11%, and 28.2% vs. 6.6%, respectively).",
+    "note_ko": "클로미펜 저항성 비만 PCOS 여성에서 메트포르민+L-카르니틴 병용이 월경 규칙성, 배란율, 임신율을 유의하게 개선한 이중맹검 RCT"
+   },
+   {
+    "source_id": "PMID:31647106",
+    "stance": "SUPPORTS",
+    "quote": "We aimed to evaluate the effectiveness of different ovulation induction agents, in particular letrozole alone and clomiphene citrate (CC) plus metformin, as compared to CC alone, as the first-line choice for ovulation induction in women with PCOS and infertility",
+    "note_ko": "레트로졸 단독과 클로미펜+메트포르민 병용을 클로미펜 단독과 비교한 개별 참여자 데이터 메타분석"
+   },
+   {
+    "source_id": "PMID:21518135",
+    "stance": "SUPPORTS",
+    "quote": "1000 mg of metformin had as high efficacy as 1700 mg on induction of ovulation and pregnancy in PCOS women.",
+    "note_ko": "메트포르민 용량별 배란 유도 효과를 비교한 RCT, 클로미펜 병용 시 배란율 84-88% 보고"
+   },
+   {
+    "source_id": "PMID:29183107",
+    "stance": "SUPPORTS",
+    "quote": "Insulin-sensitising agents such as metformin may be effective in treating PCOS-related anovulation.",
+    "note_ko": "인슐린 감작제(메트포르민 포함)의 생식·대사 아웃컴 효과를 평가한 코크란 메타분석"
+   },
+   {
+    "source_id": "PMID:17804299",
+    "stance": "SUPPORTS",
+    "quote": "Failure to conceive with CC can be treated in a number of ways, including the addition of insulin-lowering agents (mainly metformin)",
+    "note_ko": "클로미펜 실패 시 메트포르민 병용을 치료 옵션으로 제시한 리뷰 논문"
+   },
+   {
+    "source_id": "PMID:10576524",
+    "stance": "SUPPORTS",
+    "quote": "metformin 500 mg 3 times daily to decrease insulin secretion and to reduce ovarian production of 17alpha-hydroxyprogesterone with recovery of spontaneous or clomifene-induced ovulation, independently of weight loss.",
+    "note_ko": "메트포르민이 체중 감소와 무관하게 자발적 또는 클로미펜 유도 배란을 회복시킨다는 리뷰"
+   },
+   {
+    "source_id": "PMID:15262344",
+    "stance": "SUPPORTS",
+    "quote": "Its use may also help restore spontaneous ovulation and improve menstrual cyclicity, improve the success rate of induction of ovulation with clomiphene citrate and FSH",
+    "note_ko": "메트포르민이 월경 주기 회복과 클로미펜 시트레이트 배란 유도 성공률을 높일 수 있다는 리뷰"
+   },
+   {
+    "source_id": "PMID:36465612",
+    "stance": "NEUTRAL",
+    "quote": "The rats in the PCOS group, PCOS+CFDT group, and PCOS+Metformin group were fed a high-fat diet (HFD) and intraperitoneally injected with letrozole (1.0 mg/kg) for 21 days.",
+    "note_ko": "레트로졸 유도 PCOS 쥐 모델에서 한약과 메트포르민 비교한 동물 실험, 사람 임상 자료 아님"
+   },
+   {
+    "source_id": "PMID:25304269",
+    "stance": "NEUTRAL",
+    "quote": "Although Met can significantly improve a patient's insulin resistance, we found that in patients diagnosed with CIRCPOS, LOD can be much more effective in improving rates of normal menstruation, ovulation, and pregnancy.",
+    "note_ko": "클로미펜·인슐린 저항성 PCOS에서 메트포르민 단독 vs 복강경 난소 천공 비교 RCT, 병용 요법 평가 아님"
+   },
+   {
+    "source_id": "PMID:24273971",
+    "stance": "NEUTRAL",
+    "quote": "All patients took Metformin and Diane-35. Those in Group A took DXP additionally. After treatment the ovulation was induced by oral administration of letrozole or injection of menotropins (HMG).",
+    "note_ko": "메트포르민+다이앤-35 복용 후 레트로졸로 배란 유도한 소규모 임상 연구, 병용 효과 직접 평가 아님"
+   },
+   {
+    "source_id": "PMID:36755918",
+    "stance": "NEUTRAL",
+    "quote": "Metformin is a commonly used drug of PCOS but few studies on whether metformin can improve the follicle development and ovarian function in PCOS.",
+    "note_ko": "메트포르민의 난소 페롭토시스 억제 효과를 본 쥐 실험, 임상 배란 유도 결과 없음"
+   },
+   {
+    "source_id": "PMID:38154770",
+    "stance": "NEUTRAL",
+    "quote": "To describe the serum anti-Müllerian hormone (AMH) concentrations in a large, well-phenotyped cohort of women with polycystic ovary syndrome (PCOS) and evaluate whether AMH predicts successful ovulation induction in women treated with clomiphene and metformin.",
+    "note_ko": "클로미펜+메트포르민 치료군에서 AMH가 배란 예측 인자인지 본 2차 분석, 치료 효과 자체 비교 아님"
+   },
+   {
+    "source_id": "PMID:38021970",
+    "stance": "NEUTRAL",
+    "quote": "In females with PCOS, anovulation is linked to low follicle-stimulating hormone (FSH) levels and a halt in antral follicle growth during the last stages of maturation.",
+    "note_ko": "PCOS 진단·병태생리·관리 전반을 다룬 리뷰, 메트포르민 병용 효과 구체적 데이터 없음"
+   },
+   {
+    "source_id": "PMID:39415242",
+    "stance": "NEUTRAL",
+    "quote": "Female C57BL/6 mice were orally administered letrozole (LE) to induce PCOS and then randomly divided into groups receiving daily oral administration of 160 mg/kg NAC (PCOS+NAC group), 200 mg/kg metformin (PCOS+Met group), or 0.5% carboxymethyl cellulose (drug solvent) (pure PCOS group) for 12 days.",
+    "note_ko": "NAC와 메트포르민을 레트로졸 유도 PCOS 쥐에서 비교한 동물 실험 및 별도 임상 연구, 병용 요법 평가 아님"
+   },
+   {
+    "source_id": "PMID:40446578",
+    "stance": "NEUTRAL",
+    "quote": "Met group, metformin (Glucophage) gro",
+    "note_ko": "쥐 모델에서 이진탕과 메트포르민 비교한 동물 실험, 임상 배란 유도 자료 없음"
+   },
+   {
+    "source_id": "PMID:25487256",
+    "stance": "NEUTRAL",
+    "quote": "Other treatment modalities include the use of insulin sensitizers, such as metformin as well as aromatase inhibitors and laparoscopic ovarian drilling",
+    "note_ko": "PCOS와 비만 관련 리뷰에서 메트포르민을 인슐린 감작제로 언급만 함, 병용 효과 데이터 없음"
+   }
+  ]
+ }
+}

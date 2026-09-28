@@ -1,0 +1,36 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 1052,
+  "output": 1058
+ },
+ "created_at": "2026-09-28T14:02:21",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "당뇨 전단계 환자에게 쓰고 싶어도 급여 기준과 허가 범위 때문에 못 쓴다는 이야기를 다시 했다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 환자에 대한 메트포르민 사용 희망이나 급여·허가 장벽으로 사용 못 함을 진술"
+   },
+   {
+    "segment": "OTHER",
+    "signal_type": "SAFETY_TOLERABILITY",
+    "quote": "장기 복용 환자 한 명이 손발 저림으로 왔는데 비타민 B12가 많이 떨어져 있었다. 메트포르민 때문으로 보고 보충하면서 지켜보는 중이다.",
+    "is_adverse_event": true,
+    "note_ko": "장기 복용 환자에서 메트포르민 연관 비타민 B12 결핍에 의한 말초신경병증(손발 저림) 발생 기술"
+   },
+   {
+    "segment": "OTHER",
+    "signal_type": "DOSING",
+    "quote": "위장관 부작용은 서방정으로 바꾸면 대부분 좋아진다.",
+    "is_adverse_event": false,
+    "note_ko": "위장관계 부작용 완화를 위해 서방정(ER 제형)으로 전환 시 호전됨을 언급"
+   }
+  ]
+ }
+}

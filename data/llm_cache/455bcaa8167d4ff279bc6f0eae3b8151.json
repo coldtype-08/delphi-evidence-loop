@@ -1,0 +1,39 @@
+{
+ "purpose": "screen_pubmed",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_pubmed_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 5752,
+  "output": 2912
+ },
+ "created_at": "2026-09-28T14:26:08",
+ "output": {
+  "items": [
+   {
+    "source_id": "PMID:34311387",
+    "stance": "SUPPORTS",
+    "quote": "Although current evidence does not provide a clear antitumor role of several of these drugs, metformin seems to be a promising chemopreventive and adjuvant agent in cancer management... However, further studies are needed to endorse the clinical relevance of these drugs as adjuvants for cancer chemotherapy.",
+    "note_ko": "2021년 리뷰에서 메트포르민의 항종양 역할에 대한 현재 근거가 명확하지 않으며 추가 연구가 필요하다고 명시함."
+   },
+   {
+    "source_id": "PMID:20465505",
+    "stance": "SUPPORTS",
+    "quote": "Several currently ongoing Phase II and III clinical studies are evaluating the therapeutic efficacy of metformin in the treatment of early and advanced breast cancer patients.",
+    "note_ko": "2010년 리뷰에서 메트포르민의 유방암 치료 효과를 평가하는 다수의 2/3상 임상시험이 진행 중임을 언급하여 당시 근거가 미완성이었음을 시사함."
+   },
+   {
+    "source_id": "PMID:41161296",
+    "stance": "CONTRADICTS",
+    "quote": "This meta-analysis included a total of 8 randomized controlled trials (RCTs), involving 474 patients. The results showed that there was no statistically significant difference in the pCR rate between the experimental group containing metformin and the control group (RR = 1.21, 95% CI: [0.85, 1.71], P = 0.28).",
+    "note_ko": "2025년 8개 RCT 메타분석으로 신보조요법에서 메트포르민 추가의 pCR 효과가 없음을 통합 근거로 제시함."
+   },
+   {
+    "source_id": "PMID:36525180",
+    "stance": "CONTRADICTS",
+    "quote": "The tpCR rates were 12.5% (5/40) and 14.6% (7/48) in the TEC and TECM groups, respectively (P = 0.777). There was no difference in Ki67 decrease after NAT between two groups (P = 0.456). Toxicity profile were similar between two groups.",
+    "note_ko": "대사이상 동반 유방암 환자 대상 NeoMET 2상 RCT에서 메트포르민 병용이 tpCR을 유의하게 개선하지 못함을 보고함."
+   }
+  ]
+ }
+}

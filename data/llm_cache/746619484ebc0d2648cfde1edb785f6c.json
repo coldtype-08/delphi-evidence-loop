@@ -1,0 +1,40 @@
+{
+ "purpose": "board",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_memo_v1",
+ "mode": "tool_call",
+ "thinking": true,
+ "usage": {
+  "input": 6344,
+  "output": 1397
+ },
+ "created_at": "2026-09-28T15:12:07",
+ "output": {
+  "label_status": "DEVELOPMENT",
+  "recommendation": "PROCEED_TO_EXPERT_REVIEW",
+  "evidence_summary_ko": "현장 신호 6건(의료진 4명)과 외부 문헌 9건(SUPPORTS)이 메트포르민의 PCOS 배란 유도 보조 효과를 지지합니다. 주요 근거: (1) 클로미펜 저항성 비만 PCOS에서 메트포르민+L-카르니틴 병용이 월경 규칙성·배란율·임신율을 유의 개선한 이중맹검 RCT(PMID:30806102), (2) 레트로졸 단독과 클로미펜+메트포르민 병용을 클로미펜 단독과 비교한 개별 참여자 데이터 메타분석(PMID:31647106), (3) 메트포르민+클로미펜 병용이 단독요법보다 효과적임을 확인한 4상 시험(NCT00795808), (4) 레트로졸 배란 유도 시 메트포르민 보조 효과를 평가한 3상 시험(NCT06405178). 라벨(SPL)은 제2형 당뇨병만 적응증으로 명시하며 PCOS·배란 유도·병용 요법 언급이 없습니다. CONTRADICTS 근거는 없으나 NEUTRAL 27건(동물실험, 단독요법 비교, 2차 분석 등)이 다수 포함돼 있습니다.",
+  "rationale_ko": "지지 근거가 다수의 RCT·메타분석·3~4상 시험에서 일관되게 나타나며, 반대 근거(CONTRADICTS)는 0건입니다. 다만 라벨이 PCOS 적응증을 포함하지 않아 DEVELOPMENT 상태이며, 대규모 3상 병용 시험(NCT06405178 등) 결과가 공개되기 전이므로 전문조직(의학·규제·임상개발)에서 적응증 확대 타당성, 용량·안전성 프로파일, 비교 우위(레트로졸 단독 vs 병용)를 체계적으로 검토할 필요가 있습니다. 상업적 프로모션·영업 목표 설정은 보류합니다.",
+  "follow_up_questions": [
+   {
+    "question_ko": "인슐린 저항성 동반 PCOS 환자에서 레트로졸 단독 대비 메트포르민 병용 시 배란율·임신율·유산율 차이가 임상적으로 의미 있는가?",
+    "why_ko": "NCT06405178 등 진행 중/완료 3상 결과가 공개되면 병용의 추가 혜택 크기를 정량화할 수 있음"
+   },
+   {
+    "question_ko": "메트포르민 용량(예: 1,000 mg vs 1,500~2,000 mg/일)에 따른 배란 유도 효과·위장관 부작용·복약 순응도 차이는 어떠한가?",
+    "why_ko": "PMID:21518135는 1,000 mg과 1,700 mg 간 차이가 없다고 하나, 실제 진료 용량별 안전성·유효성 자료가 필요함"
+   },
+   {
+    "question_ko": "클로미펜·레트로졸 실패군에서 메트포르민 추가 시 난소 과자극 증후군(OHSS) 발생률·다태임신율 등 안전성 프로파일은 단독요법과 어떻게 다른가?",
+    "why_ko": "FAERS에서 젖산산증·신손상 등 중대 이상사례가 보고되나 PCOS 배란 유도 맥락의 안전성 자료는 제한적임"
+   }
+  ],
+  "risks_ko": [
+   "라벨 외 사용(off-label)으로 규제·법적 리스크 존재",
+   "위장관 부작용(메스꺼움, 설사 등)으로 복약 순응도 저하 가능성(FAERS 상위 이상사례)",
+   "젖산산증 위험(박스 경고) - 신기능 저하·고령·조영제 사용 시 주의 필요",
+   "비교 우위 불확실: 레트로졸 단독·이노시톨·GLP-1RA 등 대안 요법 대비 추가 혜택 크기 미확정",
+   "장기 안전성(임신 중 지속 사용 시 태아 영향 등) 자료 부족"
+  ]
+ },
+ "reasoning": "The user has provided a comprehensive dataset about metformin use in PCOS women, including field signals, external evidence tally, numbers, and detailed evidence from PubMed, ClinicalTrials.gov, and FDA labels. The hypothesis is about metformin's off-label use in PCOS women with insulin resistance when combined with letrozole or clomiphene for ovulation induction, menstrual cycle recovery, and weight loss.\n\nKey points:\n1. Label status is DEVELOPMENT (off-label use)\n2. Field signals: 6 mentions from 4 HCPs\n3. External tally: 9 SUPPORTS, 0 CONTRADICTS, 27 NEUTRAL across PubMed, CT.gov, and labels\n4. Evidence includes several supportive RCTs and meta-analyses showing metformin + clomiphene/letrozole improves ovulation, pregnancy rates, menstrual regularity\n5. No contradictory evidence found\n6. Label only indicates type 2 diabetes, no PCOS mention\n7. Safety: FAERS shows common AEs (nausea, diarrhea, lactic acidosis risk)\n\nSince this is DEVELOPMENT (off-label), recommendation must be PROCEED_TO_EXPERT_REVIEW, HOLD, or DROP. Given supportive evidence from multiple RCTs and meta-analyses, and no contradictory evidence, PROCEED_TO_EXPERT_REVIEW seems appropriate.\n\nNeed to write rationale_ko mentioning supportive evidence first, but also note limitations (NEUTRAL studies, animal studies, label not supporting). Follow-up questions for clinicians (max 3). Risks include lactic acidosis, GI side effects, off-label use without regulatory approval.\n\nLet me structure the response."
+}

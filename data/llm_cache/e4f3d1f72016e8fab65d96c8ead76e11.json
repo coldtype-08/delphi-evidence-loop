@@ -1,0 +1,111 @@
+{
+ "purpose": "screen_ctgov",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_ctgov_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 4452,
+  "output": 3089
+ },
+ "created_at": "2026-09-28T14:16:06",
+ "output": {
+  "items": [
+   {
+    "source_id": "NCT04387630",
+    "stance": "SUPPORTS",
+    "quote": "This study examines the immune effect of metformin in breast cancer patients treated with preoperative chemotherapy.",
+    "note_ko": "모집 상태 불명, 2/3상, 수술 전 화학요법 병용 시 메트포르민의 면역 효과를 평가 중이다."
+   },
+   {
+    "source_id": "NCT02201381",
+    "stance": "NEUTRAL",
+    "quote": "The purpose of this study is to determine the effectiveness of a regimen of selected metabolic treatments for patients with cancer in a real world setting",
+    "note_ko": "철회됨, 3상, 유방암 특이적이지 않고 대사요법 복합요법의 실세계 효과를 보려던 시험이다."
+   },
+   {
+    "source_id": "NCT01101438",
+    "stance": "SUPPORTS",
+    "quote": "This study is looking at whether Metformin ... can decrease or affect the ability of breast cancer cells to grow and whether Metformin will work with other therapies to keep cancer from recurring.",
+    "note_ko": "완료, 3상, 조기 유방암에서 메트포르민이 재발을 억제하는지 위약 대조로 검증한 대규모 시험이다."
+   },
+   {
+    "source_id": "NCT06763328",
+    "stance": "NEUTRAL",
+    "quote": "This phase III trial evaluates how often women develop insulin resistance and type-2 diabetes and compares metformin with usual care to usual care alone in treating insulin resistance",
+    "note_ko": "모집 중, 3상, 화학요법 후 인슐린 저항성 치료가 주목적이고 재발 억제는 직접 평가하지 않는다."
+   },
+   {
+    "source_id": "NCT01905046",
+    "stance": "NEUTRAL",
+    "quote": "This randomized phase III trial studies metformin hydrochloride to see how well it works compared to placebo in preventing breast cancer in patients with atypical hyperplasia or in situ breast cancer.",
+    "note_ko": "모집 완료(활성 비모집), 3상, 비정형 과증식/상피내암 환자의 예방(화학예방) 목적이지 보조요법 재발 억제는 아니다."
+   },
+   {
+    "source_id": "NCT07815808",
+    "stance": "NEUTRAL",
+    "quote": "To compare the cardioprotective efficacy, safety, and metabolic/oncologic outcomes of Empagliflozin versus Metformin in non-diabetic or controlled-diabetic women with breast cancer undergoing doxorubicin-based chemotherapy.",
+    "note_ko": "모집 전, 3상, 독소루비신 심장독성 예방에서 엠파글리플로진과 메트포르민을 비교하는 심장보호 시험이다."
+   },
+   {
+    "source_id": "NCT01302002",
+    "stance": "NEUTRAL",
+    "quote": "The study will test metformin in patients with early breast cancer. Blood and tissue will be collected before and after the use of metformin.",
+    "note_ko": "철회됨, 초기 1상, 수술 전 단기 투여로 생체표지자만 탐색하려던 소규모 시험이다."
+   },
+   {
+    "source_id": "NCT04300790",
+    "stance": "NEUTRAL",
+    "quote": "Men and post- or induced menopausal women with ER[+] and/or PgR[+], HER2[-] advanced BC, with centrally-confirmed PI3KCAMut who progressed to an aromatase inhibitor (AI) regimen.",
+    "note_ko": "완료, 2상, PIK3CA 변이 진행성 호르몬수용체 양성 유방암에서 메트포르민 병용을 본 시험이다."
+   },
+   {
+    "source_id": "NCT01566799",
+    "stance": "SUPPORTS",
+    "quote": "Main goal of this study is to evaluate the efficacy of metformin plus chemotherapy in terms of pathologic complete response in comparison with placebo plus the same chemotherapy regimen",
+    "note_ko": "상태 불명, 2상, 수술 전 화학요법 병용 시 병리학적 완전 관해율을 위약 대조로 평가한다."
+   },
+   {
+    "source_id": "NCT02488564",
+    "stance": "SUPPORTS",
+    "quote": "The primary objective is to evaluate the pathological complete response rate (pCR).",
+    "note_ko": "완료, 2상, HER2 양성 조기/국소진행 유방암에서 수술 전 항암화학요법에 메트포르민을 추가해 pCR을 평가했다."
+   },
+   {
+    "source_id": "NCT05680662",
+    "stance": "SUPPORTS",
+    "quote": "The Study of Quadruple Therapy Quercetin, Zinc, Metformin, and EGCG as Adjuvant Therapy for Early, Metastatic Breast Cancer and Triple-negative Breast Cancer",
+    "note_ko": "상태 불명, 초기 1상, 조기/전이성/삼중음성 유방암에서 케르세틴·아연·메트포르민·EGCG 4제 병용을 보조요법으로 탐색한다."
+   },
+   {
+    "source_id": "NCT05768139",
+    "stance": "NEUTRAL",
+    "quote": "Study STX-478-101 (LY4064809) is a multipart, open-label, phase 1/2 study evaluating the safety, tolerability, pharmacokinetics (PK), and preliminary antitumor activity of STX-478",
+    "note_ko": "모집 중, 1/2상, PI3Kα 억제제 테르솔리시브 단독/병용 시험으로 메트포르민과는 무관하다."
+   },
+   {
+    "source_id": "NCT04741204",
+    "stance": "NEUTRAL",
+    "quote": "Given the high prevalence of undiagnosed pre-diabetes and diabetes in the United States and worldwide, preoperative screening to identify such patients prior to surgical intervention is warranted.",
+    "note_ko": "철회됨, 4상, 수술 전 당뇨/인슐린저항성 선별 및 격차 해소가 주목적이고 재발 억제 평가는 아니다."
+   },
+   {
+    "source_id": "NCT02431676",
+    "stance": "NEUTRAL",
+    "quote": "The study design is an efficacy study to evaluate the effect of metformin and coach-directed behavioral weight loss versus self-directed weight loss on insulin-like growth factor (IGF)-1 and IGF-1 to THE IGFBP-III ratio blood levels after 6 and 12 months of intervention.",
+    "note_ko": "완료, 2상, 고형암 생존자에서 메트포르민과 체중감량이 IGF-1 등 생체표지자에 미치는 영향을 본 2차 예방 시험이다."
+   },
+   {
+    "source_id": "NCT00909506",
+    "stance": "SUPPORTS",
+    "quote": "The investigators aim to test the efficacy and safety of adjuvant metformin for operable breast cancer patients with overweight or pre-DM.",
+    "note_ko": "완료, 2상, 과체중/당뇨병 전단계인 절제 가능 유방암 환자에서 보조요법으로서 메트포르민의 유효성·안전성을 평가했다."
+   },
+   {
+    "source_id": "NCT01286233",
+    "stance": "NEUTRAL",
+    "quote": "This research study is studying biomarkers associated with fatigue in patients with early-stage breast cancer treated with metformin or placebo on NCIC-CTG-MA.32.",
+    "note_ko": "상태 불명, 단계 미표기, MA.32 시험(NCT01101438) 참여자의 피로 관련 생체표지자를 탐색하는 부연구다."
+   }
+  ]
+ }
+}

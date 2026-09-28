@@ -1,0 +1,39 @@
+{
+ "purpose": "board",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "board_memo_v1",
+ "mode": "tool_call",
+ "thinking": true,
+ "usage": {
+  "input": 5891,
+  "output": 1976
+ },
+ "created_at": "2026-09-28T15:02:55",
+ "output": {
+  "label_status": "DEVELOPMENT",
+  "recommendation": "HOLD",
+  "evidence_summary_ko": "유방암 보조요법으로서 메트포르민의 재발 억제 효과를 검증한 최대 규모 3상 RCT(MA.32, NCT01101438)에서 무침습 생존율(IDFS)과 전체 생존율(OS) 모두 위약 대비 유의한 차이가 없었음(PMID:42063220). 전이/재발 유방암 메타분석에서도 OS(HR 1.13, 95% CI 0.71-1.81)와 PFS(HR 1.14, 95% CI 0.86-1.50)에서 효과가 입증되지 않음(PMID:34137294). 전임상적으로는 메트포르민이 지방산 산화 촉진을 통해 휴면 ER+ 유방암 세포의 생존을 돕고 재발 위험을 높일 수 있다는 기전적 우려도 제기됨(PMID:32321715). 반면 역학/관찰 연구들은 메트포르민 사용과 유방암 위험 감소, 병리학적 완전 관해율(pCR) 증가 간 연관성을 일관되게 보고하나(PMID:23714455, PMID:22490993, PMID:21800293), 교란 요인 배제가 어려운 관찰 연구 한계가 있음. 현재 진행 중인 3상 시험 6건(모집 중 6건) 중 재발 억제를 1차 목적으로 하는 시험은 없으며, 대부분 수술 전 병용요법의 pCR 평가나 생체표지자 탐색, 심장보호·대사 지표 평가 등에 집중됨. 허가사항(라벨) 어디에도 유방암 적응증은 명시되어 있지 않음.",
+  "rationale_ko": "가장 높은 수준의 근거인 대규모 3상 RCT(MA.32)가 보조요법 무효임을 명확히 보여주었고, 메타분석과 전임상 기전 연구에서도 지지 근거가 없거나 오히려 위해 가능성을 시사함. 관찰 연구들의 양성 신호는 교란(당뇨병 중증도, 비만, 인슐린 사용 등)과 선택 편향으로 설명될 수 있으며, 이를 근거로 오프라벨 처방을 권장하기에는 증거의 질이 불충분함. 진행 중인 시험들도 재발·생존 같은 확정적 임상 아웃컴을 1차 평가변수로 삼지 않으므로, 추가 데이터가 축적될 때까지 신규 권고·확대 해석을 보류함.",
+  "follow_up_questions": [
+   {
+    "question_ko": "MA.32 3상 시험 결과(보조요법 무효)를 환자나 보호자에게 설명한 적이 있으십니까? 설명 시 어떤 점을 가장 강조하셨습니까?",
+    "why_ko": "현장에서 최상위 근거(3상 RCT 음성 결과)가 어떻게 전달되고 있는지, 환자 수요 대응 시 어떤 정보 격차가 있는지 파악하기 위함"
+   },
+   {
+    "question_ko": "메트포르민 보조요법을 요청하는 환자군에서 당뇨병/전당뇨병 동반 여부, 비만도, 인슐린 저항성 지표(HOMA-IR 등)를 사전에 평가하고 계십니까?",
+    "why_ko": "관찰 연구상 혜택 신호가 대사 이상 동반 군에 국한될 가능성을 배제할 수 없어, 실제 처방 시 선별 기준이 있는지 확인하기 위함"
+   },
+   {
+    "question_ko": "진행 중인 메트포르민 유방암 시험(수술 전 pCR 평가, 생체표지자 탐색 등)에 환자를 의뢰하거나 정보를 제공한 경험이 있으십니까?",
+    "why_ko": "현장 임상시험 참여 경로와 의료진의 인지 수준을 파악해, 향후 근거 창출에 기여할 수 있는 사이트·의료진 풀을 가늠하기 위함"
+   }
+  ],
+  "risks_ko": [
+   "MA.32 3상 음성 결과에도 불구하고 언론·환자 커뮤니티발 수요가 지속되어 근거 없는 오프라벨 처방이 확대될 위험",
+   "전임상 데이터에서 시사된 ER+ 휴면 세포 생존 촉진 기전이 임상적으로 재발 위험 증가로 이어질 가능성(가설적이나 배제 불가)",
+   "당뇨병 적응증 용량(최대 2,000~2,550 mg/일)으로 장기 복용 시 젖산산증, 신기능 저하, 비타민 B12 결핍 등 안전성 이슈가 암 환자(화학요법 병용, 신기능 변동)에서 증폭될 수 있음",
+   "관찰 연구 기반 기대로 인해 표준 보조요법(내분비요법, 항HER2요법 등) 순응도가 떨어지거나 대체되는 임상적 오용 발생 가능성"
+  ]
+ },
+ "reasoning": "The user has provided a comprehensive dataset about metformin for breast cancer adjuvant therapy. Let me analyze this carefully.\n\nKey points:\n1. Hypothesis: Breast cancer patients requesting metformin as adjuvant therapy after media reports about recurrence reduction\n2. Label status: DEVELOPMENT (not approved for breast cancer)\n3. Field signals: 3 mentions from 3 HCPs\n4. External evidence tally: \n   - PubMed: 4 SUPPORTS, 3 CONTRADICTS, 4 NEUTRAL\n   - CT.gov: 6 SUPPORTS, 0 CONTRADICTS, 10 NEUTRAL\n   - Label: 0 SUPPORTS, 0 CONTRADICTS, 5 NEUTRAL\n5. Key evidence:\n   - CONTRADICTS: MA.32 trial (NCT01101438) - large phase 3 RCT showing NO benefit in invasive disease-free survival or overall survival\n   - CONTRADICTS: Meta-analysis showing no significant effect on OS (HR=1.13) or PFS (HR=1.14) in metastatic/recurrent breast cancer\n   - CONTRADICTS: Preclinical study suggesting metformin may promote dormant ER+ cell survival\n   - SUPPORTS: Observational/epidemiological studies showing associations with reduced risk, higher pCR rates\n   - CT.gov: Several ongoing/completed trials but the key phase 3 (MA.32) was negative\n\n6. Human review note: \"3상 무효 결과까지 읽음\" (read up to phase 3 negative results)\n\nThis is clearly a DEVELOPMENT case (off-label use). The evidence is mixed but the highest quality evidence (large phase 3 RCT) contradicts the hypothesis. The MA.32 trial is particularly important - it's a large randomized adjuvant breast cancer trial that showed no benefit.\n\nGiven the rules:\n- DEVELOPMENT → recommendation must be PROCEED_TO_EXPERT_REVIEW, HOLD, or DROP\n- Must lead with contradictory evidence (especially large RCT)\n- No commercial activity suggestions\n- Follow-up questions for field interviews (max 3)\n- Only cite numbers from input\n\nThe MA.32 trial (NCT01101438) is a completed phase 3 trial that directly tested adjuvant metformin vs placebo in early breast cancer and found no benefit. This is the strongest evidence and it contradicts the hypothesis.\n\nGiven that the highest level of evidence (phase 3 RCT) is negative, and there are preclinical concerns about potential harm (promoting dormant cell survival), this seems like a case for HOLD or DROP. But since there are ongoing trials and some observational support, PROCEED_TO_EXPERT_REVIEW might be appropriate to get expert opinion on whether any subgroup might benefit.\n\nActually, looking at the evidence more carefully:\n- The MA.32 trial was in ER/PR positive or negative breast cancer - broad population\n- The meta-analysis was in metastatic/recurrent setting\n- Preclinical data suggests potential harm in ER+ dormant cells\n- Observational studies show associations but are subject to confounding\n- Several phase 2/3 trials ongoing but the definitive phase 3 was negative\n\nI think HOLD is appropriate - wait for more data from ongoing trials, but don't proceed to expert review yet given the negative phase 3. Or PROCEED_TO_EXPERT_REVIEW to get expert opinion on the totality of evidence.\n\nGiven the human reviewer read the phase 3 negative results, and the rule says \"opposing evidence (especially large RCT) goes first in rationale\", I should recommend HOLD with strong rationale based on MA.32.\n\nLet me structure the response."
+}

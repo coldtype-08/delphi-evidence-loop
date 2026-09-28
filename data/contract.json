@@ -1,0 +1,28 @@
+{
+  "version": "v1.0",
+  "_note_ko": "고정 헤더 — 사람이 정한다. 회사가 이미 아는 질문(환자군, 신호 유형)은 AI가 발견할 대상이 아니라 요구사항이다. 값 코드는 불변, 라벨은 정정 가능.",
+  "drug": "metformin",
+  "drug_ko": "메트포르민",
+  "openfda_generic_exact": "METFORMIN HYDROCHLORIDE",
+  "openfda_generic_term": "metformin",
+  "cms_generic": "Metformin HCl",
+  "segments": [
+    "당뇨 전단계",
+    "PCOS 여성",
+    "유방암 환자",
+    "소아 10세 미만",
+    "청소년 10-17세",
+    "노인 65+ · 신기능 저하",
+    "임신부 · 임신성 당뇨"
+  ],
+  "signal_types": [
+    "OFF_LABEL_DEMAND",
+    "OFF_LABEL_USE",
+    "REPURPOSING",
+    "UNMET_NEED",
+    "DOSING",
+    "SAFETY_TOLERABILITY"
+  ],
+  "threshold": {"min_mentions": 3, "min_hcps": 3},
+  "in_label_summary_ko": "성인 및 10세 이상 소아의 제2형 당뇨병 혈당 조절 (식이·운동 보조). 라벨 판정은 Screen의 라벨 에이전트가 원문 대조로 한다."
+}

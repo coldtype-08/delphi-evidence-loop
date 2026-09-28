@@ -1,0 +1,87 @@
+{
+ "purpose": "screen_ctgov",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_ctgov_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 3164,
+  "output": 2211
+ },
+ "created_at": "2026-09-28T14:07:15",
+ "output": {
+  "items": [
+   {
+    "source_id": "NCT01791647",
+    "stance": "NEUTRAL",
+    "quote": "The aim of this study is to compare the effects of six months treatment of two insulin-lowering therapies on the clinical and endocrine-metabolic parameters in obese women affected by polycystic ovary syndrome.",
+    "note_ko": "완료된 비단계 시험으로, 메트포르민 단독과 마이오이노시톨을 대조하여 대사 지표를 평가함."
+   },
+   {
+    "source_id": "NCT04867252",
+    "stance": "NEUTRAL",
+    "quote": "The investigators aim is to conduct a double blind randomized clinical trial, to study the effects of combined Resveratrol and Myo-Inositol on altered metabolic, endocrine parameters and perceived stress response in patients with Polycystic Ovary Syndrome (PCOS).",
+    "note_ko": "완료된 2상 시험으로, 레스베라트롤과 마이오이노시톨 병용을 평가하며 메트포르민이나 배란유도제는 포함되지 않음."
+   },
+   {
+    "source_id": "NCT01115140",
+    "stance": "NEUTRAL",
+    "quote": "A more recent prospective nonrandomized placebo-controlled double-blind clinical study demonstrated that metformin exerts a slight but significant deleterious effect on serum homocysteine (Hcy) levels in patients with PCOS, and supplementation with folate is useful to increase the beneficial effect of metformin on the vascular endothelium.",
+    "note_ko": "완료된 4상 시험으로, 임신 중 PCOS 여성에서 메트포르민과 엽산의 호모시스테인·혈관 내피 영향을 평가함."
+   },
+   {
+    "source_id": "NCT00795808",
+    "stance": "SUPPORTS",
+    "quote": "Metformin in combination with clomiphene, is more effective than clomiphene alone or metformin alone improves fertility outcomes in women with PCOS of reasonably healthy body weight (BMI </= 32).",
+    "note_ko": "완료된 4상 시험으로, 메트포르민과 클로미펜 병용이 클로미펜 단독이나 메트포르민 단독보다 난임 결과를 개선함을 직접 검증함."
+   },
+   {
+    "source_id": "NCT07399535",
+    "stance": "NEUTRAL",
+    "quote": "This study will test a combination of herbal medications (Melats P) in women with PCOS to determine which works best to overcome infertility.",
+    "note_ko": "완료된 1상 시험으로, 한약 제제(Melats P)의 난임 개선 효과를 평가하며 메트포르민 병용은 다루지 않음."
+   },
+   {
+    "source_id": "NCT07591246",
+    "stance": "NEUTRAL",
+    "quote": "females of polycystic ovary syndromes may complain fatty pancreaetic disorder and thyroid hypofunctions (subclinical hypothyroidism)",
+    "note_ko": "모집 중인 비단계 시험으로, 신체활동 프로그램이 지방췌장·갑상선기능저하 동반 PCOS에 미치는 영향을 평가함."
+   },
+   {
+    "source_id": "NCT02446834",
+    "stance": "NEUTRAL",
+    "quote": "Compare the efficacy between intensive lifestyle intervention and drugs (GLP-1 Receptor Agonists, metformin and acarbose) for PCOS patients with early onset diabetes in their metabolic and reproductive abnormalities treatment",
+    "note_ko": "완료된 비단계 시험으로, 집중 생활요법과 약물(GLP-1RA, 메트포르민, 아카보스)을 대조하며 배란유도제 병용은 평가하지 않음."
+   },
+   {
+    "source_id": "NCT01892254",
+    "stance": "NEUTRAL",
+    "quote": "This study investigates the incretin effect in women with polycystic ovary syndrome (PCOS) before and after removal of their insulin resistance by metformin.",
+    "note_ko": "완료된 4상 시험으로, 메트포르민 투여 전후 인크레틴 효과 변화를 측정하며 배란유도제 병용은 포함되지 않음."
+   },
+   {
+    "source_id": "NCT07687667",
+    "stance": "NEUTRAL",
+    "quote": "The goal of this clinical trial is to examine whether GLP1-RA and healthy lifestyle education in women with PCOS and obesity prior to fertility treatment improves live birth rate and other reproductive, maternal and perinatal outcomes compared to metformin plus healthy lifestyle education.",
+    "note_ko": "모집 전인 비단계 시험으로, GLP-1RA와 메트포르민을 각각 생활교육과 병용하여 비교하며 클로미펜·레트로졸 병용은 다루지 않음."
+   },
+   {
+    "source_id": "NCT04151459",
+    "stance": "NEUTRAL",
+    "quote": "Aim to investigate the effects of LSG surgery in PCOS patients whether increases the live birth rate of the offspring.",
+    "note_ko": "상태 불명의 비단계 시험으로, 비만 PCOS에서 위소매절제술(LSG)의 출생아 생존율 영향을 평가함."
+   },
+   {
+    "source_id": "NCT01587378",
+    "stance": "NEUTRAL",
+    "quote": "The overall aim of the PregMet 2 Study is to investigate whether metformin prevents late miscarriages and preterm deliveries in PCOS women treated with metformin from first trimester of pregnancy to delivery",
+    "note_ko": "완료된 비단계 시험으로, 임신 1기부터 분만까지 메트포르민 투여가 유산·조산 예방에 미치는 영향을 평가함."
+   },
+   {
+    "source_id": "NCT07811856",
+    "stance": "NEUTRAL",
+    "quote": "This study evaluates whether metformin, alone or combined with a theory-based behavioral educational program, is associated with changes in metabolic, vitamin B12, iron-status, erythropoietin, and hematological parameters compared with matching placebo.",
+    "note_ko": "완료된 4상 시험으로, 메트포르민 단독 또는 이론기반 교육 병용의 대사·혈액학적 지표 변화를 위약과 비교함."
+   }
+  ]
+ }
+}

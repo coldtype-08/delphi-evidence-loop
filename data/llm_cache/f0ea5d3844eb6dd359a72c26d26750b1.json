@@ -1,0 +1,81 @@
+{
+ "purpose": "screen_pubmed",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_pubmed_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 7242,
+  "output": 2494
+ },
+ "created_at": "2026-09-28T14:17:24",
+ "output": {
+  "items": [
+   {
+    "source_id": "PMID:26446233",
+    "stance": "SUPPORTS",
+    "quote": "The meta-analysis showed that metformin was associated with better overall survival times (HR: 0.53; 95% CI: 0.39-0.71) and cancer-specific survival times (HR: 0.89; 95% CI: 0.79-1.00).",
+    "note_ko": "당뇨 동반 유방암 환자 11개 연구 메타분석에서 메트포르민 사용군이 전체생존율과 암특이생존율 모두 유의하게 우수함."
+   },
+   {
+    "source_id": "PMID:36626437",
+    "stance": "SUPPORTS",
+    "quote": "In patients with diabetes mellitus, the HR of overall survival was 0.79(95% CI: [0.75-0.83]), progression-free survival was 0.72(95% CI: [0.60-0.85]), and the cancer-specific survival was 0.76(95% CI: [0.68-0.86]).",
+    "note_ko": "80개 코호트 연구 메타분석에서 당뇨병 환자의 전체생존율, 무진행생존율, 암특이생존율 모두 메트포르민 관련 유의한 개선 확인."
+   },
+   {
+    "source_id": "PMID:29618465",
+    "stance": "SUPPORTS",
+    "quote": "A 45% risk reduction was observed for all-cause mortality (HR = 0.55; 95% CI, 0.44-0.70; I2 = 81%).",
+    "note_ko": "GRADE 평가된 체계적 문헌고찰에서 제2형 당뇨 동반 유방암 환자의 전원사망률 45% 감소 확인(유방암 발생률은 유의차 없음)."
+   },
+   {
+    "source_id": "PMID:28375706",
+    "stance": "SUPPORTS",
+    "quote": "260 patients (3.1%) were diabetic and had been treated with metformin... we evaluated whether patients with diabetes at study entry-with or without metformin treatment-were associated with different disease-free survival (DFS), distant disease-free survival (DDFS), and overall survival (OS) compared with patients without diabetes.",
+    "note_ko": "ALTTO 3상 시험 하위분석에서 HER2 양성 유방암 당뇨 환자 중 메트포르민 복용군의 예후를 비당뇨군 및 비복용 당뇨군과 비교 평가함."
+   },
+   {
+    "source_id": "PMID:20656475",
+    "stance": "SUPPORTS",
+    "quote": "The metformin treatment also increases complete pathological tumour response rates following neoadjuvant chemotherapy for breast cancer, suggesting a potential role as an anti-cancer drug.",
+    "note_ko": "리뷰 논문에서 네오아주번트 화학요법 시 메트포르민이 병리학적 완전관해율을 높인다는 관찰 근거 제시."
+   },
+   {
+    "source_id": "PMID:33639681",
+    "stance": "SUPPORTS",
+    "quote": "Log-rank test showed that the metformin group had a significant advantage over the non-metformin group in terms of both OS and RFS rates (p.",
+    "note_ko": "후향적 코호트 연구에서 제2형 당뇨 동반 유방암 환자 217명 대상 메트포르민 복용군이 전체생존율과 무재발생존율 모두 유의하게 우수."
+   },
+   {
+    "source_id": "PMID:24944108",
+    "stance": "CONTRADICTS",
+    "quote": "At a median follow-up of 87 months (range, 6.9-140.4 months), there was no difference in RFS (P = 0.61), OS (P = 0.462), or CBC (P = 0.156) based on metformin use.",
+    "note_ko": "전향적 기관 데이터베이스 분석에서 당뇨 동반 유방암 환자 141명 대상 메트포르민 사용 여부에 따른 무재발생존율, 전체생존율, 대측 유방암 발생률 차이 없음."
+   },
+   {
+    "source_id": "PMID:20490716",
+    "stance": "SUPPORTS",
+    "quote": "The frequency of progesterone receptor-positive mammary carcinomas in women who were treated with metformin, irrespective of whether it was combined with sulfonylurea preparations, was significantly higher than in the sulfonylurea only group (P=0.043).",
+    "note_ko": "폐경 후 당뇨 동반 유방암 여성 90명에서 메트포르민 치료군이 프로게스테론 수용체 양성 종양 비율이 유의하게 높음(호르몬 수용체 프로파일 개선 시사)."
+   },
+   {
+    "source_id": "PMID:41079227",
+    "stance": "SUPPORTS",
+    "quote": "Survival outcomes (36-month PFS and OS) were analyzed via Kaplan-Meier curves and Cox models adjusted for age, BMI, and tumor stage.",
+    "note_ko": "국소진행성 유방암 및 제2형 당뇨 환자 대상 메트포르민의 에스트로겐 조절 및 예후 관련 무진행생존율·전체생존율 평가한 무작위 시험."
+   },
+   {
+    "source_id": "PMID:40578405",
+    "stance": "SUPPORTS",
+    "quote": "We employed the prevalent new-user design to match metformin initiators 1:1 with nonusers on a prior diabetes diagnosis and time-conditional propensity scores... Hazard ratios (HRs) and 95% CIs of all-cause and breast cancer-related death were estimated.",
+    "note_ko": "CPRD 데이터베이스 13,314명 대상 불멸시간 편향 보정한 prevalent new-user 설계로 메트포르민 개시군의 유방암 관련 사망률 및 전원사망률 평가."
+   },
+   {
+    "source_id": "PMID:38529589",
+    "stance": "SUPPORTS",
+    "quote": "Patients who received metformin either pre- or postoperatively exhibited reduced distant organ recurrence and improved postoperative recurrence-free survival compared to those of patients who did not.",
+    "note_ko": "제2형 당뇨 동반 유방암 환자 177명에서 메트포르민 복용군이 원격 전이 감소 및 수술 후 무재발생존율 개선, 종양 면역 미세환경(TAM, TIL) 유리하게 변화."
+   }
+  ]
+ }
+}

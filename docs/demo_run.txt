@@ -1,0 +1,388 @@
+
+$ sense
+[사실] 면담 기록 12건 처리 · 인용 검증 통과 30 · 원문에 없어 버림 0 · 유해사례 후보 2 (별도 safety 경로)
+[패턴] 환자군 × 신호 유형 (검증된 발언만, 코드 집계)
+   PCOS 여성        OFF_LABEL_USE        언급  6 · 의료진  4
+   당뇨 전단계         OFF_LABEL_DEMAND     언급  4 · 의료진  4
+   유방암 환자         OFF_LABEL_DEMAND     언급  3 · 의료진  3
+   유방암 환자         REPURPOSING          언급  3 · 의료진  3
+   유방암 환자         UNMET_NEED           언급  3 · 의료진  3
+   노인 65+ · 신기능 저하 DOSING               언급  3 · 의료진  2
+   PCOS 여성        SAFETY_TOLERABILITY  언급  1 · 의료진  1
+   PCOS 여성        REPURPOSING          언급  1 · 의료진  1
+   임신부 · 임신성 당뇨   OFF_LABEL_DEMAND     언급  1 · 의료진  1
+   소아 10세 미만      OFF_LABEL_DEMAND     언급  1 · 의료진  1
+   청소년 10-17세     SAFETY_TOLERABILITY  언급  1 · 의료진  1
+   당뇨 전단계         UNMET_NEED           언급  1 · 의료진  1
+   PCOS 여성        DOSING               언급  1 · 의료진  1
+[해석] HYP-001 DRAFT — 인슐린 저항성을 동반한 PCOS 여성에서 메트포르민이 레트로졸 또는 클로미펜과 병용될 때 배란 유도 효과를 보조하고, 월경 주기 회복 및 체중 감소에 기여한다는 현장 경험이 축적되어 있다.  (임계 3회/3인 통과)
+[해석] HYP-002 DRAFT — 임상 현장에서 고위험 당뇨 전단계 환자에 대한 메트포르민 사용 수요가 있으나, 허가 범위 및 급여 제한으로 실제 처방이 제한되고 있다.  (임계 3회/3인 통과)
+[해석] HYP-003 DRAFT — 유방암 환자들이 메트포르민이 재발을 감소시킨다는 언론 보도를 접한 뒤 보조요법으로 처방을 요청하는 사례가 증가하고 있다.  (임계 3회/3인 통과)
+[해석] HYP-004 DRAFT — 당뇨를 동반한 유방암 환자에서 메트포르민을 항암 치료 중에도 유지하는 임상 관행이 관찰 연구의 항암 효과 근거에 기반해 나타나고 있다.  (임계 3회/3인 통과)
+[해석] HYP-005 DRAFT — 유방암 환자, 특히 대사증후군 동반군에서 메트포르민 사용에 대한 정리된 근거 자료가 부족해 현장 의료진이 설명·처방 판단에 어려움을 겪고 있다.  (임계 3회/3인 통과)
+
+$ hypotheses
+HYP-001 DRAFT       DEVELOPMENT PCOS 여성 × OFF_LABEL_USE · 현장 6회/4인 — 인슐린 저항성을 동반한 PCOS 여성에서 메트포르민이 레트로졸 또는 클로미펜과 병용될 때 배란 유도 효과를 보조하고, 월경 주기 회복 및 체중 감소에 기여한다는 현장 경험이 축적되어 있다.
+HYP-002 DRAFT       DEVELOPMENT 당뇨 전단계 × OFF_LABEL_DEMAND · 현장 4회/4인 — 임상 현장에서 고위험 당뇨 전단계 환자에 대한 메트포르민 사용 수요가 있으나, 허가 범위 및 급여 제한으로 실제 처방이 제한되고 있다.
+HYP-003 DRAFT       DEVELOPMENT 유방암 환자 × OFF_LABEL_DEMAND · 현장 3회/3인 — 유방암 환자들이 메트포르민이 재발을 감소시킨다는 언론 보도를 접한 뒤 보조요법으로 처방을 요청하는 사례가 증가하고 있다.
+HYP-004 DRAFT       DEVELOPMENT 유방암 환자 × REPURPOSING · 현장 3회/3인 — 당뇨를 동반한 유방암 환자에서 메트포르민을 항암 치료 중에도 유지하는 임상 관행이 관찰 연구의 항암 효과 근거에 기반해 나타나고 있다.
+HYP-005 DRAFT       DEVELOPMENT 유방암 환자 × UNMET_NEED · 현장 3회/3인 — 유방암 환자, 특히 대사증후군 동반군에서 메트포르민 사용에 대한 정리된 근거 자료가 부족해 현장 의료진이 설명·처방 판단에 어려움을 겪고 있다.
+
+$ screen HYP-001
+[사실] PubMed 171건(RCT·3상·메타분석 35) 중 17건 읽음 · CT.gov 224건(3상 42 · 모집 중 16) 중 18건 읽음 · FAERS 보고 440,270건 · Part D 2024 청구 34,375,334건 · 라벨 Metformin Hydrochloride (20240821)
+[패턴] 근거 집계 (코드): 지지 9 · 반대 0 · 중립 27 · 인용 검증 실패로 버림 3 · 라벨 판정 DEVELOPMENT
+[해석] 지지 PMID:30806102 @762-1019 — 클로미펜 저항성 비만 PCOS 여성에서 메트포르민+L-카르니틴 병용이 월경 규칙성, 배란율, 임신율을 유의하게 개선한 이중맹검 RCT
+        “Clomiphene-citrate, L-carnitine, and metformin group showed significant improvement in the menstrual regularity, ovulation rate, and pregnan”
+[해석] 지지 PMID:31647106 @745-1007 — 레트로졸 단독과 클로미펜+메트포르민 병용을 클로미펜 단독과 비교한 개별 참여자 데이터 메타분석
+        “We aimed to evaluate the effectiveness of different ovulation induction agents, in particular letrozole alone and clomiphene citrate (CC) pl”
+[해석] 지지 PMID:21518135 @1407-1514 — 메트포르민 용량별 배란 유도 효과를 비교한 RCT, 클로미펜 병용 시 배란율 84-88% 보고
+        “1000 mg of metformin had as high efficacy as 1700 mg on induction of ovulation and pregnancy in PCOS women.”
+[해석] 지지 PMID:29183107 @494-593 — 인슐린 감작제(메트포르민 포함)의 생식·대사 아웃컴 효과를 평가한 코크란 메타분석
+        “Insulin-sensitising agents such as metformin may be effective in treating PCOS-related anovulation.”
+[해석] 지지 PMID:17804299 @725-857 — 클로미펜 실패 시 메트포르민 병용을 치료 옵션으로 제시한 리뷰 논문
+        “Failure to conceive with CC can be treated in a number of ways, including the addition of insulin-lowering agents (mainly metformin)”
+[해석] 지지 PMID:10576524 @1237-1452 — 메트포르민이 체중 감소와 무관하게 자발적 또는 클로미펜 유도 배란을 회복시킨다는 리뷰
+        “metformin 500 mg 3 times daily to decrease insulin secretion and to reduce ovarian production of 17alpha-hydroxyprogesterone with recovery o”
+[해석] 지지 PMID:15262344 @884-1051 — 메트포르민이 월경 주기 회복과 클로미펜 시트레이트 배란 유도 성공률을 높일 수 있다는 리뷰
+        “Its use may also help restore spontaneous ovulation and improve menstrual cyclicity, improve the success rate of induction of ovulation with”
+[해석] 중립 PMID:36465612 @932-1103 — 레트로졸 유도 PCOS 쥐 모델에서 한약과 메트포르민 비교한 동물 실험, 사람 임상 자료 아님
+        “The rats in the PCOS group, PCOS+CFDT group, and PCOS+Metformin group were fed a high-fat diet (HFD) and intraperitoneally injected with let”
+[해석] 중립 PMID:25304269 @943-1163 — 클로미펜·인슐린 저항성 PCOS에서 메트포르민 단독 vs 복강경 난소 천공 비교 RCT, 병용 요법 평가 아님
+        “Although Met can significantly improve a patient's insulin resistance, we found that in patients diagnosed with CIRCPOS, LOD can be much mor”
+[해석] 중립 PMID:36755918 @344-489 — 메트포르민의 난소 페롭토시스 억제 효과를 본 쥐 실험, 임상 배란 유도 결과 없음
+        “Metformin is a commonly used drug of PCOS but few studies on whether metformin can improve the follicle development and ovarian function in ”
+[해석] 중립 PMID:38154770 @180-440 — 클로미펜+메트포르민 치료군에서 AMH가 배란 예측 인자인지 본 2차 분석, 치료 효과 자체 비교 아님
+        “To describe the serum anti-Müllerian hormone (AMH) concentrations in a large, well-phenotyped cohort of women with polycystic ovary syndrome”
+[해석] 중립 PMID:38021970 @1317-1484 — PCOS 진단·병태생리·관리 전반을 다룬 리뷰, 메트포르민 병용 효과 구체적 데이터 없음
+        “In females with PCOS, anovulation is linked to low follicle-stimulating hormone (FSH) levels and a halt in antral follicle growth during the”
+[해석] 중립 PMID:39415242 @719-1022 — NAC와 메트포르민을 레트로졸 유도 PCOS 쥐에서 비교한 동물 실험 및 별도 임상 연구, 병용 요법 평가 아님
+        “Female C57BL/6 mice were orally administered letrozole (LE) to induce PCOS and then randomly divided into groups receiving daily oral admini”
+[해석] 중립 PMID:40446578 @1508-1545 — 쥐 모델에서 이진탕과 메트포르민 비교한 동물 실험, 임상 배란 유도 자료 없음
+        “Met group, metformin (Glucophage) gro”
+[해석] 중립 PMID:25487256 @611-761 — PCOS와 비만 관련 리뷰에서 메트포르민을 인슐린 감작제로 언급만 함, 병용 효과 데이터 없음
+        “Other treatment modalities include the use of insulin sensitizers, such as metformin as well as aromatase inhibitors and laparoscopic ovaria”
+[해석] 중립 NCT01482286 @806-1046 — 종료된 3상 시험으로 체중 감량과 인슐린 감수성이 생식 결과에 미치는 영향을 탐색함.
+        “Weight loss and increased insulin sensitivity appear to drive improvements in reproductive outcomes in women with Polycystic ovary syndrome;”
+[해석] 지지 NCT06405178 @184-460 — 완료된 3상 시험으로 레트로졸 배란 유도 시 메트포르민 병용의 보조 효과를 평가함.
+        “The aim of the study is to assess the efficacy of adjuvant therapy dapagliflozin, metformin as monotherapy and combination of both in compar”
+[해석] 중립 NCT03008551 @159-362 — 완료된 2/3상 시험으로 엠파글리플로진과 메트포르민 단독요법을 비교함.
+        “This a randomised open-label parallel study involving women with polycystic ovary syndrome (PCOS). The patients will be randomised either to”
+[해석] 중립 NCT01999686 @153-389 — 완료된 3상 시험으로 DLBS3233과 메트포르민 단독 및 병용요법을 비교함.
+        “This is a 3-arm, randomized, double-blind, double-dummy, and controlled clinical study over 6 months of treatment to evaluate the metabolic ”
+[해석] 중립 NCT07323589 @205-514 — 완료된 3상 시험으로 마이오이노시톨 단독과 메트포르민 병용을 비교함.
+        “The goal of this clinical trial (prospective randomized controlled trial) is to compare whether myo-inositol alone or in combination with me”
+[해석] 중립 NCT07585396 @385-484 — 완료된 2/3상 시험으로 레트로졸 저항성 PCOS에서 이노시톨과 메트포르민을 비교함.
+        “Thiss study compares between the effect of inositol and metformin in letrozol resistant PCOS women.”
+[해석] 중립 NCT01791647 @180-390 — 완료된 시험으로 비만 PCOS 여성에서 마이오이노시톨과 메트포르민을 비교함.
+        “The aim of this study is to compare the effects of six months treatment of two insulin-lowering therapies on the clinical and endocrine-meta”
+[해석] 중립 NCT04867252 @264-527 — 완료된 2상 시험으로 레스베라트롤과 마이오이노시톨 병용요법을 평가함.
+        “The investigators aim is to conduct a double blind randomized clinical trial, to study the effects of combined Resveratrol and Myo-Inositol ”
+[해석] 중립 NCT01115140 @164-505 — 완료된 4상 시험으로 임신 중 PCOS 여성에서 메트포르민과 엽산 병용을 평가함.
+        “A more recent prospective nonrandomized placebo-controlled double-blind clinical study demonstrated that metformin exerts a slight but signi”
+[해석] 지지 NCT00795808 @321-517 — 완료된 4상 시험으로 클로미펜과 메트포르민 병용이 단독요법보다 효과적임을 확인함.
+        “Metformin in combination with clomiphene, is more effective than clomiphene alone or metformin alone improves fertility outcomes in women wi”
+[해석] 중립 NCT07399535 @674-815 — 완료된 1상 시험으로 한약 제제의 효과를 평가함.
+        “This study will test a combination of herbal medications (Melats P) in women with PCOS to determine which works best to overcome infertility”
+[해석] 중립 NCT07591246 @184-316 — 모집 중인 시험으로 신체활동 프로그램이 지방췌장과 갑상선기능저하에 미치는 영향을 평가함.
+        “females of polycystic ovary syndromes may complain fatty pancreaetic disorder and thyroid hypofunctions (subclinical hypothyroidism)”
+[해석] 중립 NCT02446834 @151-376 — 완료된 시험으로 집중 생활요법과 약물요법(GLP-1RA, 메트포르민, 아카보스)을 비교함.
+        “Compare the efficacy between intensive lifestyle intervention and drugs (GLP-1 Receptor Agonists, metformin and acarbose) for PCOS patients ”
+[해석] 중립 NCT01892254 @140-297 — 완료된 4상 시험으로 메트포르민 투여 전후 인크레틴 효과 변화를 평가함.
+        “This study investigates the incretin effect in women with polycystic ovary syndrome (PCOS) before and after removal of their insulin resista”
+[해석] 중립 NCT07687667 @174-464 — 모집 전 시험으로 GLP-1RA와 메트포르민을 생활요법과 병용해 비교함.
+        “The goal of this clinical trial is to examine whether GLP1-RA and healthy lifestyle education in women with PCOS and obesity prior to fertil”
+[해석] 중립 NCT04151459 @188-398 — 상태 불명의 시험으로 비만 PCOS 환자에서 대사수술의 출생아 생존율 효과를 평가함.
+        “This is a experimental study, which subjects are obese PCOS patients requiring LSG surgery. Aim to investigate the effects of LSG surgery in”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage @22-220 — 허가 적응증은 제2형 당뇨병에 한정되며 PCOS, 배란 유도, 레트로졸/클로미펜 병용, 월경 주기 회복, 체중 감소에 대한 언급이 없다.
+        “Metformin hydrochloride tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults and pediatric patient”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning @14-180 — 박스 경고는 젖산산증 위험을 일반적으로 경고하며 PCOS 여성군에 특화된 금기·제한 사항은 아니다.
+        “WARNING: LACTIC ACIDOSIS Postmarketing cases of metformin-associated lactic acidosis have resulted in death, hypothermia, hypotension, and r”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#pediatric_use @50-223 — 소아 사용 근거도 제2형 당뇨병에 한정되며 PCOS 관련 내용은 없다.
+        “The safety and effectiveness of metformin hydrochloride tablets for the treatment of type 2 diabetes mellitus have been established in pedia”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use @18-204 — 고령자 사용 주의사항은 당뇨병 치료 맥락이며 PCOS 여성군과 무관하다.
+        “Controlled clinical studies of metformin hydrochloride tablets did not include sufficient numbers of elderly patients to determine whether t”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations @30-157 — 가임기 여성에게 의도치 않은 임신 가능성을 알리라는 일반적 권고만 있으며 PCOS 치료 목적을 지지하거나 제한하지 않는다.
+        “Females and Males of Reproductive Potential: Advise premenopausal females of the potential for an unintended pregnancy. (8.3)”
+[버림] PMID:24273971 — quote not in record: “All patients took Metformin and Diane-35. Those in Group A took DXP additionally”
+[버림] SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#warnings_and_cautions — quote not in record: “Lactic Acidosis: See boxed warning. (5.1) Vitamin B12 Deficiency: Metformin may ”
+[버림] SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration — quote not in record: “Adult Dosage for metformin hydrochloride tablets: Starting dose: 500 mg orally t”
+→ 다음: 사람이 근거를 읽고 서명합니다 — `review HYP-001 --by 이름`
+
+$ screen HYP-002
+[사실] PubMed 241건(RCT·3상·메타분석 55) 중 18건 읽음 · CT.gov 117건(3상 17 · 모집 중 9) 중 16건 읽음 · FAERS 보고 440,270건 · Part D 2024 청구 34,375,334건 · 라벨 Metformin Hydrochloride (20240821)
+[패턴] 근거 집계 (코드): 지지 23 · 반대 2 · 중립 13 · 인용 검증 실패로 버림 1 · 라벨 판정 DEVELOPMENT
+[해석] 지지 PMID:32601731 @1249-1469 — DPP 하위분석에서 공복혈당장애가 두드러진 고위험 당뇨전단계군에서 메트포르민의 당뇨 예방 효과가 43%로 가장 컸다(대규모 RCT).
+        “Metformin reduced the incidence of diabetes by 43% (RR 0.57, CI 0.4-0.9) in those prediabetic persons whose IFG was more pronounced compared”
+[해석] 지지 PMID:40970814 @1385-1574 — 다민족 아시아인 당뇨전단계 코호트에서 메트포르민을 단계적으로 추가한 중재군이 대조군 대비 3년 당뇨 전환율을 유의하게 낮춤(RCT).
+        “After 3 years, 34.8% of participants in the intervention arm developed diabetes compared with 47.3% in the control arm (adjusted risk differ”
+[해석] 중립 PMID:36220198 @195-525 — Pre-DICTED 시험의 기초선 특성만 기술하며 처방 제한이나 수요에 대한 언급 없음.
+        “The Pre-Diabetes Interventions and Continued Tracking to Ease-out Diabetes (Pre-DICTED) Program is a diabetes prevention trial comparing the”
+[해석] 지지 PMID:30778004 @1099-1165 — 당뇨전단계에서 생활요법+메트포르민 병용군만 당화혈색소 유의 감소 보임(소규모 파일럿 RCT).
+        “a reduction in haemoglobin A1c (P =0.03) only in the ILSM+Met arm.”
+[해석] 지지 PMID:39196872 @1223-1491 — 나이지리아 당뇨전단계 환자에서 메트포르민이 혈당과 당뇨 위험을 유의하게 감소시킴(RCT).
+        “The metformin group also had a significant decrease in glycaemic level from the baseline, FPG=5.1mmol/L (13.3% reduction) and 2HPGL=7.9mmol/”
+[해석] 중립 PMID:35010938 @1467-1569 — 임신성 당뇨 예방 목적의 고위험 임산부 대상 연구로 당뇨전단계 일반 처방 수요와 무관.
+        “There is no benefit in adding metformin to intensive MNT to prevent GDM among high-risk Mexican women.”
+[해석] 지지 PMID:33355476 @929-1126 — 당뇨전단계 정의 합의 부재로 메트포르민 실제 사용이 불충분하고 복잡하다고 명시(역학 리뷰, NIH 지원).
+        “However, the practical implementation of lifestyle modification or the use of metformin for treating prediabetes is inadequate and complicat”
+[해석] 지지 PMID:29731022 @952-1249 — 메트포르민이 당뇨전단계 약물요법 중 근거가 가장 강력하나, 허가외 사용임을 시사(리뷰).
+        “The best evidence for a pharmacological approach is with metformin. Other drugs that have shown efficacy include thiazolidinediones, alpha-g”
+[해석] 중립 PMID:38451966 @118-247 — 조기 탈모와 대사증후군 연관성 스코핑 리뷰로 가설과 무관.
+        “Early-onset androgenetic alopecia (AGA) has been associated with various chronic conditions, including metabolic syndrome (MetS).”
+[해석] 지지 PMID:34281467 @541-772 — DPP/DPPOS 장기 추적에서 메트포르민이 젊고 비만한 고위험군에서 당뇨 예방 효과 가장 큼(내러티브 리뷰).
+        “Metformin reduced the 3-year risk of diabetes by -31% in the randomized phase of the Diabetes Prevention Program (DPP), vs. -58% for intensi”
+[해석] 지지 PMID:42295772 @344-474 — DPP/DPPOS 25년 추적에서 메트포르민군의 다중질환 위험 감소 확인(다기관 관찰연구).
+        “To examine the association of lifestyle or metformin compared with placebo on long-term multimorbidity in adults with prediabetes.”
+[해석] 중립 PMID:34326945 @302-523 — 당뇨전단계 포함 광범위한 허가외 사용 실태 언급하나 처방 제한 원인은 다루지 않음(리뷰).
+        “Indeed, metformin is the most widely used oral insulin-sensitizing agent, being prescribed to more than 100 million people worldwide, includ”
+[해석] 중립 PMID:35251851 @159-291 — 다낭성난소증후군 여성 대상 비교연구로 당뇨전단계 고위험군 일반 처방 수요와 무관.
+        “This study was conducted to see the effects of berberine, metformin, and myoinositol in women with polycystic ovary syndrome (PCOS).”
+[해석] 지지 PMID:40329646 @832-1034 — 폐경이행기 여성 당뇨전단계에서 메트포르민의 이점과 위험 검토, 성별 차이 강조(리뷰).
+        “Metformin's interaction with hormonal regulation significantly influences both its therapeutic efficacy and long-term side effect profile, c”
+[해석] 반대 PMID:32995892 @1313-1478 — 다낭성난소증후군 동반 당뇨전단계에서 메트포르민 단독요법이 엑세나타이드나 병용요법보다 관해율 낮음(RCT).
+        “Remission rate of COM group (64%, 32/50) or EX group (56%, 28/50) was significantly higher than that of the MET group (32%, 16/50) (P = .003”
+[해석] 지지 PMID:29808066 @684-757 — 고위험 당뇨전단계에서 경구혈당강하제(메트포르민 포함) 사용 고려 권고(관리 지침 리뷰).
+        “In cases at high risk, use of oral antidiabetic agents may be considered.”
+[해석] 지지 NCT01394887 @185-410 — 완료된 2/3상 시험으로 당뇨 전단계 소아에서 메트포르민의 인슐린 저항성 및 염증 표지자 효과를 평가함.
+        “To determine the effect of metformin on the concentrations of resistin and other insulin resistance or inflammatory markers... in minors wit”
+[해석] 지지 NCT02338193 @169-291 — 완료된 3상 시험으로 임신성 당뇨병력이 있는 고위험 여성에서 메트포르민 병용요법을 평가함.
+        “Women with a history of gestational diabetes (GDM) are at substantially increased risk of type 2 diabetes mellitus (T2DM).”
+[해석] 지지 NCT03968224 @582-734 — 완료된 2/3상 시험에서 비만 클리닉의 당뇨 전단계 환자에게 메트포르민 1,700mg/day가 표준 치료로 사용됨을 언급함.
+        “The management of alterations in the glucose metabolism in this unit is made by dietary treatment and with the use of metformin at doses of ”
+[해석] 지지 NCT04131582 @301-618 — 상태 불명의 3상 시험으로 당뇨 전단계 환자에서 메트포르민 병용요법의 효과를 평가함.
+        “The goal of this trial is to evaluate the effect of empagliflozin + linagliptin + metformin + lifestyle on physiopathological parameters... ”
+[해석] 지지 NCT00038727 @477-604 — 완료된 3상 대규모 시험으로 당뇨 전단계 고위험군에서 메트포르민이 당뇨 발생을 31% 감소시킴을 입증함.
+        “The DPP has ended early demonstrating that lifestyle reduced diabetes onset by 58% and metformin reduced diabetes onset by 31%.”
+[해석] 지지 NCT03774108 @592-735 — 상태 불명의 4상 시험으로 HIV 환자의 당뇨 전단계에서 메트포르민의 염증 효과를 평가함.
+        “patients with prediabetes (who meet the fasting impaired glucose criteria) will be identified and treated with metformin or placebo for 8 we”
+[해석] 지지 NCT02446834 @151-316 — 완료된 시험으로 PCOS 동반 당뇨 전단계 환자에서 메트포르민을 약물 치료군에 포함하여 비교함.
+        “Compare the efficacy between intensive lifestyle intervention and drugs (GLP-1 Receptor Agonists, metformin and acarbose) for PCOS patients ”
+[해석] 지지 NCT04549415 @0-96 — 완료된 4상 시험으로 당뇨 전단계 동반 만성심부전 환자에서 메트포르민의 임상 경과 영향을 평가함.
+        “The Influence of Metformin on Chronic Heart Failure Clinical Course in Patients With Prediabetes”
+[해석] 지지 NCT03558867 @557-789 — 완료된 시험으로 당뇨 전단계에서 메트포르민 단독요법의 혈당 조절 효과가 불충분함을 지적하며 개인맞춤형 접근을 모색함.
+        “clinical practice, backed by randomised trials, reports that many patients treated with standard dietary guidelines or with the first-line t”
+[해석] 중립 NCT01351753 @595-683 — 중단된 2상 비만 시험으로 메트포르민을 체중 감량 약물로 언급하나 당뇨 전단계 초점은 아님.
+        “There are drugs that have been approved for other diseases but which also reduce weight.”
+[해석] 중립 NCT07209527 @152-292 — 모집 중인 초기 1상 진단기기 평가 시험으로 메트포르민 중재와 무관함.
+        “This study evaluates the effectiveness of Truway Health-sourced portable diagnostic devices, including ultrasound and blood glucose monitors”
+[해석] 지지 NCT02915198 @198-393 — 모집 중인 4상 대규모 시험으로 심혈관질환 동반 당뇨 전단계 환자에서 메트포르민의 심혈관 사건 예방 효과를 평가함.
+        “This research will help us to learn if the medicine called metformin reduces the risk of death, heart attacks, and/or strokes in Veterans wh”
+[해석] 지지 NCT05052918 @427-583 — 상태 불명의 시험으로 당뇨 전단계 환자에서 운동요법과 메트포르민 병용요법을 비교함.
+        “evaluate whether there is a difference between the group in which exercise programs were applied and those who received only lifestyle chang”
+[해석] 지지 NCT02234440 @46-672 — 완료된 시험으로 암호성 간경변 동반 당뇨 전단계 환자에서 메트포르민의 질병 진행 효과를 평가함.
+        “patients with cryptogenic cirrhosis... with Diabetes or Impaired Glucose Tolerance or Insulin Resistance... randomised to either metformin a”
+[해석] 지지 NCT07131384 @414-525 — 모집 중인 시험으로 당뇨 전단계 환자에서 메트포르민 복용군과 비복용군의 무기질산염 보충제 반응을 비교함.
+        “We will be comparing the responses in individuals who are taking metformin to those who are naive to metformin.”
+[해석] 반대 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage @22-220 — 적응증이 제2형 당뇨병으로 한정되어 당뇨 전단계는 허가 범위 밖임.
+        “Metformin hydrochloride tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults and pediatric patient”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning @14-180 — 박스 경고가 당뇨 전단계 환자군을 특정하지 않음.
+        “WARNING: LACTIC ACIDOSIS Postmarketing cases of metformin-associated lactic acidosis have resulted in death, hypothermia, hypotension, and r”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#pediatric_use @50-223 — 소아 사용도 제2형 당뇨병에 한정되며 당뇨 전단계 언급 없음.
+        “The safety and effectiveness of metformin hydrochloride tablets for the treatment of type 2 diabetes mellitus have been established in pedia”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use @18-204 — 노인 사용 관련 당뇨 전단계 언급 없음.
+        “Controlled clinical studies of metformin hydrochloride tablets did not include sufficient numbers of elderly patients to determine whether t”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#warnings_and_cautions @27-135 — 경고 섹션이 당뇨 전단계 환자군을 특정하지 않음.
+        “Lactic Acidosis: See boxed warning. (5.1) Vitamin B12 Deficiency: Metformin may lower vitamin B12 levels.”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration @26-149 — 용법·용량이 제2형 당뇨병 기준이며 당뇨 전단계 별도 용량 없음.
+        “Adult Dosage for metformin hydrochloride tablets: Starting dose: 500 mg orally twice a day or 850 mg once a day, with meals.”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations @30-294 — 특수 집단 사용에서 당뇨 전단계 언급 없음.
+        “Females and Males of Reproductive Potential: Advise premenopausal females of the potential for an unintended pregnancy. (8.3) Geriatric Use:”
+[버림] NCT00570739 — quote not in record: “Two-hundred sixty subjects with type 2 diabetes (T2DM) and 200 pre-diabetic subj”
+→ 다음: 사람이 근거를 읽고 서명합니다 — `review HYP-002 --by 이름`
+
+$ screen HYP-003
+[사실] PubMed 11건(RCT·3상·메타분석 3) 중 11건 읽음 · CT.gov 64건(3상 6 · 모집 중 6) 중 17건 읽음 · FAERS 보고 440,270건 · Part D 2024 청구 34,375,334건 · 라벨 Metformin Hydrochloride (20240821)
+[패턴] 근거 집계 (코드): 지지 10 · 반대 3 · 중립 19 · 인용 검증 실패로 버림 2 · 라벨 판정 DEVELOPMENT
+[해석] 반대 PMID:42063220 @195-414 — 대규모 3상 RCT에서 메트포르민이 보조요법으로 무침습 생존율이나 전체 생존율을 개선하지 못함을 보여줌
+        “In the MA.32 randomized adjuvant breast cancer trial, metformin (vs placebo) did not impact invasive disease-free survival or overall surviv”
+[해석] 반대 PMID:34137294 @1212-1438 — 메타분석에서 전이/재발 유방암 환자의 전체 생존과 무진행 생존에 메트포르민의 유의한 효과가 없음
+        “Metformin showed little to no difference in OS (hazard ratio [HR] = 1.13; 95% CI = 0.71-1.81; certainty of evidence [COE], moderate) and PFS”
+[해석] 반대 PMID:32321715 @1197-1344 — 전임상 연구에서 메트포르민이 휴면 ER+ 유방암 세포의 생존을 촉진하여 재발 위험을 높일 수 있음을 시사
+        “metformin promoted the persistence of estrogen-deprived cells and tumors through increased mitochondrial respiration driven by fatty acid ox”
+[해석] 지지 PMID:23714455 @870-1200 — 역학 연구에서 메트포르민 사용이 유방암 위험 감소 및 병리학적 완전 관해율 증가와 연관됨을 보고하여 언론 보도의 근거가 될 수 있음
+        “the use of metformin, a diabetes medication that reduces insulin levels, has been epidemiologically associated with reduced breast cancer ri”
+[해석] 지지 PMID:22490993 @1005-1362 — 역학적 용량-반응 관계와 진행 중인 RCT를 언급하여 메트포르민의 항암 효과에 대한 기대감을 형성할 수 있는 내용
+        “many epidemiological studies have shown that metformin use is associated with a lower cancer incidence and mortality through a dose-response”
+[해석] 지지 PMID:19560877 @982-1291 — 메트포르민의 HER2 억제 기전을 제시하며 보조요법으로서의 가능성을 주장한 초기 논문으로 언론 보도의 과학적 근거가 될 수 있음
+        “Metformin causes Her-2 suppression via the inhibition of mTOR in breast cancer cells. Thus, we believe that the time has arrived both to tar”
+[해석] 지지 PMID:21800293 @150-355 — 관찰 연구에서 메트포르민 사용이 암 발생률과 사망률 감소, 병리학적 완전 관해 예측과 연관됨을 보고
+        “Recent observational studies have shown that metformin use in diabetic patients decreases both cancer incidence and mortality. Metformin use”
+[해석] 중립 PMID:27681864 @1042-1280 — 대장암 관찰 연구 결과로 유방암 보조요법 수요 가설과 직접 관련 없음
+        “In those with early-stage colorectal cancer, metformin use was associated with a significant benefit in all outcomes [RFS hazard ratio (HR) ”
+[해석] 중립 PMID:27118574 @1209-1441 — 메트포르민 병용요법의 임상시험 현황과 한계를 논의한 리뷰로 환자 수요 증가 현상과는 무관
+        “the clinical trials regarding metformin in combination of chemotherapeutic drugs were presented and the clinical obstacle or limitation rela”
+[해석] 중립 PMID:29788487 @158-276 — 생체표지자 변화 연구로 재발 감소나 환자 수요와 직접 관련 없음
+        “This study investigated the effects of metformin and weight loss on biomarkers associated with breast cancer prognosis”
+[해석] 중립 PMID:29282430 @601-734 — 당뇨병 치료제로 메트포르민을 복용 중인 유방암 환자 사례보고로 보조요법 수요와 무관
+        “Her medical history includes type 2 diabetes mellitus and hypertension, which are adequately controlled with metformin and lisinopril”
+[해석] 지지 NCT04387630 @539-655 — 모집 상태 불명, 2/3상, 수술 전 화학요법 병용 시 메트포르민의 면역 효과를 평가 중이다.
+        “This study examines the immune effect of metformin in breast cancer patients treated with preoperative chemotherapy.”
+[해석] 중립 NCT02201381 @186-340 — 철회됨, 3상, 유방암 특이적이지 않고 대사요법 복합요법의 실세계 효과를 보려던 시험이다.
+        “The purpose of this study is to determine the effectiveness of a regimen of selected metabolic treatments for patients with cancer in a real”
+[해석] 지지 NCT01101438 @184-427 — 완료, 3상, 조기 유방암에서 메트포르민이 재발을 억제하는지 위약 대조로 검증한 대규모 시험이다.
+        “This study is looking at whether Metformin ... can decrease or affect the ability of breast cancer cells to grow and whether Metformin will ”
+[해석] 중립 NCT06763328 @214-397 — 모집 중, 3상, 화학요법 후 인슐린 저항성 치료가 주목적이고 재발 억제는 직접 평가하지 않는다.
+        “This phase III trial evaluates how often women develop insulin resistance and type-2 diabetes and compares metformin with usual care to usua”
+[해석] 중립 NCT01905046 @239-439 — 모집 완료(활성 비모집), 3상, 비정형 과증식/상피내암 환자의 예방(화학예방) 목적이지 보조요법 재발 억제는 아니다.
+        “This randomized phase III trial studies metformin hydrochloride to see how well it works compared to placebo in preventing breast cancer in ”
+[해석] 중립 NCT07815808 @520-743 — 모집 전, 3상, 독소루비신 심장독성 예방에서 엠파글리플로진과 메트포르민을 비교하는 심장보호 시험이다.
+        “To compare the cardioprotective efficacy, safety, and metabolic/oncologic outcomes of Empagliflozin versus Metformin in non-diabetic or cont”
+[해석] 중립 NCT01302002 @175-316 — 철회됨, 초기 1상, 수술 전 단기 투여로 생체표지자만 탐색하려던 소규모 시험이다.
+        “The study will test metformin in patients with early breast cancer. Blood and tissue will be collected before and after the use of metformin”
+[해석] 중립 NCT04300790 @193-378 — 완료, 2상, PIK3CA 변이 진행성 호르몬수용체 양성 유방암에서 메트포르민 병용을 본 시험이다.
+        “Men and post- or induced menopausal women with ER[+] and/or PgR[+], HER2[-] advanced BC, with centrally-confirmed PI3KCAMut who progressed t”
+[해석] 지지 NCT01566799 @317-502 — 상태 불명, 2상, 수술 전 화학요법 병용 시 병리학적 완전 관해율을 위약 대조로 평가한다.
+        “Main goal of this study is to evaluate the efficacy of metformin plus chemotherapy in terms of pathologic complete response in comparison wi”
+[해석] 지지 NCT02488564 @662-745 — 완료, 2상, HER2 양성 조기/국소진행 유방암에서 수술 전 항암화학요법에 메트포르민을 추가해 pCR을 평가했다.
+        “The primary objective is to evaluate the pathological complete response rate (pCR).”
+[해석] 지지 NCT05680662 @0-157 — 상태 불명, 초기 1상, 조기/전이성/삼중음성 유방암에서 케르세틴·아연·메트포르민·EGCG 4제 병용을 보조요법으로 탐색한다.
+        “The Study of Quadruple Therapy Quercetin, Zinc, Metformin, and EGCG as Adjuvant Therapy for Early, Metastatic Breast Cancer and Triple-negat”
+[해석] 중립 NCT05768139 @258-437 — 모집 중, 1/2상, PI3Kα 억제제 테르솔리시브 단독/병용 시험으로 메트포르민과는 무관하다.
+        “Study STX-478-101 (LY4064809) is a multipart, open-label, phase 1/2 study evaluating the safety, tolerability, pharmacokinetics (PK), and pr”
+[해석] 중립 NCT04741204 @782-978 — 철회됨, 4상, 수술 전 당뇨/인슐린저항성 선별 및 격차 해소가 주목적이고 재발 억제 평가는 아니다.
+        “Given the high prevalence of undiagnosed pre-diabetes and diabetes in the United States and worldwide, preoperative screening to identify su”
+[해석] 중립 NCT02431676 @280-551 — 완료, 2상, 고형암 생존자에서 메트포르민과 체중감량이 IGF-1 등 생체표지자에 미치는 영향을 본 2차 예방 시험이다.
+        “The study design is an efficacy study to evaluate the effect of metformin and coach-directed behavioral weight loss versus self-directed wei”
+[해석] 지지 NCT00909506 @384-522 — 완료, 2상, 과체중/당뇨병 전단계인 절제 가능 유방암 환자에서 보조요법으로서 메트포르민의 유효성·안전성을 평가했다.
+        “The investigators aim to test the efficacy and safety of adjuvant metformin for operable breast cancer patients with overweight or pre-DM.”
+[해석] 중립 NCT01286233 @424-586 — 상태 불명, 단계 미표기, MA.32 시험(NCT01101438) 참여자의 피로 관련 생체표지자를 탐색하는 부연구다.
+        “This research study is studying biomarkers associated with fatigue in patients with early-stage breast cancer treated with metformin or plac”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage @22-220 — 적응증은 제2형 당뇨병의 혈당 조절로 한정되며 유방암 보조요법은 언급되지 않음.
+        “Metformin hydrochloride tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults and pediatric patient”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning @14-180 — 박스 경고는 젖산산증 위험을 다루며 유방암 환자군에 대한 언급은 없음.
+        “WARNING: LACTIC ACIDOSIS Postmarketing cases of metformin-associated lactic acidosis have resulted in death, hypothermia, hypotension, and r”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#pediatric_use @50-223 — 소아 사용은 제2형 당뇨병에 한정되며 유방암 관련 내용은 없음.
+        “The safety and effectiveness of metformin hydrochloride tablets for the treatment of type 2 diabetes mellitus have been established in pedia”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use @18-204 — 노인 사용 시 신기능 모니터링 권고만 있으며 유방암 보조요법 관련 언급 없음.
+        “Controlled clinical studies of metformin hydrochloride tablets did not include sufficient numbers of elderly patients to determine whether t”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations @30-294 — 특정 인구군 사용 지침은 임신, 노인, 간장애에 한정되며 유방암 환자군은 별도 언급 없음.
+        “Females and Males of Reproductive Potential: Advise premenopausal females of the potential for an unintended pregnancy. (8.3) Geriatric Use:”
+[버림] SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#warnings_and_cautions — quote not in record: “Lactic Acidosis: See boxed warning. (5.1) Vitamin B12 Deficiency: Metformin may ”
+[버림] SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration — quote not in record: “Adult Dosage for metformin hydrochloride tablets: Starting dose: 500 mg orally t”
+→ 다음: 사람이 근거를 읽고 서명합니다 — `review HYP-003 --by 이름`
+
+$ screen HYP-004
+[사실] PubMed 162건(RCT·3상·메타분석 10) 중 18건 읽음 · CT.gov 2건(3상 0 · 모집 중 0) 중 2건 읽음 · FAERS 보고 440,270건 · Part D 2024 청구 34,375,334건 · 라벨 Metformin Hydrochloride (20240821)
+[패턴] 근거 집계 (코드): 지지 9 · 반대 1 · 중립 7 · 인용 검증 실패로 버림 3 · 라벨 판정 DEVELOPMENT
+[해석] 지지 PMID:26446233 @1190-1375 — 당뇨 동반 유방암 환자 11개 연구 메타분석에서 메트포르민 사용군이 전체생존율과 암특이생존율 모두 유의하게 우수함.
+        “The meta-analysis showed that metformin was associated with better overall survival times (HR: 0.53; 95% CI: 0.39-0.71) and cancer-specific ”
+[해석] 지지 PMID:36626437 @1017-1231 — 80개 코호트 연구 메타분석에서 당뇨병 환자의 전체생존율, 무진행생존율, 암특이생존율 모두 메트포르민 관련 유의한 개선 확인.
+        “In patients with diabetes mellitus, the HR of overall survival was 0.79(95% CI: [0.75-0.83]), progression-free survival was 0.72(95% CI: [0.”
+[해석] 지지 PMID:29618465 @1335-1434 — GRADE 평가된 체계적 문헌고찰에서 제2형 당뇨 동반 유방암 환자의 전원사망률 45% 감소 확인(유방암 발생률은 유의차 없음).
+        “A 45% risk reduction was observed for all-cause mortality (HR = 0.55; 95% CI, 0.44-0.70; I2 = 81%).”
+[해석] 지지 PMID:20656475 @347-535 — 리뷰 논문에서 네오아주번트 화학요법 시 메트포르민이 병리학적 완전관해율을 높인다는 관찰 근거 제시.
+        “The metformin treatment also increases complete pathological tumour response rates following neoadjuvant chemotherapy for breast cancer, sug”
+[해석] 지지 PMID:33639681 @965-1105 — 후향적 코호트 연구에서 제2형 당뇨 동반 유방암 환자 217명 대상 메트포르민 복용군이 전체생존율과 무재발생존율 모두 유의하게 우수.
+        “Log-rank test showed that the metformin group had a significant advantage over the non-metformin group in terms of both OS and RFS rates (p.”
+[해석] 반대 PMID:24944108 @1351-1514 — 전향적 기관 데이터베이스 분석에서 당뇨 동반 유방암 환자 141명 대상 메트포르민 사용 여부에 따른 무재발생존율, 전체생존율, 대측 유방암 발생률 차이 없음.
+        “At a median follow-up of 87 months (range, 6.9-140.4 months), there was no difference in RFS (P = 0.61), OS (P = 0.462), or CBC (P = 0.156) ”
+[해석] 지지 PMID:20490716 @1048-1299 — 폐경 후 당뇨 동반 유방암 여성 90명에서 메트포르민 치료군이 프로게스테론 수용체 양성 종양 비율이 유의하게 높음(호르몬 수용체 프로파일 개선 시사).
+        “The frequency of progesterone receptor-positive mammary carcinomas in women who were treated with metformin, irrespective of whether it was ”
+[해석] 지지 PMID:41079227 @1074-1206 — 국소진행성 유방암 및 제2형 당뇨 환자 대상 메트포르민의 에스트로겐 조절 및 예후 관련 무진행생존율·전체생존율 평가한 무작위 시험.
+        “Survival outcomes (36-month PFS and OS) were analyzed via Kaplan-Meier curves and Cox models adjusted for age, BMI, and tumor stage.”
+[해석] 지지 PMID:40578405 @790-1138 — CPRD 데이터베이스 13,314명 대상 불멸시간 편향 보정한 prevalent new-user 설계로 메트포르민 개시군의 유방암 관련 사망률 및 전원사망률 평가.
+        “We employed the prevalent new-user design to match metformin initiators 1:1 with nonusers on a prior diabetes diagnosis and time-conditional”
+[해석] 지지 PMID:38529589 @570-770 — 제2형 당뇨 동반 유방암 환자 177명에서 메트포르민 복용군이 원격 전이 감소 및 수술 후 무재발생존율 개선, 종양 면역 미세환경(TAM, TIL) 유리하게 변화.
+        “Patients who received metformin either pre- or postoperatively exhibited reduced distant organ recurrence and improved postoperative recurre”
+[해석] 중립 NCT04001725 @544-757 — 뇌전이 환자에서 스테로이드 유발 당뇨 예방을 위한 메트포르민 2상 시험(모집 상태 불명)으로, 항암 치료 중 메트포르민 유지를 평가하는 설계가 아님.
+        “The aim is to investigate the metformin efficacy in preventing the onset of glucocorticoid-induced diabetes and other metabolic perturbation”
+[해석] 중립 NCT02695121 @152-544 — 당뇨병 신규 약물 사용자의 유방암 발생률을 비교하는 대규모 관찰 연구(완료)로, 이미 유방암이 있는 환자에서 항암 치료 중 메트포르민 지속 여부를 다루지 않음.
+        “The primary objectives of this study are (1) to compare the incidence of breast cancer, by insulin use at cohort entry, among females with t”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage @22-220 — 허가 적응증은 제2형 당뇨병에 한정되며, 유방암 환자나 항암 치료 중 사용, 항암 목적 사용에 대해서는 언급이 없다.
+        “Metformin hydrochloride tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults and pediatric patient”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning @666-1042 — 박스 경고의 젖산산증 위험인자(수술, 조영제 검사, 저산소 상태, 신장애 등)는 항암 치료 중인 암 환자에게 흔하나, 암 환자나 항암 치료 중 사용을 명시적으로 금지하거나 제한하지는 않는다.
+        “Risk factors for metformin-associated lactic acidosis include renal impairment, concomitant use of certain drugs (e.g. carbonic anhydrase in”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#pediatric_use @50-223 — 소아 적응증은 제2형 당뇨병에 한정되며, 가설의 유방암 환자군(성인)과 무관하다.
+        “The safety and effectiveness of metformin hydrochloride tablets for the treatment of type 2 diabetes mellitus have been established in pedia”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use @205-499 — 고령자 용량 조절 권고만 있으며, 암 환자나 항암 치료 중 사용에 대한 언급은 없다.
+        “In general, dose selection for an elderly patient should be cautious, usually starting at the low end of the dosing range, reflecting the gr”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#warnings_and_cautions @1143-1506 — 젖산산증 위험과 중단 기준을 기술하나, 암 환자나 항암 치료 중 지속 사용을 구체적으로 다루지 않는다.
+        “Metformin decreases liver uptake of lactate increasing lactate blood levels which may increase the risk of lactic acidosis, especially in pa”
+[버림] PMID:28375706 — quote not in record: “260 patients (3.1%) were diabetic and had been treated with metformin... we eval”
+[버림] SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration — quote not in record: “Do not use in patients with eGFR below 30 mL/minute/1.73 m2. Initiation is not r”
+[버림] SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations — quote not in record: “Hepatic Impairment: Avoid use in patients with hepatic impairment. Geriatric Use”
+→ 다음: 사람이 근거를 읽고 서명합니다 — `review HYP-004 --by 이름`
+
+$ screen HYP-005
+[사실] PubMed 23건(RCT·3상·메타분석 5) 중 15건 읽음 · CT.gov 1건(3상 0 · 모집 중 0) 중 1건 읽음 · FAERS 보고 440,270건 · Part D 2024 청구 34,375,334건 · 라벨 Metformin Hydrochloride (20240821)
+[패턴] 근거 집계 (코드): 지지 2 · 반대 2 · 중립 7 · 인용 검증 실패로 버림 1 · 라벨 판정 DEVELOPMENT
+[해석] 지지 PMID:34311387 @622-1207 — 2021년 리뷰에서 메트포르민의 항종양 역할에 대한 현재 근거가 명확하지 않으며 추가 연구가 필요하다고 명시함.
+        “Although current evidence does not provide a clear antitumor role of several of these drugs, metformin seems to be a promising chemopreventi”
+[해석] 지지 PMID:20465505 @1328-1503 — 2010년 리뷰에서 메트포르민의 유방암 치료 효과를 평가하는 다수의 2/3상 임상시험이 진행 중임을 언급하여 당시 근거가 미완성이었음을 시사함.
+        “Several currently ongoing Phase II and III clinical studies are evaluating the therapeutic efficacy of metformin in the treatment of early a”
+[해석] 반대 PMID:41161296 @716-1026 — 2025년 8개 RCT 메타분석으로 신보조요법에서 메트포르민 추가의 pCR 효과가 없음을 통합 근거로 제시함.
+        “This meta-analysis included a total of 8 randomized controlled trials (RCTs), involving 474 patients. The results showed that there was no s”
+[해석] 반대 PMID:36525180 @1245-1481 — 대사이상 동반 유방암 환자 대상 NeoMET 2상 RCT에서 메트포르민 병용이 tpCR을 유의하게 개선하지 못함을 보고함.
+        “The tpCR rates were 12.5% (5/40) and 14.6% (7/48) in the TEC and TECM groups, respectively (P = 0.777). There was no difference in Ki67 decr”
+[해석] 중립 NCT04300790 @0-114 — 완료된 2상 시험으로 PIK3CA 변이 진행성 유방암 환자에서 고혈당 예방을 위한 메트포르민 효과를 평가했으나, 대사증후군 동반 유방암 환자 전반에 대한 통합적 근거를 다루지는 않음.
+        “Study to Evaluate the Effect of Metformin in the Prevention of HG in HR[+]/HER2[-] PIK3CA-mut Advanced BC Patients”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage @22-220 — 적응증은 제2형 당뇨병에 한정되며 유방암 환자나 대사증후군 동반 암환자에 대한 언급이 없다.
+        “Metformin hydrochloride tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults and pediatric patient”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning @14-180 — 박스 경고는 젖산산증 위험을 다루며 유방암 환자군에 대한 구체적 언급은 없다.
+        “WARNING: LACTIC ACIDOSIS Postmarketing cases of metformin-associated lactic acidosis have resulted in death, hypothermia, hypotension, and r”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#pediatric_use @50-223 — 소아 사용은 제2형 당뇨병에 한정되며 유방암 관련 내용은 없다.
+        “The safety and effectiveness of metformin hydrochloride tablets for the treatment of type 2 diabetes mellitus have been established in pedia”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use @18-204 — 노인 사용은 당뇨병 치료 맥락에서만 다루며 유방암 환자는 언급되지 않는다.
+        “Controlled clinical studies of metformin hydrochloride tablets did not include sufficient numbers of elderly patients to determine whether t”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#dosage_and_administration @26-149 — 용법용량은 제2형 당뇨병에만 적용되며 유방암 적응증 용량은 제시되지 않는다.
+        “Adult Dosage for metformin hydrochloride tablets: Starting dose: 500 mg orally twice a day or 850 mg once a day, with meals.”
+[해석] 중립 SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations @30-294 — 특정 인구집단 사용은 당뇨병 치료 맥락에서만 기술되며 유방암 환자는 포함되지 않는다.
+        “Females and Males of Reproductive Potential: Advise premenopausal females of the potential for an unintended pregnancy. (8.3) Geriatric Use:”
+[버림] SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#warnings_and_cautions — quote not in record: “Lactic Acidosis: See boxed warning. (5.1) Vitamin B12 Deficiency: Metformin may ”
+→ 다음: 사람이 근거를 읽고 서명합니다 — `review HYP-005 --by 이름`
+
+$ review HYP-003 --by 검토자 --note 3상 무효 결과까지 읽음
+[사실] 검토자 이(가) 2026-09-28T15:14:28 에 외부 근거 32건(버림 2건 포함)을 직접 검토했습니다 — 심의 상정 가능
+
+$ board HYP-003
+[사실] 라벨 판정 DEVELOPMENT → 경로: 전문조직 검토 (상업 액션 연결 금지)
+[해석] 유방암 보조요법으로서 메트포르민의 재발 억제 효과를 검증한 대규모 3상 RCT(MA.32, NCT01101438)에서 위약 대비 무침습 생존율(IDFS) 및 전체 생존율(OS) 개선 효과가 없음이 확인됨(PMID:42063220). 메타분석에서도 전이/재발 유방암에서 OS(HR 1.13)와 PFS(HR 1.14)에 유의한 차이가 없었음(PMID:34137294). 전임상 연구에서는 메트포르민이 에스트로겐 결핍 상태의 ER+ 유방암 세포 생존을 촉진해 재발 위험을 높일 수 있음을 시사(PMID:32321715). 지지 근거는 역학·관찰 연구 4건에 불과하며, 인과관계를 입증하지 못함. 허가사항(라벨)은 제2형 당뇨병 혈당 조절로 한정되며 유방암 적응증은 없음.
+[제안] 권고 DROP — 가장 높은 수준의 근거인 3상 RCT(MA.32)에서 보조요법 무효 결과가 명확히 나왔고, 메타분석과 전임상 위해 가능성까지 더해져 유익성 입증이 불가능함. 환자 수요는 언론 보도·역학 연관성에 기인하나, 이는 RCT 결과로 번복됨. 상업적 활동(프로모션·메시지·영업 목표)은 제안하지 않으며, 해당 가설에 대한 추가 투자·검토를 중단함.
+[제안] 위험: MA.32 3상 RCT 무효 결과에도 불구하고 언론·역학 연구만 인용해 보조요법 유효성을 과장 홍보할 경우 허위·과대광고 규제 위반 소지
+[제안] 위험: 전임상 데이터(지방산 산화 경로로 휴면 암세포 생존 촉진)상 재발 위험 증가 가능성을 배제 못 함 — 환자 안전 위해 우려
+[제안] 위험: 당뇨병 동반 유방암 환자에서 혈당 조절 목적 외 보조요법 용량·기간 연장 시 젖산산증·신기능 악화 등 안전성 리스크 증가
+[제안] 위험: 환자 수요 대응 명목으로 오프라벨 처방 유도·지원 시 의약품 부작용 피해구제·배상 책임 노출
+[제안] 후속 질문 1: MA.32 3상 RCT 결과를 접한 뒤에도 환자나 보호자가 메트포르민 보조요법을 요청하는 구체적 이유가 무엇입니까?  (RCT 무효 결과가 알려졌음에도 수요가 지속되는지, 정보 출처·이해도 격차를 파악해 향후 커뮤니케이션 전략 수립에 반영하기 위함)
+[제안] 후속 질문 2: 진료 현장에서 메트포르민 보조요법 요청 시, MA.32 결과와 전임상 위해 가능성을 어떻게 설명하고 계십니까?  (의료진의 근거 기반 설명 현황과 환자 수용도 차이를 확인해, 향후 근거 전달 자료 개발 시 참고하기 위함)
+[제안] 후속 질문 3: 당뇨병 동반 유방암 환자에서 메트포르민을 혈당 조절 목적으로 사용할 때, 종양학적 결과(재발·생존)에 미치는 영향을 별도로 관찰·기록하고 계십니까?  (적응증 내 사용(당뇨병 치료) 시 부수적 종양학적 효과 유무를 실세계에서 탐색할 필요성 판단용)
+→ 다음: 사람이 결정합니다 — `approve HYP-003 --by 이름`
+
+$ approve HYP-003 --by 검토자
+[실행] ACT-001 → 현장 체크리스트: MA.32 3상 RCT 결과를 접한 뒤에도 환자나 보호자가 메트포르민 보조요법을 요청하는 구체적 이유가 무엇입니까?
+[실행] ACT-002 → 현장 체크리스트: 진료 현장에서 메트포르민 보조요법 요청 시, MA.32 결과와 전임상 위해 가능성을 어떻게 설명하고 계십니까?
+[실행] ACT-003 → 현장 체크리스트: 당뇨병 동반 유방암 환자에서 메트포르민을 혈당 조절 목적으로 사용할 때, 종양학적 결과(재발·생존)에 미치는 영향을 별도로 관찰·기록하고 계십니까?
+[실행] 검토자 이(가) 권고 DROP 을 받아들임 · 3개 질문이 다음 면담 체크리스트(field_checklist.json)에 내려갔습니다 — 루프가 닫혔습니다
+
+$ status
+claims 30 (safety queue 2) · hypotheses 5 · screened 5 · reviewed 1 · deliberated 1 · actions 3
+
+→ data/field_checklist.json
+[
+ {
+  "id": "ACT-001",
+  "hypothesis_id": "HYP-003",
+  "question_ko": "MA.32 3상 RCT 결과를 접한 뒤에도 환자나 보호자가 메트포르민 보조요법을 요청하는 구체적 이유가 무엇입니까?",
+  "why_ko": "RCT 무효 결과가 알려졌음에도 수요가 지속되는지, 정보 출처·이해도 격차를 파악해 향후 커뮤니케이션 전략 수립에 반영하기 위함",
+  "status": "OPEN",
+  "approved_by": "검토자",
+  "approved_at": "2026-09-28T15:15:16"
+ },
+ {
+  "id": "ACT-002",
+  "hypothesis_id": "HYP-003",
+  "question_ko": "진료 현장에서 메트포르민 보조요법 요청 시, MA.32 결과와 전임상 위해 가능성을 어떻게 설명하고 계십니까?",
+  "why_ko": "의료진의 근거 기반 설명 현황과 환자 수용도 차이를 확인해, 향후 근거 전달 자료 개발 시 참고하기 위함",
+  "status": "OPEN",
+  "approved_by": "검토자",
+  "approved_at": "2026-09-28T15:15:16"
+ },
+ {
+  "id": "ACT-003",
+  "hypothesis_id": "HYP-003",
+  "question_ko": "당뇨병 동반 유방암 환자에서 메트포르민을 혈당 조절 목적으로 사용할 때, 종양학적 결과(재발·생존)에 미치는 영향을 별도로 관찰·기록하고 계십니까?",
+  "why_ko": "적응증 내 사용(당뇨병 치료) 시 부수적 종양학적 효과 유무를 실세계에서 탐색할 필요성 판단용",
+  "status": "OPEN",
+  "approved_by": "검토자",
+  "approved_at": "2026-09-28T15:15:16"
+ }
+]

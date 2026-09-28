@@ -1,0 +1,111 @@
+{
+ "purpose": "screen_pubmed",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_pubmed_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 7249,
+  "output": 2862
+ },
+ "created_at": "2026-09-28T14:21:02",
+ "output": {
+  "items": [
+   {
+    "source_id": "PMID:32601731",
+    "stance": "SUPPORTS",
+    "quote": "Metformin reduced the incidence of diabetes by 43% (RR 0.57, CI 0.4-0.9) in those prediabetic persons whose IFG was more pronounced compared to a 26% (RR 0.74 CI 0.7-0.8) when all participants in the study were included.",
+    "note_ko": "DPP 하위분석에서 공복혈당장애가 두드러진 고위험 당뇨전단계군에서 메트포르민의 당뇨 예방 효과가 43%로 가장 컸다(대규모 RCT)."
+   },
+   {
+    "source_id": "PMID:40970814",
+    "stance": "SUPPORTS",
+    "quote": "After 3 years, 34.8% of participants in the intervention arm developed diabetes compared with 47.3% in the control arm (adjusted risk difference -10.93%; 95% CI -18.04 to -3.81; P = 0.003).",
+    "note_ko": "다민족 아시아인 당뇨전단계 코호트에서 메트포르민을 단계적으로 추가한 중재군이 대조군 대비 3년 당뇨 전환율을 유의하게 낮춤(RCT)."
+   },
+   {
+    "source_id": "PMID:36220198",
+    "stance": "NEUTRAL",
+    "quote": "The Pre-Diabetes Interventions and Continued Tracking to Ease-out Diabetes (Pre-DICTED) Program is a diabetes prevention trial comparing the diabetes conversion rate at 3 years between the intervention group, which receives the incentivized lifestyle intervention program with stepwise addition of metformin, and the control group.",
+    "note_ko": "Pre-DICTED 시험의 기초선 특성만 기술하며 처방 제한이나 수요에 대한 언급 없음."
+   },
+   {
+    "source_id": "PMID:30778004",
+    "stance": "SUPPORTS",
+    "quote": "a reduction in haemoglobin A1c (P =0.03) only in the ILSM+Met arm.",
+    "note_ko": "당뇨전단계에서 생활요법+메트포르민 병용군만 당화혈색소 유의 감소 보임(소규모 파일럿 RCT)."
+   },
+   {
+    "source_id": "PMID:39196872",
+    "stance": "SUPPORTS",
+    "quote": "The metformin group also had a significant decrease in glycaemic level from the baseline, FPG=5.1mmol/L (13.3% reduction) and 2HPGL=7.9mmol/L (12.4% reduction) p-value<0.05. Diabetes risk reduction for exercise and metformin interventions were 50% and 40% respectively.",
+    "note_ko": "나이지리아 당뇨전단계 환자에서 메트포르민이 혈당과 당뇨 위험을 유의하게 감소시킴(RCT)."
+   },
+   {
+    "source_id": "PMID:35010938",
+    "stance": "NEUTRAL",
+    "quote": "There is no benefit in adding metformin to intensive MNT to prevent GDM among high-risk Mexican women.",
+    "note_ko": "임신성 당뇨 예방 목적의 고위험 임산부 대상 연구로 당뇨전단계 일반 처방 수요와 무관."
+   },
+   {
+    "source_id": "PMID:33355476",
+    "stance": "SUPPORTS",
+    "quote": "However, the practical implementation of lifestyle modification or the use of metformin for treating prediabetes is inadequate and complicated by a lack of agreement on how to define the condition.",
+    "note_ko": "당뇨전단계 정의 합의 부재로 메트포르민 실제 사용이 불충분하고 복잡하다고 명시(역학 리뷰, NIH 지원)."
+   },
+   {
+    "source_id": "PMID:29731022",
+    "stance": "SUPPORTS",
+    "quote": "The best evidence for a pharmacological approach is with metformin. Other drugs that have shown efficacy include thiazolidinediones, alpha-glucosidase inhibitors, orlistat, basal insulin, and valsartan. However, except for metformin, none of these drugs are currently recommended for this purpose.",
+    "note_ko": "메트포르민이 당뇨전단계 약물요법 중 근거가 가장 강력하나, 허가외 사용임을 시사(리뷰)."
+   },
+   {
+    "source_id": "PMID:38451966",
+    "stance": "NEUTRAL",
+    "quote": "Early-onset androgenetic alopecia (AGA) has been associated with various chronic conditions, including metabolic syndrome (MetS).",
+    "note_ko": "조기 탈모와 대사증후군 연관성 스코핑 리뷰로 가설과 무관."
+   },
+   {
+    "source_id": "PMID:34281467",
+    "stance": "SUPPORTS",
+    "quote": "Metformin reduced the 3-year risk of diabetes by -31% in the randomized phase of the Diabetes Prevention Program (DPP), vs. -58% for intensive lifestyle intervention (ILI). Metformin was most effective in younger, heavier subjects.",
+    "note_ko": "DPP/DPPOS 장기 추적에서 메트포르민이 젊고 비만한 고위험군에서 당뇨 예방 효과 가장 큼(내러티브 리뷰)."
+   },
+   {
+    "source_id": "PMID:42295772",
+    "stance": "SUPPORTS",
+    "quote": "To examine the association of lifestyle or metformin compared with placebo on long-term multimorbidity in adults with prediabetes.",
+    "note_ko": "DPP/DPPOS 25년 추적에서 메트포르민군의 다중질환 위험 감소 확인(다기관 관찰연구)."
+   },
+   {
+    "source_id": "PMID:34326945",
+    "stance": "NEUTRAL",
+    "quote": "Indeed, metformin is the most widely used oral insulin-sensitizing agent, being prescribed to more than 100 million people worldwide, including patients with prediabetes, insulin resistance, and polycystic ovary syndrome.",
+    "note_ko": "당뇨전단계 포함 광범위한 허가외 사용 실태 언급하나 처방 제한 원인은 다루지 않음(리뷰)."
+   },
+   {
+    "source_id": "PMID:35251851",
+    "stance": "NEUTRAL",
+    "quote": "This study was conducted to see the effects of berberine, metformin, and myoinositol in women with polycystic ovary syndrome (PCOS).",
+    "note_ko": "다낭성난소증후군 여성 대상 비교연구로 당뇨전단계 고위험군 일반 처방 수요와 무관."
+   },
+   {
+    "source_id": "PMID:40329646",
+    "stance": "SUPPORTS",
+    "quote": "Metformin's interaction with hormonal regulation significantly influences both its therapeutic efficacy and long-term side effect profile, contributing to sex-specific differences in treatment response.",
+    "note_ko": "폐경이행기 여성 당뇨전단계에서 메트포르민의 이점과 위험 검토, 성별 차이 강조(리뷰)."
+   },
+   {
+    "source_id": "PMID:32995892",
+    "stance": "CONTRADICTS",
+    "quote": "Remission rate of COM group (64%, 32/50) or EX group (56%, 28/50) was significantly higher than that of the MET group (32%, 16/50) (P = .003 and .027, respectively).",
+    "note_ko": "다낭성난소증후군 동반 당뇨전단계에서 메트포르민 단독요법이 엑세나타이드나 병용요법보다 관해율 낮음(RCT)."
+   },
+   {
+    "source_id": "PMID:29808066",
+    "stance": "SUPPORTS",
+    "quote": "In cases at high risk, use of oral antidiabetic agents may be considered.",
+    "note_ko": "고위험 당뇨전단계에서 경구혈당강하제(메트포르민 포함) 사용 고려 권고(관리 지침 리뷰)."
+   }
+  ]
+ }
+}

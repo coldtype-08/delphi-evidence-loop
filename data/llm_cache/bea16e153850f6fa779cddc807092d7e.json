@@ -1,0 +1,29 @@
+{
+ "purpose": "sense",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "sense_claims_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 1096,
+  "output": 776
+ },
+ "created_at": "2026-09-28T14:01:25",
+ "output": {
+  "claims": [
+   {
+    "segment": "당뇨 전단계",
+    "signal_type": "OFF_LABEL_DEMAND",
+    "quote": "문제는 당뇨 전단계다. 공복혈당이 110을 넘고 BMI 30 이상인 40대 환자에게 생활습관 교정만으로는 부족하다고 느끼는데, 허가 범위 밖이라 처방을 권하기 어렵다.",
+    "is_adverse_event": false,
+    "note_ko": "당뇨 전단계 고위험군에서 생활습관 교정만으로는 부족하나 허가 외 사용이라 처방이 어려운 상황"
+   },
+   {
+    "segment": "노인 65+ · 신기능 저하",
+    "signal_type": "DOSING",
+    "quote": "노인 환자에서는 신기능을 보고 용량을 줄이거나 끊는 기준이 병원마다 조금씩 달라서 통일된 지침이 있으면 좋겠다고 했다.",
+    "is_adverse_event": false,
+    "note_ko": "노인·신기능 저하 환자에서 메트포르민 감량·중단 기준이 병원별로 달라 통일 지침 필요성 언급"
+   }
+  ]
+ }
+}

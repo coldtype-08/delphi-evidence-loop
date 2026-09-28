@@ -1,0 +1,75 @@
+{
+ "purpose": "screen_pubmed",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_pubmed_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 5244,
+  "output": 2281
+ },
+ "created_at": "2026-09-28T14:06:39",
+ "output": {
+  "items": [
+   {
+    "source_id": "PMID:36755918",
+    "stance": "SUPPORTS",
+    "quote": "Compared with the model group mice, body weight was significantly reduced, and their estrous cycle was restored in Met group",
+    "note_ko": "렛트로졸 유도 PCOS 마우스 모델에서 메트포르민이 체중 감소와 발정 주기 회복을 보인 동물 실험이다."
+   },
+   {
+    "source_id": "PMID:38154770",
+    "stance": "SUPPORTS",
+    "quote": "A total of 333 women with anovulatory infertility attributed to PCOS who participated in the double-blind randomized trial entitled the Pregnancy in Polycystic Ovary Syndrome I (PPCOS I) study ... treated with clomiphene and metformin",
+    "note_ko": "클로미펜과 메트포르민 병용 요법을 평가한 대규모 이중맹검 RCT(PPCOS I)의 2차 분석이다."
+   },
+   {
+    "source_id": "PMID:29183107",
+    "stance": "SUPPORTS",
+    "quote": "Insulin-sensitising agents such as metformin may be effective in treating PCOS-related anovulation. To evaluate the effectiveness and safety of insulin-sensitising drugs in improving reproductive and metabolic outcomes for women with PCOS undergoing ovulation induction",
+    "note_ko": "인슐린 감작제(메트포르민 포함)의 배란 유도 효과와 안전성을 평가한 코크란 메타분석이다."
+   },
+   {
+    "source_id": "PMID:39415242",
+    "stance": "SUPPORTS",
+    "quote": "a pragmatic, randomized, controlled clinical study was conducted with 230 PCOS women ... Patients in both groups underwent ≤3 cycles of OI with sequential LE and urinary follicle-stimulating hormone",
+    "note_ko": "렛트로졸 기반 배란 유도 주기에서 NAC와 메트포르민을 비교한 무작위 대조 임상시험이다."
+   },
+   {
+    "source_id": "PMID:36465612",
+    "stance": "SUPPORTS",
+    "quote": "40 Sprague-Dawley (SD) rats ... randomized to 4 groups, namely the control group, PCOS group, PCOS+CFDT group, and PCOS+metformin group",
+    "note_ko": "렛트로졸 유도 PCOS 랫드에서 메트포르민 대조군을 포함한 동물 실험이다."
+   },
+   {
+    "source_id": "PMID:17804299",
+    "stance": "SUPPORTS",
+    "quote": "Failure to conceive with CC can be treated in a number of ways, including the addition of insulin-lowering agents (mainly metformin)",
+    "note_ko": "클로미펜 실패 시 메트포르민 병용을 치료 옵션으로 제시한 리뷰 논문이다."
+   },
+   {
+    "source_id": "PMID:10576524",
+    "stance": "SUPPORTS",
+    "quote": "metformin 500 mg 3 times daily to decrease insulin secretion and to reduce ovarian production of 17alpha-hydroxyprogesterone with recovery of spontaneous or clomifene-induced ovulation, independently of weight loss",
+    "note_ko": "메트포르민이 체중 감소와 무관하게 자발적 또는 클로미펜 유도 배란 회복을 보인다는 초기 대조 연구들을 인용한 리뷰이다."
+   },
+   {
+    "source_id": "PMID:25487256",
+    "stance": "SUPPORTS",
+    "quote": "Other treatment modalities include the use of insulin sensitizers, such as metformin as well as aromatase inhibitors and laparoscopic ovarian drilling",
+    "note_ko": "비만 동반 PCOS에서 인슐린 감작제인 메트포르민을 배란 유도 치료 옵션으로 언급한 논문이다."
+   },
+   {
+    "source_id": "PMID:15262344",
+    "stance": "SUPPORTS",
+    "quote": "Its use may also help restore spontaneous ovulation and improve menstrual cyclicity, improve the success rate of induction of ovulation with clomiphene citrate and FSH",
+    "note_ko": "메트포르민이 자발적 배란 회복, 월경 주기 개선, 클로미펜 시트레이트 배란 유도 성공률 향상에 기여할 수 있다는 리뷰이다."
+   },
+   {
+    "source_id": "PMID:40884596",
+    "stance": "SUPPORTS",
+    "quote": "metformin revealed more significant reduction of insulin resistance (IR) by assessment of HOMA-IR and increas",
+    "note_ko": "렛트로졸 유도 PCOS 랫드에서 메트포르민이 인슐린 저항성(HOMA-IR)을 유의하게 개선한 동물 실험이다."
+   }
+  ]
+ }
+}

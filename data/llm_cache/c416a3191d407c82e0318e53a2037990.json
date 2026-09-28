@@ -1,0 +1,87 @@
+{
+ "purpose": "screen_pubmed",
+ "model": "nvidia/nemotron-3-ultra-550b-a55b",
+ "schema_name": "screen_pubmed_items_v1",
+ "mode": "tool_call",
+ "usage": {
+  "input": 4999,
+  "output": 1859
+ },
+ "created_at": "2026-09-28T14:11:11",
+ "output": {
+  "items": [
+   {
+    "source_id": "PMID:20656475",
+    "stance": "SUPPORTS",
+    "quote": "The metformin treatment also increases complete pathological tumour response rates following neoadjuvant chemotherapy for breast cancer, suggesting a potential role as an anti-cancer drug.",
+    "note_ko": "리뷰 논문으로 메트포르민이 유방암 신보조 화학요법 후 병리학적 완전 관해율을 높인다고 보고함"
+   },
+   {
+    "source_id": "PMID:33639681",
+    "stance": "SUPPORTS",
+    "quote": "Log-rank test showed that the metformin group had a significant advantage over the non-metformin group in terms of both OS and RFS rates (p.",
+    "note_ko": "후향적 코호트 연구에서 메트포르민 복용군이 전체 생존율과 무재발 생존율에서 유의한 이점 보임"
+   },
+   {
+    "source_id": "PMID:24944108",
+    "stance": "CONTRADICTS",
+    "quote": "At a median follow-up of 87 months (range, 6.9-140.4 months), there was no difference in RFS (P = 0.61), OS (P = 0.462), or CBC (P = 0.156) based on metformin use.",
+    "note_ko": "전향적 기관 데이터베이스 분석에서 메트포르민 사용 여부에 따른 무재발 생존율, 전체 생존율, 대측 유방암 발생률 차이 없음"
+   },
+   {
+    "source_id": "PMID:20490716",
+    "stance": "SUPPORTS",
+    "quote": "The frequency of progesterone receptor-positive mammary carcinomas in women who were treated with metformin, irrespective of whether it was combined with sulfonylurea preparations, was significantly higher than in the sulfonylurea only group (P=0.043).",
+    "note_ko": "메트포르민 치료군이 술포닐우레아 단독군보다 프로게스테론 수용체 양성 유방암 빈도가 유의하게 높음"
+   },
+   {
+    "source_id": "PMID:41079227",
+    "stance": "SUPPORTS",
+    "quote": "Metformin led to a 19.3% reduction in E2 levels post-chemotherapy, with sustained suppression, outperforming the control group.",
+    "note_ko": "무작위 구성 요소가 포함된 다기관 코호트 연구에서 메트포르민이 화학요법 후 에스트라디올 수치를 19.3% 감소시킴"
+   },
+   {
+    "source_id": "PMID:40578405",
+    "stance": "CONTRADICTS",
+    "quote": "The HRs of breast cancer-related and all-cause mortality were 1.12 (95% CI: 0.98-1.28) and 0.96 (95% CI: 0.89-1.05), respectively.",
+    "note_ko": "불멸 시간 편향을 보정한 prevalent new-user 설계 관찰 연구에서 메트포르민 개시군의 유방암 사망률과 전체 사망률이 비사용군과 유의한 차이 없음"
+   },
+   {
+    "source_id": "PMID:40430851",
+    "stance": "SUPPORTS",
+    "quote": "We also present clinical studies that underscore the beneficial outcomes of metformin on TNBC.",
+    "note_ko": "리뷰 논문으로 삼중음성 유방암에서 메트포르민의 유익한 임상 결과들을 제시함"
+   },
+   {
+    "source_id": "PMID:40374694",
+    "stance": "SUPPORTS",
+    "quote": "Our results indicate that postmenopausal breast cancer survivors treated with metformin have specific changes in breast tissue gene expression that may prevent the development of new tumors.",
+    "note_ko": "이중맹검 위약 대조 2상 RCT(MetBreCS)에서 메트포르민이 유방 조직 유전자 발현을 변화시켜 새로운 종양 발생을 예방할 가능성 시사"
+   },
+   {
+    "source_id": "PMID:38529589",
+    "stance": "SUPPORTS",
+    "quote": "Patients who received metformin either pre- or postoperatively exhibited reduced distant organ recurrence and improved postoperative recurrence-free survival compared to those of patients who did not.",
+    "note_ko": "메트포르민 투여군이 원격 전이 재발 감소와 수술 후 무재발 생존율 개선을 보임, 신보조 요법 하위군에서 병리학적 완전 관해율 증가"
+   },
+   {
+    "source_id": "PMID:41679247",
+    "stance": "NEUTRAL",
+    "quote": "Type 2 diabetes mellitus (T2DM) contributes significantly to the development and progression of cancers of the female reproductive tissues, particularly endometrial, ovarian, and breast.",
+    "note_ko": "당뇨와 여성 생식기 암의 연관성을 다룬 리뷰로 메트포르민 임상 관행에 대한 직접적 근거는 아님"
+   },
+   {
+    "source_id": "PMID:39354464",
+    "stance": "NEUTRAL",
+    "quote": "Metformin, a widely used oral hypoglycemic drug, has emerged as a potential therapeutic agent for cancer treatment.",
+    "note_ko": "비암호화 RNA 매개 메커니즘을 다룬 리뷰로 임상 관행 근거와 직접 관련 없음"
+   },
+   {
+    "source_id": "PMID:38464382",
+    "stance": "NEUTRAL",
+    "quote": "Combining 1,000 V/cm with 5 mmol/L Met yielded cell viability as low as 42.6% at 24 h.",
+    "note_ko": "삼중음성 유방암 세포주(MDA-MB-231)에서 전기 펄스와 병용한 전임상 연구로 임상 관행 근거 아님"
+   }
+  ]
+ }
+}

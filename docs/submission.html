@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Evidence Loop — 제출 문서</title>
+<style>body{font-family:-apple-system,"Apple SD Gothic Neo",sans-serif;font-size:12pt;line-height:1.6;max-width:720px;margin:40px auto}
+h1{font-size:20pt;margin-bottom:4pt}h2{font-size:14pt;margin-top:20pt}.sub{color:#555}table{border-collapse:collapse}td{padding:3pt 10pt 3pt 0;vertical-align:top}</style></head>
+<body>
+<h1>Evidence Loop</h1>
+<p class="sub">근거 관문이 있는 약물 신호 검증 에이전트 — NVIDIA Nemotron 3 Ultra (NIM) 기반<br>Korea Agentic AI Hackathon · 온라인 예선 제출 · 팀 <b>{{TEAM}}</b></p>
+
+<h2>링크</h2>
+<table>
+<tr><td>배포 URL (웹 콘솔 — 직접 실행 가능)</td><td><a href="{{APP_URL}}">{{APP_URL}}</a></td></tr>
+<tr><td>GitHub 저장소</td><td><a href="{{REPO_URL}}">{{REPO_URL}}</a></td></tr>
+<tr><td>결과 리포트 (정적)</td><td><a href="{{PAGES_URL}}">{{PAGES_URL}}</a></td></tr>
+<tr><td>실행 기록 (한 바퀴 전체 출력)</td><td><a href="{{REPO_URL}}/blob/main/docs/demo_run.txt">{{REPO_URL}}/blob/main/docs/demo_run.txt</a></td></tr>
+<tr><td>에이전트 스킬 정의</td><td><a href="{{REPO_URL}}/blob/main/skills/evidence-loop/SKILL.md">skills/evidence-loop/SKILL.md</a></td></tr>
+</table>
+
+<h2>한 줄</h2>
+<p>현장 면담의 약물 신호를 공개 근거(PubMed·ClinicalTrials.gov·openFDA·CMS)로 교차검증하고, 사람이 서명한 뒤에만 다음 행동으로 잇는 폐쇄 루프. 모델은 고르고 인용하고, 숫자는 코드가 세고, 관문은 사람이 지킵니다.</p>
+
+<h2>실행</h2>
+<p><code>uv sync</code> → <code>.env</code>에 <code>NVIDIA_API_KEY</code>(build.nvidia.com, 무료) → <code>bash scripts/demo.sh</code>. 공개 API 응답과 모델 응답이 저장소에 캐시돼 있어 <b>키 없이도 같은 결과가 즉시 재생</b>됩니다.</p>
+
+<h2>NVIDIA 스택</h2>
+<ul>
+<li>Nemotron 3 Ultra (<code>nvidia/nemotron-3-ultra-550b-a55b</code>) — NIM OpenAI 호환 API. 추출·근거 판독·심의 전 과정, 한국어. 강제 함수 호출로 JSON 스키마 출력, 심의 단계만 reasoning 모드.</li>
+<li>Agent Skills 규격의 <code>evidence-loop</code> 스킬 — 호환 에이전트에서 이 루프를 도구로 호출.</li>
+<li>OpenShell / NemoClaw — deny-by-default 정책용 허용 호스트 5개 명세 (<code>sandbox/EGRESS.md</code>).</li>
+</ul>
+
+<h2>데이터</h2>
+<p>모든 면담 기록은 합성(가상 의료진 12인)입니다. 약은 메트포르민 — 특허 만료, 특정 회사 소유 아님, 공개 근거 최다.</p>
+</body></html>
