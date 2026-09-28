@@ -64,7 +64,8 @@ cd console && npm install
 NEXT_PUBLIC_API_BASE_URL=http://localhost:8030/api npm run dev -- --port 3010   # 백엔드(8030)가 떠 있어야 한다
 ```
 
-배포: Railway 서비스 `delphi-console`(Nixpacks, `npm run build` / `npm run start`), 변수 `NEXT_PUBLIC_API_BASE_URL=https://<api>/api`.
+배포: Railway 서비스 `delphi-console`(Nixpacks, `npm run build` / `node server.js`), 변수 `NEXT_PUBLIC_API_BASE_URL=https://<api>/api`.
+`server.js`는 Next 응답을 버퍼링해 `Content-Length`로 내보낸다 — Railway 엣지가 chunked 응답의 종료 청크를 떨어뜨려 Chrome이 홈을 거부하던 문제(원본 팀 09/02 미해결)를 이렇게 돌아갔다. 전 라우트는 요청 시 렌더(`app/layout.tsx`의 `force-dynamic`)이고 루트 `loading.tsx`는 비활성.
 
 ## 실행
 
