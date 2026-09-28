@@ -20,9 +20,10 @@ def cmd_sense(args):
     print("[패턴] 환자군 × 신호 유형 (검증된 발언만, 코드 집계)")
     for r in sense.tally(state):
         print(f"   {r['segment']:<14} {r['signal_type']:<20} 언급 {r['mentions']:>2} · 의료진 {r['hcps']:>2}")
-    created = sense.draft_hypotheses(state, contract, args.min_mentions, args.min_hcps)
+    mm = args.min_mentions or contract["threshold"]["min_mentions"]; mh = args.min_hcps or contract["threshold"]["min_hcps"]
+    created = sense.draft_hypotheses(state, contract, mm, mh)
     for h in created:
-        print(f"[해석] {h['id']} DRAFT — {h['statement_ko']}  (임계 {args.min_mentions}회/{args.min_hcps}인 통과)")
+        print(f"[해석] {h['id']} DRAFT — {h['statement_ko']}  (임계 {mm}회/{mh}인 통과)")
     if not created:
         print("[해석] 새 가설 없음 (임계 미달이거나 이미 있음)")
 
@@ -96,7 +97,7 @@ def main():
     p = argparse.ArgumentParser(prog="loop", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("sense", help="면담 기록 → 구조화 → 가설 초안"); s.add_argument("--force", action="store_true")
-    s.add_argument("--min-mentions", type=int, default=3); s.add_argument("--min-hcps", type=int, default=3); s.set_defaults(fn=cmd_sense)
+    s.add_argument("--min-mentions", type=int, default=None); s.add_argument("--min-hcps", type=int, default=None); s.set_defaults(fn=cmd_sense)
     sub.add_parser("hypotheses", help="가설 목록").set_defaults(fn=cmd_hypotheses)
     s = sub.add_parser("screen", help="공개 근거 교차검증"); s.add_argument("hyp"); s.add_argument("--force", action="store_true"); s.set_defaults(fn=cmd_screen)
     s = sub.add_parser("review", help="관문 ① 근거 검토 서명"); s.add_argument("hyp"); s.add_argument("--by", required=True); s.add_argument("--note"); s.set_defaults(fn=cmd_review)

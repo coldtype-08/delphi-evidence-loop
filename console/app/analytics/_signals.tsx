@@ -96,7 +96,7 @@ export function MatrixLegend() {
       </span>
       <span className="inline-flex items-center gap-1.5">
         <span className="block size-[13px] rounded border border-dashed border-navy/40" />
-        임계 미달 (3회 · 3인)
+        임계 미달 (5회 · 3인)
       </span>
     </div>
   );

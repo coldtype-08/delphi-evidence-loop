@@ -38,19 +38,28 @@ HYP_SCHEMA = {
 }
 
 
-def run(state: dict, contract: dict, notes: list[dict], force: bool = False) -> dict:
-    """Extract claims from every note. Returns counts of kept / dropped / adverse-event claims."""
+def run(state: dict, contract: dict, notes: list[dict], force: bool = False, workers: int = 4) -> dict:
+    """Extract claims from every note. Returns counts of kept / dropped / adverse-event claims.
+
+    Model calls run in parallel (they are independent per note); results are applied in note order so
+    claim ids and the state are deterministic regardless of which call returns first."""
+    from concurrent.futures import ThreadPoolExecutor
+
     segments = contract["segments"] + ["OTHER"]
     system = (store.prompt("sense").replace("{{drug}}", contract["drug"])
               .replace("{{segments}}", ", ".join(segments)))
     done = {c["doc_id"] for c in state["claims"]} | {c["doc_id"] for c in state["safety_queue"]}
     stats = {"docs": 0, "kept": 0, "dropped": 0, "adverse_events": 0}
-    for note in notes:
-        if note["doc_id"] in done and not force:
-            continue
+    todo = [n for n in notes if force or n["doc_id"] not in done]
+
+    def extract(note):
+        return call_structured("sense", system=system, user=json.dumps(note, ensure_ascii=False),
+                               schema_name="sense_claims_v1", schema=SENSE_SCHEMA, force=force)
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        outputs = list(pool.map(extract, todo))
+    for note, out in zip(todo, outputs):
         stats["docs"] += 1
-        out = call_structured("sense", system=system, user=json.dumps(note, ensure_ascii=False),
-                              schema_name="sense_claims_v1", schema=SENSE_SCHEMA, force=force)
         for i, c in enumerate(out["claims"], 1):
             loc = locate(c["quote"], note["text"])
             claim = {

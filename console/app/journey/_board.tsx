@@ -281,7 +281,7 @@ export default function JourneyBoard({ c }: { c: BoardCounts }) {
       value: c.nearThreshold === null ? "SQL" : `임계 근접 ${c.nearThreshold}`, by: "code",
       x: 848, y: 378, href: "/hypotheses", tab: "SENSE › 신호와 가설",
       detail: <>환자군과 신호 유형의 조합마다 반복 횟수와 독립 의료진 수를
-        <b className="text-orange-bright"> 직접 셉니다</b>. 기준은 <b className="text-orange-bright">반복 3회 이상이면서 독립
+        <b className="text-orange-bright"> 직접 셉니다</b>. 기준은 <b className="text-orange-bright">반복 5회 이상이면서 독립
         의료진 3인 이상</b>입니다. 지시를 받아 새로 수집된 내용도
         {" "}<b className="text-orange-bright">같은 집계에 합산</b>됩니다.</>,
     },

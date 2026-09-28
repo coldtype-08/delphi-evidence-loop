@@ -251,7 +251,7 @@ export default async function JourneyPage() {
               </p>
             )}
             <p className="mt-2.5 text-[0.75rem] leading-[1.6] text-faint">
-              반복 3회 이상이면서 독립 의료진 3인 이상이면 가설이 자동으로 만들어집니다.
+              반복 5회 이상이면서 독립 의료진 3인 이상이면 가설이 자동으로 만들어집니다.
             </p>
           </Panel>
           <Panel pad="lg">

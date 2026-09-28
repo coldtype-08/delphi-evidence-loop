@@ -105,7 +105,8 @@ def band(state: dict) -> str:
     return pipeline_strip(state, len(load_notes()), mini=True)
 
 
-def pipeline_strip(state: dict, notes_n: int, mini: bool = False) -> str:
+def pipeline_strip(state: dict, notes_n: int, mini: bool = False, contract: dict | None = None) -> str:
+    contract = contract or store.contract()
     claims = state["claims"]
     verified = sum(c["verified"] for c in claims)
     hyps = state["hypotheses"]
@@ -113,7 +114,7 @@ def pipeline_strip(state: dict, notes_n: int, mini: bool = False) -> str:
     cells = [
         ("면담 기록", notes_n, "합성 · 한국어", False),
         ("발언 카드", len(claims), f"원문 검증 {verified}/{len(claims)} · 유해사례 {len(state['safety_queue'])} 분리", False),
-        ("가설", len(hyps), "문턱 3회·3인 (코드)", False),
+        ("가설", len(hyps), f"문턱 {contract['threshold']['min_mentions']}회·{contract['threshold']['min_hcps']}인 (코드)", False),
         ("외부 근거", len(state["screens"]), "PubMed · CT.gov · 라벨 · FAERS · Part D", False),
         ("서명 · 심의", f"{len(state['reviews'])} · {len(state['board'])}", f"사람 차례 {len(human_turn)}건" if human_turn else "관문 대기 없음", bool(human_turn)),
         ("체크리스트", len(state["actions"]), "다음 면담이 참조", False),
@@ -193,7 +194,7 @@ def overview(state: dict, contract: dict, banner: str = "", web: bool = True) ->
             '<p class="sub">면담 기록에서 다음 면담 체크리스트까지의 처리 단계와 건수. 모든 면담 기록은 합성이다.</p>',
             pipeline_strip(state, notes_n), demo_card(state, contract, notes_n, web)]
     if web:
-        body.append('<div class="card"><div class="row"><div class="grow"><b>① 추출</b> <span class="sub">면담 기록 12건을 Nemotron이 읽고 환자군 × 신호 유형에 해당하는 발언을 원문 그대로 인용한다. 코드가 인용을 원문에서 찾아 검증하고 세어, 문턱(3회·3인)을 넘은 조합을 가설로 만든다.</span></div>'
+        body.append('<div class="card"><div class="row"><div class="grow"><b>① 추출</b> <span class="sub">면담 기록을 Nemotron이 읽고 환자군 × 신호 유형에 해당하는 발언을 원문 그대로 인용한다. 코드가 인용을 원문에서 찾아 검증하고 세어, 문턱을 넘은 조합을 가설로 만든다.</span></div>'
                     + button("① 추출 실행", "/run/sense") + '</div>'
                     '<div class="row"><div class="grow faint">결과만 지우고 처음부터 (캐시는 유지)</div>' + button("초기화", "/run/reset", ghost=True) + '</div></div>')
     body.append('<h2>신호 지도</h2><p class="sub">' + tag("pattern") + '칸 크기는 <b>반복 횟수</b>, 진하기는 <b>독립 의료진 수</b>다. 가설이 되려면 둘 다 문턱을 넘어야 한다. '

@@ -163,7 +163,7 @@ export default async function Home() {
     },
     {
       n: 2, label: "열린 가설", value: kpis?.openHypotheses ?? null, unit: "건", tag: null,
-      note: "임계값(반복 3회·독립 의료진 3인)을 둘 다 넘어 자동 생성됐고, 아직 승인·반려되지 않은 가설입니다.",
+      note: "임계값(반복 5회·독립 의료진 3인)을 둘 다 넘어 자동 생성됐고, 아직 승인·반려되지 않은 가설입니다.",
       href: "/hypotheses",
     },
     {

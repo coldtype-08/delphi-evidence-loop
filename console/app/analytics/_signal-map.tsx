@@ -31,7 +31,7 @@ export default function SignalMapInteractive({
   hypBySegment = {},
   width = 980,
   height = 520,
-  threshold = { count: 3, hcp: 3 },
+  threshold = { count: 5, hcp: 3 },
 }: {
   cells: SignalCell[];
   /** segment → 그 환자군이 만든 가설 ID들. 서버(/analytics/segments)가 준다. */

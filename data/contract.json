@@ -23,6 +23,9 @@
     "DOSING",
     "SAFETY_TOLERABILITY"
   ],
-  "threshold": {"min_mentions": 3, "min_hcps": 3},
+  "threshold": {
+    "min_mentions": 5,
+    "min_hcps": 3
+  },
   "in_label_summary_ko": "성인 및 10세 이상 소아의 제2형 당뇨병 혈당 조절 (식이·운동 보조). 라벨 판정은 Screen의 라벨 에이전트가 원문 대조로 한다."
 }

@@ -262,8 +262,25 @@ def hypotheses_generate():
 @router.post("/hypotheses/transition")
 def hypotheses_transition(body: dict = Body(...)):
     from . import compat_hyp
+    ids, to = body.get("ids") or [], body.get("to")
+    if to == "BOARD_READY":   # "Screen으로 되돌리기": in this backend that means withdrawing the signature
+        moved, refused = [], []
+        for hid in ids:
+            state = _with_runtime(store.load())
+            try:
+                h = store.hypothesis(state, hid)
+                if h["status"] != "REVIEWED":
+                    refused.append({"id": hid, "fromStatus": compat_hyp.console_status(h, state), "code": "ALREADY_DELIBERATED",
+                                    "reasonKo": "회의록이 있는 안건은 되돌릴 수 없습니다. 결정으로만 끝납니다."})
+                    continue
+                compat_hyp.evidence_review(state, hid, False, None)
+                moved.append(hid)
+            except (SystemExit, compat_hyp.Refused) as e:
+                refused.append({"id": hid, "fromStatus": None, "code": getattr(e, "code", "REFUSED"), "reasonKo": getattr(e, "message_ko", str(e))})
+        return ok({"to": to, "moved": moved, "refused": refused, "movedCount": len(moved), "refusedCount": len(refused),
+                   "evidenceReviewCleared": moved, "noteKo": "서명을 물렸습니다. 근거를 다시 읽고 서명하면 다시 상정됩니다."})
     try:
-        return ok(compat_hyp.transition(_with_runtime(store.load()), body.get("ids") or [], body.get("to")))
+        return ok(compat_hyp.transition(_with_runtime(store.load()), ids, to))
     except compat_hyp.Refused as e:
         return _refused(e)
 
@@ -347,6 +364,38 @@ def analytics_segments():
 @router.get("/analytics/unmapped")
 def analytics_unmapped(limit: int = 1):
     return _home("unmapped")
+
+
+@router.get("/analytics/kol")
+def analytics_kol(limit: int = 40):
+    """Physicians by how much they said — refs only, no names, no scoring (counts per HCP, sorted)."""
+    state, notes = store.load(), _notes()
+    meta = {}
+    for n in notes:
+        m = meta.setdefault(n["hcp_ref"], {"specialty": n["specialty"], "last": n["date"]})
+        m["last"] = max(m["last"], n["date"])
+    rows = {}
+    for c in state["claims"]:
+        if not c["verified"]:
+            continue
+        r = rows.setdefault(c["hcp_ref"], {"hcpRef": c["hcp_ref"], "specialty": meta.get(c["hcp_ref"], {}).get("specialty", ""), "region": "—",
+                                           "provisional": {"claimCount": 0, "highGradeCount": 0, "distinctSegments": 0}, "official": {"claimCount": 0, "highGradeCount": 0},
+                                           "lastClaimAt": meta.get(c["hcp_ref"], {}).get("last"), "_segs": set()})
+        r["provisional"]["claimCount"] += 1; r["provisional"]["highGradeCount"] += 1
+        r["official"]["claimCount"] += 1; r["official"]["highGradeCount"] += 1
+        r["_segs"].add(c["segment"])
+    out = []
+    for r in sorted(rows.values(), key=lambda x: (-x["official"]["claimCount"], x["hcpRef"]))[:limit]:
+        r["provisional"]["distinctSegments"] = len(r.pop("_segs"))
+        out.append(r)
+    return ok({"rows": out, "totalHcps": len({n["hcp_ref"] for n in notes}), "computedBy": "SQL"})
+
+
+@router.get("/analytics/coverage")
+def analytics_coverage():
+    """No regions in this dataset — the grid stays empty and the page says so."""
+    c = store.contract()
+    return ok({"regions": [], "rows": [], "threshold": {"repeat": c["threshold"]["min_mentions"], "hcp": c["threshold"]["min_hcps"]}, "computedBy": "SQL"})
 
 
 @router.get("/contract/status")

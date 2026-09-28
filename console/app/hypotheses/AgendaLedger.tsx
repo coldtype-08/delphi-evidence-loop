@@ -93,7 +93,7 @@ const awaitingHuman = (h: Hyp) => h.status === "IN_REVIEW" && h.hasMinutes === t
 /** 행의 다음 걸음 — 장소가 아니라 **행위**를 말한다 (08/29). */
 function nextStep(h: Hyp) {
   if (preMeeting(h)) return { label: "회의 소집하러 가기", navy: true };
-  if (awaitingHuman(h)) return { label: "결정하러 가기 — 승인 · 보류 · 기각", navy: true };
+  if (awaitingHuman(h)) return { label: "결정하러 가기", navy: true };
   return { label: "회의록 보기", navy: false };
 }
 
