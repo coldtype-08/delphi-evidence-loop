@@ -50,7 +50,9 @@ def deliberate(state: dict, hyp_id: str, force: bool = False) -> dict:
         "external_tally": {"per_source": screen["tally"], "totals": screen["totals"], "flags": screen["flags"]},
         "numbers": screen["numbers"],
         "evidence": [{k: it[k] for k in ("source", "source_id", "stance", "quote", "note_ko")} for it in screen["items"]],
-        "human_review": {"by": rev["by"], "at": rev["at"], "note": rev["note"]},
+        # The signature's existence is enforced in code above; the model only sees who and what they noted.
+        # No timestamp — it would change the cache key on every replay for no gain in judgement.
+        "human_review": {"by": rev["by"], "note": rev["note"]},
     }
     # Reasoning mode on: this is the one step that weighs conflicting evidence rather than selecting and quoting.
     out = call_structured("board", system=store.prompt("board"), user=json.dumps(packet, ensure_ascii=False),
