@@ -84,8 +84,22 @@ def call_structured(purpose: str, *, system: str, user: str, schema_name: str, s
              ms=int((time.time() - t0) * 1000))
         return rec["output"]
 
-    output, usage, mode, reasoning = _call(model, system, user, schema_name, schema, max_tokens, temperature, thinking)
-    jsonschema.validate(output, schema)  # invalid output is an error, never a cached result
+    output = usage = mode = reasoning = None
+    for attempt in range(4):   # the free endpoint rate-limits bursts; parallel board turns hit it
+        try:
+            output, usage, mode, reasoning = _call(model, system, user, schema_name, schema, max_tokens, temperature, thinking)
+            jsonschema.validate(output, schema)  # invalid output is an error, never a cached result
+            break
+        except (jsonschema.ValidationError, RuntimeError, ValueError) as e:
+            if attempt == 3:
+                raise
+            time.sleep(5)
+            _log(purpose=purpose, model=model, key=key, retry=attempt + 1, reason=f"{type(e).__name__}: {str(e)[:120]}")
+        except Exception as e:  # noqa: BLE001 — 429 / 5xx from the API
+            if attempt == 3 or not any(code in str(e) for code in ("429", "500", "502", "503", "504", "timeout", "Timeout")):
+                raise
+            time.sleep(10 * (attempt + 1))
+            _log(purpose=purpose, model=model, key=key, retry=attempt + 1, reason=f"{type(e).__name__}: {str(e)[:120]}")
     rec = {"purpose": purpose, "model": model, "schema_name": schema_name, "mode": mode, "thinking": thinking,
            "usage": usage, "created_at": time.strftime("%Y-%m-%dT%H:%M:%S"), "output": output,
            "reasoning": reasoning}

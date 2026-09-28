@@ -60,11 +60,18 @@ def cmd_review(args):
 
 def cmd_board(args):
     m = board.deliberate(store.load(), args.hyp, force=args.force)
-    print(f"[사실] 라벨 판정 {m['label_status']} → 경로: {m['route']}")
-    print(f"[해석] {m['evidence_summary_ko']}")
-    print(f"[제안] 권고 {m['recommendation']} — {m['rationale_ko']}")
-    for r in m["risks_ko"]:
-        print(f"[제안] 위험: {r}")
+    print(f"[사실] 라벨 판정 {m['label_status']} → 경로: {m['route']} · 유형 {m['hypothesis_type']} · 주무 {m['lead_ko']} · 참석 {len(m['attendees'])}인 · 발언 {len(m['transcript'])}턴")
+    for t in m["transcript"]:
+        st = f" [{t['stance']}{'·변경' if t.get('stance_changed') else ''}]" if t.get("stance") else ""
+        print(f"[해석] {t['phase']:<10} {t['speaker_ko']:<6}{st} {t['utterance_ko'].split('. ')[0][:110]}")
+    tl = m["tally"]
+    print(f"[패턴] 최종 입장 (코드 집계): " + " · ".join(f"{s} {tl['counts'][s]}인/{tl['weights'][s]:.1f}" for s in ("SUPPORT", "HOLD", "OPPOSE")) + f" → 권고 {m['recommendation']}")
+    for b in m["blocked_actions"]:
+        print(f"[사실] 코드 차단: {b['speaker_ko']} “{b['action_ko']}” — {b['reason_ko']}")
+    print(f"[제안] 회의록: {m['summary_ko']}")
+    print(f"[제안] 권고 사유: {m['rationale_ko']}")
+    for r in m["kill_criteria_ko"]:
+        print(f"[제안] 중단 기준: {r}")
     for i, q in enumerate(m["follow_up_questions"], 1):
         print(f"[제안] 후속 질문 {i}: {q['question_ko']}  ({q['why_ko']})")
     print(f"→ 다음: 사람이 결정합니다 — `approve {args.hyp} --by 이름`")
@@ -76,7 +83,7 @@ def cmd_approve(args):
         print(f"[실행] {a['id']} → 현장 체크리스트: {a['question_ko']}")
     memo = store.load()["board"][args.hyp]
     print(f"[실행] {args.by} 이(가) 권고 {memo['recommendation']} 을 받아들임 · {len(acts)}개 질문이 다음 면담 체크리스트"
-          f"({store.FIELD_CHECKLIST.name})에 내려갔습니다 — 루프가 닫혔습니다")
+          f"({store.FIELD_CHECKLIST.name})에 들어갔습니다")
 
 
 def cmd_status(args):

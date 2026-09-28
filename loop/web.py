@@ -71,6 +71,14 @@ def hypothesis(hid: str):
         return RedirectResponse("/hypotheses", status_code=303)
 
 
+@app.get("/hypotheses/{hid}/board", response_class=HTMLResponse)
+def hypothesis_board(hid: str):
+    try:
+        return HTMLResponse(pages.board_page(store.load(), store.contract(), hid, _take_banner()))
+    except SystemExit:
+        return RedirectResponse("/hypotheses", status_code=303)
+
+
 @app.get("/checklist", response_class=HTMLResponse)
 def checklist():
     return HTMLResponse(pages.checklist_page(store.load(), store.contract(), _take_banner()))
@@ -121,7 +129,8 @@ def run_review(hyp: str = Form(...), by: str = Form(...), note: str = Form("")):
 def run_board(hyp: str = Form(...)):
     def go():
         m = board.deliberate(store.load(), hyp)
-        return f"{hyp} 권고 {m['recommendation']} · 경로 {m['route']} · 후속 질문 {len(m['follow_up_questions'])}개"
+        return (f"{hyp} 심의 종료 — 참석 {len(m['attendees'])}인 · 발언 {len(m['transcript'])}턴 · 권고 {m['recommendation']} · "
+                f"경로 {m['route']} · 후속 질문 {len(m['follow_up_questions'])}개")
     return _do("④ 심의", go, f"/hypotheses/{hyp}")
 
 
@@ -129,7 +138,7 @@ def run_board(hyp: str = Form(...)):
 def run_approve(hyp: str = Form(...), by: str = Form(...)):
     def go():
         acts = board.approve(store.load(), hyp, by.strip())
-        return f"{by.strip()} 결정 — {len(acts)}개 질문이 현장 체크리스트로 내려갔다. 루프가 닫혔다."
+        return f"{by.strip()} 결정 — {len(acts)}개 질문이 다음 면담 체크리스트에 들어갔다."
     return _do("⑤ 결정", go, f"/hypotheses/{hyp}")
 
 

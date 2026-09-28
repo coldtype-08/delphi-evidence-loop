@@ -13,7 +13,10 @@ RULES = [("유방암", "유방암 환자", "REPURPOSING"), ("PCOS", "PCOS 여성
          ("젖산산증", "노인 65+ · 신기능 저하", "SAFETY_TOLERABILITY"), ("B12", "당뇨 전단계", "SAFETY_TOLERABILITY")]
 
 def fake(purpose, *, system, user, schema_name, schema, **kw):
-    data = json.loads(user)
+    try:
+        data = json.loads(user)
+    except ValueError:
+        data = None   # board turns carry text, not JSON
     if purpose == "sense":
         claims = []
         for sent in re.split(r"(?<=[.다])\s+", data["text"]):
@@ -31,14 +34,27 @@ def fake(purpose, *, system, user, schema_name, schema, **kw):
     if purpose.startswith("screen_"):
         recs = data["records"]; items = []
         for i, r in enumerate(recs[:3]):
-            items.append({"source_id": r["id"], "stance": ["SUPPORTS", "CONTRADICTS", "NEUTRAL"][i % 3],
+            items.append({"source_id": r["id"], "stance": "NEUTRAL" if purpose == "screen_label" else ["SUPPORTS", "CONTRADICTS", "NEUTRAL"][i % 3],
                           "quote": r["text"][:90], "note_ko": "테스트"})
         items.append({"source_id": recs[0]["id"], "stance": "SUPPORTS", "quote": "not in the record at all xyz", "note_ko": "bad quote"})
         items.append({"source_id": "PMID:0", "stance": "SUPPORTS", "quote": recs[0]["text"][:40], "note_ko": "bad id"})
         return {"items": items}
-    if purpose == "board":
-        return {"label_status": "IN_LABEL", "recommendation": "PROCEED_TO_EXPERT_REVIEW", "evidence_summary_ko": "요약",
-                "rationale_ko": "이유", "follow_up_questions": [{"question_ko": "다음 면담에서 물을 것", "why_ko": "이유"}], "risks_ko": ["위험"]}
+    if purpose == "board_convene":
+        return {"hypothesis_type": "REPURPOSING", "lead": "CMO", "speaking_order": ["CMO", "RA_HEAD", "PV_HEAD", "RND_HEAD", "CFO", "CCO", "CEO"], "opening_ko": "개회합니다. 상정된 가설은 하나입니다."}
+    if purpose == "board_facilitate":
+        return {"utterance_ko": "CMO와 RA 총괄께 묻습니다.", "speakers": ["CMO", "RA_HEAD"], "question_ko": "근거의 무게를 어떻게 보십니까?", "phase_decision": "MOVE_TO_FINAL"}
+    if purpose.startswith("board_opening_") or purpose.startswith("board_discussion") or purpose.startswith("board_final_"):
+        ev = json.loads(user.split("[가설 패키지]\n", 1)[1].split("\n[회의 기록]", 1)[0])["evidence"]
+        cited = [ev[0]["source_id"], "PMID:0"] if ev else ["PMID:0"]
+        who = purpose.split("_", 2)[2].upper()   # board_final_rnd_head → RND_HEAD
+        stance = "OPPOSE" if who in ("CMO", "RND_HEAD") else ("SUPPORT" if who == "CCO" else "HOLD")
+        if purpose.startswith("board_final_") and who == "CEO": stance = "OPPOSE"
+        action = "프로모션 메시지를 준비하겠습니다." if who == "CCO" else ""
+        return {"stance": stance, "confidence": 4, "stance_changed": False, "utterance_ko": "결론부터 말씀드립니다. 근거가 그렇습니다.",
+                "cited": cited, "question_ko": "다음 면담에서 확인할 것" if who == "CMO" else "", "action_ko": action}
+    if purpose == "board_close":
+        return {"summary_ko": "요약입니다.", "evidence_summary_ko": "근거 요약입니다.", "rationale_ko": "권고 사유입니다.", "kill_criteria_ko": ["중단 기준"],
+                "risks_ko": ["위험"], "follow_up_questions": [{"question_ko": "다음 면담에서 물을 것", "why_ko": "이유"}], "closing_ko": "폐회합니다."}
     raise AssertionError(purpose)
 
 sense.call_structured = screen.call_structured = board.call_structured = fake
@@ -58,10 +74,13 @@ try: board.deliberate(state, hyp); raise AssertionError("board ran without revie
 except SystemExit as e: print("gate ok:", e)
 s = screen.run(state, hyp, contract)
 print("screen numbers:", {k: s["numbers"][k] for k in ("pubmed_hits", "ctgov_total", "ctgov_recruiting", "faers_total")})
-print("screen tally:", s["tally"], s["totals"], "dropped", [(d["source_id"], d["drop_reason"]) for d in s["dropped"]], "label", s["label_status"])
+print("screen tally:", s["totals"], "dropped", len(s["dropped"]), "label", s["label_status"])
 assert len(s["dropped"]) == 6 and all(it["verified"] for it in s["items"])
 board.sign_review(state, hyp, "테스터")
-m = board.deliberate(state, hyp); print("board route:", m["route"])
+m = board.deliberate(state, hyp); print("board route:", m["route"], "· turns", len(m["transcript"]), "· tally", m["tally"]["counts"], "· reco", m["recommendation"], "· blocked", len(m["blocked_actions"]))
+assert len(m["transcript"]) == 1 + 7 + 1 + 2 + 7 + 1 and m["recommendation"] == "DROP"
+assert all("PMID:0" not in tr.get("cited", []) for tr in m["transcript"]), "invalid citations must be dropped"
+assert len(m["blocked_actions"]) >= 1, "commercial action on DEVELOPMENT hypothesis must be blocked"
 acts = board.approve(state, hyp, "테스터"); print("actions:", [a["id"] for a in acts], "checklist:", store.FIELD_CHECKLIST.exists())
 print("status:", store.hypothesis(state, hyp)["status"])
 print("SELFTEST OK")

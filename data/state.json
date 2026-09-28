@@ -13,7 +13,7 @@
    "note_ko": "당뇨 전단계 고위험군에서 생활습관 교정만으로는 부족하나 허가 외 사용이라 처방이 어려운 상황",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0702-01-02",
@@ -28,7 +28,7 @@
    "note_ko": "노인·신기능 저하 환자에서 메트포르민 감량·중단 기준이 병원별로 달라 통일 지침 필요성 언급",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0709-02-01",
@@ -43,7 +43,7 @@
    "note_ko": "PCOS 환자에게 인슐린 저항성 개선 목적으로 메트포르민을 장기간 사용해온 경험을 기술함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0709-02-02",
@@ -58,7 +58,7 @@
    "note_ko": "PCOS 환자에서 월경 주기 회복과 체중 감소 효과를 관찰한 임상 경험을 보고함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0709-02-03",
@@ -73,7 +73,7 @@
    "note_ko": "PCOS 환자에서 위장관 부작용으로 인한 중단율이 높음을 일반적 경험으로 언급함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0715-03-01",
@@ -88,7 +88,7 @@
    "note_ko": "유방암 환자들이 재발 감소 기사를 보고 메트포르민 처방을 요청하고 있음",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0715-03-02",
@@ -103,7 +103,7 @@
    "note_ko": "당뇨 동반 유방암 환자에서 메트포르민을 항암 목적 경과 관찰 중",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0715-03-03",
@@ -118,7 +118,7 @@
    "note_ko": "항암 목적 사용을 뒷받침할 정리된 근거 자료가 필요함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0722-04-01",
@@ -133,7 +133,7 @@
    "note_ko": "당뇨 전단계 환자에 대한 메트포르민 사용 희망이나 급여·허가 장벽으로 사용 못 함을 진술",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0722-04-03",
@@ -148,7 +148,7 @@
    "note_ko": "위장관계 부작용 완화를 위해 서방정(ER 제형)으로 전환 시 호전됨을 언급",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0729-05-01",
@@ -163,7 +163,7 @@
    "note_ko": "유방암 환자에서 항암 목적으로 메트포르민을 유지하는 재목적 사용(repurposing) 사례를 언급함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0729-05-02",
@@ -178,7 +178,7 @@
    "note_ko": "당뇨 전단계 고위험군에 메트포르민을 쓰고 싶으나 허가 외 사용이라 동의 절차 등으로 실제 사용이 어려운 수요(OFF_LABEL_DEMAND)를 언급함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0805-06-01",
@@ -193,7 +193,7 @@
    "note_ko": "PCOS 배란 유도 시 레트로졸 병용으로 메트포르민을 실제 사용한 경험을 기술함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0805-06-02",
@@ -208,7 +208,7 @@
    "note_ko": "당뇨 치료제가 아닌 배란 유도 목적으로 메트포르민을 재목적 사용함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0805-06-03",
@@ -223,7 +223,7 @@
    "note_ko": "임신성 당뇨 산모들이 인슐린 대신 메트포르민 사용을 원하나 국내 미허가로 처방이 어려운 상황임",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0812-07-01",
@@ -238,7 +238,7 @@
    "note_ko": "유방암 보조요법으로 메트포르민 처방을 요청하는 환자가 지속적으로 발생함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0812-07-02",
@@ -253,7 +253,7 @@
    "note_ko": "대사증후군 동반 유방암 환자에서 메트포르민 효과에 대한 연구 근거 요구",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0819-08-01",
@@ -268,7 +268,7 @@
    "note_ko": "10세 미만 소아에서 메트포르민 사용 희망하나 허가 연령 제한과 대안 부재로 어려움을 토로함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0819-08-02",
@@ -283,7 +283,7 @@
    "note_ko": "청소년 제2형 당뇨에서 메트포르민 내약성이 성인과 유사함을 임상 경험으로 언급함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0826-09-02",
@@ -298,7 +298,7 @@
    "note_ko": "신기능 저하 환자 메트포르민 용량 조절 기준의 진료과 간 정합성 필요성 언급",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0826-09-03",
@@ -313,7 +313,7 @@
    "note_ko": "eGFR 45 미만에서 메트포르민 신규 투여 금기 원칙 확인",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0902-10-01",
@@ -328,7 +328,7 @@
    "note_ko": "메트포르민을 유방암 수술 후 재발 억제 목적으로 쓰는 재창출 용례 언급",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0902-10-02",
@@ -343,7 +343,7 @@
    "note_ko": "환자들이 허가 외 적응증(재발 억제)으로 메트포르민 처방을 원하며 내원함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0902-10-03",
@@ -358,7 +358,7 @@
    "note_ko": "유방암 재발 억제 목적의 메트포르민 근거 수준을 정리한 요약 자료가 필요함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0909-11-01",
@@ -373,7 +373,7 @@
    "note_ko": "PCOS 환자에게 인슐린 저항성 개선 목적으로 메트포르민을 실제 처방 중임을 진술함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0909-11-02",
@@ -388,7 +388,7 @@
    "note_ko": "당뇨 전단계 환자에게 메트포르민을 쓰고 싶으나 허가 외 사용이라 처방 못 하고 생활습관 교정만 하는 상황임",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0909-11-03",
@@ -403,7 +403,7 @@
    "note_ko": "당뇨 전단계 환자들이 약물 치료를 적극적으로 요청하는 미충족 수요가 증가하고 있음을 시사함",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0916-12-01",
@@ -418,7 +418,7 @@
    "note_ko": "PCOS 난임 환자에서 메트포르민을 보조 약제로 실제 사용 중임을 나타냄",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0916-12-02",
@@ -433,7 +433,7 @@
    "note_ko": "단독 요법의 한계와 병용 요법의 유용성을 실제 경험 기반으로 언급",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0916-12-03",
@@ -448,7 +448,7 @@
    "note_ko": "위장관 부작용을 고려한 저용량 증량 전략을 설명",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   }
  ],
  "safety_queue": [
@@ -465,7 +465,7 @@
    "note_ko": "장기 복용 환자에서 메트포르민 연관 비타민 B12 결핍에 의한 말초신경병증(손발 저림) 발생 기술",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   },
   {
    "id": "CLM-FN-2026-0826-09-01",
@@ -480,7 +480,7 @@
    "note_ko": "신기능 저하 노인에서 메트포르민 지속 복용 중 탈수 동반 젖산산증 발생 사례 보고",
    "contract_version": "v1.0",
    "status": "CANDIDATE",
-   "extracted_at": "2026-09-28T16:07:34"
+   "extracted_at": "2026-09-28T17:09:45"
   }
  ],
  "hypotheses": [
@@ -510,7 +510,7 @@
     "ctgov_condition": "Polycystic Ovary Syndrome"
    },
    "status": "SCREENED",
-   "created_at": "2026-09-28T16:07:34"
+   "created_at": "2026-09-28T17:09:45"
   },
   {
    "id": "HYP-002",
@@ -536,7 +536,7 @@
     "ctgov_condition": "Prediabetes"
    },
    "status": "SCREENED",
-   "created_at": "2026-09-28T16:07:34"
+   "created_at": "2026-09-28T17:09:45"
   },
   {
    "id": "HYP-003",
@@ -561,7 +561,7 @@
     "ctgov_condition": "Breast Cancer"
    },
    "status": "DECIDED:DROP",
-   "created_at": "2026-09-28T16:07:34"
+   "created_at": "2026-09-28T17:09:45"
   },
   {
    "id": "HYP-004",
@@ -586,7 +586,7 @@
     "ctgov_condition": "Breast Cancer AND Diabetes Mellitus"
    },
    "status": "SCREENED",
-   "created_at": "2026-09-28T16:07:34"
+   "created_at": "2026-09-28T17:09:45"
   },
   {
    "id": "HYP-005",
@@ -611,13 +611,13 @@
     "ctgov_condition": "Breast Cancer, Metabolic Syndrome"
    },
    "status": "SCREENED",
-   "created_at": "2026-09-28T16:07:34"
+   "created_at": "2026-09-28T17:09:45"
   }
  ],
  "screens": {
   "HYP-001": {
    "hypothesis_id": "HYP-001",
-   "ran_at": "2026-09-28T16:07:34",
+   "ran_at": "2026-09-28T17:09:45",
    "numbers": {
     "pubmed_hits": 171,
     "pubmed_heavy_hits": 35,
@@ -1199,7 +1199,7 @@
   },
   "HYP-002": {
    "hypothesis_id": "HYP-002",
-   "ran_at": "2026-09-28T16:07:34",
+   "ran_at": "2026-09-28T17:09:45",
    "numbers": {
     "pubmed_hits": 241,
     "pubmed_heavy_hits": 55,
@@ -1781,7 +1781,7 @@
   },
   "HYP-003": {
    "hypothesis_id": "HYP-003",
-   "ran_at": "2026-09-28T16:07:34",
+   "ran_at": "2026-09-28T17:09:45",
    "numbers": {
     "pubmed_hits": 11,
     "pubmed_heavy_hits": 3,
@@ -2303,7 +2303,7 @@
   },
   "HYP-004": {
    "hypothesis_id": "HYP-004",
-   "ran_at": "2026-09-28T16:07:34",
+   "ran_at": "2026-09-28T17:09:46",
    "numbers": {
     "pubmed_hits": 162,
     "pubmed_heavy_hits": 10,
@@ -2657,7 +2657,7 @@
   },
   "HYP-005": {
    "hypothesis_id": "HYP-005",
-   "ran_at": "2026-09-28T16:07:34",
+   "ran_at": "2026-09-28T17:09:46",
    "numbers": {
     "pubmed_hits": 23,
     "pubmed_heavy_hits": 5,
@@ -2918,44 +2918,672 @@
   "HYP-003": {
    "hypothesis_id": "HYP-003",
    "by": "박건태",
-   "at": "2026-09-28T16:07:35",
+   "at": "2026-09-28T17:09:46",
    "note": "3상 무효 결과까지 읽음",
    "items_read": 32,
    "dropped_seen": 2,
-   "screen_ran_at": "2026-09-28T16:07:34"
+   "screen_ran_at": "2026-09-28T17:09:45"
   }
  },
  "board": {
   "HYP-003": {
    "label_status": "DEVELOPMENT",
-   "recommendation": "DROP",
-   "evidence_summary_ko": "유방암 보조요법으로서 메트포르민의 재발 억제 효과를 검증한 대규모 3상 RCT(MA.32, NCT01101438)에서 위약 대비 무침습 생존율(IDFS) 및 전체 생존율(OS) 개선 효과가 없음이 확인됨(PMID:42063220). 메타분석에서도 전이/재발 유방암에서 OS(HR 1.13) 및 PFS(HR 1.14) 유의한 차이 없음(PMID:34137294). 전임상적으로는 메트포르민이 휴면 ER+ 세포 생존을 촉진해 재발 위험을 높일 수 있다는 기전적 우려도 제기됨(PMID:32321715). 지지 근거는 주로 역학 관찰 연구와 2상 이하 소규모 시험에 국한되며, 허가사항(라벨)에는 제2형 당뇨병 혈당 조절 외 적응증 없음. 현장 신호 3건(의료진 3명)은 언론 보도 후 환자 요청 증가 현상을 반영하나, 최고 수준 근거(RCT)와 상충.",
-   "rationale_ko": "가장 강력한 근거인 MA.32 3상 RCT(NCT01101438, 완료)가 보조요법 세팅에서 메트포르민의 재발 억제 효과를 입증하지 못함. 이는 가설이 겨냥한 '유방암 환자 보조요법으로서 재발 감소'와 정확히 일치하는 피험군·중재·대조·1차 종료점을 가진 결정적 시험임. 메타분석(PMID:34137294)도 전이/재발 설정에서 생존 이득 없음을 확인. 지지 근거(역학 연관성, 2상 pCR 탐색 등)는 인과관계 입증력이 낮고, 진행 중인 3상 6건(NCT04387630 등)은 모집 중이거나 다른 세팅(수술 전, 예방, 심장보호 등)을 다루어 기존 음성 결과를 뒤집을 직접 증거가 되지 못함. 라벨에도 유방암 적응증 없음. 따라서 추가 투자·검토 없이 기각(DROP) 권고.",
-   "follow_up_questions": [
+   "route": "전문조직 검토 (상업 액션 연결 금지)",
+   "hypothesis_type": "REPURPOSING",
+   "lead": "CMO",
+   "lead_ko": "CMO",
+   "attendees": [
+    "CMO",
+    "RA_HEAD",
+    "PV_HEAD",
+    "RND_HEAD",
+    "CFO",
+    "CCO",
+    "CEO"
+   ],
+   "transcript": [
     {
-     "question_ko": "MA.32 3상 결과(보조요법 무효) 발표 후에도 환자·보호자가 메트포르민 처방을 요청하는 주된 이유는 무엇이라고 보십니까?",
-     "why_ko": "음성 RCT 결과가 알려진 시점에도 수요가 지속되는 동인(언론 보도, 인터넷 커뮤니티, 의사 권유 등)을 파악해 향후 커뮤니케이션 전략 수립에 활용하기 위함"
+     "no": 1,
+     "phase": "개회",
+     "speaker": "ORCHESTRATOR",
+     "speaker_ko": "간사",
+     "utterance_ko": "이번 회의는 가설 HYP-003, 메트포르민의 유방암 보조요법 수요 증가 현상을 상정합니다. 현장 신호는 3건의 클레임, 3명의 의료진으로부터 접수되었습니다. 외부 근거 집계는 퍼브메드·시티고브·라벨 합계 기준 지지 10건, 반박 3건, 중립 19건입니다. 가설 패키지는 박건태 님이 3상 무효 결과까지 검토 후 서명하셨습니다. 개회합니다.",
+     "hypothesis_type": "REPURPOSING",
+     "lead": "CMO"
     },
     {
-     "question_ko": "진료 현장에서 메트포르민 보조요법 요청 시, MA.32 결과와 라벨 외 사용임을 어떻게 설명하고 계십니까?",
-     "why_ko": "의료진의 설명 방식과 환자 수용도 차이를 확인해, 근거 기반 상담 가이드 필요성 판단에 참고하기 위함"
+     "no": 2,
+     "phase": "모두발언",
+     "speaker": "CMO",
+     "speaker_ko": "CMO",
+     "utterance_ko": "메트포르민의 유방암 보조요법 수요 증가는 임상적 근거가 아닌 언론 보도와 관찰 연구에 기인한 것으로, 진행을 반대합니다. MA.32 3상 무작위 대조시험(NCT01101438, PMID:42063220)에서 메트포르민은 위약 대비 무침습 생존율과 전체 생존율을 개선하지 못했고, 메타분석(PMID:34137294)에서도 전이·재발 유방암에서 전체 생존(HR 1.13)과 무진행 생존(HR 1.14)에 유의한 효과가 없었습니다. 전임상 연구(PMID:32321715)는 메트포르민이 에스트로겐 결핍 상태의 ER+ 유방암 세포 생존을 촉진해 재발 위험을 높일 수 있음을 시사합니다. 관찰 연구들(PMID:23714455, PMID:22490993, PMID:21800293)은 역학적 연관성만 보여줄 뿐, 이를 검증한 대규모 RCT에서 모두 부정적 결과가 나왔습니다. 현재 허가사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)에도 유방암 적응증은 없으며, 젖산산증 등 안전성 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)만 존재합니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "현장에서 환자들이 접한 언론 보도의 출처와 내용이 무엇인지, 그리고 의료진이 이를 어떻게 설명하고 있는지 확인 바랍니다.",
+     "action_ko": "의료진 대상 근거 기반 설명 자료(MA.32 결과, 메타분석, 허가사항 미포함)를 배포하고, 환자 면담 시 근거 없는 보조요법 요청에 대한 표준 응대 가이드를 마련하겠습니다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "PMID:23714455",
+      "PMID:22490993",
+      "PMID:21800293",
+      "NCT01101438",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+     ],
+     "cited_dropped": []
     },
     {
-     "question_ko": "당뇨병 동반 유방암 환자에서 메트포르민을 혈당 조절 목적으로 처방 중인 경우, 보조요법 효과 기대를 별도로 논의하십니까?",
-     "why_ko": "당뇨병 적응증으로 이미 복용 중인 환자군에서 '보조요법 효과'에 대한 오해·기대 형성 여부를 확인하기 위함"
+     "no": 3,
+     "phase": "모두발언",
+     "speaker": "RA_HEAD",
+     "speaker_ko": "RA 총괄",
+     "utterance_ko": "이 가설은 허가 범위 밖 사용에 대한 환자 수요 증가를 다루고 있으나, 결정적인 3상 시험인 MA.32(NCT01101438)에서 메트포르민이 조기 유방암 보조요법으로 무침습 생존율과 전체 생존율을 개선하지 못함이 확인되었습니다(PMID:42063220). 메타분석에서도 전이·재발 유방암에서 전체 생존과 무진행 생존에 유의한 효과가 없었으며(PMID:34137294), 전임상적으로는 휴면 ER+ 세포 생존을 촉진할 가능성까지 제기되었습니다(PMID:32321715). 현재 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 언론 보도에 근거한 환자 요청만으로 허가 외 사용을 권장하거나 지원하는 것은 규제상 허용되지 않습니다. 따라서 이 수요에 대응하기 위한 상업적 액션이나 정보 제공은 규제 위반 소지가 크므로 진행에 반대합니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "현장에서 접수된 3건의 클레임 중 의료진이 환자에게 메트포르민 보조요법을 실제로 처방했는지, 아니면 환자 요청을 단순히 전달만 했는지 확인 바랍니다.",
+     "action_ko": "",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "NCT01101438",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 4,
+     "phase": "모두발언",
+     "speaker": "PV_HEAD",
+     "speaker_ko": "PV 총괄",
+     "utterance_ko": "PV 총괄로서 이 가설에 대해 반대 입장을 표명합니다. FAERS 자료에서 젖산산증 19,411건과 급성신손상 18,273건이 상위 이상사례로 확인되며, 박스 경고에서도 젖산산증으로 인한 사망·저체온·저혈압·서맥성 부정맥이 명시되어 있습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning). 유방암 보조요법 대상자는 항암화학요법 병용으로 신기능 저하와 간기능 장애 위험이 높은 군인데, 라벨에서도 신기능 모니터링과 간장애 환자 금기를 강조하고 있습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations). 결정적인 3상 시험인 MA.32(NCT01101438)에서 무침습 생존율과 전체 생존율 개선이 입증되지 않았고(PMID:42063220), 전임상적으로는 에스트로겐 결핍 상태의 ER+ 유방암 세포 생존을 촉진해 재발 위험을 높일 수 있다는 우려도 있습니다(PMID:32321715). 효능 근거가 없는 상황에서 심각한 안전성 위험만 더해지는 처방 요청 증가는 환자 위해로 이어질 수 있습니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "유방암 보조요법 목적으로 메트포르민을 복용 중인 환자에서 신기능 저하 또는 젖산산증 의심 사례를 인지한 적이 있으십니까?",
+     "action_ko": "현장 클레임 3건의 환자군에서 신기능·간기능 수치와 젖산 수치 모니터링 여부를 확인하고, 이상사례 보고 체계로 연계할 것을 의료부에 요청합니다.",
+     "cited": [
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations",
+      "PMID:42063220",
+      "PMID:32321715",
+      "NCT01101438"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 5,
+     "phase": "모두발언",
+     "speaker": "RND_HEAD",
+     "speaker_ko": "R&D 총괄",
+     "utterance_ko": "임상개발 총괄로서 메트포르민의 유방암 보조요법 개발에 반대합니다. MA.32 3상 시험(NCT01101438)에서 메트포르민이 위약 대비 무침습 생존율과 전체 생존율을 개선하지 못함이 확인되었습니다(PMID:42063220). 전이·재발 유방암 메타분석에서도 전체 생존과 무진행 생존에 유의한 효과가 없었습니다(PMID:34137294). 전임상적으로는 에스트로겐 결핍 상태에서 휴면 ER+ 세포의 생존을 촉진해 재발 위험을 높일 수 있다는 우려도 있습니다(PMID:32321715). 역학적 연관성만으로 보조요법 적응증을 추진할 임상적 근거는 부족하다고 판단합니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "MA.32 시험의 하위군 분석에서 혜택을 보인 특정 바이오마커 양성군이 있었는지 확인 부탁드립니다.",
+     "action_ko": "MA.32 시험의 최종 결과보고서와 하위군 분석 데이터를 확보해 개발 중단 근거로 정리하겠습니다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "NCT01101438"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 6,
+     "phase": "모두발언",
+     "speaker": "CFO",
+     "speaker_ko": "CFO",
+     "utterance_ko": "메트포르민 유방암 보조요법 수요 가설에 대해 자원 배분 관점에서 반대 입장을 표명합니다. 결정적인 3상 시험인 MA.32(NCT01101438)에서 무침습 생존율과 전체 생존율 개선 효과가 입증되지 않았고, 메타분석(PMID:34137294)에서도 전이·재발 환자의 생존 혜택이 확인되지 않았습니다. 전임상적으로는 에스트로겐 결핍 상태에서 휴면 암세포 생존을 촉진할 수 있다는 우려(PMID:32321715)도 존재합니다. 현재 허가사항은 제2형 당뇨병에 한정되며(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 1.9만 건의 젖산산증 보고는 안전성 부담을 더합니다. 관찰 연구 위주의 지지 근거만으로 추가 개발 투자를 정당화하기 어렵고, 자원은 더 강력한 근거를 가진 가설에 집중해야 합니다.",
+     "stance": "OPPOSE",
+     "confidence": 4,
+     "stance_changed": false,
+     "question_ko": "현장 의료진은 환자 요청의 근거가 된 언론 보도 내용을 구체적으로 어떤 경로로 접했는지, 그리고 요청 환자군의 당뇨병 동반 여부를 확인해 주시겠습니까?",
+     "action_ko": "메트포르민 유방암 적응증 확대 개발 예산 배정을 보류하고, MA.32 결과와 안전성 신호를 반영한 위험조정 수익성 분석을 차기 회의에 제출하겠습니다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "NCT01101438",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 7,
+     "phase": "모두발언",
+     "speaker": "CCO",
+     "speaker_ko": "CCO",
+     "utterance_ko": "현장에서는 유방암 환자들이 언론 보도를 보고 메트포르민 보조요법 처방을 요청하는 사례가 3건, 3명의 의료진으로부터 보고되었습니다. 그러나 가장 큰 3상 RCT인 MA.32 시험(NCT01101438)에서 메트포르민이 무침습 생존율과 전체 생존율을 개선하지 못했음이 확인되었습니다(PMID:42063220). 메타분석에서도 전이·재발 유방암에서 전체 생존과 무진행 생존에 유의한 효과가 없었습니다(PMID:34137294). 지지 근거는 주로 역학·관찰 연구에 머물러 있고, 허가사항에는 제2형 당뇨병만 적응증으로 명시되어 있습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage). 환자 수요는 실재하나 그 근거가 임상적 사실과 괴리되어 있어, 의료진이 환자에게 무엇을 설명해야 할지 현장의 니즈를 먼저 파악해야 합니다.",
+     "stance": "HOLD",
+     "confidence": 4,
+     "stance_changed": false,
+     "question_ko": "환자가 메트포르민 보조요법을 요청할 때 의료진이 가장 어려워하는 설명 포인트는 무엇입니까?",
+     "action_ko": "의료진 대상 현장 인터뷰를 통해 환자 요청 대응 가이드라인 수요를 조사하겠습니다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "PMID:23714455",
+      "NCT01101438",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 8,
+     "phase": "모두발언",
+     "speaker": "CEO",
+     "speaker_ko": "CEO",
+     "utterance_ko": "이번 가설은 유방암 환자들이 언론 보도만으로 메트포르민 보조요법을 요청하는 현상을 다루고 있습니다. 가장 큰 3상 RCT인 MA.32 시험(NCT01101438)에서 메트포르민이 무침습 생존율과 전체 생존율을 개선하지 못함이 확인됐고(PMID:42063220), 전이·재발 환자 메타분석에서도 전체 생존과 무진행 생존에 유의한 효과가 없었습니다(PMID:34137294). 전임상적으로는 에스트로겐 결핍 상태에서 휴면 ER+ 세포 생존을 촉진해 재발 위험을 높일 수 있다는 우려도 있습니다(PMID:32321715). 허가사항은 제2형 당뇨병 혈당 조절로 한정되며 유방암 적응증은 전혀 없습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage). 젖산산증 박스 경고와 FAERS 상위 이상사례를 볼 때, 근거 없이 보조요법으로 쓰는 것은 환자 안전상 감당하기 어려운 리스크입니다. 따라서 이 수요에 상업적으로 대응하거나 방치하지 않겠다는 것이 제 초기 입장입니다.",
+     "stance": "OPPOSE",
+     "confidence": 4,
+     "stance_changed": false,
+     "question_ko": "현장에서 환자 요청이 들어왔을 때 의료진은 어떻게 대응하고 있으며, 환자에게 어떤 근거를 설명하고 있습니까?",
+     "action_ko": "메디컬 어페어즈 주도로 근거 공백과 안전성 우려를 정리한 의료진 대상 커뮤니케이션 가이드를 금주 내 마련하겠습니다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "NCT01101438",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 9,
+     "phase": "진행 · 1라운드",
+     "speaker": "ORCHESTRATOR",
+     "speaker_ko": "간사",
+     "utterance_ko": "모두발언을 종합하면 전원이 메트포르민 유방암 보조요법 개발이나 상업적 대응에 반대하시나, CCO께서는 현장 수요가 실재함을 확인하셨고 PV 총괄께서는 항암화학요법 병용 시 안전성 위험이 특히 크심을 강조하셨으며 RA 총괄께서는 허가 외 사용 권유의 규제 위반 소지를 지적하셨습니다. 이 세 분께 한 가지 질문을 드립니다.",
+     "speakers": [
+      "CCO",
+      "PV_HEAD",
+      "RA_HEAD"
+     ],
+     "question_ko": "현장 의료진이 환자에게 메트포르민 보조요법의 무효 근거와 젖산산증 등 안전성 위험을 설명할 때, 현재 허가사항과 MA.32 결과를 바탕으로 어떤 표준화된 안내 문구나 대응 지침이 필요하다고 보십니까?",
+     "phase_decision": "CONTINUE_DISCUSSION"
+    },
+    {
+     "no": 10,
+     "phase": "토론 · 1라운드",
+     "speaker": "CCO",
+     "speaker_ko": "CCO",
+     "utterance_ko": "CMO님께서 지적하신 MA.32 3상 결과(PMID:42063220)와 메타분석(PMID:34137294)의 무효 근거, PV 총괄님께서 강조하신 젖산산증 1.9만 건과 급성신손상 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning, FAERS 자료), 그리고 RA 총괄님께서 경고하신 허가 외 사용 권유의 규제 위반 소지(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)는 모두 현장 의료진이 환자에게 정확히 전달해야 할 핵심 사실입니다. 현재 허가사항에 유방암 적응증이 없고 제2형 당뇨병만 명시되어 있는 상황에서, 의료진이 환자 요청에 대해 '근거 없는 처방은 하지 않는다'는 일관된 메시지를 전할 수 있도록 법무·의학부 검토를 거친 표준 안내 문구가 시급히 필요하다고 봅니다. 특히 항암화학요법 병용 시 신기능·간기능 모니터링 강화와 간장애 환자 금기(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations) 같은 구체적 안전성 정보도 포함되어야 합니다.",
+     "stance": "HOLD",
+     "confidence": 4,
+     "stance_changed": false,
+     "question_ko": "환자가 언론 보도를 근거로 메트포르민 보조요법을 요청할 때, 의료진이 가장 어려워하는 설명 포인트는 무엇입니까?",
+     "action_ko": "의학부·법무 공동으로 허가사항·MA.32 결과·안전성 경고를 반영한 의료진용 표준 응대 가이드 초안을 2주 내 마련한다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 11,
+     "phase": "토론 · 1라운드",
+     "speaker": "PV_HEAD",
+     "speaker_ko": "PV 총괄",
+     "utterance_ko": "CMO님께서 지적하신 MA.32 3상 결과(PMID:42063220)와 RA 총괄님께서 강조하신 허가 외 사용의 규제 위반 소지(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)에 전적으로 동의합니다. CCO님께서 현장의 니즈를 파악하신 점도 중요하나, 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 19,411건의 젖산산증 보고, 항암화학요법 병용 시 신기능·간기능 악화 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)을 고려하면 표준화된 안전성 안내 문구는 필수적입니다. 의료진이 환자에게 '유방암 재발 감소 효과가 입증되지 않았으며(PMID:42063220, PMID:34137294), 오히려 전임상적으로 휴면 암세포 생존을 촉진할 우려가 있고(PMID:32321715), 젖산산증 등 중대한 위해가 발생할 수 있다'는 점을 명확히 전달할 수 있는 가이드를 마련해야 합니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "현장 의료진은 환자가 메트포르민 보조요법을 요청할 때 현재 어떤 설명을 하고 있으며, 어떤 자료가 있으면 도움이 되겠습니까?",
+     "action_ko": "메트포르민 유방암 보조요법 요청 대응을 위한 표준화된 안전성 커뮤니케이션 가이드를 개발하여 현장에 배포하겠습니다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 12,
+     "phase": "토론 · 1라운드",
+     "speaker": "RA_HEAD",
+     "speaker_ko": "RA 총괄",
+     "utterance_ko": "간사님, PV 총괄님께서 지적하신 항암화학요법 병용 시 신기능 저하군에서의 젖산산증 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning, FAERS 19,411건)과 CCO님께서 확인하신 현장 수요의 실재는 모두 중요한 포인트입니다. 현재 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), MA.32 3상 시험(NCT01101438, PMID:42063220)에서 보조요법으로서 무침습 생존율과 전체 생존율 개선이 입증되지 않았으므로, 의료진에게는 '허가된 적응증 외 사용에 대한 권장·유도·지원은 금지되며, 환자 문의 시 MA.32 무효 결과와 젖산산증 박스 경고 등 허가사항에 기재된 사실만 중립적으로 안내한다'는 원칙의 표준 응대 지침이 필요합니다. CMO님과 R&D 총괄님께서 제시하신 메타분석(PMID:34137294)과 전임상적 우려(PMID:32321715)도 함께 인용해 효능 근거 부재를 명확히 해야 합니다. 이는 프로모션이 아닌 의학적 사실 전달로 한정되어야 하며, 상업적 대응으로 비치지 않도록 법무·컴플라이언스 검토를 거쳐 배포해야 합니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "현장에서 환자가 메트포르민 보조요법을 요청할 때, 허가사항과 MA.32 결과를 바탕으로 '효능 입증 없음·안전성 위험 존재'를 어떻게 설명하고 계십니까?",
+     "action_ko": "",
+     "cited": [
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+      "NCT01101438",
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 13,
+     "phase": "진행 · 2라운드",
+     "speaker": "ORCHESTRATOR",
+     "speaker_ko": "간사",
+     "utterance_ko": "1라운드에서 CCO님, PV 총괄님, RA 총괄님께서 모두 현장 대응 가이드라인의 필요성에 공감하셨으나, 그 초점을 CCO님은 의료진의 실전적 응대 문구에, PV 총괄님은 젖산산증·신기능·간기능 등 안전성 정보 강조에, RA 총괄님은 허가사항 범위 내 중립적 사실 전달과 컴플라이언스 검토에 두셨습니다. CEO님께서는 '상업적으로 대응하거나 방치하지 않겠다'고 하셨고, CMO님과 R&D 총괄님은 효능 근거 부재를 재확인하셨습니다. 이 세 분께 묻습니다.",
+     "speakers": [
+      "CEO",
+      "CCO",
+      "PV_HEAD"
+     ],
+     "question_ko": "개발 추진은 전원 반대이나 현장 수요(3건 클레임, 3명 의료진)는 실재합니다. 허가 외 사용을 권유하지 않으면서도 의료진이 환자에게 '근거 없는 처방은 하지 않는다'는 일관된 메시지를 전할 수 있도록, 회사가 취해야 할 구체적 비상업적 액션(예: 의학부 주관 Q&A 배포, 안전성 서한, 학회 채널 안내 등)은 무엇이라고 보십니까?",
+     "phase_decision": "CONTINUE_DISCUSSION"
+    },
+    {
+     "no": 14,
+     "phase": "토론 · 2라운드",
+     "speaker": "CEO",
+     "speaker_ko": "CEO",
+     "utterance_ko": "CMO님, PV 총괄님, RA 총괄님, CCO님께서 모두 지적하신 대로 개발 추진과 상업적 대응에는 전원 반대이나 현장 수요는 실재하므로 회사는 비상업적 사실 전달에 한정된 액션을 취해야 합니다. 의학부 주관으로 MA.32 3상 무효 결과(PMID:42063220, NCT01101438)와 메타분석상 생존 혜택 부재(PMID:34137294), 전임상적 재발 위험 우려(PMID:32321715), 허가사항의 제2형 당뇨병 한정 적응증(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고와 FAERS 1.9만 건 보고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)만을 중립적으로 정리한 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 배포하는 것이 적절합니다. 학회 채널을 통한 과학적 교류 역시 프로모션으로 비치지 않도록 의학부 단독 주관, 데이터 중심 발표로 한정해야 합니다. CCO님께서 말씀하신 의료진의 실전적 응대 문구, PV 총괄님께서 강조하신 신기능·간기능 모니터링 강화 사항, RA 총괄님께서 요구하신 허가 범위 내 중립적 사실 전달 원칙 모두 이 문서에 반영하겠습니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "현장에서 환자가 메트포르민 보조요법을 요청할 때 가장 자주 묻는 구체적 질문과 의료진이 답변하기 어려운 포인트는 무엇입니까?",
+     "action_ko": "",
+     "cited": [
+      "PMID:42063220",
+      "NCT01101438",
+      "PMID:34137294",
+      "PMID:32321715",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 15,
+     "phase": "토론 · 2라운드",
+     "speaker": "CCO",
+     "speaker_ko": "CCO",
+     "utterance_ko": "간사님, CMO님과 R&D 총괄님께서 MA.32 3상 무효 결과(PMID:42063220)와 메타분석(PMID:34137294), 전임상적 우려(PMID:32321715)로 효능 근거가 없음을 재확인해 주셨고, PV 총괄님께서 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 1.9만 건, 항암화학요법 병용 시 신기능·간기능 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)을 강조하셨으며, RA 총괄님께서 허가사항 범위 내 중립적 사실 전달과 컴플라이언스 검토 원칙(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage)을 제시하신 점에 모두 동의합니다. CEO님께서 '상업적으로 대응하거나 방치하지 않겠다'고 하신 방향에 맞춰, 의학부 주관으로 MA.32 무효 결과와 허가사항, 안전성 경고를 담은 HCP용 Q&A 문서와 안전성 서한(Dear Healthcare Professional Letter)을 법무·컴플라이언스 검토 후 배포하고, 대한암학회·대한종양내과학회 등 학회 채널을 통해 동일 내용을 안내하는 비상업적 액션을 즉시 추진해야 한다고 봅니다. 이는 프로모션이 아닌 의학적 사실 전달로 한정되며, 현장 의료진이 환자에게 '근거 없는 처방은 하지 않는다'는 일관된 메시지를 전할 수 있게 하는 최소한의 지원입니다.",
+     "stance": "SUPPORT",
+     "confidence": 4,
+     "stance_changed": false,
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때 구체적으로 어떤 질문이나 기대를 표현하시는지, 그리고 응대 시 가장 필요한 자료가 무엇인지 알려주십시오.",
+     "action_ko": "의학부 주도로 MA.32 무효 결과·허가사항·안전성 경고를 담은 HCP용 Q&A와 안전성 서한을 2주 내 법무·컴플라이언스 검토 후 배포하고, 주요 학회 채널을 통한 동일 안내를 추진하겠습니다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations",
+      "NCT01101438"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 16,
+     "phase": "토론 · 2라운드",
+     "speaker": "PV_HEAD",
+     "speaker_ko": "PV 총괄",
+     "utterance_ko": "CCO님께서 현장 의료진의 실전적 응대 문구 필요성을, RA 총괄님께서 허가사항 범위 내 중립적 사실 전달과 컴플라이언스 검토를 강조하신 점에 전적으로 동의합니다. PV 관점에서 가장 시급한 비상업적 액션은 의학부 주관으로 '유방암 보조요법 목적 메트포르민 사용 시 젖산산증·급성신손상 위험 증가'를 알리는 안전성 서한(DHPC)을 배포하고, 위험관리계획(RMP)에 항암화학요법 병용군 신기능 모니터링 강화 조항을 추가하는 것입니다. MA.32 3상(NCT01101438, PMID:42063220)과 메타분석(PMID:34137294)에서 효능이 입증되지 않았고, 전임상적으로 휴면 ER+ 세포 생존 촉진 우려(PMID:32321715)까지 있는 상황에서 FAERS 젖산산증 19,411건과 급성신손상 18,273건, 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning), 신기능·간기능 주의사항(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)은 의료진이 환자에게 반드시 전달해야 할 객관적 사실입니다. 학회 채널을 통한 안전성 심포지엄 개최와 의학부 Q&A 문서 배포도 병행하되, 모든 자료는 '허가된 적응증은 제2형 당뇨병 혈당 조절뿐이며(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 유방암 재발 감소 효과는 입증되지 않았다'는 문구로 시작하고 끝나야 합니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "항암화학요법 병용 시 메트포르민 용량 조절 또는 중단 기준을 현장 의료진이 즉시 적용할 수 있도록 신기능·간기능 수치별 구체적 가이드를 마련해 주실 수 있습니까?",
+     "action_ko": "의학부 주관으로 젖산산증·급성신손상 위험을 강조한 안전성 서한(DHPC) 초안을 작성하고, RMP에 항암화학요법 병용군 신기능 모니터링 강화 조항을 추가하는 절차를 즉시 개시하겠습니다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations",
+      "NCT01101438"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 17,
+     "phase": "최종 입장",
+     "speaker": "CMO",
+     "speaker_ko": "CMO",
+     "utterance_ko": "메트포르민의 유방암 보조요법 개발과 상업적 대응에 대한 반대 입장을 유지합니다. MA.32 3상 무작위 대조시험(NCT01101438, PMID:42063220)에서 무침습 생존율과 전체 생존율 개선이 입증되지 않았고, 메타분석(PMID:34137294)에서도 전이·재발 환자의 전체 생존(HR 1.13)과 무진행 생존(HR 1.14)에 유의한 혜택이 없었습니다. 전임상적으로는 에스트로겐 결핍 상태에서 휴면 ER+ 유방암 세포 생존을 촉진해 재발 위험을 높일 수 있다는 우려(PMID:32321715)까지 제기되었습니다. 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고와 FAERS 1.9만 건 보고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)는 항암화학요법 병용 시 안전성 부담을 더합니다. 관찰 연구의 역학적 연관성만으로는 보조요법 적응증 추진의 임상적 근거가 되지 못합니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때 MA.32 3상 무효 결과와 젖산산증 위험을 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과, 허가사항, 안전성 경고를 담은 HCP용 Q&A와 안전성 서한(DHPC)을 법무·컴플라이언스 검토 후 배포한다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 18,
+     "phase": "최종 입장",
+     "speaker": "RA_HEAD",
+     "speaker_ko": "RA 총괄",
+     "utterance_ko": "최종 입장은 변함없이 반대입니다. MA.32 3상 시험(NCT01101438, PMID:42063220)에서 메트포르민이 조기 유방암 보조요법으로 무침습 생존율과 전체 생존율을 개선하지 못함이 확인되었고, 메타분석(PMID:34137294)에서도 전이·재발 유방암에서 생존 혜택이 없었으며, 전임상적으로는 휴면 ER+ 세포 생존 촉진 우려(PMID:32321715)까지 제기되었습니다. 현재 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 1.9만 건의 젖산산증 보고는 안전성 부담을 명확히 합니다. 따라서 이 수요에 대한 상업적 대응이나 개발 추진은 규제상 허용되지 않으며, 허가 외 사용을 권장·유도·지원하는 일체의 액션에 반대합니다. 다만 의학부 주관으로 허가사항 범위 내 중립적 사실만 전달하는 비상업적 의학정보 활동(Q&A, 안전성 서한)은 법무·컴플라이언스 검토를 거쳐 진행하는 것에 이견이 없습니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, 의료진은 MA.32 3상 무효 결과와 허가사항상 유방암 적응증이 없음을 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과, 허가사항, 젖산산증 박스 경고만을 중립적으로 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 배포한다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+      "NCT01101438"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 19,
+     "phase": "최종 입장",
+     "speaker": "PV_HEAD",
+     "speaker_ko": "PV 총괄",
+     "utterance_ko": "PV 총괄로서 메트포르민의 유방암 보조요법 수요에 대한 개발 추진과 상업적 대응에 반대 입장을 유지합니다. MA.32 3상 시험(NCT01101438, PMID:42063220)과 메타분석(PMID:34137294)에서 효능이 입증되지 않았고, 전임상적으로 휴면 ER+ 세포 생존 촉진 우려(PMID:32321715)까지 존재하는 상황에서 FAERS 젖산산증 19,411건과 급성신손상 18,273건, 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning), 항암화학요법 병용 시 신기능·간기능 악화 위험(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)은 환자 위해로 직결될 수 있는 객관적 사실입니다. 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있으며(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 유방암 적응증은 전혀 없습니다. 따라서 회사는 의학부 주관으로 효능 근거 부재와 안전성 위험만을 중립적으로 정리한 안전성 서한(DHPC)과 HCP용 Q&A를 법무·컴플라이언스 검토 후 배포하고, 위험관리계획(RMP)에 항암화학요법 병용군 신기능 모니터링 강화 조항을 추가하는 비상업적 액션에 한정해야 합니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 젖산산증 박스 경고를 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과와 젖산산증·급성신손상 위험을 담은 DHPC와 HCP용 Q&A를 법무·컴플라이언스 검토 후 배포하고, RMP에 항암화학요법 병용군 신기능 모니터링 강화 조항을 추가한다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "NCT01101438",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 20,
+     "phase": "최종 입장",
+     "speaker": "RND_HEAD",
+     "speaker_ko": "R&D 총괄",
+     "utterance_ko": "임상개발 총괄로서 최종 입장은 메트포르민의 유방암 보조요법 개발을 추진하지 않는다는 것입니다. MA.32 3상 시험(NCT01101438)에서 위약 대비 무침습 생존율과 전체 생존율 개선이 입증되지 않았고(PMID:42063220), 전이·재발 유방암 메타분석에서도 전체 생존(HR 1.13)과 무진행 생존(HR 1.14)에 유의한 혜택이 없었습니다(PMID:34137294). 전임상적으로는 에스트로겐 결핍 상태에서 휴면 ER+ 유방암 세포의 생존을 촉진해 재발 위험을 높일 수 있다는 우려까지 제기되었습니다(PMID:32321715). 역학적 연관성만으로는 보조요법 적응증 개발의 임상적 근거가 되지 못하며, 현재 진행 중인 3상 시험들(NCT04387630, NCT06763328, NCT01905046, NCT07815808) 역시 재발 억제 직접 평가가 아니거나 예방·심장보호·인슐린 저항성 개선이 주목적입니다. 따라서 추가 개발 투자는 정당화되지 않습니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 전임상적 재발 위험 우려를 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 결과와 안전성 정보를 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 배포한다.",
+     "cited": [
+      "PMID:42063220",
+      "NCT01101438",
+      "PMID:34137294",
+      "PMID:32321715",
+      "NCT04387630",
+      "NCT06763328",
+      "NCT01905046",
+      "NCT07815808"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 21,
+     "phase": "최종 입장",
+     "speaker": "CFO",
+     "speaker_ko": "CFO",
+     "utterance_ko": "자원 배분 관점에서 메트포르민 유방암 보조요법 개발 투자는 여전히 반대합니다. MA.32 3상 시험(NCT01101438, PMID:42063220)에서 무침습 생존율과 전체 생존율 개선 효과가 입증되지 않았고, 메타분석(PMID:34137294)에서도 전이·재발 환자의 생존 혜택이 확인되지 않았으며, 전임상적으로 휴면 ER+ 세포 생존 촉진 우려(PMID:32321715)까지 존재합니다. 허가사항은 제2형 당뇨병에 한정되고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 1.9만 건 보고는 안전성 부담을 더합니다. 관찰 연구 위주의 지지 근거만으로 추가 개발 투자를 정당화하기 어렵고, 자원은 더 강력한 근거를 가진 가설에 집중해야 합니다. 다만 의학부 주관의 비상업적 사실 전달 Q&A와 안전성 서한 배포는 별도 예산으로 최소한만 지원하겠습니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 젖산산증 위험을 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과·허가사항·안전성 경고를 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 배포하고, 개발 예산은 배정하지 않는다.",
+     "cited": [
+      "NCT01101438",
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 22,
+     "phase": "최종 입장",
+     "speaker": "CCO",
+     "speaker_ko": "CCO",
+     "utterance_ko": "메트포르민의 유방암 보조요법 개발과 상업적 대응에는 효능 근거 부재와 안전성 위험, 규제 위반 소지로 인해 반대 입장을 유지합니다. MA.32 3상 시험(NCT01101438, PMID:42063220)과 메타분석(PMID:34137294)에서 생존 혜택이 입증되지 않았고, 전임상적으로 휴면 ER+ 세포 생존 촉진 우려(PMID:32321715)까지 존재하는 상황에서 허가사항은 제2형 당뇨병에 한정되어 있습니다(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage). 다만 현장 의료진이 환자 요청에 사실 기반으로 응대할 수 있도록, 의학부 주관으로 MA.32 무효 결과와 허가사항, 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning) 및 FAERS 1.9만 건 보고를 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 배포하는 비상업적 액션을 즉시 추진하겠습니다. 학회 채널을 통한 동일 내용 안내도 의학부 단독 주관, 데이터 중심 발표로 한정해 프로모션으로 비치지 않게 운영하겠습니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": true,
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 허가사항 범위를 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과·허가사항·젖산산증 박스 경고·FAERS 데이터를 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 2주 내 배포한다.",
+     "cited": [
+      "PMID:42063220",
+      "PMID:34137294",
+      "PMID:32321715",
+      "NCT01101438",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 23,
+     "phase": "최종 입장",
+     "speaker": "CEO",
+     "speaker_ko": "CEO",
+     "utterance_ko": "토론을 거쳐 제 입장은 변함없이 반대입니다. 메트포르민의 유방암 보조요법 개발과 상업적 대응에는 전원 합의로 반대하나, 현장 수요가 실재하므로 회사는 비상업적 사실 전달에 한정된 액션을 취하겠습니다. 의학부 주관으로 MA.32 3상 무효 결과(PMID:42063220, NCT01101438)와 메타분석상 생존 혜택 부재(PMID:34137294), 전임상적 재발 위험 우려(PMID:32321715), 허가사항의 제2형 당뇨병 한정 적응증(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고와 FAERS 1.9만 건 보고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning), 항암화학요법 병용 시 신기능·간기능 모니터링 강화 필요성(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)만을 중립적으로 정리한 HCP용 Q&A와 안전성 서한(DHPC)을 법무·컴플라이언스 검토 후 배포하고, 학회 채널을 통한 데이터 중심 과학적 교류를 의학부 단독 주관으로 진행하겠습니다. 이는 프로모션이 아닌 환자 안전과 의학적 사실 전달을 위한 최소한의 조치입니다.",
+     "stance": "OPPOSE",
+     "confidence": 5,
+     "stance_changed": false,
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 젖산산증 위험을 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과·허가사항·안전성 경고를 담은 HCP용 Q&A와 DHPC를 법무·컴플라이언스 검토 후 4주 내 배포한다.",
+     "cited": [
+      "PMID:42063220",
+      "NCT01101438",
+      "PMID:34137294",
+      "PMID:32321715",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use",
+      "SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations"
+     ],
+     "cited_dropped": []
+    },
+    {
+     "no": 24,
+     "phase": "폐회",
+     "speaker": "ORCHESTRATOR",
+     "speaker_ko": "간사",
+     "utterance_ko": "이상으로 가설 HYP-003에 대한 경영 심의회를 마칩니다. 전원 합의로 개발 추진 및 상업적 대응을 중단(DROP)하며, 의학부 주관의 비상업적 사실 전달 액션(Q&A, DHPC, 학회 채널 데이터 중심 발표)을 법무·컴플라이언스 검토 후 즉시 진행하기로 결정했습니다. 후속 액션 이행 현황은 차기 회의에서 보고받겠습니다. 수고하셨습니다."
     }
    ],
-   "risks_ko": [
-    "최고 수준 근거(3상 RCT) 음성 결과에도 불구하고 오프라벨 사용 권유·처방 시 법적·윤리적 리스크",
-    "언론·온라인 매체 보도로 인한 환자 기대 형성과 근거 간 괴리 확대",
-    "메트포르민 장기 복용 시 젖산산증(박스 경고), 신기능 저하 등 안전성 이슈가 암 환자군에서 더 크게 나타날 가능성",
-    "자원 투입(임상시험, 의학부 활동) 대비 임상적 유익성 입증 실패로 인한 기회비용"
+   "stance_evolution": [
+    {
+     "speaker": "CMO",
+     "speaker_ko": "CMO",
+     "opening": "OPPOSE",
+     "final": "OPPOSE",
+     "changed": false,
+     "confidence": 5
+    },
+    {
+     "speaker": "RA_HEAD",
+     "speaker_ko": "RA 총괄",
+     "opening": "OPPOSE",
+     "final": "OPPOSE",
+     "changed": false,
+     "confidence": 5
+    },
+    {
+     "speaker": "PV_HEAD",
+     "speaker_ko": "PV 총괄",
+     "opening": "OPPOSE",
+     "final": "OPPOSE",
+     "changed": false,
+     "confidence": 5
+    },
+    {
+     "speaker": "RND_HEAD",
+     "speaker_ko": "R&D 총괄",
+     "opening": "OPPOSE",
+     "final": "OPPOSE",
+     "changed": false,
+     "confidence": 5
+    },
+    {
+     "speaker": "CFO",
+     "speaker_ko": "CFO",
+     "opening": "OPPOSE",
+     "final": "OPPOSE",
+     "changed": false,
+     "confidence": 5
+    },
+    {
+     "speaker": "CCO",
+     "speaker_ko": "CCO",
+     "opening": "HOLD",
+     "final": "OPPOSE",
+     "changed": true,
+     "confidence": 5
+    },
+    {
+     "speaker": "CEO",
+     "speaker_ko": "CEO",
+     "opening": "OPPOSE",
+     "final": "OPPOSE",
+     "changed": false,
+     "confidence": 5
+    }
    ],
-   "route": "전문조직 검토 (상업 액션 연결 금지)",
-   "deliberated_at": "2026-09-28T16:08:22",
+   "tally": {
+    "counts": {
+     "SUPPORT": 0,
+     "HOLD": 0,
+     "OPPOSE": 7
+    },
+    "weights": {
+     "SUPPORT": 0.0,
+     "HOLD": 0.0,
+     "OPPOSE": 37.5
+    },
+    "winning_stance": "OPPOSE"
+   },
+   "recommendation": "DROP",
+   "summary_ko": "가설 HYP-003(메트포르민 유방암 보조요법 수요 증가)은 전원 합의로 개발 추진 및 상업적 대응을 중단(DROP)하기로 결정했습니다. 현장 신호 3건(3명 의료진)이 접수되었으나, 결정적 3상 RCT인 MA.32 시험(NCT01101438, PMID:42063220)에서 무침습 생존율과 전체 생존율 개선이 입증되지 않았고, 메타분석(PMID:34137294)에서도 전이·재발 환자의 전체 생존(HR 1.13)과 무진행 생존(HR 1.14)에 유의한 혜택이 없었으며, 전임상적으로는 에스트로겐 결핍 상태에서 휴면 ER+ 세포 생존을 촉진해 재발 위험을 높일 수 있다는 우려(PMID:32321715)까지 제기되었습니다. 허가사항은 제2형 당뇨병 혈당 조절로 한정되어 있고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#indications_and_usage), 젖산산증 박스 경고(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#boxed_warning)와 FAERS 1.9만 건 보고는 항암화학요법 병용 시 안전성 부담을 명확히 합니다. 다만 현장 수요가 실재하므로 의학부 주관으로 효능 근거 부재와 안전성 위험만을 중립적으로 정리한 HCP용 Q&A와 안전성 서한(DHPC)을 법무·컴플라이언스 검토 후 배포하고, 학회 채널을 통한 데이터 중심 과학적 교류를 의학부 단독 주관으로 진행하는 비상업적 액션에 한정합니다.",
+   "evidence_summary_ko": "반대 근거가 압도적입니다. MA.32 3상 무작위 대조시험(NCT01101438, PMID:42063220)에서 메트포르민이 위약 대비 무침습 생존율과 전체 생존율을 개선하지 못함이 확인되었습니다. 전이·재발 유방암 메타분석(PMID:34137294)에서도 전체 생존(HR 1.13, 95% CI 0.71-1.81)과 무진행 생존(HR 1.14, 95% CI 0.86-1.50)에 유의한 효과가 없었습니다. 전임상 연구(PMID:32321715)는 메트포르민이 지방산 산화에 의한 미토콘드리아 호흡 증가를 통해 에스트로겐 결핍 상태의 ER+ 유방암 세포와 종양의 생존을 촉진해 재발 위험을 높일 수 있음을 시사합니다. 지지 근거는 역학·관찰 연구 4건(PMID:23714455, PMID:22490993, PMID:19560877, PMID:21800293)에 머물러 있으며, 이를 검증한 대규모 RCT에서 모두 부정적 결과가 나왔습니다. 안전성 측면에서 FAERS 젖산산증 19,411건과 급성신손상 18,273건, 박스 경고의 젖산산증 사망·저체온·저혈압·서맥성 부정맥 위험, 항암화학요법 병용 시 신기능·간기능 악화 우려(SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#geriatric_use, SPL:011de1a5-1ac0-4831-9e8d-26ec79ba2205#use_in_specific_populations)가 확인됩니다. 현재 진행 중인 3상 시험들(NCT04387630, NCT06763328, NCT01905046, NCT07815808) 역시 재발 억제 직접 평가가 아니거나 예방·심장보호·인슐린 저항성 개선이 주목적입니다.",
+   "rationale_ko": "결정적 3상 RCT(MA.32)와 메타분석에서 효능이 입증되지 않았고, 전임상적 위해 가능성까지 제기된 상황에서 허가사항은 제2형 당뇨병에 한정되어 있으며, 젖산산증 등 중대한 안전성 위험이 항암화학요법 병용 시 증폭될 수 있습니다. 관찰 연구의 역학적 연관성만으로는 보조요법 적응증 개발의 임상적·규제적 근거가 되지 못하므로 개발 투자와 상업적 대응을 중단합니다. 다만 환자 안전과 의학적 사실 전달을 위해 의학부 주관의 비상업적 정보 제공(Q&A, DHPC, 학회 채널 데이터 중심 발표)을 최소한으로 진행합니다.",
+   "kill_criteria_ko": [
+    "MA.32 3상 시험(NCT01101438) 또는 동등 수준의 RCT에서 메트포르민이 위약 대비 무침습 생존율 또는 전체 생존율을 통계적으로 유의하게 개선함을 입증하지 못하는 경우",
+    "메타분석에서 전이·재발 유방암 환자의 전체 생존 또는 무진행 생존에 대한 메트포르민의 유의한 혜택(HR < 1, 95% CI가 1을 포함하지 않음)이 확인되지 않는 경우",
+    "전임상적 재발 위험 촉진 기전(지방산 산화·미토콘드리아 호흡 증가에 의한 휴면 ER+ 세포 생존 촉진)이 추가 연구에서 재현되거나 임상적으로 확인되는 경우",
+    "허가 당국이 제2형 당뇨병 외 적응증으로 유방암 보조요법을 승인하지 않는 경우"
+   ],
+   "risks_ko": [
+    "언론 보도와 관찰 연구만으로 환자 요청이 지속·확대되어 허가 외 사용이 증가할 경우 환자 위해(젖산산증, 급성신손상, 재발 위험 촉진 가능성) 발생",
+    "의료진이 효능 근거 부재와 안전성 위험을 환자에게 충분히 설명하지 못해 분쟁·민원 발생",
+    "경쟁사 또는 제3자가 관찰 연구를 근거로 허가 외 사용을 조장하는 마케팅을 전개할 경우 규제 대응 필요",
+    "비상업적 정보 제공 자료가 프로모션으로 오인되어 규제 위반 지적받을 가능성"
+   ],
+   "follow_up_questions": [
+    {
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때 MA.32 3상 무효 결과와 젖산산증 위험을 어떻게 설명하고 계십니까?",
+     "why_ko": "현장 의료진의 실제 응대 현황과 환자 반응을 파악해 Q&A·DHPC 문구 보완에 반영하기 위함"
+    },
+    {
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, 의료진은 MA.32 3상 무효 결과와 허가사항상 유방암 적응증이 없음을 어떻게 설명하고 계십니까?",
+     "why_ko": "허가 범위 내 중립적 사실 전달이 현장에서 일관되게 이루어지는지 확인하고 표준 안내 문구 필요성 검증"
+    },
+    {
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 젖산산증 박스 경고를 어떻게 설명하고 계십니까?",
+     "why_ko": "안전성 서한(DHPC) 배포 후 의료진의 인지 변화와 처방 행태 변화를 모니터링하기 위함"
+    }
+   ],
+   "closing_ko": "이상으로 가설 HYP-003에 대한 경영 심의회를 마칩니다. 전원 합의로 개발 추진 및 상업적 대응을 중단(DROP)하며, 의학부 주관의 비상업적 사실 전달 액션(Q&A, DHPC, 학회 채널 데이터 중심 발표)을 법무·컴플라이언스 검토 후 즉시 진행하기로 결정했습니다. 후속 액션 이행 현황은 차기 회의에서 보고받겠습니다. 수고하셨습니다.",
+   "blocked_actions": [
+    {
+     "speaker": "RA_HEAD",
+     "speaker_ko": "RA 총괄",
+     "phase": "opening",
+     "action_ko": "의약학부와 협의하여 허가 외 사용 문의 대응 가이드라인을 배포하고, 영업·마케팅 부서에는 해당 적응증 관련 프로모션 금지 지침을 재확인 요청합니다.",
+     "reason_ko": "허가 범위 밖 가설 — 상업 액션은 연결하지 않는다"
+    },
+    {
+     "speaker": "RA_HEAD",
+     "speaker_ko": "RA 총괄",
+     "phase": "discussion1",
+     "action_ko": "의료진용 표준 응대 지침(비프로모션, 사실 기반) 초안을 법무·컴플라이언스 검토 후 배포한다.",
+     "reason_ko": "허가 범위 밖 가설 — 상업 액션은 연결하지 않는다"
+    },
+    {
+     "speaker": "CEO",
+     "speaker_ko": "CEO",
+     "phase": "discussion2",
+     "action_ko": "의학부가 MA.32 무효 결과·허가사항·박스 경고·FAERS 안전성 신호만 담은 비프로모션 Q&A와 안전성 서한을 작성해 법무·컴플라이언스 검토 후 배포한다.",
+     "reason_ko": "허가 범위 밖 가설 — 상업 액션은 연결하지 않는다"
+    }
+   ],
+   "proposals": [
+    {
+     "speaker_ko": "CMO",
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때 MA.32 3상 무효 결과와 젖산산증 위험을 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과, 허가사항, 안전성 경고를 담은 HCP용 Q&A와 안전성 서한(DHPC)을 법무·컴플라이언스 검토 후 배포한다."
+    },
+    {
+     "speaker_ko": "RA 총괄",
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, 의료진은 MA.32 3상 무효 결과와 허가사항상 유방암 적응증이 없음을 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과, 허가사항, 젖산산증 박스 경고만을 중립적으로 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 배포한다."
+    },
+    {
+     "speaker_ko": "PV 총괄",
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 젖산산증 박스 경고를 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과와 젖산산증·급성신손상 위험을 담은 DHPC와 HCP용 Q&A를 법무·컴플라이언스 검토 후 배포하고, RMP에 항암화학요법 병용군 신기능 모니터링 강화 조항을 추가한다."
+    },
+    {
+     "speaker_ko": "R&D 총괄",
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 전임상적 재발 위험 우려를 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 결과와 안전성 정보를 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 배포한다."
+    },
+    {
+     "speaker_ko": "CFO",
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 젖산산증 위험을 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과·허가사항·안전성 경고를 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 배포하고, 개발 예산은 배정하지 않는다."
+    },
+    {
+     "speaker_ko": "CCO",
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 허가사항 범위를 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과·허가사항·젖산산증 박스 경고·FAERS 데이터를 담은 HCP용 Q&A와 안전성 서한을 법무·컴플라이언스 검토 후 2주 내 배포한다."
+    },
+    {
+     "speaker_ko": "CEO",
+     "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 젖산산증 위험을 어떻게 설명하고 계십니까?",
+     "action_ko": "의학부 주관으로 MA.32 무효 결과·허가사항·안전성 경고를 담은 HCP용 Q&A와 DHPC를 법무·컴플라이언스 검토 후 4주 내 배포한다."
+    }
+   ],
+   "deliberated_at": "2026-09-28T17:20:47",
    "decision": {
     "by": "박건태",
-    "at": "2026-09-28T16:08:22",
+    "at": "2026-09-28T17:20:47",
     "note": "",
     "accepted": "DROP"
    }
@@ -2965,29 +3593,29 @@
   {
    "id": "ACT-001",
    "hypothesis_id": "HYP-003",
-   "question_ko": "MA.32 3상 결과(보조요법 무효) 발표 후에도 환자·보호자가 메트포르민 처방을 요청하는 주된 이유는 무엇이라고 보십니까?",
-   "why_ko": "음성 RCT 결과가 알려진 시점에도 수요가 지속되는 동인(언론 보도, 인터넷 커뮤니티, 의사 권유 등)을 파악해 향후 커뮤니케이션 전략 수립에 활용하기 위함",
+   "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때 MA.32 3상 무효 결과와 젖산산증 위험을 어떻게 설명하고 계십니까?",
+   "why_ko": "현장 의료진의 실제 응대 현황과 환자 반응을 파악해 Q&A·DHPC 문구 보완에 반영하기 위함",
    "status": "OPEN",
    "approved_by": "박건태",
-   "approved_at": "2026-09-28T16:08:22"
+   "approved_at": "2026-09-28T17:20:47"
   },
   {
    "id": "ACT-002",
    "hypothesis_id": "HYP-003",
-   "question_ko": "진료 현장에서 메트포르민 보조요법 요청 시, MA.32 결과와 라벨 외 사용임을 어떻게 설명하고 계십니까?",
-   "why_ko": "의료진의 설명 방식과 환자 수용도 차이를 확인해, 근거 기반 상담 가이드 필요성 판단에 참고하기 위함",
+   "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, 의료진은 MA.32 3상 무효 결과와 허가사항상 유방암 적응증이 없음을 어떻게 설명하고 계십니까?",
+   "why_ko": "허가 범위 내 중립적 사실 전달이 현장에서 일관되게 이루어지는지 확인하고 표준 안내 문구 필요성 검증",
    "status": "OPEN",
    "approved_by": "박건태",
-   "approved_at": "2026-09-28T16:08:22"
+   "approved_at": "2026-09-28T17:20:47"
   },
   {
    "id": "ACT-003",
    "hypothesis_id": "HYP-003",
-   "question_ko": "당뇨병 동반 유방암 환자에서 메트포르민을 혈당 조절 목적으로 처방 중인 경우, 보조요법 효과 기대를 별도로 논의하십니까?",
-   "why_ko": "당뇨병 적응증으로 이미 복용 중인 환자군에서 '보조요법 효과'에 대한 오해·기대 형성 여부를 확인하기 위함",
+   "question_ko": "유방암 환자가 메트포르민 보조요법을 요청할 때, MA.32 3상 무효 결과와 젖산산증 박스 경고를 어떻게 설명하고 계십니까?",
+   "why_ko": "안전성 서한(DHPC) 배포 후 의료진의 인지 변화와 처방 행태 변화를 모니터링하기 위함",
    "status": "OPEN",
    "approved_by": "박건태",
-   "approved_at": "2026-09-28T16:08:22"
+   "approved_at": "2026-09-28T17:20:47"
   }
  ]
 }

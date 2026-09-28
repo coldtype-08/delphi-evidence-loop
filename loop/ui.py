@@ -82,6 +82,12 @@ td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}tr:las
 .strip div{padding:12px 14px;border-right:1px solid var(--line)}.strip div:last-child{border-right:0}
 .strip .k{font-size:var(--fs-2xs);color:var(--faint);font-weight:600}.strip b{display:block;font-family:Manrope,sans-serif;font-size:1.4rem;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2;margin:2px 0}
 .strip .s{font-size:var(--fs-2xs);color:var(--muted)}.strip .turn .k::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-right:6px}
+.strip.j{grid-template-columns:repeat(7,1fr);margin:6px 0 4px}.strip.j b{font-size:1.05rem}
+.strip.j .done .k::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px}
+.strip.j .next .k::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--navy);margin-right:6px}
+.strip.j .human{background:var(--orange-soft)}.strip.j .human .k::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-right:6px}
+.strip.j .later{opacity:.55}
+@media(max-width:860px){.strip,.strip.j{grid-template-columns:repeat(2,1fr)}}
 form{display:inline-block;margin:0}
 .btn{display:inline-block;background:var(--navy);color:var(--on-navy);border:0;border-radius:6px;padding:7px 12px;font:inherit;font-size:var(--fs-xs);font-weight:600;cursor:pointer;margin:2px 6px 2px 0;transition:opacity .15s}
 .btn:hover{opacity:.9}.btn.turn{background:var(--orange);color:var(--ink)}.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line-2)}
@@ -146,7 +152,7 @@ def shell(title: str, body: str, active: str = "/", banner: str = "", static: bo
         f'<a href="{href}" class="{"on" if href == active else ""}">{name}</a>' for href, name in NAV) + "</nav>"
     side = (f'<aside class="side"><a href="/" class="brand"><img src="/static/logo-navy.png" alt="DELPHi" style="height:20px;display:block">'
             f'<small>근거 관문 루프 · Nemotron · <u>소개</u></small></a>{nav}'
-            '<div class="foot">모델은 고르고 인용한다.<br>숫자는 코드가 센다.<br>관문은 사람이 지킨다.</div></aside>')
+            '<div class="foot">합성 데이터 · 메트포르민<br>Nemotron 3 Ultra (NIM)<br>임원 에이전트 7인 + 간사</div></aside>')
     ban = f'<div class="banner">{esc(banner)}</div>' if banner else ""
     legend = ('<div class="legend"><span>표기 5단계</span>' + "".join(f"<span>{tag(k)}{v}</span>" for k, v in
               [("fact", "관찰된 사실"), ("pattern", "통계적 패턴"), ("interp", "AI의 해석"), ("proposal", "전략적 제안"), ("action", "승인된 실행")])

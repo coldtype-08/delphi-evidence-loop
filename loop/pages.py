@@ -25,15 +25,15 @@ def demo_card(state: dict, contract: dict, notes_n: int, web: bool = True) -> st
              "<li><b>가설 HYP-003</b>을 연다 — 유방암 환자가 보조요법으로 요청하는 신호</li>"
              "<li><b>② 근거 교차검증</b> — PubMed·CT.gov·라벨을 읽고 지지/반대/중립을 인용과 함께 표시</li>"
              "<li><b>③ 서명</b> — 근거를 읽었다고 이름으로 서명해야 심의로 간다 (사람 관문)</li>"
-             "<li><b>④ 심의 → ⑤ 결정</b> — 권고와 후속 질문, 결정하면 체크리스트로 내려간다</li></ol>")
-    return (f'<div class="card"><b>이 데모는 무엇을 하나</b> <span class="sub">— 제약 의학부가 의료진 면담에서 들은 말을 «셀 수 있는 신호»로 바꾸고, 공개 근거로 확인하고, 사람이 결정한 것만 다음 면담으로 넘긴다.</span>'
+             "<li><b>④ 심의 → ⑤ 결정</b> — 임원 에이전트 7인이 토론하고 간사가 회의록을 쓴다. 결정하면 후속 질문이 체크리스트에 들어간다</li></ol>")
+    return (f'<div class="card"><b>데모 안내</b> <span class="sub">— 의료진 면담 기록을 환자군 × 신호 유형으로 세고, 문턱을 넘은 조합을 공개 근거로 검증한 뒤, 사람이 서명·결정한 후속 질문을 다음 면담으로 보내는 과정을 실행해 볼 수 있다.</span>'
             f'<div class="grid" style="grid-template-columns:1fr 1fr;margin-top:10px">'
             f'<div><div class="eyebrow">입력</div>{esc(contract["drug_ko"])}에 관한 <b>합성 면담 기록 {notes_n}건</b> (가상 의료진 {notes_n}인 · 한국어 · 실제 인물·기관 없음). {notes_link}.'
             f'<div class="eyebrow" style="margin-top:10px">무엇을 뽑나 — 사람이 정한 고정 헤더</div><b>환자군 {len(contract["segments"])}</b>: {segs}<br><b>신호 유형 {len(SIGNAL_KO)}</b>:<ul style="margin:4px 0 0">{sigs}</ul>'
-            f'<div class="faint" style="margin-top:6px">«써봤다»와 «막혔다»를 반드시 가른다 — 규제상 전혀 다른 신호다. 유해사례로 읽히는 발언은 처음부터 별도 경로.</div></div>'
+            f'<div class="faint" style="margin-top:6px">「써봤다」와 「막혔다」는 규제상 다른 신호이므로 구분한다. 유해사례로 읽히는 발언은 별도 경로로 보낸다.</div></div>'
             f'<div><div class="eyebrow">보는 순서 (5분)</div>{steps}'
-            f'<div class="faint" style="margin-top:8px">같은 입력은 캐시에서 즉시 재생된다. 새 이름으로 서명해 심의하면 그때만 Nemotron이 실제로 돈다(약 1분).</div>'
-            f'<div class="faint" style="margin-top:4px"><b>볼 것</b>: HYP-003에서 대규모 3상(MA.32, n=3,649) 무효 결과가 <span class="chip oppose">반대</span>로 올라오고, 심의가 그것부터 쓴다. 시스템은 도장이 아니다.</div></div></div></div>')
+            f'<div class="faint" style="margin-top:8px">같은 입력은 캐시에서 즉시 재생된다. 새 이름으로 서명해 심의하면 그때만 Nemotron이 실제로 돈다(임원 7인 병렬, 약 5분).</div>'
+            f'<div class="faint" style="margin-top:4px"><b>확인할 것</b>: HYP-003에서 대규모 3상(MA.32, n=3,649) 무효 결과가 <span class="chip oppose">반대</span>로 표시되고, 심의 기록에서 임원들이 이를 인용한다.</div></div></div></div>')
 
 
 # ── shared pieces ──────────────────────────────────────────────────────────────
@@ -52,6 +52,32 @@ def next_step(state: dict, h: dict) -> tuple[str, str]:
     return "done", "체크리스트 반영됨"
 
 
+def journey(state: dict, h: dict, web: bool = True) -> str:
+    """신호의 여정 — one hypothesis from field statements to the checklist, with who and when at each step."""
+    hid = h["id"]
+    s, rev, memo = state["screens"].get(hid), state["reviews"].get(hid), state["board"].get(hid)
+    dec = (memo or {}).get("decision")
+    acts = [a for a in state["actions"] if a["hypothesis_id"] == hid]
+    link = (lambda href, t: f'<a href="{href}">{t}</a>') if web else (lambda href, t: t)
+    steps = [
+        ("현장 발언", f'{h["field"]["mentions"]}회 · {h["field"]["hcps"]}인', "코드 집계", "done", None),
+        ("가설", "DRAFT", h["created_at"][:16].replace("T", " "), "done", None),
+        ("외부 근거", (f'지지 {s["totals"]["SUPPORTS"]} · 반대 {s["totals"]["CONTRADICTS"]} · 중립 {s["totals"]["NEUTRAL"]}' if s else "대기"),
+         (s["ran_at"][:16].replace("T", " ") if s else "에이전트 차례"), "done" if s else "next", None),
+        ("서명 · 관문 ①", (rev["by"] if rev else "대기"), (rev["at"][:16].replace("T", " ") if rev else "사람 차례"), "done" if rev else ("human" if s else "later"), None),
+        ("심의 · AI Board", (f'{len(memo["transcript"])}턴 → {memo["recommendation"]}' if memo and "transcript" in memo else (memo["recommendation"] if memo else "대기")),
+         (memo["deliberated_at"][:16].replace("T", " ") if memo else ("에이전트 차례" if rev else "")), "done" if memo else ("next" if rev else "later"),
+         f"/hypotheses/{hid}/board" if memo and web else None),
+        ("결정 · 관문 ②", (dec["by"] if dec else "대기"), (dec["at"][:16].replace("T", " ") if dec else ("사람 차례" if memo else "")), "done" if dec else ("human" if memo else "later"), None),
+        ("체크리스트", f"{len(acts)}건" if acts else "—", "다음 면담이 참조" if acts else "", "done" if acts else "later", "/checklist" if acts and web else None),
+    ]
+    cells = []
+    for name, value, when, cls, href in steps:
+        v = link(href, esc(value)) if href else esc(value)
+        cells.append(f'<div class="{cls}"><div class="k">{esc(name)}</div><b>{v}</b><div class="s">{esc(when)}</div></div>')
+    return f'<div class="eyebrow" style="margin-top:14px">신호의 여정</div><div class="strip j">{"".join(cells)}</div>'
+
+
 def controls_for(state: dict, h: dict) -> str:
     hid, st = h["id"], h["status"]
     if st == "DRAFT":
@@ -60,7 +86,7 @@ def controls_for(state: dict, h: dict) -> str:
         return button("③ 외부 근거를 직접 검토했습니다 — 서명", "/run/review", {"hyp": hid},
                       [("by", "검토자 이름"), ("note", "메모 (선택)")], turn=True)
     if st == "REVIEWED":
-        return button("④ 심의 실행 (Nemotron 사고 모드)", "/run/board", {"hyp": hid})
+        return button("④ 심의 실행 (AI Board · 임원 7인 + 간사)", "/run/board", {"hyp": hid})
     if st == "DELIBERATED":
         return button("⑤ 권고를 받아들입니다 — 결정", "/run/approve", {"hyp": hid}, [("by", "결정자 이름")], turn=True)
     return '<span class="faint">완료 — 질문이 다음 면담 체크리스트에 내려갔다</span>'
@@ -154,15 +180,15 @@ def hyp_table(state: dict, link: bool = True) -> str:
 def overview(state: dict, contract: dict, banner: str = "", web: bool = True) -> str:
     notes_n = len(load_notes())
     body = [f'<div class="eyebrow">{esc(contract["drug_ko"])} · 계약 {esc(contract["version"])} · 환자군 {len(contract["segments"])} · 신호 유형 {len(contract["signal_types"])}</div>',
-            '<h1>현장 신호가 근거를 지나 실행이 되기까지</h1>',
-            '<p class="sub">면담 기록에서 다음 면담 체크리스트까지 닫히는 루프. 모델은 고르고 인용하고, 숫자는 코드가 세고, 두 관문은 사람이 지킨다. 모든 면담 기록은 합성이다.</p>',
+            '<h1>처리 현황</h1>',
+            '<p class="sub">면담 기록에서 다음 면담 체크리스트까지의 처리 단계와 건수. 모든 면담 기록은 합성이다.</p>',
             pipeline_strip(state, notes_n), demo_card(state, contract, notes_n, web)]
     if web:
-        body.append('<div class="card"><div class="row"><div class="grow"><b>① 추출</b> <span class="sub">면담 기록 12건을 Nemotron이 읽고, 환자군 × 신호 유형에 해당하는 발언을 골라 원문 그대로 인용한다. 코드가 인용을 원문에서 찾아 검증하고, 세고, 문턱(3회·3인)을 넘은 묶음을 가설로 만든다.</span></div>'
+        body.append('<div class="card"><div class="row"><div class="grow"><b>① 추출</b> <span class="sub">면담 기록 12건을 Nemotron이 읽고 환자군 × 신호 유형에 해당하는 발언을 원문 그대로 인용한다. 코드가 인용을 원문에서 찾아 검증하고 세어, 문턱(3회·3인)을 넘은 조합을 가설로 만든다.</span></div>'
                     + button("① 추출 실행", "/run/sense") + '</div>'
                     '<div class="row"><div class="grow faint">결과만 지우고 처음부터 (캐시는 유지)</div>' + button("초기화", "/run/reset", ghost=True) + '</div></div>')
-    body.append('<h2>신호 지도</h2><p class="sub">' + tag("pattern") + '칸 크기는 <b>반복 횟수</b>, 진하기는 <b>독립 의료진 수</b> — 가설이 되려면 둘 다 넘어야 한다. '
-                '<b>크지만 옅은 칸은 한두 사람이 반복한 것</b>이라 반복 횟수만 보면 안 보인다. 점선은 문턱 미달. 칸을 누르면 가설로 간다.</p>')
+    body.append('<h2>신호 지도</h2><p class="sub">' + tag("pattern") + '칸 크기는 <b>반복 횟수</b>, 진하기는 <b>독립 의료진 수</b>다. 가설이 되려면 둘 다 문턱을 넘어야 한다. '
+                '크지만 옅은 칸은 한두 사람이 반복한 것이다. 점선은 문턱 미달. 칸을 누르면 가설로 이동한다.</p>')
     body.append(signal_map(state, contract, web))
     body.append("<h2>가설</h2>")
     body.append(hyp_table(state))
@@ -240,12 +266,13 @@ def hypothesis_section(state: dict, contract: dict, h: dict, web: bool = True) -
          f'<h1>{esc(h["segment"])} × {esc(h["signal_type"])} <span class="sub" style="font-weight:400">({esc(SIGNAL_KO.get(h["signal_type"], ""))})</span></h1>',
          f'<div>{status_chip(h["status"])}{label_chip(h["label_status"])}' + (f'<span class="chip turn">사람 차례 · {esc(what)}</span>' if who == "human" else "") + "</div>",
          f'<div class="card">{tag("interp")}<b>{esc(h["statement_ko"])}</b><br><span class="sub">{esc(h["statement_en"])}</span>'
-         f'<div class="faint" style="margin-top:8px">{tag("pattern")}현장 {h["field"]["mentions"]}회 / {h["field"]["hcps"]}인 · 검색식 <code>{esc(h["search"]["pubmed_query"])}</code> · CT.gov 조건 <code>{esc(h["search"]["ctgov_condition"])}</code></div></div>']
+         f'<div class="faint" style="margin-top:8px">{tag("pattern")}현장 {h["field"]["mentions"]}회 / {h["field"]["hcps"]}인 · 검색식 <code>{esc(h["search"]["pubmed_query"])}</code> · CT.gov 조건 <code>{esc(h["search"]["ctgov_condition"])}</code></div></div>',
+         journey(state, h, web)]
     explain = {
         "DRAFT": "누르면 에이전트가 검색식으로 PubMed · ClinicalTrials.gov · FDA 라벨을 읽고, 기록마다 지지/반대/중립을 원문 인용과 함께 표시한다. 건수는 코드가 센다.",
-        "SCREENED": "아래 근거 표를 직접 읽었다는 서명이다. 이름이 기록에 남고, 서명이 있어야만 심의로 갈 수 있다. 지지보다 반대가 많아도 올릴 수 있다 — 판단은 사람 몫.",
-        "REVIEWED": "누르면 Nemotron이 사고 모드로 근거 전체를 읽고 권고(전문조직 검토 / 보류 / 기각) · 위험 · 다음 면담에서 물을 질문을 쓴다. 약 1분.",
-        "DELIBERATED": "권고를 받아들이면 후속 질문이 다음 면담 체크리스트로 내려간다. 결정자 이름이 남는다.",
+        "SCREENED": "아래 근거 표를 직접 읽었다는 서명이다. 이름이 기록에 남고, 서명이 있어야 심의로 갈 수 있다. 반대 근거가 많아도 상정할 수 있으며 판단은 검토자가 한다.",
+        "REVIEWED": "누르면 AI Board가 열린다. 간사가 개회하고 임원 7인(CMO · RA · PV · R&D · CFO · CCO · CEO)이 모두발언 → 토론 → 최종 입장을 내며, 코드가 입장을 집계해 권고를 정하고 간사가 회의록을 쓴다. 약 5분.",
+        "DELIBERATED": "권고를 받아들이면 회의록의 후속 질문이 다음 면담 체크리스트에 들어간다. 결정자 이름이 남는다.",
     }.get(h["status"], "질문이 체크리스트에 있다. 다음 면담이 이 질문을 참조해 수집한다.")
     if web:
         p.append(f'<div class="card"><div class="row"><div class="grow"><b>다음</b> <span class="sub">{"사람 차례" if who == "human" else ("에이전트 차례" if who == "agent" else "완료")} — {esc(what)}</span>'
@@ -289,17 +316,68 @@ def hypothesis_section(state: dict, contract: dict, h: dict, web: bool = True) -
                  + (f' <span class="sub">{esc(rev["note"])}</span>' if rev["note"] else "") + "</div>")
     memo = state["board"].get(hid)
     if memo:
-        qs = "".join(f'<li>{esc(q["question_ko"])} <span class="faint">— {esc(q["why_ko"])}</span></li>' for q in memo["follow_up_questions"])
-        risks = "".join(f"<li>{esc(r)}</li>" for r in memo["risks_ko"])
-        dec = memo.get("decision")
-        p.append("<h2>심의</h2>")
-        p.append(f'<div class="card navy">{tag("fact")}<span style="color:var(--on-navy-3)">라벨 판정 {esc(memo["label_status"])} → 경로 {esc(memo["route"])}</span>'
-                 f'<h3 style="margin-top:8px">{tag("proposal")}권고 {esc(memo["recommendation"])}</h3><div>{esc(memo["rationale_ko"])}</div></div>')
-        p.append(f'<div class="card">{tag("interp")}{esc(memo["evidence_summary_ko"])}</div>')
-        p.append(f'<div class="grid" style="grid-template-columns:1fr 1fr"><div class="card"><b>{tag("proposal")}위험</b><ul>{risks}</ul></div>'
-                 f'<div class="card"><b>{tag("proposal")}다음 면담에서 물을 것</b><ul>{qs}</ul></div></div>')
-        if dec:
-            p.append(f'<div class="card gate">{tag("action")}<b>관문 ② 결정</b> — <b>{esc(dec["by"])}</b> 이(가) {esc(dec["at"])} 에 권고 {esc(dec["accepted"])} 을 받아들였다. 후속 질문이 체크리스트로 내려갔다.</div>')
+        p.append(board_section(memo, web))
+    return "\n".join(p)
+
+
+STANCE_KO = {"SUPPORT": ("지지", "support"), "HOLD": ("보류", "hold"), "OPPOSE": ("반대", "oppose")}
+
+
+def _stance_chip(s: str) -> str:
+    ko, cls = STANCE_KO.get(s, (s, "hold"))
+    return f'<span class="chip {cls}">{ko}</span>'
+
+
+def board_section(memo: dict, web: bool = True) -> str:
+    """The meeting as a record: header, transcript, stance evolution, code tally, minutes, decision."""
+    p = ["<h2>심의 — AI Board</h2>"]
+    if "transcript" not in memo:   # memo from the single-call board (older state)
+        p.append(f'<div class="card">{tag("proposal")}권고 <b>{esc(memo["recommendation"])}</b> — {esc(memo["rationale_ko"])}</div>')
+        return "\n".join(p)
+    t = memo["tally"]
+    p.append(f'<div class="card">{tag("fact")}가설 유형 <b>{esc(memo["hypothesis_type"])}</b> · 주무 임원 <b>{esc(memo["lead_ko"])}</b> · 참석 {len(memo["attendees"])}인 · 발언 {len(memo["transcript"])}턴 · '
+             f'라벨 판정 {esc(memo["label_status"])} → 경로 {esc(memo["route"])}</div>')
+    # stance evolution
+    rows = "".join(f'<tr><td>{esc(e["speaker_ko"])}{" <span class=faint>(주무)</span>" if e["speaker"] == memo["lead"] else ""}</td><td>{_stance_chip(e["opening"])}</td>'
+                   f'<td>{_stance_chip(e["final"])}{" <span class=chip st>변경</span>" if e["changed"] else ""}</td><td class="n">{e["confidence"]}</td></tr>'
+                   for e in memo["stance_evolution"])
+    p.append('<div class="grid" style="grid-template-columns:1fr 1fr">'
+             f'<div class="card"><b>{tag("pattern")}입장 변화 (모두발언 → 최종)</b><table><tr><th>참석자</th><th>모두발언</th><th>최종</th><th>확신 1–5</th></tr>{rows}</table></div>'
+             f'<div class="card"><b>{tag("pattern")}집계 (코드 · 확신 가중, 주무 ×1.5)</b><table><tr><th>입장</th><th>인원</th><th>가중치</th></tr>'
+             + "".join(f'<tr><td>{_stance_chip(s)}</td><td class="n">{t["counts"][s]}</td><td class="n">{t["weights"][s]:.1f}</td></tr>' for s in ("SUPPORT", "HOLD", "OPPOSE"))
+             + f'</table><div style="margin-top:8px">{tag("proposal")}권고 <b>{esc(memo["recommendation"])}</b> <span class="faint">— 가중치가 가장 큰 입장을 코드가 권고로 옮긴다. 간사는 바꾸지 못한다.</span></div></div></div>')
+    # transcript
+    turns = []
+    for tr in memo["transcript"]:
+        who = esc(tr["speaker_ko"])
+        st = _stance_chip(tr["stance"]) if tr.get("stance") else ""
+        chg = ' <span class="chip st">입장 변경</span>' if tr.get("stance_changed") else ""
+        conf = f' <span class="faint">확신 {tr["confidence"]}</span>' if tr.get("confidence") else ""
+        cited = "".join(f' <span class="mono faint">{esc(c.split("#")[0])}</span>' for c in tr.get("cited", [])[:4])
+        dropped = f' <span class="faint">(근거 목록에 없는 인용 {len(tr["cited_dropped"])}건 버림)</span>' if tr.get("cited_dropped") else ""
+        sentences = tr["utterance_ko"].strip()
+        head, _, rest = sentences.partition(". ")
+        body = f'<b>{esc(head)}{"." if rest else ""}</b> {esc(rest)}' if rest else f"<b>{esc(sentences)}</b>"
+        turns.append(f'<div class="row" style="align-items:flex-start"><div style="flex:0 0 150px"><span class="chip st">{who}</span><div class="faint">{esc(tr["phase"])}</div></div>'
+                     f'<div class="grow">{st}{chg}{conf}<div style="margin-top:4px">{body}</div><div>{cited}{dropped}</div></div></div>')
+    p.append(f'<div class="card"><b>{tag("interp")}회의 기록</b> <span class="faint">— 첫 문장이 결론. 인용은 근거 표에 있는 ID만 인정.</span>{"".join(turns)}</div>')
+    if memo.get("blocked_actions"):
+        b = "".join(f'<li><b>{esc(x["speaker_ko"])}</b>: “{esc(x["action_ko"])}” — {esc(x["reason_ko"])}</li>' for x in memo["blocked_actions"])
+        p.append(f'<div class="card" style="border-left:4px solid var(--rust)">{tag("fact")}<b>코드가 차단한 제안 {len(memo["blocked_actions"])}건</b><ul>{b}</ul></div>')
+    # minutes
+    qs = "".join(f'<li>{esc(q["question_ko"])} <span class="faint">— {esc(q["why_ko"])}</span></li>' for q in memo["follow_up_questions"])
+    risks = "".join(f"<li>{esc(r)}</li>" for r in memo["risks_ko"])
+    kills = "".join(f"<li>{esc(r)}</li>" for r in memo.get("kill_criteria_ko", []))
+    p.append(f'<div class="card navy"><b>{tag("proposal")}회의록</b><div style="margin-top:6px">{esc(memo["summary_ko"])}</div>'
+             f'<div style="margin-top:8px;color:var(--on-navy-2)">{tag("interp")}{esc(memo["evidence_summary_ko"])}</div>'
+             f'<div style="margin-top:8px;color:var(--on-navy-2)">{tag("proposal")}권고 사유 — {esc(memo["rationale_ko"])}</div></div>')
+    p.append('<div class="grid" style="grid-template-columns:1fr 1fr 1fr">'
+             f'<div class="card"><b>{tag("proposal")}중단 기준</b><ul>{kills}</ul></div>'
+             f'<div class="card"><b>{tag("proposal")}위험</b><ul>{risks}</ul></div>'
+             f'<div class="card"><b>{tag("proposal")}다음 면담에서 물을 것</b><ul>{qs}</ul></div></div>')
+    dec = memo.get("decision")
+    if dec:
+        p.append(f'<div class="card gate">{tag("action")}<b>관문 ② 결정</b> — <b>{esc(dec["by"])}</b> 이(가) {esc(dec["at"])} 에 권고 {esc(dec["accepted"])} 을 받아들였다. 후속 질문이 체크리스트로 내려갔다.</div>')
     return "\n".join(p)
 
 
@@ -308,10 +386,21 @@ def hypothesis_page(state: dict, contract: dict, hid: str, banner: str = "", web
     return shell(hid, hypothesis_section(state, contract, h, web), "/hypotheses", banner)
 
 
+def board_page(state: dict, contract: dict, hid: str, banner: str = "", web: bool = True) -> str:
+    """The meeting record on its own page."""
+    h = store.hypothesis(state, hid)
+    memo = state["board"].get(hid)
+    head = (f'<div class="eyebrow">{esc(hid)} · <a href="/hypotheses/{esc(hid)}">가설 상세로</a></div>'
+            f'<h1>AI Board 회의 기록 — {esc(h["segment"])} × {esc(h["signal_type"])}</h1>'
+            f'<p class="sub">{tag("interp")}{esc(h["statement_ko"])}</p>')
+    body = head + journey(state, h, web) + (board_section(memo, web) if memo else '<p class="sub">아직 심의 전이다.</p>')
+    return shell(f"{hid} 회의 기록", body, "/hypotheses", banner)
+
+
 def checklist_page(state: dict, contract: dict, banner: str = "", web: bool = True) -> str:
     acts = state["actions"]
     body = ['<div class="eyebrow">Field checklist</div><h1>다음 면담 체크리스트</h1>',
-            f'<p class="sub">{tag("action")}사람이 받아들인 권고의 후속 질문. 다음 면담이 이 질문을 참조해 수집한다 — 루프가 닫히는 곳.</p>']
+            f'<p class="sub">{tag("action")}사람이 받아들인 권고의 후속 질문. 다음 면담이 이 항목을 참조해 수집한다.</p>']
     if acts:
         body.append("<table><tr><th>항목</th><th>질문</th><th>이유</th><th>가설</th><th>승인</th></tr>")
         for a in acts:

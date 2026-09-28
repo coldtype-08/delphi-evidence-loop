@@ -19,7 +19,7 @@ uv run python -m loop.cli sense                 # field notes → claims (verbat
 uv run python -m loop.cli hypotheses
 uv run python -m loop.cli screen HYP-001        # 3 agents (PubMed / CT.gov / label) + FAERS and Part D numbers
 uv run python -m loop.cli review HYP-001 --by "<name>"    # gate 1 — a person signs that they read the evidence
-uv run python -m loop.cli board HYP-001         # recommendation + follow-up questions (refuses without gate 1)
+uv run python -m loop.cli board HYP-001         # AI Board: orchestrator + 7 executives, ~20 turns in parallel; refuses without gate 1
 uv run python -m loop.cli approve HYP-001 --by "<name>"   # gate 2 — questions become the next field checklist
 ```
 
@@ -30,6 +30,7 @@ uv run python -m loop.cli approve HYP-001 --by "<name>"   # gate 2 — questions
 4. `NO_EXTERNAL_EVIDENCE` → no ranking. A person decides what silence means.
 5. A DEVELOPMENT (off-label) hypothesis routes to expert review only; commercial actions are never proposed.
 6. Two human gates: review signature before the board, approval before any action item exists.
+7. The board's recommendation is a code tally of the executives' final positions (confidence-weighted, lead ×1.5); the orchestrator only writes the minutes. Citations in speech count only if they name an evidence id the reviewer saw; a commercial action proposed on an off-label hypothesis is blocked and recorded.
 
 ## Outputs
 - `data/state.json` — claims, safety queue, hypotheses, screens, reviews, board memos, actions (system of record)
